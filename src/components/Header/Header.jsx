@@ -1,8 +1,9 @@
 import '../../styles/Header.css'
+import NavBar from './Navbar'
 
 const Header = () => {
     return(
-        <nav>AQUI DEBE IR EL HEADER.</nav>
+        <NavBar />
     )
 }
 
