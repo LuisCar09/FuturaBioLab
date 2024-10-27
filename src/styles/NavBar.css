@@ -1,0 +1,41 @@
+.navbar-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent; 
+    transition: transform 0.1s ease; 
+    z-index: 1000; 
+}
+
+.navbar-container.invisible {
+    transform: translateY(-100%);
+}
+
+.navbar-container.visible {
+    transform: translateY(0); 
+}
+.navbar {
+    background-color: transparent;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px; 
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 20px; 
+}
+
+
+.navbar li a {
+    text-decoration: none; 
+    color: #000; 
+}
+
+.navbar li a:hover {
+    text-decoration: underline;
+}
