@@ -26,6 +26,11 @@ main{
     color: white; 
     z-index: 1; 
 }
+.backgroundImage.blur {
+    filter: blur(5px); /* Ajusta el valor según el grado de desenfoque que desees */
+    transition: filter 0.3s ease; /* Para un desenfoque más suave */
+}
+
 
 .content h2 {
     font-size: 40px;

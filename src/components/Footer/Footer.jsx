@@ -5,11 +5,13 @@ const Footer = () => {
     const [showLine, setShowLine] = useState(false);
     
     const handleScroll = () => {
-        // Calculamos si el usuario ha llegado al final de la página
+    
         const scrollPosition = window.scrollY + window.innerHeight;
+        //window.scrollY:la cantidad de píxeles que se ha desplazado la ventana desde la parte superior de la página
+        //window.innerHeight: la altura visible de la ventana del navegador
         const documentHeight = document.documentElement.scrollHeight;
         
-        if (scrollPosition >= documentHeight - 60) { // 60px es la altura del footer
+        if (scrollPosition >= documentHeight - 60) { 
             setShowLine(true);
         } else {
             setShowLine(false);
@@ -26,7 +28,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer">
-                {/* Contenido del footer aquí */}
+                
                 <div className="footer-contact">
                     <h3>Información de Contacto:</h3>
                     <p>Dirección física: Calle Ejemplo, Ciudad.</p>
