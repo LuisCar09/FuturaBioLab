@@ -1,4 +1,8 @@
 .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
     position: fixed; 
     top: 0;
     left: 0;
@@ -17,9 +21,14 @@
 }
 .navbar {
     background-color: transparent;
+    display: flex;
+    align-items: center;
+
 }
 
 .navbar ul {
+    display: flex;
+    gap: 20px;
     list-style-type: none;
     margin: 0;
     padding: 10px; 
@@ -33,7 +42,7 @@
 
 .navbar li a {
     text-decoration: none; 
-    color: #000; 
+    color: var(--primary-color); 
 }
 
 .navbar li a:hover {

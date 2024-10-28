@@ -1,6 +1,6 @@
 nav{
     height: 60px;
-    background-color: antiquewhite;
+    background-color: var(--primary-color);
     text-align: center;
 }
 header {
