@@ -2,4 +2,36 @@ main{
     min-height: calc(200vh - 60px);
     background-color: brown;
     text-align: center;
+    
+}
+/* Estilos para el section */
+.sectionTop {
+    position: relative; 
+    text-align: center; 
+}
+
+.backgroundImage {
+    width: 100%;
+    height: auto; 
+    display: block; 
+    opacity: 70%;
+    
+}
+
+.content {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: white; 
+    z-index: 1; 
+}
+
+button {
+    margin-top: 20px; 
+}
+
+.buttonTop {
+    text-decoration: none; 
+    color: white; 
 }

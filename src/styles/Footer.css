@@ -1,5 +1,33 @@
-footer{
+
+.footer {
     height: 60px;
-    background-color: antiquewhite;
-    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    background-color:transparent;
+    color: white;
+    transition: left 0.1s;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.footer.visible {
+    left: 0;
+   
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
 }
