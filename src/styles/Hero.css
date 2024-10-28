@@ -54,6 +54,7 @@ button {
     align-items: center; 
     justify-content: center; 
     height: 50vh; 
+    width: 100%;
     text-align: center; 
     background-color: #02CA81 ;
 }
