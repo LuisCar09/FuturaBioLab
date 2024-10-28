@@ -16,6 +16,13 @@ const Hero = () => {
                 </div>
             </div>
         </section>
+        <section>
+         <div className='growContainer'>
+           <h2>Grow your vision</h2>
+           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit unde consectetur nemo accusamus deserunt nam numquam? Laudantium ipsum veritatis modi officia praesentium, sed maxime libero nulla. Repellendus, facilis harum.</p>
+           <button>Start Now</button>
+         </div>
+        </section>
     </main>
 
 
