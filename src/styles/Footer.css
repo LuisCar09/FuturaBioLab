@@ -1,15 +1,17 @@
+
 .footer {
     position: relative; 
     display: flex;
     bottom: 0;      
     left: 0;
     width: 100%;    
-    background-color: #f1f1f1; 
+    background-color: transparent; 
     color: #333;    
     padding: 20px;  
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     justify-content: space-between; 
     flex-wrap: wrap; 
+    
 }
 
 .footer > div {

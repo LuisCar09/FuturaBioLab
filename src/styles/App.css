@@ -50,11 +50,12 @@ table {
 
 section {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente (opcional, dependiendo del tamaño de la sección) */
-    height: 100vh; /* Ajusta el alto según sea necesario */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
 }
 
 .sectionTop {
-    text-align: center; /* Opcional: centra el texto dentro del div */
+    text-align: center; 
 }
+

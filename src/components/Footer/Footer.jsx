@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/Footer.css';
+import ContactInfo from './ContactInfo';
+import ImportantLinks from './ImportantLinks';
+import SocialLinks from './SocialLinks';
+import Sitemap from './Sitemap';
 
-const Footer = () => {
+const Footer = ({contactInfo,importantLinks,socialLinks,site}) => {
     const [showLine, setShowLine] = useState(false);
     
     const handleScroll = () => {
         const scrollPosition = window.scrollY + window.innerHeight;
-        const documentHeight = document.body.scrollHeight; // Usar scrollHeight del body
+        const documentHeight = document.body.scrollHeight; 
+        //window.scrollY retorna la posición vertical actual del scroll.
+        //window.innerHeight retorna la altura de la visible del navegador.
        
         if (scrollPosition >= documentHeight) { // Comparar directamente con documentHeight
             setShowLine(true);
@@ -22,51 +28,26 @@ const Footer = () => {
         };
     }, []);
 
+
     return (
         <footer>
-            <div className="footer">
-                <div className="footer-contact">
-                    <h3>Información de Contacto:</h3>
-                    <p>Dirección física: Calle Ejemplo, Ciudad.</p>
-                    <p>Correo electrónico: contacto@ejemplo.com</p>
-                    <p>Número de teléfono: (123) 456-7890</p>
-                </div>
+        <div className="footer">
+                <ContactInfo />
+                <ImportantLinks />
+                <SocialLinks />
+                <Sitemap />
+               
 
-                <div className="footer-links">
-                    <h3>Enlaces Importantes:</h3>
-                    <a href="/about">Acerca de nosotros</a>
-                    <a href="/privacy">Política de privacidad</a>
-                    <a href="/terms">Términos y condiciones</a>
-                    <a href="/faq">Preguntas Frecuentes (FAQ)</a>
-                    <a href="/support">Soporte al cliente</a>
-                </div>
-
-                <div className="footer-social">
-                    <h3>Redes Sociales:</h3>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                </div>
-
-                <div className="footer-map">
-                    <h3>Mapa del Sitio:</h3>
-                    <a href="/">Inicio</a>
-                    <a href="/about">Acerca de</a>
-                    <a href="/services">Servicios</a>
-                    <a href="/contact">Contacto</a>
-                </div>
-
-                <div className="footer-credits">
-                    <p>&copy; {new Date().getFullYear()} Futura BioLab. Todos los derechos reservados.</p>
-                </div>
+            <div className="footer-credits">
+                <p>&copy; {new Date().getFullYear()} Future BioLab. All rights reserved.</p>
             </div>
-            
-            {/* Línea de scroll */}
-            <div className={`scroll-line ${showLine ? 'active' : ''}`}></div>
-        </footer>  
-    );
-};
-
+        </div>
+        
+        {/* Scroll line */}
+        <div className={`scroll-line ${showLine ? 'active' : ''}`}></div>
+    </footer>  
+    )
+     
+}
 export default Footer;
 
