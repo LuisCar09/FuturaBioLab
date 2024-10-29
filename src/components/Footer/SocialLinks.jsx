@@ -8,10 +8,10 @@ const socialLinks = [
 
 const SocialLinks = () => {
     return (
-        <ul className="footer-social">
+        <ul className="footer">
             <h3>Social Media:</h3>
             {socialLinks.map(media => (
-                <li key={media.name}><a href={media.url} target="_blank" rel="noopener noreferrer">{media.name}</a></li>
+                <li key={media.name}><a href={media.url} target="_blank">{media.name}</a></li>
             ))}
         </ul>
     );

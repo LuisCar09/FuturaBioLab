@@ -6,9 +6,9 @@ import SocialLinks from './SocialLinks';
 import Sitemap from './Sitemap';
 
 const Footer = ({contactInfo,importantLinks,socialLinks,site}) => {
-    const [showLine, setShowLine] = useState(false);
+    {/*  const [showLine, setShowLine] = useState(false);
     
-    const handleScroll = () => {
+  const handleScroll = () => {
         const scrollPosition = window.scrollY + window.innerHeight;
         const documentHeight = document.body.scrollHeight; 
         //window.scrollY retorna la posición vertical actual del scroll.
@@ -27,11 +27,11 @@ const Footer = ({contactInfo,importantLinks,socialLinks,site}) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
+*/}
 
     return (
         <footer>
-        <div className="footer">
+        <div className="footerDiv">
                 <ContactInfo />
                 <ImportantLinks />
                 <SocialLinks />
@@ -43,8 +43,8 @@ const Footer = ({contactInfo,importantLinks,socialLinks,site}) => {
             </div>
         </div>
         
-        {/* Scroll line */}
-        <div className={`scroll-line ${showLine ? 'active' : ''}`}></div>
+        {/* Scroll line 
+        <div className={`scroll-line ${showLine ? 'active' : ''}`}></div>*/}
     </footer>  
     )
      

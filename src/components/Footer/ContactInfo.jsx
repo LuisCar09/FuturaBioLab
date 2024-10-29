@@ -8,7 +8,7 @@ const contactInfo = [
 
 const ContactInfo = () => {
     return (
-        <ul className='footer-contact'>
+        <ul className='footer'>
         <h3>Contact Information:</h3>
         {contactInfo.map(contact => (
             <li key={contact.id}>{contact.label}: {contact.value}</li>

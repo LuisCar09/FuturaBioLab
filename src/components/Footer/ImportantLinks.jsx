@@ -10,7 +10,7 @@ const importantLinks = [
 
 const ImportantLinks = () => {
     return (
-        <ul className="footer-links">
+        <ul className="footer">
             <h3>Important Links:</h3>
             {importantLinks.map(link => (
                 <li key={link.name}><a href={link.path}>{link.name}</a></li>
