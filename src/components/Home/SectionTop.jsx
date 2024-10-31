@@ -12,17 +12,17 @@ const SectionTop = () => {
     return (
         <div className='sectionTop'>
             <img 
-                className={`backgroundImage ${isHovered ? 'blur' : ''}`} 
+                className={`sectionTop-backgroundImage ${isHovered ? 'blur' : ''}`} 
                 src={imageUrl} 
                 alt="Background"
                 onMouseEnter={() => setIsHovered(true)} 
                 onMouseLeave={() => setIsHovered(false)} 
             />
-            <div className='content'>
+            <div className='sectionTop-container'>
                 <h2>{title}</h2>
                 <p>{description}</p>
                 <button>
-                    <a className='buttonTop' href={buttonLink}>+</a>
+                    <a className='sectionTop-button' href={buttonLink}>+</a>
                 </button>
             </div>
         </div>

@@ -1,16 +1,16 @@
 main{
-    min-height: calc(200vh - 60px);
+    min-height: calc(100vh - 60px);
     background-color: brown;
     text-align: center;
     
 }
-/* Estilos para el section */
+/* sectionTop */
 .sectionTop {
     position: relative; 
     text-align: center; 
 }
 
-.backgroundImage {
+.sectionTop-backgroundImage {
     width: 100%;
     height: auto; 
     display: block; 
@@ -18,7 +18,7 @@ main{
     
 }
 
-.content {
+.sectionTop-container {
     position: absolute; 
     top: 50%; 
     left: 50%; 
@@ -26,29 +26,28 @@ main{
     color: white; 
     z-index: 1; 
 }
-.backgroundImage.blur {
+.sectionTop-backgroundImage.blur {
     filter: blur(5px); 
     transition: filter 0.3s ease; 
 }
 
 
-.content h2 {
+.sectionTop-container h2 {
     font-size: 40px;
     margin-bottom: 10px;
 }
 
-button {
+
+
+.sectionTop-button {
+    
+    text-decoration: none; 
+    color: black; 
     width: 100px;
     margin-top: 20px; 
 }
 
-.buttonTop {
-    
-    text-decoration: none; 
-    color: black; 
-}
-
-.growContainer {
+.section-growContainer {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -59,12 +58,12 @@ button {
     background-color: #02CA81 ;
 }
 
-.growContainer h2 {
+.section-growTitle {
     margin-bottom: 20px; 
     font-size: 40px;
 }
 
-.growContainer button {
+.section-growButton {
     margin-top: 20px; 
     padding: 10px;
     cursor: pointer;

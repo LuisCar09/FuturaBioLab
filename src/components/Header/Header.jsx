@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 const Header = () => {
     const [isVisible, setIsVisible] = useState(false); // Inicialmente invisible
     const [lastScrollY, setLastScrollY] = useState(0);
-    const links = [{name:'About us', path:'/aboutus',id:crypto.randomUUID()},{name:'Contact us',path:'/contactus',id:crypto.randomUUID()},{name:'Log in',path:'/login',id:crypto.randomUUID()},{name:'Projects',path:'/projects',id:crypto.randomUUID()}]
+    const links = [{name:'About us', path:'/aboutus',id:crypto.randomUUID()},{name:'Contact us',path:'/contactus',id:crypto.randomUUID()},{name:'Log in',path:'/login',id:crypto.randomUUID()},{name:'Projects',path:'/projects',id:crypto.randomUUID()} ]
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
 

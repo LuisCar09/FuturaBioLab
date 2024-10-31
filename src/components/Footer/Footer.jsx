@@ -30,8 +30,8 @@ const Footer = ({contactInfo,importantLinks,socialLinks,site}) => {
 */}
 
     return (
-        <footer>
-        <div className="footerDiv">
+        <footer className='footer'>
+        <div className="footer-container">
                 <ContactInfo />
                 <ImportantLinks />
                 <SocialLinks />

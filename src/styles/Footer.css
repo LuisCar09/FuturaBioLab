@@ -5,31 +5,31 @@
     background-color: transparent;
 }
 
-.footerDiv {
+.footer-container {
     display: flex; 
     justify-content: space-between; 
     margin-bottom: 20px; 
     
 }
 
-.footerDiv ul {
+.footer-container ul {
     flex: 1; 
     margin: 0 10px; 
     list-style-type: none;
     padding: 0; 
 }
 
-.footer a {
+.footer-container a {
     text-decoration: none;
     
 }
 
-.footer a:hover {
+.footer-container a:hover {
     text-decoration: underline; 
     cursor: pointer;
 }
 
-.footer h3 {
+.footer-container h3 {
     margin-bottom: 10px; 
 }
 
