@@ -39,7 +39,7 @@ const Footer = ({contactInfo,importantLinks,socialLinks,site}) => {
                
 
             <div className="footer-credits">
-                <p>&copy; {new Date().getFullYear()} Future BioLab. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Futura BioLab. All rights reserved.</p>
             </div>
         </div>
         

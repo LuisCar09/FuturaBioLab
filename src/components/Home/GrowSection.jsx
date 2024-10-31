@@ -9,11 +9,13 @@ const GrowSection = () => {
     const buttonText = 'Start Now';
 
     return (
+     <div className='sectionGrow'>
         <div className='section-growContainer'>
             <h2 className='section-growTitle'>{title}</h2>
             <p>{description}</p>
             <button className='section-growButton'>{buttonText}</button>
         </div>
+     </div>   
     );
 };
 
