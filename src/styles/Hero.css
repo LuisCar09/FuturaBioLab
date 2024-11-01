@@ -87,7 +87,7 @@ main{
     flex-direction: column; 
     height: 50vh;
     width: 100%;
-    background-color: blue;
+    background-color:bisque;
     align-items: center;
     position: relative;
 }
@@ -112,13 +112,14 @@ main{
     width: 100%; 
     margin-top: 100px; 
     overflow: hidden; 
+    cursor:pointer
     
 }
 
 .sectionProject-carousel-images {
     display: flex; 
     gap: 80px;
-    transition: transform 0.1s ease; 
+    transition: transform 0.05s ease; 
 }
 
 .sectionProject-carousel-image {
@@ -132,14 +133,20 @@ main{
    
 }
 
-@media (max-width: 768px) {
-    .sectionProject-carousel {
-        padding: 50px; 
+@media (max-width: 1200px) {
+    .sectionProject-carousel-image {
+        width: calc(33.33% - 20px); 
     }
+}
 
+@media (max-width: 900px) {
+    .sectionProject-carousel-image {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
     .sectionProject-carousel-image {
         width: 100%; 
-        height: auto; 
-        margin: 0; 
     }
 }

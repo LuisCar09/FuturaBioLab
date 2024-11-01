@@ -13,6 +13,29 @@ const Projects = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
     const [intervalId, setIntervalId] = useState(null);
+    const [visibleImagesCount, setVisibleImagesCount] = useState(1);
+
+  
+    const updateVisibleImagesCount = () => {
+        const width = window.innerWidth;
+        if (width < 600) {
+            setVisibleImagesCount(1);
+        } else if (width < 900) {
+            setVisibleImagesCount(2);
+        } else if (width < 1200) {
+            setVisibleImagesCount(3);
+        } else {
+            setVisibleImagesCount(4);
+        }
+    };
+
+    useEffect(() => {
+        updateVisibleImagesCount(); 
+        window.addEventListener('resize', updateVisibleImagesCount);  
+        return () => {
+            window.removeEventListener('resize', updateVisibleImagesCount); 
+        };
+    }, []);
 
     const startCarousel = () => {
         const id = setInterval(() => {
@@ -40,8 +63,7 @@ const Projects = () => {
 
     const getVisibleImages = () => {
         const visibleImages = [];
-        const numberOfVisibleImages = window.innerWidth < 600 ? 1 : 4
-        for (let i = 0; i < numberOfVisibleImages; i++) {
+        for (let i = 0; i < visibleImagesCount; i++) {
             visibleImages.push(images[(currentIndex + i) % images.length]);
         }
         return visibleImages;
