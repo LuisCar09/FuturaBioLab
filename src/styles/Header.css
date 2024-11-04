@@ -1,8 +1,5 @@
-nav{
-    height: 60px;
-    background-color: var(--primary-color);
-    text-align: center;
-}
+/* Header.css */
+
 header {
     position: relative; 
     height: 60px; 
@@ -10,4 +7,59 @@ header {
     justify-content: center;
     align-items: center;
     background-color: transparent; 
+}
+
+/* Header */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 20px;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent; 
+    transition: transform 0.3s ease; 
+    z-index: 1000; 
+}
+
+.navbar-container.invisible {
+    transform: translateY(-100%); 
+}
+
+.navbar-container.visible {
+    transform: translateY(0); 
+}
+
+/* Estilos del botón de hamburguesa */
+.navbar-hamburger {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #02CA81;  /* Color del icono hamburguesa */
+    position: relative; /* Para posicionar el menú */
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 768px) {
+    .navbar {
+        display: flex;
+        position: static; /* Menú en posición estática para pantallas grandes */
+        background-color: transparent; /* Fondo transparente para pantalla grande */
+    }
+
+    .navbar ul {
+        flex-direction: row; /* Muestra los enlaces en fila */
+        margin-right: 20px; 
+    }
+
+    .navbar li {
+        margin: 0 20px; /* Espacio entre elementos del menú */
+    }
+
+    .navbar-hamburger {
+        display: none; /* Oculta el botón hamburguesa en pantallas grandes */
+    }
 }
