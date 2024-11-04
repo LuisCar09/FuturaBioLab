@@ -12,7 +12,7 @@ function App() {
     <Router>
     <Header />
       <Routes>
-
+        
         <Route path='/' element={<Hero />} />
        {/* <Route path='/login' element={<Login />} /> */}
 

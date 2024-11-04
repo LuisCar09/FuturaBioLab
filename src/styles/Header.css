@@ -45,13 +45,13 @@ header {
 @media (min-width: 768px) {
     .navbar {
         display: flex;
-        flex-direction: column; 
+        flex-direction: flex-end; 
         position: static;
         background-color: transparent;
     }
 
     .navbar ul {
-        flex-direction: column; 
+        flex-direction: row; 
         margin-right: 20px; 
     }
 

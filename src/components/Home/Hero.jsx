@@ -5,10 +5,12 @@ import SectionTop from './SectionTop';
 import GrowSection from './GrowSection';
 import ProjectsSection from './ProjectsSection.jsx';
 
+
 const Hero = () => {
     return (
         <main>
             <section>
+                
                 <SectionTop />
             </section>
             <section>

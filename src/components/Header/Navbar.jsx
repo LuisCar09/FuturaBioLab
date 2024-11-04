@@ -10,7 +10,7 @@ const NavBar = ({ linkNames }) => {
                         <li key={id}><Link to={path}>{name}</Link></li>
                     ))
                 ) : (
-                    <li>No links available</li> // Mensaje alternativo si no hay enlaces
+                    <li>No links available</li> 
                 )}
             </ul>
         </nav>
