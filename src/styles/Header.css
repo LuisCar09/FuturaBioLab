@@ -1,4 +1,4 @@
-/* Header.css */
+
 
 header {
     position: relative; 
@@ -32,34 +32,34 @@ header {
     transform: translateY(0); 
 }
 
-/* Estilos del botón de hamburguesa */
 .navbar-hamburger {
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #02CA81;  /* Color del icono hamburguesa */
-    position: relative; /* Para posicionar el menú */
+    color: #02CA81;  
+    position: relative; 
 }
 
-/* Estilos para pantallas grandes */
+
 @media (min-width: 768px) {
     .navbar {
         display: flex;
-        position: static; /* Menú en posición estática para pantallas grandes */
-        background-color: transparent; /* Fondo transparente para pantalla grande */
+        flex-direction: column; 
+        position: static;
+        background-color: transparent;
     }
 
     .navbar ul {
-        flex-direction: row; /* Muestra los enlaces en fila */
+        flex-direction: column; 
         margin-right: 20px; 
     }
 
     .navbar li {
-        margin: 0 20px; /* Espacio entre elementos del menú */
+        margin: 0 20px; 
     }
 
     .navbar-hamburger {
-        display: none; /* Oculta el botón hamburguesa en pantallas grandes */
+        display: none;
     }
 }

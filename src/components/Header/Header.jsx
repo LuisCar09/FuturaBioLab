@@ -1,10 +1,11 @@
 import '../../styles/Header.css';
 import NavBar from './Navbar'; 
+import HamburgerMenu from './HamburgerMenu'; 
 import Logo from './Logo'; 
 import React, { useEffect, useState } from 'react';
 
 const Header = () => { 
-    const [isVisible, setIsVisible] = useState(false); // Inicialmente invisible
+    const [isVisible, setIsVisible] = useState(false); 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0); 
 
@@ -42,8 +43,7 @@ const Header = () => {
         setIsMenuOpen(!isMenuOpen); 
     };
 
-    // Comprobamos el tamaño de la ventana
-    const isSmallScreen = window.innerWidth < 768; // Ajusta el ancho según tus necesidades
+    const isSmallScreen = window.innerWidth < 768;
 
     return (
         <header className={`navbar-container ${isVisible ? 'visible' : 'invisible'}`}>
@@ -54,7 +54,7 @@ const Header = () => {
                         ☰
                     </button>
                     {isMenuOpen && (
-                        <NavBar linkNames={links} isMobile={links} /> 
+                        <HamburgerMenu links={links} onClose={() => setIsMenuOpen(false)} /> 
                     )}
                 </>
             )}
