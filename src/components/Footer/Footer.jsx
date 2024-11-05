@@ -1,53 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import '../../styles/Footer.css';
+import React, { useState } from 'react';
+import SocialLinks from './SocialLinks'; 
 import ContactInfo from './ContactInfo';
-import ImportantLinks from './ImportantLinks';
-import SocialLinks from './SocialLinks';
 import Sitemap from './Sitemap';
+import ImportantLinks from './ImportantLinks';
+import '../../styles/Footer.css'
 
-const Footer = ({contactInfo,importantLinks,socialLinks,site}) => {
-    {/*  const [showLine, setShowLine] = useState(false);
-    
-  const handleScroll = () => {
-        const scrollPosition = window.scrollY + window.innerHeight;
-        const documentHeight = document.body.scrollHeight; 
-        //window.scrollY retorna la posición vertical actual del scroll.
-        //window.innerHeight retorna la altura de la visible del navegador.
-       
-        if (scrollPosition >= documentHeight) { // Comparar directamente con documentHeight
-            setShowLine(true);
-        } else {
-            setShowLine(false);
-        }
+const Footer = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-*/}
 
     return (
         <footer className='footer'>
-        <div className="footer-container">
-                <ContactInfo />
-                <ImportantLinks />
-                <SocialLinks />
-                <Sitemap />
+            <div className="footer-container">
                
-
+                    <div className="footer-section">
+                        <ContactInfo />
+                    </div>
+                    <div className="footer-section">
+                        <ImportantLinks />
+                    </div>
+                    <div className="footer-section">
+                        <Sitemap />
+                    </div>
+               
+                <div className={`social-menu ${isMenuOpen ? 'showMenu' : ''}`}>
+                    <SocialLinks />
+                </div>
+            </div>
             <div className="footer-credits">
                 <p>&copy; {new Date().getFullYear()} Futura BioLab. All rights reserved.</p>
             </div>
-        </div>
-        
-        {/* Scroll line 
-        <div className={`scroll-line ${showLine ? 'active' : ''}`}></div>*/}
-    </footer>  
-    )
-     
-}
+        </footer>
+    );
+};
+
 export default Footer;
 
