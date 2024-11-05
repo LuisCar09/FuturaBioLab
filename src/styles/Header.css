@@ -46,9 +46,9 @@ header {
 
 
 .menu-list {
-    position: absolute; 
+    position: fixed; 
     height: 100vh; 
-    width: 40vw; 
+    width: 54vw; 
     top: 0; 
     left: 0; 
     background-color: white; 
@@ -70,10 +70,14 @@ header {
     align-items: center;
     justify-content: flex-end;
     padding: 0 2rem;
+    position:relative
 }
 
 
 .close-menu--list {
+    position: absolute;
+    top: 2px;
+    left: 2px;
     background: none; 
     border: none; 
     font-size: 30px; 

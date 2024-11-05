@@ -21,9 +21,9 @@ const SectionTop = () => {
             <div className='sectionTop-container'>
                 <h2>{title}</h2>
                 <p>{description}</p>
-                <button>
+                
                     <a className='sectionTop-button' href={buttonLink}>+</a>
-                </button>
+                
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ const Header = () => {
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 480);
 
-console.log(isSmallScreen)
+
 
     const links = [
         { name: 'About us', path: '/aboutus', id: crypto.randomUUID() },
@@ -64,7 +64,7 @@ console.log(isSmallScreen)
                     
                     <div className={`menu-list ${isMenuOpen ? 'showMenu' : ''}`}>
                         <header className="menu-header">
-                            <button className="close-menu--list" onClick={toggleMenu}>✖</button>
+                            <button className="close-menu--list" onClick={toggleMenu}>☰</button>
                         </header>
                         <HamburgerMenu links={links} onClose={() => setIsMenuOpen(false)} /> 
                     </div>
