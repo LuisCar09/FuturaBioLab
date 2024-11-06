@@ -166,7 +166,7 @@ main{
 
 
 /*responsive sectionTop*/
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
     .sectionTop {
         text-align: center; 
     }
@@ -214,7 +214,7 @@ main{
   .sectionTop-backgroundImage {
         height: 200px; 
     }
-}
+} */
 
 
 

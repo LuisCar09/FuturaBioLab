@@ -5,7 +5,7 @@ import HamburgerMenu from './HamburgerMenu';
 
 const Header = () => { 
     const [isVisible, setIsVisible] = useState(false); 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 480);
 
@@ -58,26 +58,13 @@ const Header = () => {
     };
 
     return (
-        <nav className={`navbar-container ${isVisible ? 'visible' : 'invisible'}`}>
-            {isSmallScreen ? (
-                <>
-                    
-                    <div className={`menu-list ${isMenuOpen ? 'showMenu' : ''}`}>
-                        <header className="menu-header">
-                            <button className="close-menu--list" onClick={toggleMenu}>☰</button>
-                        </header>
-                        <HamburgerMenu links={links} onClose={() => setIsMenuOpen(false)} /> 
-                    </div>
-                    {!isMenuOpen && ( 
-                        <button className="navbar-hamburger" onClick={toggleMenu}>
-                            ☰
-                        </button>
-                    )}
-                </>
-            ) : (
-                <NavBar linkNames={links} />
-            )}
-        </nav>
+        <header className={`headertop ${isVisible ? 'visible' : 'invisible'}`}>
+        
+        <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
+            
+            
+            
+        </header>
     );
 };
 

@@ -1,4 +1,4 @@
-
+/* 
 header {
     position: relative; 
     height: 60px; 
@@ -106,4 +106,10 @@ header {
 .logo {
     font-size: 20px; 
     margin-left: 10px; 
+} */
+
+
+.headertop{
+    display: flex;
+    padding: 0 20px;
 }
