@@ -70,7 +70,7 @@ const Projects = () => {
     };
 
     return (
-        <div className='sectionProjects'>
+        <div className='sectionProjects-div'>
             <h2 className='sectionProjects-Title'>Projects</h2>
             <div 
                 className='sectionProject-carousel'

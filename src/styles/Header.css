@@ -1,4 +1,4 @@
-/* 
+
 header {
     position: relative; 
     height: 60px; 
@@ -8,7 +8,97 @@ header {
     background-color: transparent; 
 }
 
-.navbar-container {
+.headertop {
+    position: fixed; 
+    width: 100%;
+    height: 60px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+   
+}
+.invisible {
+    transform: translateY(-100%);   
+}
+
+.visible {
+    transform: translateY(0);     
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    align-items: center;
+}
+
+.navbar ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    display: block;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: green;
+    transition: background-color 0.3s; 
+    
+}
+
+.navbar ul li a:hover {
+   color:  #2E962F;
+}
+.menu-display{
+    position: absolute;
+    width: 200px;
+    height: 100vh;
+    background-color: wheat;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 0;
+    display: flex;
+    
+}
+
+.menu-display ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-display ul  li {
+  margin: 10px 0;
+ 
+  
+}
+
+.menu-display ul li a {
+    text-decoration: none;
+    color: #333; 
+    padding: 8px 16px; 
+    display: block; 
+}
+
+.close-container{
+    display: flex;
+    justify-content: flex-start;
+    padding: 2px 0 0 2px;
+}
+.close-container div{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    border: none;
+}
+
+.close-container svg{
+    font-size: 30px;
+}
+
+/*.navbar-container {
     position: fixed; 
     top: 0;
     left: 0;
@@ -106,9 +196,9 @@ header {
 .logo {
     font-size: 20px; 
     margin-left: 10px; 
-} */
+} 
 
-
+*/
 .headertop{
     display: flex;
     padding: 0 20px;

@@ -2,14 +2,10 @@ import React, { useEffect, useState } from 'react';
 import '../../styles/Header.css';
 import NavBar from './Navbar'; 
 
-
 const Header = () => { 
     const [isVisible, setIsVisible] = useState(false); 
-    const [isMenuOpen, setIsMenuOpen] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 480);
-
-
 
     const links = [
         { name: 'About us', path: '/aboutus', id: crypto.randomUUID() },
@@ -22,14 +18,15 @@ const Header = () => {
         const currentScrollY = window.scrollY;
 
         if (window.innerWidth >= 480) { 
-            if (currentScrollY === 0) {
-                setIsVisible(false);
-            } else if (currentScrollY > lastScrollY && currentScrollY > 40) {
+            if (currentScrollY > lastScrollY && currentScrollY > 40) {
+                // Scroll hacia abajo
                 setIsVisible(true);
-            } else if (currentScrollY < lastScrollY && currentScrollY > 40) {
-                setIsVisible(true);
-            } else if (currentScrollY < lastScrollY && currentScrollY <= 40) {
+            } else if (currentScrollY < lastScrollY && currentScrollY === 0) {
+                // Si estamos en la parte superior de la página
                 setIsVisible(false);
+            } else if (currentScrollY < lastScrollY) {
+                // Scroll hacia arriba
+                setIsVisible(true);
             }
         }
 
@@ -39,9 +36,6 @@ const Header = () => {
     const handleResize = () => {
         const isSmall = window.innerWidth < 480;
         setIsSmallScreen(isSmall);
-        if (!isSmall) {
-            setIsMenuOpen(false); 
-        }
     };
 
     useEffect(() => {
@@ -53,12 +47,9 @@ const Header = () => {
         };
     }, [lastScrollY]);
 
-
     return (
         <header className={`headertop ${isVisible ? 'visible' : 'invisible'}`}>
-        
-           <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
-                
+            <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
         </header>
     );
 };

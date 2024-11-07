@@ -5,14 +5,12 @@ main{
     
 }
 /* sectionTop */
-.sectionTop {
+.sectionTop-div {
     position: relative; 
-    text-align: center; 
+    
 }
 
 .sectionTop-backgroundImage {
-    width: 100%;
-    height: auto; 
     display: block; 
     opacity: 70%;
 }
@@ -23,10 +21,9 @@ main{
     left: 50%; 
     transform: translate(-50%, -50%); 
     color: white; 
-    z-index: 1; 
     width: 100%; 
     padding: 0 10px; 
-    background-color: transparent;
+   
 }
 
 .sectionTop-backgroundImage.blur {
@@ -67,7 +64,7 @@ main{
 
 /*Section Grow*/
 
-.sectionGrow {
+.sectionGrow-div {
     display: flex;
     align-items: center;
     height: 100vh;
@@ -108,7 +105,7 @@ main{
 
 /*SectionProjects*/
 
-.sectionProjects {
+.sectionProjects-div {
     display: flex;
     flex-direction: column; 
     height: 50vh;
@@ -120,12 +117,8 @@ main{
 
 .sectionProjects-Title {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     top: 10px; 
     left: 20px;
-    z-index: 1;
     font-size: 80px;
     color: #333; 
     
@@ -166,7 +159,7 @@ main{
 
 
 /*responsive sectionTop*/
-/* @media (max-width: 480px) {
+ @media (max-width: 480px) {
     .sectionTop {
         text-align: center; 
     }
@@ -198,10 +191,6 @@ main{
     .sectionTop-button {
         width: 12px; 
         height: 6px; 
-        margin-top: 6px; 
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
         color: white;
         border: none; 
         border-radius: 25px; 
@@ -214,7 +203,7 @@ main{
   .sectionTop-backgroundImage {
         height: 200px; 
     }
-} */
+} 
 
 
 
@@ -273,6 +262,8 @@ main{
     .sectionProjects{
         display: flex;
         justify-content: center;
+        align-content: center;
+        height: 50vh;
     }
     .sectionProject-carousel-image {
         width: 100%; 

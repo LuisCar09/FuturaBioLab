@@ -9,14 +9,14 @@ import ProjectsSection from './ProjectsSection.jsx';
 const Hero = () => {
     return (
         <main>
-            <section>
+            <section className='sectionTop'>
                 
                 <SectionTop />
             </section>
-            <section>
+            <section className='growSection'>
                 <GrowSection />
             </section>
-            <section>
+            <section className='projectsSection'>
                 <ProjectsSection />
             </section>
         </main>

@@ -9,7 +9,7 @@ const GrowSection = () => {
     const buttonText = 'Start Now';
 
     return (
-     <div className='sectionGrow'>
+     <div className='sectionGrow-div'>
         <div className='section-growContainer'>
             <h2 className='section-growTitle'>{title}</h2>
             <p>{description}</p>

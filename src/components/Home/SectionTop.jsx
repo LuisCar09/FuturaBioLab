@@ -10,7 +10,7 @@ const SectionTop = () => {
     const buttonLink = '/proyects';
 
     return (
-        <div className='sectionTop'>
+        <div className='sectionTop-div'>
             <img 
                 className={`sectionTop-backgroundImage ${isHovered ? 'blur' : ''}`} 
                 src={imageUrl} 

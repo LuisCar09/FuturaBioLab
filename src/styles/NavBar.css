@@ -20,10 +20,18 @@
     z-index: 100;
     padding: 10px 0;
     display: flex;
+    
+}
+
+.menu-display ul {
+    display: flex;
     flex-direction: column;
 }
+
 .menu-display ul  li {
   margin: 10px 0;
+ 
+  
 }
 
 .menu-display ul li a {
@@ -49,8 +57,4 @@
     font-size: 30px;
 }
 
-.close-container ul {
-    display: flex;
-    justify-content: column;
-}
 
