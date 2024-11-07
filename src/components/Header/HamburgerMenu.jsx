@@ -1,18 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../../styles/NavBar.css'
+import CloseIcon from '@mui/icons-material/Close';
+import NavLinks from './NavLinks';
 
-const HamburgerMenu = ({ links, onClose }) => {
+const HamburgerMenu = ({ linkNames, showMenu, clickHandler }) => {
     return (
-        <nav className="navbar-mobile">
-            <ul className="mobile-menu">
-                {links.map(({ name, path, id }) => (
-                    <li key={id} onClick={onClose}> 
-                        <Link to={path}>{name}</Link>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <div style={!showMenu ? { display: 'none' } : { display: 'block' }} className='menu-display'>
+            <div className='close-container'>
+                <div>
+                    <CloseIcon onClick={clickHandler} />
+                </div>
+            </div>
+             <NavLinks linkNames={linkNames} />
+        </div>
     );
 };
 

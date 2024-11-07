@@ -18,21 +18,39 @@
     top: 0;
     right: 0;
     z-index: 100;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
 }
+.menu-display ul  li {
+  margin: 10px 0;
+}
+
+.menu-display ul li a {
+    text-decoration: none;
+    color: #333; 
+    padding: 8px 16px; 
+    display: block; 
+}
+
 .close-container{
     display: flex;
-    padding: 6px 0 0 6px;
+    justify-content: flex-start;
+    padding: 2px 0 0 2px;
 }
 .close-container div{
     width: 40px;
     height: 40px;
-    border: 1px solid black;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    border: none;
 }
 
 .close-container svg{
     font-size: 30px;
 }
+
+.close-container ul {
+    display: flex;
+    justify-content: column;
+}
+

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/Header.css';
 import NavBar from './Navbar'; 
-import HamburgerMenu from './HamburgerMenu'; 
+
 
 const Header = () => { 
     const [isVisible, setIsVisible] = useState(false); 
@@ -53,17 +53,12 @@ const Header = () => {
         };
     }, [lastScrollY]);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen); 
-    };
 
     return (
         <header className={`headertop ${isVisible ? 'visible' : 'invisible'}`}>
         
-        <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
-            
-            
-            
+           <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
+                
         </header>
     );
 };

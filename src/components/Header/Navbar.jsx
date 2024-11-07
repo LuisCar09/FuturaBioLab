@@ -1,52 +1,32 @@
 import '../../styles/NavBar.css';
-import { Link } from 'react-router-dom';
 import Logo from './Logo'
 import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
+import HamburgerMenu from './HamburgerMenu';
+import NavLinks from './NavLinks';
+
 const NavBar = ({ linkNames, isMenuOpen }) => {
-    console.log(isMenuOpen);
-    const [showMenu,setShowMenu] = useState(false)
+    const [showMenu, setShowMenu] = useState(false);
     const clickHandler = () => {
-        setShowMenu(!showMenu)
-        
-    }
+        setShowMenu(!showMenu);
+    };
+
     return (
         <nav className={`navbar`}>
-
             <Logo />
-            {!isMenuOpen ? (<ul>
-                {linkNames && linkNames.length > 0 ? (
-                    linkNames.map(({ name, path, id }) => (
-                        <li key={id}><Link to={path}>{name}</Link></li>
-                    ))
-                ) : (
-                    <li>No links available</li>
-                )}
-            </ul>)
-            :
-            (   
+            {!isMenuOpen ? (
+                <NavLinks linkNames={linkNames} />
+            ) : (
                 <>
-                <MenuIcon  onClick={clickHandler} />
-                <div style={!showMenu ? {display:'none'} : {display:'block'} } className='menu-display'>
-                
-                <div className='close-container'>
-                    <div>
-                    <CloseIcon onClick={clickHandler} />
-                    </div>
-
-                </div>
-                </div>
+                    <MenuIcon onClick={clickHandler} />
+                    <HamburgerMenu 
+                        linkNames={linkNames} 
+                        showMenu={showMenu} 
+                        clickHandler={clickHandler} 
+                    />
                 </>
-                   
-            )
-            }
-
-            
-
-
+            )}
         </nav>
-
     );
 };
 
