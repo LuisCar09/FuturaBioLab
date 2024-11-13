@@ -1,4 +1,4 @@
-import '../styles/thankYou.css'
+// import '../styles/thankYou.css'
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
 function ThanKYouPage(){

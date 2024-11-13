@@ -1,3 +1,11 @@
+.main-profile-container{
+    background-color: beige;
+    text-align: start;
+    max-height: calc(100vh - 224px);
+}
+/* .section-profile--container{
+    
+} */
 .profile-container {
     height: calc(100vh - 60px);
     display: flex;
