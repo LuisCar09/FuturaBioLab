@@ -1,0 +1,171 @@
+.profile-container {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  
+}
+
+.header-container {
+    display: flex;
+    width: 100%;
+    padding: 20px 20px;
+    flex-direction: column;
+    height: 230px;
+  
+    position: relative; 
+}
+.background-image {
+    display: flex;
+    width: 100%;
+    height: 200px;
+}
+
+.profile-info {
+    display: flex;
+    position: absolute; 
+    bottom: 2px; 
+    left: 20px; 
+    margin: 0 20px;
+}
+
+.profile-info img {
+    border: 2px solid #2E962F;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    margin-right: 12px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    margin-left: 10px; 
+}
+
+.user-details h2 {
+    font-size: 40px;
+    color:#2E962F
+    
+}
+
+.user-follows {
+    margin-top: 6px;
+    color:#2E962F
+}
+
+.morevert-icon {
+    position: absolute;  
+    top: 72px;   
+    left: 920px;  
+    color:#2E962F      
+}
+.navigation-bar-profile {
+    display: flex; 
+    align-self: flex-start; 
+    padding-left: 20px; 
+    height: 34px;
+   
+    
+    width: 100%;
+}
+.navigation-bar-profile a {
+    padding: 20px 20px;
+    text-decoration: none;
+    color:#2E962F;
+    border-bottom: 1px solid #2E962F;
+    font-size: 20px;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+}
+
+.profile-sectionTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+   
+   
+}
+.profile-sectionTop h3{
+  font-size: 30px;
+  padding: 20px;
+  color:#2E962F
+}
+ 
+.registration-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px;
+}
+
+.registration-container p {
+    display: flex;
+    width: 300px;
+    padding: 10px;
+    color:#2E962F
+}
+.edit-profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 556px;
+    width: 140px;  
+    border: 1px solid #2E962F;
+    border-radius: 4px;
+    color:#2E962F
+}
+
+.profile-sectionMiddle   {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    width: 100%;
+}
+.profile-sectionMiddle h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color:#2E962F
+  
+}
+
+.about-me-textarea {
+   border-color: #2E962F;
+ 
+}
+
+.profile-sectionBotton {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    width: 100%;
+}
+
+.profile-sectionBotton h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color:#2E962F
+}
+
+.projects-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.add-project-button {
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;  
+    border: 1px solid #2E962F;
+    border-radius: 4px;
+    color:#2E962F
+}

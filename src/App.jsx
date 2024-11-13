@@ -5,6 +5,9 @@ import Footer from './components/Footer/Footer'
 import Hero from './components/Home/Hero'
 import './styles/App.css'
 
+import ThanKYouPage from './pages/ThankYou'
+import Profile from './pages/Profile'
+
 function App() {
  
 
@@ -14,6 +17,8 @@ function App() {
       <Routes>
         
         <Route path='/' element={<Hero />} />
+        <Route path='/thankyou' element={<ThanKYouPage />} />
+        <Route path='/profile' element={<Profile />} />
        {/* <Route path='/login' element={<Login />} /> */}
 
       </Routes>
