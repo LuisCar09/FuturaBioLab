@@ -1,12 +1,19 @@
-.main-profile-container{
+.section-profile--container{
+    height: 100%;
+}
+
+
+
+
+
+
+/* .main-profile-container{
     background-color: beige;
     text-align: start;
     max-height: calc(100vh - 224px);
     width: 100%;
 }
-/* .section-profile--container{
-    
-} */
+
 .profile-container {
     height: calc(100vh - 60px);
     display: flex;
@@ -226,12 +233,12 @@
     border: none;
     color:#2E962F;   
     
-}
+} */
 
 /*Responsive*/
 
 /* Estilos generales para pantallas grandes (desktops) */
-.main-profile-container {
+/* .main-profile-container {
     background-color: beige;
     text-align: start;
     max-height: calc(100vh - 224px);
@@ -245,10 +252,10 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 1016px;
-}
+} */
 
 /*Responsive */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .profile-container {
         width: 90%; 
     }
@@ -479,4 +486,4 @@
         height: 20px; 
         display: block; 
     }
-}
+} */

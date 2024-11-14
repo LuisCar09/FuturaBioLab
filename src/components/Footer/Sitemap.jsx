@@ -9,12 +9,14 @@ const sitemap = [
 
 const Sitemap = () => {
     return (
-        <ul className="footer">
-            <h3>Sitemap:</h3>
+        <>
+            <h3>Sitemap </h3>
+            <ul className="footer--lists">
             {sitemap.map(item => (
                 <li key={item.name}><a href={item.path}>{item.name}</a></li>
             ))}
         </ul>
+        </>
     );
 };
 

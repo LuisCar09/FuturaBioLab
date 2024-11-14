@@ -1,37 +1,40 @@
 .footer {
     display: flex; 
     flex-direction: column; 
-    padding: 10px; 
-    background-color: transparent;
-    bottom: 0; 
+    padding: 20px; 
     width: 100%; 
-    /* height: 60px; */
-    position:relative
+    background-color: var(--background-color);
 }
 
 .footer-container {
     display: flex; 
-    justify-content: space-between; 
     margin-bottom: 20px; 
-    align-items: center;
+    padding: 20px;
+    border-top: 1px solid var(--secundary-color);
 }
 
-.footer-credits{
-    margin-left: auto;
-}
 
-.footer-section {
-    flex: 1; 
-    padding: 10px; 
+
+.footer-article {
+    flex: 1;
     display: flex; 
     flex-direction: column; 
-    align-items: center;
+    align-items: flex-start;
+    border-right: 1px solid var(--secundary-color);
+    padding-left: 10px;
+    color: var(--primary-color);
 }
-
-.footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 6px;
+.footer-article:nth-child(3) {
+    border: none;
+}
+.footer-article h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
     
+}
+.footer--lists li {
+    margin: 10px 10px 10px 0 ;
+    font-size: 18px;
 }
 
 .footer a {
@@ -42,7 +45,11 @@
 .footer a:hover {
     text-decoration: underline; 
 }
-
+.footer-credits{
+    text-align: right;
+    color: var(--primary-color);
+    font-size: 18px;
+}
 
 .footer-hamburger {
     display: none; 
@@ -50,42 +57,20 @@
     cursor: pointer; 
 }
 
-
-.social-menu {
-    display: none; 
-}
-
-.social-menu.showMenu {
-    display: block; 
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column; 
-        align-items: center; 
+@media screen and (max-width:480px) {
+    .footer-container{
+        flex-direction: column;
     }
-
-    .footer-hamburger {
-        display: block; 
-        margin: 10px 0; 
+    .footer-article{
+        padding: 0;
+        margin-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--secundary-color);
     }
-
-    .footer-content {
-        display: none; /
-    }
-
-    .social-menu {
-        margin-top: 10px; 
+    .footer-credits{
+        padding: 10px 0;
+        border-top: 1px solid var(--secundary-color);
     }
 }
 
-@media (max-width: 480px) {
-    .footer {
-        padding: 10px; 
-    }
 
-    .footer-credits {
-        font-size: 12px; 
-    }
-}

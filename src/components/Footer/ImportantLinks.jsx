@@ -10,12 +10,14 @@ const importantLinks = [
 
 const ImportantLinks = () => {
     return (
-        <ul className="footer">
-            <h3>Important Links:</h3>
+        <>
+            <h3>Important Links </h3>
+            <ul className="footer--lists">
             {importantLinks.map(link => (
                 <li key={link.name}><a href={link.path}>{link.name}</a></li>
             ))}
         </ul>
+        </>
     );
 };
 

@@ -59,3 +59,9 @@ section {
     text-align: center; 
 }
 
+main{
+    min-height: calc(100vh - 60px);
+    background-color: var(--background-color);
+    text-align: center; 
+	padding: 0 20px;
+}

@@ -16,19 +16,19 @@ const Footer = () => {
         <footer className='footer'>
             <div className="footer-container">
                
-                    <div className="footer-section">
+                    <article className="footer-article">
                         <ContactInfo />
-                    </div>
-                    <div className="footer-section">
+                    </article>
+                    <article className="footer-article">
                         <ImportantLinks />
-                    </div>
-                    <div className="footer-section">
-                        <Sitemap />
-                    </div>
-               
-                <div className={`social-menu ${isMenuOpen ? 'showMenu' : ''}`}>
+                    </article>
+                    <article className="footer-article">
                     <SocialLinks />
-                </div>
+                    </article>
+               
+                {/* <div className={`social-menu ${isMenuOpen ? 'showMenu' : ''}`}>
+                    <SocialLinks />
+                </div> */}
             </div>
             <div className="footer-credits">
                 <p>&copy; {new Date().getFullYear()} Futura BioLab. All rights reserved.</p>

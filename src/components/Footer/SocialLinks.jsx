@@ -8,12 +8,14 @@ const socialLinks = [
 
 const SocialLinks = () => {
     return (
-        <ul className="footer">
-            <h3>Social Media:</h3>
+        <>
+            <h3>Social Media </h3>
+            <ul className="footer--lists">
             {socialLinks.map(media => (
                 <li key={media.name}><a href={media.url} target="_blank">{media.name}</a></li>
             ))}
         </ul>
+        </>
     );
 };
 

@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../../styles/Header.css';
 import NavBar from './Navbar'; 
 
-const Header = ({isHome}) => { 
-    const [isVisible, setIsVisible] = useState(!isHome); 
+const Header = () => { 
+    
+    const location = useLocation()
+    const isHomePage = location.pathname !== '/' ? false : true
+    const [isVisible, setIsVisible] = useState(false); 
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 480);
 
@@ -40,23 +44,31 @@ const Header = ({isHome}) => {
 
     useEffect(() => {
 
-        if(!isHome){
-            setIsVisible(true)
-        }else {
-            setIsVisible(false)
-        }
+    
+        !isVisible ? setIsVisible(false) : setIsVisible(true)
+
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
         };
-    }, [lastScrollY, isHome]);
+    }, [lastScrollY]);
 
     return (
-        <header  isHome={true} className={`headertop ${isVisible ? 'visible' : 'invisible'}`} >
-            <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
+
+        !isHomePage ? (
+        <header   className={`headertop-fixed`} >
+        <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
+        </header>) 
+        : 
+        (
+        <header   className={`headertop ${isVisible ? 'visible' : 'invisible'}`} >
+        <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
         </header>
+        )
+
+        
     );
 };
 

@@ -4,12 +4,25 @@
     width: 100vw;
     align-items: center;
 }
-
 .navbar ul{
     display: flex;
     align-items: center;
     gap: 20px;
+   
 }
+
+.navbar ul li a {
+    text-decoration: none;
+    color: green;
+    transition: background-color 0.3s; 
+    font-size: 18px;
+}
+
+.navbar ul li a:hover {
+   color:  #2E962F;
+}
+
+
 .menu-display{
     position: absolute;
     width: 200px;

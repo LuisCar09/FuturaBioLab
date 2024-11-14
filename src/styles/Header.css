@@ -1,13 +1,4 @@
 
-header {
-    position: relative; 
-    height: 60px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent; 
-}
-
 .headertop {
     position: fixed; 
     width: 100%;
@@ -17,7 +8,13 @@ header {
     align-items: center;
     background-color: transparent;
     transition: transform 0.3s ease, opacity 0.3s ease; 
-   
+    padding: 0 20px;  
+}
+.headertop-fixed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px; 
 }
 .invisible {
     transform: translateY(-100%);   
@@ -27,30 +24,9 @@ header {
     transform: translateY(0);     
 }
 
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    width: 100vw;
-    align-items: center;
-}
 
-.navbar ul{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    display: block;
-}
 
-.navbar ul li a {
-    text-decoration: none;
-    color: green;
-    transition: background-color 0.3s; 
-    
-}
 
-.navbar ul li a:hover {
-   color:  #2E962F;
-}
 .menu-display{
     position: absolute;
     width: 200px;
@@ -199,7 +175,3 @@ header {
 } 
 
 */
-.headertop{
-    display: flex;
-    padding: 0 20px;
-}
