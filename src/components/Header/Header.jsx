@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../../styles/Header.css';
 import NavBar from './Navbar'; 
 
-const Header = () => { 
-    const [isVisible, setIsVisible] = useState(false); 
+const Header = ({isHome}) => { 
+    const [isVisible, setIsVisible] = useState(!isHome); 
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 480);
 
@@ -39,16 +39,22 @@ const Header = () => {
     };
 
     useEffect(() => {
+
+        if(!isHome){
+            setIsVisible(true)
+        }else {
+            setIsVisible(false)
+        }
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
         };
-    }, [lastScrollY]);
+    }, [lastScrollY, isHome]);
 
     return (
-        <header className={`headertop ${isVisible ? 'visible' : 'invisible'}`}>
+        <header  isHome={true} className={`headertop ${isVisible ? 'visible' : 'invisible'}`} >
             <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
         </header>
     );

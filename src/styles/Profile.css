@@ -2,6 +2,7 @@
     background-color: beige;
     text-align: start;
     max-height: calc(100vh - 224px);
+    width: 100%;
 }
 /* .section-profile--container{
     
@@ -12,6 +13,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    width: 1016px;
   
 }
 
@@ -21,29 +23,39 @@
     padding: 20px 20px;
     flex-direction: column;
     height: 230px;
-  
     position: relative; 
 }
 .background-image {
     display: flex;
     width: 100%;
-    height: 200px;
+    height: 250px;
+}
+
+.camera-icon{
+    position: absolute;
+    width: 20px; 
+    top: 40px; 
+    left: 40px;  
 }
 
 .profile-info {
     display: flex;
     position: absolute; 
-    bottom: 2px; 
+    top: 140px; 
     left: 20px; 
     margin: 0 20px;
+    align-items: center;
+   
 }
 
 .profile-info img {
     border: 2px solid #2E962F;
     border-radius: 50px;
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     margin-right: 12px;
+    margin-left: 34px;
+    
 }
 
 .user-details {
@@ -63,21 +75,41 @@
     margin-top: 6px;
     color:#2E962F
 }
+.edit-data-container {
+    display: flex;
+    align-items: center;
+}
+.edit-data {
+    width: 118px;
+    height: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 450px;
+    margin-top: 60px;
+    cursor: pointer;
+    color:#2E962F;
+    border: 1px solid  #2E962F;
+
+}
 
 .morevert-icon {
     position: absolute;  
     top: 72px;   
-    left: 920px;  
-    color:#2E962F      
+    left: 906px;  
+    color:#2E962F;
+    display: flex; 
+    align-items: center; 
 }
 .navigation-bar-profile {
     display: flex; 
     align-self: flex-start; 
     padding-left: 20px; 
-    height: 34px;
-   
-    
+    height: 40px;
     width: 100%;
+    margin-top:40px ;
+   
 }
 .navigation-bar-profile a {
     padding: 20px 20px;
@@ -98,8 +130,12 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-   
-   
+}
+
+.title-sectionTop {
+    display: flex;
+    align-items: center;
+    
 }
 .profile-sectionTop h3{
   font-size: 30px;
@@ -112,22 +148,29 @@
     justify-content: space-between;
     align-items: center; 
     padding: 10px;
+    
 }
 
 .registration-container p {
     display: flex;
     width: 300px;
     padding: 10px;
+    margin-top: -12px;
     color:#2E962F
+}
+
+.editicon {
+    padding: 2px;
+    margin-right: 5px;
 }
 .edit-profile-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 556px;
-    width: 140px;  
-    border: 1px solid #2E962F;
-    border-radius: 4px;
+    margin-left: 674px; 
+    width: 144px;  
+    height: 36px;
+    border: 1px solid #2E962F; 
     color:#2E962F
 }
 
@@ -139,14 +182,19 @@
 }
 .profile-sectionMiddle h3 {
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 26px;
     color:#2E962F
   
 }
 
-.about-me-textarea {
-   border-color: #2E962F;
- 
+.about-me {
+  height: 110px;
+  width:620px;
+  border: 1px solid #2E962F; 
+  padding: 12px; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  cursor: text; 
 }
 
 .profile-sectionBotton {
@@ -158,7 +206,7 @@
 
 .profile-sectionBotton h3 {
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color:#2E962F
 }
 
@@ -166,14 +214,269 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+   
 }
 .add-project-button {
-    margin-left: auto; 
+    
     display: flex;
     align-items: center;
     justify-content: center;
     width: 140px;  
-    border: 1px solid #2E962F;
-    border-radius: 4px;
-    color:#2E962F
+    font-size: 16px;
+    border: none;
+    color:#2E962F;   
+    
+}
+
+/*Responsive*/
+
+/* Estilos generales para pantallas grandes (desktops) */
+.main-profile-container {
+    background-color: beige;
+    text-align: start;
+    max-height: calc(100vh - 224px);
+    width: 100%;
+}
+
+.profile-container {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1016px;
+}
+
+/*Responsive */
+@media (max-width: 1024px) {
+    .profile-container {
+        width: 90%; 
+    }
+
+    .header-container {
+        padding: 10px; 
+        height: auto; 
+    }
+
+    .profile-info img {
+        width: 80px; 
+        height: 80px;
+    }
+
+    .user-details h2 {
+        font-size: 30px; 
+    }
+
+    .edit-data {
+        margin-left: 20px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .profile-container {
+        width: 90%; 
+        margin: 0 auto; 
+    }
+
+    .header-container {
+        padding: 10px;
+        height: auto; 
+    }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin: 0 auto; 
+    }
+
+    .profile-info img {
+        width: 80px; 
+        height: 80px;
+    }
+
+    .user-details h2 {
+        font-size: 30px; 
+        text-align: center; 
+    }
+
+    .edit-data {
+        margin-left: 0; 
+        width: 100%; 
+        display: flex; 
+        justify-content: center; 
+    }
+
+    .morevert-icon {
+        position: relative; 
+        top: 0; 
+        left: 0; 
+        margin: 10px 0; 
+    }
+
+    .navigation-bar-profile {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .navigation-bar-profile a {
+        padding: 10px; 
+        font-size: 16px; 
+        width: 100%; 
+        text-align: center; 
+    }
+
+    .about-me {
+        width: 100%; 
+        box-sizing: border-box; 
+    }
+
+    .projects-container {
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%; 
+    }
+
+    .add-project-button {
+        width: 100%; 
+        margin-top: 10px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        width: 90%; 
+        margin: 0 auto; 
+    }
+
+    .header-container {
+        padding: 10px; 
+        height: auto; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+    }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin: 0 auto; 
+    }
+
+    .profile-info img {
+        width: 70px;  
+        height: 70px; 
+    }
+
+    .user-details h2 {
+        font-size: 26px; 
+        text-align: center; 
+    }
+
+    .edit-data {
+        margin-left: 0; 
+        width: 100%; 
+        display: flex; 
+        justify-content: center; 
+    }
+
+    .morevert-icon {
+        position: relative; 
+        top: 0; 
+        left: 0; 
+        margin: 10px 0; 
+        width: 20px; 
+        height: 20px; 
+    }
+
+    .navigation-bar-profile {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .navigation-bar-profile a {
+        padding: 10px; 
+        font-size: 16px; 
+        width: 100%; 
+        text-align: center; 
+    }
+
+    .about-me {
+        width: 100%; 
+        padding: 10px; 
+        box-sizing: border-box; 
+        margin: 0 auto;
+    }
+
+    .projects-container {
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%; 
+    }
+
+    .add-project-button {
+        width: 100%; 
+        margin-top: 10px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 5px; 
+        display: flex; 
+        justify-content: space-between;
+       
+        align-items: center; 
+    }
+
+    .profile-info img {
+        width: 50px; 
+        height: 50px;
+    }
+
+    .user-details h2 {
+        font-size: 20px; 
+    }
+
+    .edit-profile-button {
+        display: none; 
+    }
+
+    .followers-info {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .edit-data-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .morevert-icon {
+        margin-left: 20px; 
+        width: 20px; 
+        height: 20px; 
+    }
+
+    .edit-data {
+        display: none; 
+    }
+
+    .projects-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .add-project-button {
+        width: 100%;
+    }
+
+    .editicon {
+        width: 20px; 
+        height: 20px; 
+        display: block; 
+    }
 }
