@@ -1,91 +1,206 @@
+.main-profile-container {
+    display: flex;
+    justify-content: center;
+}
+
 .section-profile--container{
-    height: 100%;
+    height: calc(100vh - 256px);
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
 }
 
-
-
-
-
-
-/* .main-profile-container{
-    background-color: beige;
-    text-align: start;
-    max-height: calc(100vh - 224px);
-    width: 100%;
-}
-
+/*UserProfile*/
 .profile-container {
-    height: calc(100vh - 60px);
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 1016px;
-  
+    justify-content: space-between;
+    width: 980px;
+    height: 246px;
+    padding: 20px;
+    background-color: rgb(37, 107, 37);
 }
-
-.header-container {
-    display: flex;
-    width: 100%;
-    padding: 20px 20px;
-    flex-direction: column;
-    height: 230px;
-    position: relative; 
-}
-.background-image {
-    display: flex;
-    width: 100%;
-    height: 250px;
-}
-
-.camera-icon{
-    position: absolute;
-    width: 20px; 
-    top: 40px; 
-    left: 40px;  
+.camera-icon {
+    align-self: flex-start;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 .profile-info {
+    
     display: flex;
-    position: absolute; 
-    top: 140px; 
-    left: 20px; 
-    margin: 0 20px;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 900px;
+}
+.user-info {
+    display: flex;
     align-items: center;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.info-user-follow {
+ display: flex;
+ flex-direction: column;
+ align-items: start;
+ padding: 10px;
+}
+.user-name {
+    margin-bottom: 10px;
+    font-size: 30px;
+    color:white
+}
+.user-follows {
+   
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+.edit-settings-user {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.edit-data {
+    width: 122px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary-color);
+    border: 1px solid  var(--primary-color);
+}
+
+.morevert-icon {
+    color: var(--primary-color);
+    cursor: pointer; 
+}
+
+/*NavigationBar*/
+
+.navigation-bar-profile {
+    display: flex;
+    justify-content:flex-start ;
+    gap:20px;
+    margin-top: 20px;
+    width: 980px;
+    border-bottom: 1px solid var(--primary-color);
+    padding: 20px;
+   
+    
+}
+
+.navigation-bar-profile a{
+    
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--primary-color);
+   
    
 }
 
-.profile-info img {
-    border: 2px solid #2E962F;
-    border-radius: 50px;
-    width: 110px;
-    height: 110px;
-    margin-right: 12px;
-    margin-left: 34px;
-    
+/*Profile-content*/
+
+.profile-content {
+   width: 980px;
+   
+   display: flex;
+   flex-direction: column;
+   margin-top: 20px;
+   padding: 20px;
 }
 
-.user-details {
+.profile-edit {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end; 
-    margin-left: 10px; 
+   justify-content: space-between;
 }
 
-.user-details h2 {
-    font-size: 40px;
-    color:#2E962F
-    
+.profile-edit h3 {
+    font-size: 30px;
+    color: var(--primary-color);
 }
 
-.user-follows {
-    margin-top: 6px;
-    color:#2E962F
-}
-.edit-data-container {
+.edit-profile-button {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 142px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
 }
+.registration-container {
+    display: flex;
+    align-items: flex-start;
+    color: var(--primary-color);
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid  var(--primary-color);;
+}
+
+
+/*About me*/
+
+.about-me-container {
+    width: 980px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 20px;
+}
+.about-me-container h3 {
+   display: flex;
+   justify-content: flex-start;
+   margin-bottom: 20px;
+   font-size: 22px;
+   color: var(--primary-color);
+   cursor: text;
+}
+
+.about-me-textarea {
+    width: 630px;
+    height: 100px;
+    resize: none;
+    border-color: var(--primary-color);
+}
+
+.projects-container {
+    width: 980px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.projects-container h3 {
+    font-size: 22px;
+    color: var(--primary-color);
+}
+
+.projects-container a {
+    text-decoration: none;
+    color: var(--primary-color);
+    cursor: pointer
+   
+}
+.projects-container a:hover {
+    color: var(--secundary-color);
+}
+/* 
+
+
+
 .edit-data {
     width: 118px;
     height: 30px;
