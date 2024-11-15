@@ -2,7 +2,7 @@ import '../styles/Profile.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
-import Header from '../components/Header/Header.jsx'
+
 
 const Profile = () => {
   return (
@@ -64,11 +64,3 @@ const Profile = () => {
 
 export default Profile;
 
-{/* 
-            <div className="profile-sectionBotton">
-              <div className="projects-container">
-                <h3>Projects</h3>
-
-                <button className="add-project-button">Add Project</button>
-              </div>
-            </div> */}

@@ -5,6 +5,8 @@ import Footer from '../components/Footer/Footer'
 import Hero from '../components/Home/Hero'
 import ThanKYouPage from '../pages/ThankYou'
 import Profile from '../pages/Profile'
+import AboutUs from '../pages/AboutUs'
+import ContactUs from '../pages/ContactUs'
 
 const RoutesApp = () => {
     return (
@@ -14,6 +16,8 @@ const RoutesApp = () => {
                 <Route path='/' element={<Hero />} />
                 <Route path='/thankyou' element={<ThanKYouPage />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/aboutus' element={<AboutUs />} />
+                <Route path='/contactus' element={<ContactUs />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>
