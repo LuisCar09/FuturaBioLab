@@ -7,6 +7,7 @@ import ThanKYouPage from '../pages/ThankYou'
 import Profile from '../pages/Profile'
 import AboutUs from '../pages/AboutUs'
 import ContactUs from '../pages/ContactUs'
+import SettingsProfile from '../pages/SettingsProfile'
 
 const RoutesApp = () => {
     return (
@@ -18,6 +19,7 @@ const RoutesApp = () => {
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/aboutus' element={<AboutUs />} />
                 <Route path='/contactus' element={<ContactUs />} />
+                <Route path='/settingsprofile' element={<SettingsProfile />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>

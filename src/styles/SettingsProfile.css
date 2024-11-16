@@ -1,0 +1,163 @@
+.main-settingsprofile {
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 331px);
+    
+}
+
+.section-settingsprofile {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    max-width: 900px;
+    width: 100%;
+}
+
+.asidetop-settingsprofile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 800px; 
+    width: 100%;
+   
+    
+}
+
+.asidetop-settingsprofile h1 {
+    font-size: 40px;
+    margin: 30px 0;
+    color: var(--primary-color);
+}
+
+
+.navigationbar-settingsprofile {
+   display: flex;
+   gap: 30px;
+}
+
+.navigationbar-settingsprofile::after {
+    content: '';
+    position: absolute;
+    bottom: 720px;
+    width: 6%;
+    right:70%;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+
+.navigationbar-settingsprofile a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.asidebotom-settingsprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 40px;
+}
+.account-container-settingsprofile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.account-container-settingsprofile h2 {
+    color: var(--primary-color);
+    font-size: 30px;
+   
+   
+}
+
+.accounttitle-settingsprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+}
+
+
+
+.accounttitle-settingsprofile h2 {
+    color: var(--primary-color);
+    font-size: 30px;
+    margin-bottom: 10px; 
+}
+
+.accounttitle-settingsprofile p {
+    color: var(--primary-color);
+    font-size: 18px;
+   
+}
+
+.account-buttons-settingsprofile {
+    display: flex;
+    gap: 24px;
+   
+}
+
+.cancelbutton-settingsprofile {
+    color: var(--primary-color);
+    width: 100px;
+    height: 30px;
+    border-radius: 2px;
+   border: 1px solid var(--primary-color);
+   background-color: var( --background-color);
+   cursor: pointer;
+}
+
+.updatebutton-settingsprofile {
+    color: var(--background-color);
+    background-color: var(--button-color);
+    width: 148px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.info-container-settingsprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+    width: 100%;
+    
+}
+
+.info-container-settingsprofile h3 {
+    color: var(--primary-color);
+    font-size: 22px;
+}
+
+.info-container-settingsprofile p {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.form-settingsprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+    width: 100%;
+   
+}
+
+.name-container-settingsprofile {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    width: 100%;
+    
+}
+.name-settingsprofile {
+    display: flex;
+    flex-direction: column;
+    
+}
