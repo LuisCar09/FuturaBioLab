@@ -1,0 +1,114 @@
+import '../styles/FormReservation.css';
+
+function FormReservation() {
+    return (
+        <main className='main-formreservation'>
+            <section className='section-formreservation'>
+                <aside className='details-formreservation'>
+                    <p>
+                        Do you already have an account? 
+                        <a href='/login'> Log in</a> to book faster.
+                    </p>
+                </aside>
+
+                <div className='form-formreservation-children'>
+                <form className='form-formreservation'>
+                    <div className='name-formreservation' >
+                        <div className='name-email-formresservation'>
+                        <label htmlFor='name-input' className='label-formreservation'>
+                            Name*
+                        </label>
+                        <input 
+                            id='name-input'
+                            type='text'
+                            required
+                        />                     
+                        </div>
+                        <div className='name-email-formresservation'>
+                        <label htmlFor='email-input' className='label-formreservation'>
+                            Email*
+                        </label>
+                        <input 
+                            id='email-input'
+                            type='email'
+                            required
+                        />
+                        </div>
+                    </div>
+
+                    <div className='phone-formreservation'>
+                        <label htmlFor='phone-input' className='label-formreservation'>
+                            Phone number
+                        </label>
+                        <input 
+                            id='phone-input'
+                            type='text'
+                        />
+                        <p>Add a message</p>
+                        <textarea className='textarea-formreservation'></textarea>
+                    </div>
+
+                    <div className='payment-formreservation'>
+                        <h3>Payment</h3>
+                       {/*} <p>Service name</p>*/}
+                        <div className='methodpayment-formreservation'>
+                            <div className='labelpayment-formreservation'>
+                            <label htmlFor="credit-card">
+                                Credit Card
+                            </label>
+                            <input 
+                                type="radio" 
+                                id="credit-card"
+                                name="payment" 
+                                value="credit-card" 
+                                
+                            />
+                            </div>
+                            <div className='labelpayment-formreservation'>
+                            <label htmlFor="paypal">
+                                PayPal
+                            </label>
+                            <input 
+                                type="radio" 
+                                id="paypal"
+                                name="payment" 
+                                value="paypal" 
+                            />
+                            </div>
+                            <div className='labelpayment-formreservation'>
+                            <label htmlFor="bank-transfer">
+                                Bank Transfer
+                            </label>
+                            <input 
+                                type="radio" 
+                                id="bank-transfer"
+                                name="payment" 
+                                value="bank-transfer" 
+                            />
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>       
+                <div className='data-formreservation'>
+                    <h3>Reservation details</h3>
+                    <p>Service name</p>
+                    <p>Date and time</p>
+                    <p>Duration</p>
+                    <h3>Payment details</h3>
+                    <div className='price-formreservation'>
+                        <p className='price'>Total</p>
+                        <p className='amount'>10€</p>
+                    </div>
+                    <div className='buttons-formreservation'>
+                    <button className='addbutton-formreservation'>Add to cart</button>
+                    <button className='reservebutton-formreservation'>Add to cart</button>
+                    </div>
+                  </div>
+                </div>
+            </section>
+        </main>
+    );
+}
+
+export default FormReservation;

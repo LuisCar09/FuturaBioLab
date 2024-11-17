@@ -77,10 +77,7 @@ const ContactUs = () => {
                   onChange={(e) => setName(e.target.value)}
                   required
               />
-              </div>
-            
-            
-            
+              </div> 
               <div>
               <label htmlFor='input-lastname'>
                Last Name

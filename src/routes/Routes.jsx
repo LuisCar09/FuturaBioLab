@@ -8,6 +8,7 @@ import Profile from '../pages/Profile'
 import AboutUs from '../pages/AboutUs'
 import ContactUs from '../pages/ContactUs'
 import SettingsProfile from '../pages/SettingsProfile'
+import FormReservation from '../pages/FormReservation'
 
 const RoutesApp = () => {
     return (
@@ -20,6 +21,7 @@ const RoutesApp = () => {
                 <Route path='/aboutus' element={<AboutUs />} />
                 <Route path='/contactus' element={<ContactUs />} />
                 <Route path='/settingsprofile' element={<SettingsProfile />} />
+                <Route path='/formreservation' element={<FormReservation />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>
