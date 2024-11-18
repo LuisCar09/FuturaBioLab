@@ -5,10 +5,9 @@ function FormReservation() {
         <main className='main-formreservation'>
             <section className='section-formreservation'>
                 <aside className='details-formreservation'>
-                    <p>
-                        Do you already have an account? 
-                        <a href='/login'> Log in</a> to book faster.
-                    </p>
+                    
+                    <h2>Detalles de servicio</h2>
+                    
                 </aside>
 
                 <div className='form-formreservation-children'>
@@ -85,10 +84,12 @@ function FormReservation() {
                     
                 </form>       
                 <div className='data-formreservation'>
+                    <div className='data-formreservation-details'>
                     <h3>Reservation details</h3>
                     <p>Service name</p>
                     <p>Date and time</p>
                     <p>Duration</p>
+                    </div>
                     <h3>Payment details</h3>
                     <div className='price-formreservation'>
                         <p className='price'>Total</p>
@@ -100,6 +101,7 @@ function FormReservation() {
                     </div>
                   </div>
                 </div>
+                <h4>The fields marked with (*) are required</h4>
             </section>
         </main>
     );

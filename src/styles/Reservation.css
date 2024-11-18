@@ -11,21 +11,28 @@
     align-items: center;
     justify-content: flex-start; 
     height: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     width: 100%;
+    
 }
-
+.section-formreservation h4{
+    margin-top: 20px;
+    color: var(--primary-color);
+    width: 100%;
+    font-size: 18px;
+    text-align: end;
+    
+}
 .details-formreservation {
-    display: flex;
-    align-items: flex-start;
-    max-width: 800px;
+    display: flex; 
     width: 100%;
-    margin-bottom:60px ;
-    flex: 1;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--secundary-color);
+
 }
 
-.details-formreservation p {
-  font-size: 16px;
+.details-formreservation h2 {
+  font-size: 24px;
   color: var(--primary-color);
 }
 
@@ -41,25 +48,27 @@
 
 .form-formreservation-children {
     display: flex;
-    max-width: 800px;
     width: 100%;
-    }
+    gap: 20px;
+}
 .form-formreservation {
-    flex: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
     
 }    
 .name-formreservation {
     display: flex;
     justify-content: space-between;
+    gap: 30px;    
     width: 100%;
 }
 .name-email-formresservation {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;   
+    align-items: flex-start;
+    width: 100%;   
 }
 
 .label-formreservation {
@@ -70,7 +79,7 @@
 }
 
 .name-email-formresservation input {
-    width: 200px;
+    width: 100%;
     height: 34px;
     border: 1px solid var(--primary-color);
 }
@@ -122,16 +131,15 @@
 
 .input-payment-formreservation {
     display: flex;
-    
     align-items: center;
     justify-content: center;
     color: var(--primary-color);
-   
+    
 }
 .input-payment-formreservation input {
     display: flex;
     text-align: center;
-    
+    outline: none;
     color: var(--primary-color);
     padding: 10px;
     border:1px solid var(--primary-color);
@@ -148,35 +156,50 @@
     border-color: var(--secundary-color); 
 }
 .data-formreservation{
-    flex: 1;
+    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 40px;
+    max-width: 300px;
+    width: 100%;
 
 }
 
 .data-formreservation h3 {
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 28px;
 }
 .data-formreservation p {
     color: var(--primary-color);
-    font: 12px;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+.data-formreservation-details {
+    text-align: start;
+    width: 100%;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 10px;
 }
 .price-formreservation {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    
 }
-
+.price-formreservation p {
+    
+    font-size: 18px;
+}
 .buttons-formreservation {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    flex: 1;
     margin-top: 20px;
+    width: 100%;
+    
 
 }
 
@@ -186,7 +209,8 @@
     color: var(--primary-color);
     padding: 10px 36px;
     border-radius: 2px;
-    margin-bottom: 50px;
+
+    font-size: 16px;
     cursor: pointer;
 }
 
