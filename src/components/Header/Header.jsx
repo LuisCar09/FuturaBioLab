@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../styles/Header.css';
 import NavBar from './Navbar'; 
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = () => { 
     
@@ -12,10 +13,11 @@ const Header = () => {
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 480);
 
     const links = [
+        { name: 'Projects', path: '/projects', id: crypto.randomUUID() },
         { name: 'About us', path: '/aboutus', id: crypto.randomUUID() },
         { name: 'Contact us', path: '/contactus', id: crypto.randomUUID() },
-        { name: 'Log in', path: '/login', id: crypto.randomUUID() },
-        { name: 'Projects', path: '/projects', id: crypto.randomUUID() }
+        { name: 'login', path: '/login', id: crypto.randomUUID() },
+        { name: <ShoppingCartIcon />, path: '/mycart', id: crypto.randomUUID() }
     ];
 
     const handleScroll = () => {

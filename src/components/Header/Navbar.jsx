@@ -5,6 +5,7 @@ import { useState } from 'react';
 import HamburgerMenu from './HamburgerMenu';
 import NavLinks from './NavLinks';
 
+
 const NavBar = ({ linkNames, isMenuOpen }) => {
     const [showMenu, setShowMenu] = useState(false);
     const clickHandler = () => {

@@ -1,5 +1,5 @@
-import '../styles/SettingsProfile.css';
-import HttpsIcon from '@mui/icons-material/Https';
+import '../styles/Setting.css';
+
 
 function SettingsProfile() {
     return (
@@ -43,7 +43,7 @@ function SettingsProfile() {
                                     required />
                             </div>
                             <div className='name-settingsprofile'>
-                                <label htmlFor='input-nickcname' className='label-settingsprofile'>Nickname</label>
+                                <label htmlFor='input-nickcname' className='label-settingsprofile'>Title</label>
                                 <input
                                     id='input-nickcname'
                                     type='text'
@@ -56,26 +56,26 @@ function SettingsProfile() {
                             <p>Update your personal information</p>
                         </div>
                         <div className='personalinfo-input-settingsprofile'>
-                            <div className='input-icon-container'>
+                            <div className='input--container-settingsprofile'>
                                 <label className='label-settingsprofile'>Name</label>
-                                <div className='input-with-icon'>
+                                <div className='input-name-settingsprofile'>
                                     <input id='input-name' type='text' />
-                                    <HttpsIcon className='icon' />
+                                    
                                 </div>
                             </div>
-                            <div className='input-icon-container'>
+                            <div className='input--container-settingsprofile'>
                                 <label className='label-settingsprofile'>Lastname</label>
-                                <div className='input-with-icon'>
+                                <div className='input-name-settingsprofile'>
                                     <input id='input-lastname' type='text' />
-                                    <HttpsIcon className='icon'/>
+                                  
                                 </div>
                             </div>
                         </div>
-                        <div className='input-icon-container'>
+                        <div className='input--container-settingsprofile'>
                             <label className='label-settingsprofile'>Phone number</label>
-                            <div className='input-with-icon'>
+                            <div className='input-name-settingsprofile'>
                                 <input id='input-phone' type='text' />
-                                <HttpsIcon className='icon' />
+                                
                             </div>
                         </div>
 

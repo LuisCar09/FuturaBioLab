@@ -7,8 +7,10 @@ import ThanKYouPage from '../pages/ThankYou'
 import Profile from '../pages/Profile'
 import AboutUs from '../pages/AboutUs'
 import ContactUs from '../pages/ContactUs'
-import SettingsProfile from '../pages/SettingsProfile'
-import FormReservation from '../pages/FormReservation'
+import Setting from '../pages/Setting'
+import Reservation from '../pages/Reservation'
+import Projects from '../pages/Projects'
+import MyCart from '../pages/MyCart'
 
 const RoutesApp = () => {
     return (
@@ -20,8 +22,10 @@ const RoutesApp = () => {
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/aboutus' element={<AboutUs />} />
                 <Route path='/contactus' element={<ContactUs />} />
-                <Route path='/settingsprofile' element={<SettingsProfile />} />
-                <Route path='/formreservation' element={<FormReservation />} />
+                <Route path='/setting' element={<Setting />} />
+                <Route path='/reservation' element={<Reservation />} />
+                <Route path='/projects' element={<Projects />} />
+                <Route path='/mycart' element={<MyCart />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>

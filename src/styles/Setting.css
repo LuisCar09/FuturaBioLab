@@ -66,6 +66,7 @@
     align-items: center;
     max-width: 800px;
     width: 100%;
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .account-container-settingsprofile h2 {
@@ -105,8 +106,7 @@
 
 .cancelbutton-settingsprofile {
     color: var(--primary-color);
-    width: 100px;
-    height: 30px;
+   padding: 8px 20px;
     border-radius: 2px;
    border: 1px solid var(--primary-color);
    background-color: var( --background-color);
@@ -116,8 +116,7 @@
 .updatebutton-settingsprofile {
     color: var(--background-color);
     background-color: var(--button-color);
-    width: 148px;
-    height: 30px;
+    padding: 8px 20px;
     border: none;
     cursor: pointer;
 }
@@ -166,7 +165,8 @@
     margin: 40px 0  ;   
 }
 
-.name-settingsprofile input {
+.name-settingsprofile input,
+.input-name-settingsprofile input {
     padding: 8px 2px;
     font-size: 12px;
     border: 1px solid var(--primary-color);
@@ -211,29 +211,16 @@
     width: 100%;
     
 }
-.input-icon-container {
+.input--container-settingsprofile {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 20px 0;
 }
 
-.input-with-icon {
+.input-name-settingsprofile {
     display: flex;
     align-items: center; 
-}
-
-.input-with-icon input {
-    padding: 8px 2px;
-    font-size: 12px;
-    border: 1px solid var(--primary-color);
-    outline: none;
-    border-radius: 2px;
-    margin-right: 10px; 
-    width: 300px; 
-}
-.icon {
-    color: var(--button-color);
 }
 
 .accountbuttons-bottom-settingsprofile {

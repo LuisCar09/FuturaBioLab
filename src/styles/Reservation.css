@@ -107,6 +107,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
 }
 .payment-formreservation h3 {
     color: var(--primary-color);
@@ -115,19 +116,37 @@
 
 .methodpayment-formreservation {
    display: flex;
-   gap: 44px;
+   gap: 20px;
+   
 }
 
-.labelpayment-formreservation {
+.input-payment-formreservation {
     display: flex;
-    gap: 2px;
+    
+    align-items: center;
+    justify-content: center;
     color: var(--primary-color);
    
 }
-.labelpayment-formreservation label { 
+.input-payment-formreservation input {
+    display: flex;
+    text-align: center;
+    
+    color: var(--primary-color);
+    padding: 10px;
+    border:1px solid var(--primary-color);
+    transition: background-color 0.3s, border-color 0.3s;
+    cursor: pointer;
     font-size: 16px;
 }
 
+.input-payment-formreservation input:focus {
+    background-color: var(--secundary-color); 
+    border-color: var(--button-color);
+}
+.input-payment-formreservation input:hover {
+    border-color: var(--secundary-color); 
+}
 .data-formreservation{
     flex: 1;
     display: flex;
@@ -165,18 +184,9 @@
     background-color: var(--button-color);
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
-    width: 160px;
-    height: 30px;
+    padding: 10px 36px;
+    border-radius: 2px;
     margin-bottom: 50px;
     cursor: pointer;
 }
 
-.reservebutton-formreservation {
-    background-color: var(--primary-color);
-    border: 1px solid var(--button-color);
-    color: var(--button-color);
-    width: 160px;
-    height: 30px;
-    margin-bottom: 20px;
-    cursor: pointer;
-}

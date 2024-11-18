@@ -32,7 +32,7 @@ const Profile = () => {
         </div>  
         <div className="navigation-bar-profile">
             <a href="#" className="nav-profile">Profile</a>
-            <a href="#" className="nav-files">Files</a>
+            <a href="#" className="nav-files">Projects</a>
         </div>
         <div className='profile-content'>
               <div className='profile-edit'>
@@ -48,15 +48,22 @@ const Profile = () => {
         </div>
         <div className="about-me-container">
               <h3>About Me</h3>
-              <textarea className="about-me-textarea" placeholder="Share something about yourself..."></textarea>
+              <textarea className="about-me-textarea" ></textarea>
         </div>
         
-              <div className="projects-container">
-                <h3>Projects</h3>
+              <div className="projects-container-profile">
+               <div className="projects-title-profile">
+                 <h3>Projects</h3>
 
-                <a href='#' className="add-project-button">Add Project</a>
+                 <a href='#' className="add-project-button">Add Project</a>
+                 </div>
+                <div className='projects--profile'>
+                <p>Don't have projects</p>
+                <button className='uploadproject-profile'>
+                Upload your project
+                </button>
+                </div>
               </div>
-        
       </section>
     </main>
   );

@@ -1,14 +1,16 @@
 .main-profile-container {
     display: flex;
     justify-content: center;
+    
+    padding: 40px 20px 20px 20px; 
 }
 
 .section-profile--container{
-    height: calc(100vh - 256px);
+    
     width: 1200px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+   
     
 }
 
@@ -17,15 +19,16 @@
     display: flex;
     justify-content: space-between;
     width: 980px;
-    height: 246px;
+    height: 600px;
     padding: 20px;
-    background-color: rgb(37, 107, 37);
+    background-color: var(--button-color);
 }
 .camera-icon {
     align-self: flex-start;
     width: 24px;
     height: 24px;
     cursor: pointer;
+    color: white;
 }
 
 .profile-info {
@@ -34,6 +37,7 @@
     justify-content: space-between;
     align-items: flex-end;
     width: 900px;
+    height: 200px;
 }
 .user-info {
     display: flex;
@@ -61,28 +65,31 @@
 .user-follows {
    
     font-size: 16px;
-    color: var(--primary-color);
+    color: white;
 }
 
 .edit-settings-user {
     display: flex;
     justify-content: end;
     align-items: center;
+    gap: 6px;
 }
 
 .edit-data {
-    width: 122px;
-    height: 32px;
+    padding: 8px 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--primary-color);
-    border: 1px solid  var(--primary-color);
+    color: white;
+    background-color: transparent;
+    border: 1px solid  white;
+    font-size: 14px;
+   
 }
 
 .morevert-icon {
-    color: var(--primary-color);
+    color: white;
     cursor: pointer; 
 }
 
@@ -134,18 +141,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 142px;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    padding: 6px 20px;
+    border: 1px solid var(--button-color);
+    color: var(--button-color);
     cursor: pointer;
+    gap: 10px;
+    font-size: 14px;
 }
 .registration-container {
     display: flex;
     align-items: flex-start;
     color: var(--primary-color);
-    margin-top: 10px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid  var(--primary-color);;
+    margin-top: 30px;
+    border-bottom: 1px solid  var(--primary-color);
 }
 
 
@@ -161,7 +169,7 @@
 .about-me-container h3 {
    display: flex;
    justify-content: flex-start;
-   margin-bottom: 20px;
+   margin-bottom: 30px;
    font-size: 22px;
    color: var(--primary-color);
    cursor: text;
@@ -174,7 +182,14 @@
     border-color: var(--primary-color);
 }
 
-.projects-container {
+.projects-container-profile{
+    display: flex;
+    flex-direction: column;
+    max-width: 980px;
+    width: 100%;
+}
+
+.projects-title-profile {
     width: 980px;
     display: flex;
     justify-content: space-between;
@@ -183,22 +198,49 @@
     border-bottom: 1px solid var(--primary-color);
 }
 
-.projects-container h3 {
+.projects-title-profile h3 {
     font-size: 22px;
     color: var(--primary-color);
 }
 
-.projects-container a {
+.projects-title-profile a {
     text-decoration: none;
     color: var(--primary-color);
-    cursor: pointer
+    cursor: pointer;
+    font-size: 16px;
    
 }
-.projects-container a:hover {
+.projects-title-profile a:hover {
     color: var(--secundary-color);
 }
 
+.projects--profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    max-width: 980px;
+    width: 100%;
+    padding: 20px;
+}
+.projects--profile p {
+    font-size: 26px;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+.uploadproject-profile {
+    padding: 10px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
 
+}
+.uploadproject-profile:hover {
+    transition: background-color  0.3s;
+}
 /*Responsive*/
 
 

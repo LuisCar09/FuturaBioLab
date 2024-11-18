@@ -1,4 +1,4 @@
-import '../styles/FormReservation.css';
+import '../styles/Reservation.css';
 
 function FormReservation() {
     return (
@@ -52,35 +52,29 @@ function FormReservation() {
                         <h3>Payment</h3>
                        {/*} <p>Service name</p>*/}
                         <div className='methodpayment-formreservation'>
-                            <div className='labelpayment-formreservation'>
-                            <label htmlFor="credit-card">
-                                Credit Card
-                            </label>
+                            <div className='input-payment-formreservation'>
+                           
                             <input 
-                                type="radio" 
+                                type="text" 
                                 id="credit-card"
                                 name="payment" 
                                 value="credit-card" 
                                 
                             />
                             </div>
-                            <div className='labelpayment-formreservation'>
-                            <label htmlFor="paypal">
-                                PayPal
-                            </label>
+                            <div className='input-payment-formreservation'>
                             <input 
-                                type="radio" 
+                                type="text" 
                                 id="paypal"
                                 name="payment" 
                                 value="paypal" 
+                                
                             />
                             </div>
-                            <div className='labelpayment-formreservation'>
-                            <label htmlFor="bank-transfer">
-                                Bank Transfer
-                            </label>
+                            <div className='input-payment-formreservation'>
+                            
                             <input 
-                                type="radio" 
+                                type="text" 
                                 id="bank-transfer"
                                 name="payment" 
                                 value="bank-transfer" 
@@ -102,7 +96,7 @@ function FormReservation() {
                     </div>
                     <div className='buttons-formreservation'>
                     <button className='addbutton-formreservation'>Add to cart</button>
-                    <button className='reservebutton-formreservation'>Add to cart</button>
+                   
                     </div>
                   </div>
                 </div>
