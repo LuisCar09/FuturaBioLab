@@ -19,7 +19,10 @@ const Profile = () => {
               <img src="https://i.pinimg.com/474x/f9/ef/f5/f9eff5fd8e045349b31d4641253f628f.jpg" alt="Picture" className="profile-picture" />
                 <div className='info-user-follow'>
                   <h2 className="user-name">Username</h2>
-                  <p className="user-follows">0 Followers • 0 Following</p>
+                  <div>
+                    <p className="user-follows">0 Followers </p>
+                    <p className="user-follows">0 Following</p>
+                  </div>
                 </div>
             </div>
             <div className='edit-settings-user'>

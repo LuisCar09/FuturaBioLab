@@ -5,8 +5,9 @@
 }
 
 .section-profile--container{
-    
-    width: 1200px;
+    height: initial;
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     flex-direction: column;
    
@@ -16,9 +17,10 @@
 /*UserProfile*/
 .profile-container {
     display: flex;
-    justify-content: space-between;
-    width: 980px;
-    height: 600px;
+    
+    min-height: 220px;
+    height: 100%;
+    width: 100%;
     padding: 20px;
     background-color: var(--button-color);
 }
@@ -35,8 +37,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    width: 900px;
-    height: 200px;
+    width: 100%;
+    
 }
 .user-info {
     display: flex;
@@ -55,6 +57,10 @@
  flex-direction: column;
  align-items: start;
  padding: 10px;
+}
+.info-user-follow div {
+    display: flex;
+    gap: 12px
 }
 .user-name {
     margin-bottom: 10px;
@@ -83,7 +89,8 @@
     color: white;
     background-color: transparent;
     border: 1px solid  white;
-    font-size: 14px;
+    font-size: 18px;
+    width: 140px;
    
 }
 
@@ -99,7 +106,7 @@
     justify-content:flex-start ;
     gap:20px;
     margin-top: 20px;
-    width: 980px;
+    width: 100%;
     border-bottom: 1px solid var(--primary-color);
     padding: 20px;
    
@@ -108,7 +115,7 @@
 
 .navigation-bar-profile a{
     
-    font-size: 18px;
+    font-size: 20px;
     text-decoration: none;
     color: var(--primary-color);
    
@@ -118,7 +125,7 @@
 /*Profile-content*/
 
 .profile-content {
-   width: 980px;
+   width: 100%;
    
    display: flex;
    flex-direction: column;
@@ -140,12 +147,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6px 20px;
-    border: 1px solid var(--button-color);
+    padding: 8px 20px;
+    border: 2px solid var(--button-color);
     color: var(--button-color);
     cursor: pointer;
     gap: 10px;
-    font-size: 14px;
+    font-size: 18px;
+    background: transparent;
 }
 .registration-container {
     display: flex;
@@ -159,7 +167,7 @@
 /*About me*/
 
 .about-me-container {
-    width: 980px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -169,13 +177,13 @@
    display: flex;
    justify-content: flex-start;
    margin-bottom: 30px;
-   font-size: 22px;
+   font-size: 30px;
    color: var(--primary-color);
    cursor: text;
 }
 
 .about-me-textarea {
-    width: 630px;
+    
     height: 100px;
     resize: none;
     border-color: var(--primary-color);
@@ -184,12 +192,11 @@
 .projects-container-profile{
     display: flex;
     flex-direction: column;
-    max-width: 980px;
     width: 100%;
 }
 
 .projects-title-profile {
-    width: 980px;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -198,19 +205,23 @@
 }
 
 .projects-title-profile h3 {
-    font-size: 22px;
+    font-size: 30px;
     color: var(--primary-color);
 }
 
-.projects-title-profile a {
+.projects-title-profile .add-project-button {
+    width: 158px;
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--button-color);
     cursor: pointer;
-    font-size: 16px;
-   
+    font-size: 20px;
+    border: 2px solid var(--button-color);
+    padding: 8px 20px;
+    transition: all .2s linear;
 }
-.projects-title-profile a:hover {
-    color: var(--secundary-color);
+.projects-title-profile a:hover,.edit-profile-button:hover {
+    color: white;
+    background-color: var(--button-color);
 }
 
 .projects--profile {
@@ -218,8 +229,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 400px;
-    max-width: 980px;
+    min-height: 400px;
+    height: 100%;
     width: 100%;
     padding: 20px;
 }
@@ -233,7 +244,7 @@
     background-color: var(--button-color);
     color: white;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
 
 }
@@ -243,240 +254,31 @@
 /*Responsive*/
 
 
-
-/* Estilos generales para pantallas grandes (desktops) */
-
-
-/*Responsive */
-/* @media (max-width: 1024px) {
-    .profile-container {
-        width: 90%; 
+@media screen and (max-width:600px) {
+    .profile-info{
+        flex-direction: column;
+        align-items: center;
     }
-
-    .header-container {
-        padding: 10px; 
-        height: auto; 
+    .user-info{
+        flex-direction: column;
     }
-
-    .profile-info img {
-        width: 80px; 
-        height: 80px;
+    .info-user-follow{
+        align-items: center;
     }
-
-    .user-details h2 {
-        font-size: 30px; 
-    }
-
-    .edit-data {
-        margin-left: 20px; 
-    }
-}
-
-@media (max-width: 1024px) {
-    .profile-container {
-        width: 90%; 
-        margin: 0 auto; 
-    }
-
-    .header-container {
-        padding: 10px;
-        height: auto; 
-    }
-
-    .profile-info {
-        display: flex;
-        flex-direction: column; 
-        align-items: center; 
-        margin: 0 auto; 
-    }
-
-    .profile-info img {
-        width: 80px; 
-        height: 80px;
-    }
-
-    .user-details h2 {
-        font-size: 30px; 
-        text-align: center; 
-    }
-
-    .edit-data {
-        margin-left: 0; 
-        width: 100%; 
-        display: flex; 
-        justify-content: center; 
-    }
-
-    .morevert-icon {
-        position: relative; 
-        top: 0; 
-        left: 0; 
-        margin: 10px 0; 
-    }
-
-    .navigation-bar-profile {
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-    .navigation-bar-profile a {
-        padding: 10px; 
-        font-size: 16px; 
-        width: 100%; 
-        text-align: center; 
-    }
-
-    .about-me {
-        width: 100%; 
-        box-sizing: border-box; 
-    }
-
-    .projects-container {
-        flex-direction: column; 
-        align-items: center; 
-        width: 100%; 
-    }
-
-    .add-project-button {
-        width: 100%; 
-        margin-top: 10px; 
-    }
-}
-
-@media (max-width: 768px) {
-    .profile-container {
-        width: 90%; 
-        margin: 0 auto; 
-    }
-
-    .header-container {
-        padding: 10px; 
-        height: auto; 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-    }
-
-    .profile-info {
-        display: flex;
-        flex-direction: column; 
-        align-items: center; 
-        margin: 0 auto; 
-    }
-
-    .profile-info img {
-        width: 70px;  
-        height: 70px; 
-    }
-
-    .user-details h2 {
-        font-size: 26px; 
-        text-align: center; 
-    }
-
-    .edit-data {
-        margin-left: 0; 
-        width: 100%; 
-        display: flex; 
-        justify-content: center; 
-    }
-
-    .morevert-icon {
-        position: relative; 
-        top: 0; 
-        left: 0; 
-        margin: 10px 0; 
-        width: 20px; 
-        height: 20px; 
-    }
-
-    .navigation-bar-profile {
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-    .navigation-bar-profile a {
-        padding: 10px; 
-        font-size: 16px; 
-        width: 100%; 
-        text-align: center; 
-    }
-
-    .about-me {
-        width: 100%; 
-        padding: 10px; 
-        box-sizing: border-box; 
-        margin: 0 auto;
-    }
-
-    .projects-container {
-        flex-direction: column; 
-        align-items: center; 
-        width: 100%; 
-    }
-
-    .add-project-button {
-        width: 100%; 
-        margin-top: 10px; 
-    }
-}
-
-
-@media (max-width: 480px) {
-    .header-container {
-        padding: 5px; 
-        display: flex; 
-        justify-content: space-between;
-       
-        align-items: center; 
-    }
-
-    .profile-info img {
-        width: 50px; 
-        height: 50px;
-    }
-
-    .user-details h2 {
-        font-size: 20px; 
-    }
-
-    .edit-profile-button {
-        display: none; 
-    }
-
-    .followers-info {
-        display: flex;
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-    .edit-data-container {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .morevert-icon {
-        margin-left: 20px; 
-        width: 20px; 
-        height: 20px; 
-    }
-
-    .edit-data {
-        display: none; 
-    }
-
-    .projects-container {
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-    .add-project-button {
+    .edit-settings-user{
         width: 100%;
     }
-
-    .editicon {
-        width: 20px; 
-        height: 20px; 
-        display: block; 
+    .edit-data {
+        padding: 4px 16px;
+        width: 120px;
+    }.edit-profile-button {
+        
+        padding: 8px 20px;
+    
     }
-} */
+    .projects-title-profile .add-project-button {
+        width: 158px;
+        padding: 8px 20px;
+        
+    }
+}
