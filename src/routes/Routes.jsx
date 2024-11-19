@@ -11,6 +11,7 @@ import Setting from '../pages/Setting'
 import Reservation from '../pages/Reservation'
 import Projects from '../pages/Projects'
 import MyCart from '../pages/MyCart'
+import Services from '../pages/Services'
 
 const RoutesApp = () => {
     return (
@@ -26,6 +27,7 @@ const RoutesApp = () => {
                 <Route path='/reservation' element={<Reservation />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/mycart' element={<MyCart />} />
+                <Route path='/services' element={<Services />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>

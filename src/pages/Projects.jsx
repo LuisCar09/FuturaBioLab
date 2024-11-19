@@ -8,7 +8,7 @@ function Projects() {
             <section className='section-projects'>
                 <div className='container-projects'>
                     <div className='image-projects'>
-                        <img src='https://www.envaselia.com/images_blog/que-son-los-bioplasticos.jpg' alt='Descripción del proyecto'></img>
+                        <img src='https://www.envaselia.com/images_blog/que-son-los-bioplasticos.jpg' alt='Descripción del proyecto'/>
                     </div>
                     <div className='info-projects'>
                         <div className='usercontainer-projects'>
@@ -41,7 +41,7 @@ function Projects() {
                 </div>
                 <div className='container-projects'>
                     <div className='image-projects'>
-                        <img src='https://www.envaselia.com/images_blog/que-son-los-bioplasticos.jpg' alt='Descripción del proyecto'></img>
+                        <img src='https://www.envaselia.com/images_blog/que-son-los-bioplasticos.jpg' alt='Descripción del proyecto'/>
                     </div>
                     <div className='info-projects'>
                         <div className='usercontainer-projects'>
@@ -74,7 +74,7 @@ function Projects() {
                 </div>
                 <div className='container-projects'>
                     <div className='image-projects'>
-                        <img src='https://www.envaselia.com/images_blog/que-son-los-bioplasticos.jpg' alt='Descripción del proyecto'></img>
+                        <img src='https://www.envaselia.com/images_blog/que-son-los-bioplasticos.jpg' alt='Descripción del proyecto'/>
                     </div>
                     <div className='info-projects'>
                         <div className='usercontainer-projects'>
