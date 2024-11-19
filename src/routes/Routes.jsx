@@ -12,6 +12,7 @@ import Reservation from '../pages/Reservation'
 import Projects from '../pages/Projects'
 import MyCart from '../pages/MyCart'
 import Services from '../pages/Services'
+import Search from '../pages/Search'
 
 const RoutesApp = () => {
     return (
@@ -28,6 +29,7 @@ const RoutesApp = () => {
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/mycart' element={<MyCart />} />
                 <Route path='/services' element={<Services />} />
+                <Route path='/search' element={<Search />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>
