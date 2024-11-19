@@ -1,0 +1,133 @@
+.main-projects {
+    min-height: calc(100vh - 331px);
+    display: flex;
+    justify-content: center;
+}
+
+.section-projects {
+    width: 900px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.container-projects {
+    max-height: 340px;
+    height: 100%;
+    display: flex; 
+   align-items: stretch;
+   border:1px solid var(--secundary-color);
+   
+}
+
+.image-projects {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    
+   
+}
+
+.image-projects img {
+    width: 100%; 
+    height: auto; 
+}
+
+.info-projects {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    
+}
+.usercontainer-projects {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    
+
+}
+
+.usercontainer-projects img {
+
+    border-radius: 50%;
+    width: 36px;
+
+}
+
+.user-projects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.username-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 10px;
+    color: var(--primary-color);
+    font-size: 14px;
+    
+}
+.username-container p{
+    margin-top: 4px;
+}
+.moreverticon-projects {
+    color: var(--primary-color);
+}
+
+.date-projects {
+    display: flex;
+    gap: 6px;
+}
+
+.username-projects {
+    display: flex;
+    
+    width: 100%;
+}
+.nameproject-projects{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid var(--primary-color);
+}
+.nameproject-projects h1 {
+    margin: 20px 0;
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+.nameproject-projects p {
+    display: flex;
+    text-align: left;
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.visualizations-projects {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 6px;
+
+}
+
+.visualizations-projects p {
+    color: var(--primary-color);
+    font-size: 14px;
+    
+}
+
+.fav-icon-projects {
+    color: red;
+}
+
+
