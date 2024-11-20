@@ -8,6 +8,7 @@
 .section-members {
     display: flex;
     flex-direction: column;
+    padding: 30px 0;
     max-width: 1000px;
     width: 100%;
     
@@ -16,18 +17,27 @@
 .members-title {
     display: flex;
     width: 100%;
+    margin-bottom: 20px;
     
 }
-
+.members-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: 400px;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
 .members-title button {
     display: flex;
     align-items: center;
     border: none;
-    font-size:18px;
+    font-size:22px;
     color: var(--primary-color);
 }
 
-.members-title svg {
+.members-title div svg {
     color: var(--primary-color);
     font-size: 20px;
 }
@@ -40,17 +50,24 @@
     justify-content: center;
     border: 1px solid var(--primary-color);
     max-width: 300px;
-    max-height: 400px;
     width: 100%;
-    height: 100%;
+    
+}
+.icon-container{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 20px;
 }
 
-.moreverticon-member {
-    position: absolute;
+
+.icon-container svg {
+    font-size: 30px;
     color: var(--primary-color);
     cursor: pointer;
-    top: 20px;
-    right: 20px;
+    
 }
 
 .selected-member  img{
@@ -74,6 +91,7 @@
 
 .followers-follows-member {
     display: flex;
+    justify-content: center;
     gap: 20px;
     color: var(--primary-color);
     margin-bottom: 20px;
@@ -91,4 +109,23 @@
     font-size: 14px;
     color: var(--button-color);
     border: 1px solid var(--button-color);
+    cursor: pointer;
+    background: transparent;
+    transition: all .2s linear;
+}
+.button-members:hover {
+    transform: scale(1.02);
+}
+
+@media screen and (max-width:768px) {
+    .members-container{
+        grid-template-columns: repeat(2,1fr);  
+    }
+}
+
+@media screen and (max-width:520px) {
+    .members-container{
+        grid-template-columns: repeat(1,1fr);  
+        justify-items: center;
+    }
 }
