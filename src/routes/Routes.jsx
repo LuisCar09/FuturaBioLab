@@ -11,6 +11,7 @@ import Setting from '../pages/Setting'
 import Reservation from '../pages/Reservation'
 import Projects from '../pages/Projects'
 import MyCart from '../pages/MyCart'
+import ProjectCard from '../pages/ProjectCard'
 import Services from '../pages/Services'
 import Search from '../pages/Search'
 
