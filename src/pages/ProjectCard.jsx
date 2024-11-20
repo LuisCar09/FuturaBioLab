@@ -1,4 +1,4 @@
-import '../styles/Project.css'
+import '../styles/ProjectCard.css'
 const ProjectCard = () => {
     return (
 
@@ -13,7 +13,7 @@ const ProjectCard = () => {
                             </div>
                         </div>
                         <div className="project-container--article--squarePicture">
-                            <div>DIV</div>
+                            <div></div>
                         </div>
                         <div className="project-container--article-button">
                             <div>

@@ -48,7 +48,9 @@ function Search(){
         </article>
         <article className='articlebottom-search'>
            <div className='news-search'>
-                <img src="https://cdn.agenciasinc.es/var/ezwebin_site/storage/images/_aliases/img_1col/noticias/una-bacteria-depredadora-que-mata-para-obtener-bioplastico/5870428-5-esl-MX/Una-bacteria-depredadora-que-mata-para-obtener-bioplastico.jpg" alt="" />
+                
+                    <img src="https://cdn.agenciasinc.es/var/ezwebin_site/storage/images/_aliases/img_1col/noticias/una-bacteria-depredadora-que-mata-para-obtener-bioplastico/5870428-5-esl-MX/Una-bacteria-depredadora-que-mata-para-obtener-bioplastico.jpg" alt="" />
+                
                 <div className='titlenews-search'>
                 
                   <h2>I´m a bioplastic babe</h2>

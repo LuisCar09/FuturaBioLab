@@ -31,6 +31,7 @@ const RoutesApp = () => {
                 <Route path='/mycart' element={<MyCart />} />
                 <Route path='/services' element={<Services />} />
                 <Route path='/search' element={<Search />} />
+                <Route path ='/projectCard' element={<ProjectCard />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>
