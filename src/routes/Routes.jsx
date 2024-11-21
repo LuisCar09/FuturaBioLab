@@ -15,6 +15,7 @@ import ProjectCard from '../pages/ProjectCard'
 import Services from '../pages/Services'
 import Search from '../pages/Search'
 import Members from '../pages/Members'
+import Login from '../pages/Login'
 
 const RoutesApp = () => {
     return (
@@ -34,6 +35,7 @@ const RoutesApp = () => {
                 <Route path='/search' element={<Search />} />
                 <Route path ='/projectcard' element={<ProjectCard />} />
                 <Route path ='/members' element={<Members />} />
+                <Route path ='/login' element={<Login />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>
