@@ -2,8 +2,8 @@ import React from "react";
 
 const importantLinks = [
     {name: 'Home', path:'/'},
-    {name: 'About us', path: '/about'},
-    {name: 'Contact us', path: '/contact'},
+    {name: 'About us', path: '/aboutus'},
+    {name: 'Contact us', path: '/contactus'},
     {name:'Terms and Conditions', path: '/terms'}
 
 ]

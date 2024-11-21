@@ -7,11 +7,64 @@
 }
 
 .section-mycart {
-    
+    display: flex;
+    flex-direction: column;
    max-width: 250px;
    width: 100%;
     
 }
+
+.products-mycart {
+    display: flex;
+    align-items: flex-start;
+    height: 200px;
+    width: 100%;
+}
+
+.product-details-mycart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.product-details-mycart h3{
+    font-size: 18px;
+    color: var(--primary-color);
+    
+}
+
+.product-details-mycart img {
+    max-width: 60px;
+    width: 100%;
+    
+    
+}
+
+.img-products-mycart {
+    display: flex;
+    align-items: center;
+
+}
+
+.buttons-mycart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttons-mycart p {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.buttonproduct-mycart {
+    border: 1px solid var(--primary-color);
+    
+}
+
+
 
 .mycart-container {
     display: flex;
