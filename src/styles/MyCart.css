@@ -1,58 +1,40 @@
 .main-mycart {
     position: relative;
     height: calc(100vh - 331px);
-    overflow: hidden;
-}
-
-.section-mycart {
-    background-image: url('https://www.zonadepinturas.com/images/stories/INPRA/2023/Alga.jpg');
-    background-size: cover; 
-    background-position: center; 
-    height: 100%; 
-    position: relative; 
     display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    color: white;
-    text-align: center;
-    opacity: 70%;
+    justify-content: center;
     
 }
 
-.container-mycart {
+.section-mycart {
+    
+   max-width: 250px;
+   width: 100%;
+    
+}
+
+.mycart-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 1000px;
     width: 100%;
-    max-height: calc(100vh - 331px);
-    height: 100%;
-    background-color: var(--background-color);
-   
-   
-}
-
-.title-mycart {
-    position: absolute;
-    top: 200px; 
-    left: 400px; 
     color: var(--primary-color);
-    font-size: 26px;  
-    z-index: 1;
 }
 
-
-.container-mycart h2{
-  color: var(--primary-color);
-  font-size: 30px;
-  margin-bottom: 30px;
+.content-mycart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    
 }
 
-.container-mycart a {
-    text-decoration: none;
+.mycart-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 6px;
+    border: 1px solid var(--primary-color);
+    font-size: 14px;
     color: var(--primary-color);
-    font-size: 20px;
+
 }

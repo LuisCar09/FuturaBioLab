@@ -4,11 +4,26 @@ function MyCart() {
     return (
         <main className="main-mycart">
             <section className="section-mycart">
-                <h1 className="title-mycart">My cart</h1>
-                <div className="container-mycart">
-                    <h2>The cart is empty</h2>
-                    <a href="#" className="continue-mycart">Keep buying</a>
+               <div className='mycart-container'>
+                <div className='content-mycart'>
+                 <h3>Sub Total</h3>
+                 <p>10€</p>
                 </div>
+                <div className='content-mycart'>
+                 <h3>Tax</h3>
+                 <p>3.5€</p>
+                </div>
+                <div className='content-mycart'>
+                 <h3>Shoping Charges</h3>
+                 <p>2.17€</p>
+                </div>
+                <div className='content-mycart'>
+                 <h3>Total</h3>
+                 <p>37.29€</p>
+                </div>
+                <button>Checkout</button>
+                </div> 
+               
             </section>
         </main>
     )
