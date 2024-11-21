@@ -8,11 +8,11 @@ function MyCart() {
                  <div className='product-details-mycart'>
                     <h3>Name product</h3>
                     <div className='img-products-mycart'>
-                     <img src='https://static.wixstatic.com/media/ae8ce0_654f52312120407daece3cd49586f6bf~mv2.jpg/v1/fill/w_1200,h_630,al_c,q_85/ae8ce0_654f52312120407daece3cd49586f6bf~mv2.jpg' />
+                   
                       <div className='buttons-mycart'>
                        <button className='buttonproduct-mycart'>-</button>
                        <p>1</p>
-                       <button className='buttonproduct-mycart'>-</button>
+                       <button className='buttonproduct-mycart'>+</button>
                       </div>
 
                     </div>

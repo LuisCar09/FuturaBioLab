@@ -1,5 +1,10 @@
 
 /* sectionTop */
+
+.sectionTop {
+    display: flex;
+    justify-content: center;
+}
 .sectionTop-div {
     position: relative; 
     
@@ -33,16 +38,12 @@
 
 .sectionTop-container p {
     font-size: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 30px;
 }
 
 .sectionTop-button {
-    width: 70px; 
-    height: 20px; 
-    margin-top: 6px; 
-    display: inline-flex; 
-    justify-content: center; 
-    align-items: center; 
+    padding: 8px 60px;
+   
     color: white; 
     background-color:  #02CA81; 
     border: none; 
@@ -84,9 +85,9 @@
 }
 
 .section-growButton {
-    width: 100px; 
-    height: 20px; 
+    
     margin-top: 20px; 
+    padding: 10px 40px;
     cursor: pointer;
     border: none;
     border-radius: 8px;
@@ -100,29 +101,33 @@
 
 /*SectionProjects*/
 
+.projectsSection {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
 .sectionProjects-div {
     display: flex;
     flex-direction: column; 
+    justify-content: center;
     height: 50vh;
     width: 100%;
     background-color:bisque;
-    align-items: center;
-    position: relative;
+    
+   
 }
 
 .sectionProjects-Title {
-    position: absolute;
-    top: 10px; 
-    left: 20px;
-    font-size: 80px;
-    color: #333; 
+   
+   display: flex;
+   font-size: 80px;
+    color:var(--primary-color); 
     
 }
 
 .sectionProject-carousel {
     display: flex;
-    justify-content: center;
-    position: relative;
     width: 100%; 
     margin-top: 100px; 
     overflow: hidden; 
@@ -131,29 +136,25 @@
 }
 
 .sectionProject-carousel-images {
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    width: 100%;
     gap: 80px;
     transition: transform 0.05s ease; 
 }
 
 .sectionProject-carousel-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
     width: 330px; 
     height: 330px; 
     border-radius: 8px;
     margin: 0 10px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     overflow: hidden ;
-   
 }
 
 
 
 /*responsive sectionTop*/
+/*
  @media (max-width: 480px) {
     .sectionTop {
         text-align: center; 
@@ -203,7 +204,7 @@
 
 
 /*responsive sectionGrow*/
-
+/*
 @media (max-width: 480px){
 
 .section-growContainer {
@@ -233,7 +234,7 @@
 }
 
 /*Responsive sectionProjects */
-
+/*
 @media (max-width: 1200px) {
     .sectionProject-carousel-image {
         width: calc(33.33% - 20px); 
