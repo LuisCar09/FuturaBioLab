@@ -10,6 +10,7 @@
     
 }
 
+
 .sectionTop-backgroundImage {
     display: block; 
     opacity: 70%;
@@ -61,15 +62,34 @@
 /*Section Grow*/
 
 .sectionGrow-div {
-    display: flex;
-    align-items: center;
+    position: relative; /* Esto permite que los elementos secundarios se posicionen respecto a este contenedor */
     height: 100vh;
     width: 100%;
-    background-color: black;
+   
+}
+
+.sectionGrow-div::before {
+    content: '';
+    position: absolute; 
+    top: 100px; 
+    left: 25%; 
+    
+    border-radius: 60%;
+    background-image: url('https://i.pinimg.com/736x/3d/44/ff/3d44ff89fccfbd3995ced2e1f276d202.jpg');
+    background-size: cover;
+    background-position: center; 
+    animation: moveBackground 10s linear infinite; 
+    width: 50%;
+    height: 100%;
+    z-index: 0;
+    
 }
 
 .section-growContainer {
+    position: relative;
     display: flex; 
+    top: 360px;
+
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
@@ -77,6 +97,7 @@
     width: 100%;
     text-align: center; 
     background-color: #02CA81 ;
+    z-index: 1;
 }
 
 .section-growTitle {
@@ -154,7 +175,14 @@
     overflow: hidden ;
 }
 
-
+@keyframes moveBackground {
+    0% {
+        transform:  rotate(0deg);
+    }
+    100% {
+        transform:  rotate(360deg);
+    }
+}
 
 /*responsive sectionTop*/
 /*
@@ -299,3 +327,4 @@
         width: auto; 
     }
 }
+*/

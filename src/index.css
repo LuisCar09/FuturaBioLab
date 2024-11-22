@@ -1,6 +1,9 @@
-:root{
-    --primary-color:#2E962F;
-    --secundary-color:#02CA81;
-    --button-color:#014B3F;
-    --background-color:#FFF6EF;
+
+
+    :root{
+        --primary-color:#2E962F;
+        --secundary-color:#02CA81;
+        --button-color:#014B3F;
+        --background-color:#FFF6EF;
+    
 }
