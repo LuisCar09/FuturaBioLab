@@ -8,7 +8,7 @@ import ProjectsSection from './ProjectsSection.jsx';
 
 const Hero = () => {
     return (
-        <main>
+        <main className='main-hero'>
             <section className='sectionTop'>
                 
                 <SectionTop />

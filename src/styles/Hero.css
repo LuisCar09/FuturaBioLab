@@ -1,4 +1,6 @@
-
+.main-hero{
+    overflow: hidden;
+}
 /* sectionTop */
 
 .sectionTop {
@@ -71,17 +73,17 @@
 .sectionGrow-div::before {
     content: '';
     position: absolute; 
-    top: 100px; 
-    left: 25%; 
-    
-    border-radius: 60%;
-    background-image: url('https://i.pinimg.com/736x/3d/44/ff/3d44ff89fccfbd3995ced2e1f276d202.jpg');
-    background-size: cover;
-    background-position: center; 
-    animation: moveBackground 10s linear infinite; 
-    width: 50%;
+    top: 0;
+    left: -20px;
+    width: 4500px;
     height: 100%;
-    z-index: 0;
+    background: #348cb2 url('https://www.us.es/sites/default/files/noticia/Imagen%20de%20portada%20alga%20oceanos.jpg') bottom left;
+    /* background-image: url(; */
+    animation: moveInfinite 200s linear infinite; 
+    background-size: 500px auto;
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: contain;
     
 }
 
@@ -181,6 +183,15 @@
     }
     100% {
         transform:  rotate(360deg);
+    }
+}
+@keyframes moveInfinite {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-250rem, 0, 0);
     }
 }
 
