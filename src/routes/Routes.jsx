@@ -16,6 +16,7 @@ import Services from '../pages/Services'
 import Search from '../pages/Search'
 import Members from '../pages/Members'
 import Login from '../pages/Login'
+import ServiceDetail from '../pages/ServiceDetail'
 
 const RoutesApp = () => {
     return (
@@ -36,6 +37,7 @@ const RoutesApp = () => {
                 <Route path ='/projectcard' element={<ProjectCard />} />
                 <Route path ='/members' element={<Members />} />
                 <Route path ='/login' element={<Login />} />
+                <Route path ='/servicedetail' element={<ServiceDetail />} />
                 {/* <Route path='/login' element={<Login />} /> */}
 
             </Routes>
