@@ -15,9 +15,10 @@ import ProjectCard from '../pages/ProjectCard'
 import Services from '../pages/Services'
 import Search from '../pages/Search'
 import Members from '../pages/Members'
-import Login from '../pages/Login'
+import UserDataRegister from '../pages/UserDataRegister'
 import ServiceDetail from '../pages/ServiceDetail'
-
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 const RoutesApp = () => {
     return (
         <Router>
@@ -36,9 +37,10 @@ const RoutesApp = () => {
                 <Route path='/search' element={<Search />} />
                 <Route path ='/projectcard' element={<ProjectCard />} />
                 <Route path ='/members' element={<Members />} />
-                <Route path ='/login' element={<Login />} />
+                <Route path ='/userdataregister' element={<UserDataRegister />} />
                 <Route path ='/servicedetail' element={<ServiceDetail />} />
-                {/* <Route path='/login' element={<Login />} /> */}
+                <Route path='/register' element={<Register />} /> 
+                <Route path='/login' element={<Login />} /> 
 
             </Routes>
             <Footer />

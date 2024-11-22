@@ -60,7 +60,7 @@ section {
 }
 
 main{
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 331px);
     background-color: var(--background-color);
     text-align: center; 
 	padding: 0 20px;

@@ -16,7 +16,7 @@ const Header = () => {
         { name: 'Projects', path: '/projects', id: crypto.randomUUID() },
         { name: 'About us', path: '/aboutus', id: crypto.randomUUID() },
         { name: 'Contact us', path: '/contactus', id: crypto.randomUUID() },
-        { name: 'login', path: '/login', id: crypto.randomUUID() },
+        { name: 'Login', path: '/login', id: crypto.randomUUID() },
         { name: <ShoppingCartIcon />, path: '/mycart', id: crypto.randomUUID() }
     ];
 
