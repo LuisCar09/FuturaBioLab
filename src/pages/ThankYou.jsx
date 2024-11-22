@@ -54,7 +54,8 @@ function ThanKYouPage() {
                     <div className="shipping-address">
                         <h3>Shipping Address</h3>
                         <p>Customer Name: {/* Customer's Name */}</p>
-                        <p>Street, City, State Zip Code, Country: {/* Shipping Address */}</p>
+                        <p>Street, City {/* Shipping Address */}</p>
+                        <p>post code,Country:</p>
                         <p>Phone Number: {/* Phone Number */}</p>
                         <p>3-5 Business Days</p>
                     </div>
@@ -62,12 +63,16 @@ function ThanKYouPage() {
                     <div className="billing-address">
                         <h3>Billing Address</h3>
                         <p>Customer Name: {/* Customer's Name */}</p>
-                        <p>Street, City, State Zip Code, Country: {/* Billing Address */}</p>
+                        <p>Street, City {/* Billing Address */}</p>
+                        <p>post code, Country:</p>
                         <p>Phone Number: {/* Phone Number */}</p>
                     </div>
                 </div>
+                <div className='button-thanyou'>
 
-                <button className="continue-shopping">Continue Shopping</button>
+                  <a className="continue-shopping">Continue shopping</a>
+                </div>
+
             </section>
         </main>
     );
