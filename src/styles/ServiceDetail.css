@@ -1,0 +1,197 @@
+.main-servicedetail {
+    min-height: calc(100vh - 331px);
+    display: flex;
+    
+    justify-content: center;
+    
+}
+
+.section-servicedetail {
+    display: flex;
+    flex-direction: column;
+   height: 100%;
+    max-width: 700px;
+    width: 100%;
+    
+}
+
+.article-title-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+   
+    
+
+}
+
+.title-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.article-title-servicedetail h1{
+    
+    font-size: 40px;
+    color:var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.article-title-servicedetail p{
+    
+    font-size: 16px;
+    color: var(--primary-color);
+   
+    font-size: 18px;
+}
+
+.duration-servicedetail {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    
+}
+
+.duration-servicedetail p{
+    padding: 10px;
+
+    border: 1px solid var(--primary-color);
+}
+
+.seatscontainer-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--primary-color);
+    width: 100%;
+    
+}
+
+.seatscontainer-servicedetail p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.buttonreserve-servicedetail {
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    background-color: var(--button-color);
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.buttonreserve-servicedetail:hover{
+    background-color: var(--primary-color);
+}
+
+.article-description-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.article-description-servicedetail h2 {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+.article-description-servicedetail p,
+.cancellationpolicy-servicedetail p{
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.article-description-servicedetail img{
+    width: 100%;
+    margin-bottom: 40px;
+}
+.article-session-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border-bottom: 1px solid var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.article-session-servicedetail h3,
+.cancellationpolicy-servicedetail h3,
+.contactdetails-servicedetail h3{
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.datecontainer-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.datesession-servicedetail {
+    display: flex;
+    align-items: center;
+    gap: 264px;
+    width: 100%;
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--primary-color);
+}
+.datesession-servicedetail:last-child{
+    border: none;
+}
+
+.date-servicedetail {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.date-servicedetail p,
+.time-servicedetail p{
+    margin-bottom: 10px;
+}
+
+.article-details-servicedetail,
+.cancellationpolicy-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 30px;
+    
+}
+
+.cancellationpolicy-servicedetail {
+
+    border-bottom: 1px solid var(--primary-color);
+   
+}
+.contactdetails-servicedetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.contactdetails-servicedetail p{
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+
