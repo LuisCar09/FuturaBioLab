@@ -19,6 +19,9 @@ import UserDataRegister from '../pages/UserDataRegister'
 import ServiceDetail from '../pages/ServiceDetail'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import Calendar from '../pages/Calendar'
+
+
 const RoutesApp = () => {
     return (
         <Router>
@@ -41,6 +44,7 @@ const RoutesApp = () => {
                 <Route path ='/servicedetail' element={<ServiceDetail />} />
                 <Route path='/register' element={<Register />} /> 
                 <Route path='/login' element={<Login />} /> 
+                <Route path='/calendar' element={<Calendar />} /> 
 
             </Routes>
             <Footer />
