@@ -20,6 +20,8 @@ import ServiceDetail from '../pages/ServiceDetail'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Calendar from '../pages/Calendar'
+import Guide from '../pages/Guide'
+import Upload from '../pages/Upload'
 
 
 const RoutesApp = () => {
@@ -45,6 +47,8 @@ const RoutesApp = () => {
                 <Route path='/register' element={<Register />} /> 
                 <Route path='/login' element={<Login />} /> 
                 <Route path='/calendar' element={<Calendar />} /> 
+                <Route path='/guide' element={<Guide />} /> 
+                <Route path='/upload' element={<Upload />} /> 
 
             </Routes>
             <Footer />
