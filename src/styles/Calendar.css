@@ -1,0 +1,185 @@
+.main-calendar {
+    height: calc(100vh - 331px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-calendar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.articletop-calendar{
+    width: 100%;
+}
+
+.title-calendar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.title-calendar h1 {
+    font-size: 34px;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+}
+
+.title-calendar p {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.navbar-calendar {
+    display: flex;
+    gap: 36px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--primary-color);
+    width: 100%;
+
+}
+
+.articlebottom-calendar {
+    display: flex;
+    width: 100%;
+    gap: 40px;
+}
+
+.calendar-calendar {
+    flex: 1;
+}
+
+.calendar-calendar h2 {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+.calendar {
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    background-color:var(--background-color);
+    overflow: hidden;
+    
+}
+.month{
+    display: flex;
+    justify-content: center;
+    background-color:var(--background-color);
+    font-size: 16px;
+    margin-top: 18px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    color: var(--primary-color);
+}
+
+.day{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    min-height: 40px;
+}
+
+.hour-calendar{
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.hour-calendar h3, .servicedetail-calendar h3 {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.hour-calendar p{
+    font-size: 20px;
+    color:var(--primary-color);
+    margin-bottom: 30px;
+
+}
+
+.hourservice-calendar {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeservice-calendar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.timeservice-calendar p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 6px 44px;
+    border: 1px solid var(--primary-color);
+}
+.servicedetail-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    flex: 1;
+}
+
+.detailicon-calendar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 24px;
+
+}
+
+.infoservice-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.infoservice-calendar h4{
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 10px;
+
+}
+
+.infoservice-calendar p {
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.button-calendar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 34px;
+}
+
+.button-calendar button {
+    font-size: 18px;
+    border: none;
+    background-color: var(--button-color);
+    padding: 8px 100px;
+    border-radius: 0px;
+    color: white;
+}
