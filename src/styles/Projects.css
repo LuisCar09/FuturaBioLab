@@ -53,7 +53,8 @@
 .usercontainer-projects img {
 
     border-radius: 50%;
-    width: 36px;
+    width: 50px;
+    height: 50px;
 
 }
 
@@ -99,9 +100,10 @@
     width: 100%;
     border-bottom: 1px solid var(--primary-color);
 }
-.nameproject-projects h1 {
+.nameproject-projects h2 {
     margin: 20px 0;
     font-size: 30px;
+    text-align: left;
     color: var(--primary-color);
 }
 
@@ -125,7 +127,14 @@
     font-size: 14px;
     
 }
-
+.visualizations-projects svg{
+    cursor: pointer;
+    transition: all .1s linear;
+}
+.visualizations-projects svg:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
 .fav-icon-projects {
     color: red;
 }
