@@ -1,4 +1,7 @@
 import '../styles/ProjectCard.css'
+import { Link } from 'react-router-dom'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 const ProjectCard = () => {
     return (
 
@@ -8,60 +11,84 @@ const ProjectCard = () => {
                    
                         <div className="project-container--article-top">
                             <div>
-                                <p>Wendnesday</p>
-                                <p>15 june</p>
+                                <p>Agar-agar</p>
+                                <p>Bioplastic</p>
+                                
                             </div>
                         </div>
                         <div className="project-container--article--squarePicture">
-                            <div></div>
+                            <div className='image-container-projectcard'>
+                                <img src='https://i0.wp.com/www.zoepowell.com/wp-content/uploads/2017/12/IMG_0112-705x940.jpg'/>
+                            </div>
                         </div>
                         <div className="project-container--article-button">
-                            <div>
-                                <h2>Project Title</h2>
-                                <p>something here</p>
+                            <div className='author-container-projectcard'>
+                                <h2>Author</h2>
+                                <p><Link to='/members'>Barby Malybu</Link></p>
+                                <p>License</p>
                             </div>
-                            <p>Create by</p>
-                            <p>LuisCar</p>
+                            
                         </div>
                    
                     
                 </article>
                 <aside className="project-container--aside-container">
-                    <h2 className="aside-container--title">LuisCar's Project Title</h2>
-                    <p className="aside-container--parragraph">@luisCar</p>
-                    <div className="aside-container--tagsContainer" >
-                        <span>#bio</span>
-                        <span>#bio</span>
-                        <span>#bio</span>
-                        <span>#bio</span>
+                    <div className='containerinfo-projectcard'> 
+                    <div className='aside-info-projectcard'>
+                        <h2>Description</h2>
+                        <input 
+                         id='description'
+                         type='text'
+                         required
+                        />
                     </div>
-                    <div className="aside-container--user">
-                        <div className="aside-container--user--picture">
-                            <img src="" alt="" ></img>
-                        </div>
-                        <div>
-                            <h3>Luis Car</h3>
-                            <p> 222 seguidores</p>
-                        </div>
+                    <div className='aside-info-projectcard'>
+                        <h2>Composition</h2>
+                        <input 
+                         id='composition'
+                         type='text'
+                         required
+                        />
                     </div>
-                    <div className="project-container--aside-infoProject-container">
-                        <div >
+                    <div className='aside-info-projectcard'>
+                        <h2>Tools</h2>
+                        <input 
+                         id='tools'
+                         type='text'
+                         required
+                        />
+                        </div> 
+                        <div className='aside-info-projectcard'>
+                        <h2>Properties</h2>
+                        <input 
+                         id='properties'
+                         type='text'
+                         required
+                        />
+                         </div>
+                        <div className='aside-info-projectcard'>
+                        <h2>Ambient</h2>
+                        <input 
+                         id='ambient'
+                         type='text'
+                         required
+                        />
+                    </div>
+                    <div className='aside-info-projectcard'>
+                        <h2>Light Conditions</h2>
+                        <input 
+                         id='ligth-conditions'
+                         type='text'
+                         required
+                        />
+                    </div>
+                    </div> 
+                   <div className='moreinfo-projectcard'>
+                    <Link to='/method'><AddCircleOutlineIcon /></Link>
 
-                            <p><strong>Description:</strong> 'a description'</p>
-                            <p><strong>Composition:</strong> 'Composition' </p>
-                            <p><strong>Contributors:</strong> 'Contributors names' </p>
-                            <p><strong>License:</strong> license name </p>
-                            <p><strong>References:</strong> references </p>
-                            <p><strong>Bibliography:</strong> Bibliography </p>
-                            <p><strong>Application:</strong> Application</p>
-                            <p><strong>Ingredients:</strong> Ingredients </p>
-                            <p><strong>Properties:</strong> Properties </p>
-                            <p><strong>Ambient Conditions:</strong> Ambient Conditions</p>
-                            <p><strong>Light Conditions:</strong> Light Conditions: </p>
-                            <p><strong>Tools:</strong></p>
-                        </div>
-
-                    </div>
+                   </div>
+                
+                   
                 </aside>
             </section>
         </main>

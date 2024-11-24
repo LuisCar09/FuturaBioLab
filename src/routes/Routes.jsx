@@ -23,6 +23,7 @@ import Calendar from '../pages/Calendar'
 import Guide from '../pages/Guide'
 import Upload from '../pages/Upload'
 import Priorities from '../pages/Priorities'
+import Method from '../pages/Method'
 
 
 const RoutesApp = () => {
@@ -51,6 +52,7 @@ const RoutesApp = () => {
                 <Route path='/guide' element={<Guide />} /> 
                 <Route path='/upload' element={<Upload />} /> 
                 <Route path='/priorities' element={<Priorities />} /> 
+                <Route path='/method' element={<Method />} /> 
 
             </Routes>
             <Footer />
