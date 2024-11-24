@@ -36,53 +36,18 @@ const ProjectCard = () => {
                     <div className='containerinfo-projectcard'> 
                     <div className='aside-info-projectcard'>
                         <h2>Description</h2>
-                        <input 
-                         id='description'
-                         type='text'
-                         required
-                        />
+                        <textarea></textarea>
                     </div>
                     <div className='aside-info-projectcard'>
                         <h2>Composition</h2>
-                        <input 
-                         id='composition'
-                         type='text'
-                         required
-                        />
+                        <textarea></textarea>
                     </div>
-                    <div className='aside-info-projectcard'>
-                        <h2>Tools</h2>
-                        <input 
-                         id='tools'
-                         type='text'
-                         required
-                        />
-                        </div> 
+                   
                         <div className='aside-info-projectcard'>
                         <h2>Properties</h2>
-                        <input 
-                         id='properties'
-                         type='text'
-                         required
-                        />
+                        <textarea></textarea>
                          </div>
-                        <div className='aside-info-projectcard'>
-                        <h2>Ambient</h2>
-                        <input 
-                         id='ambient'
-                         type='text'
-                         required
-                        />
-                    </div>
-                    <div className='aside-info-projectcard'>
-                        <h2>Light Conditions</h2>
-                        <input 
-                         id='ligth-conditions'
-                         type='text'
-                         required
-                        />
-                    </div>
-                    </div> 
+                         </div>
                    <div className='moreinfo-projectcard'>
                     <Link to='/method'><AddCircleOutlineIcon /></Link>
 
