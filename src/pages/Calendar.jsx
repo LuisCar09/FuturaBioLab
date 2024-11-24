@@ -1,5 +1,4 @@
 import '../styles/Calendar.css'
-import Calendar from 'react-calendar'
 import VideocamIcon from '@mui/icons-material/Videocam';
 
 function CalendarPage(){
