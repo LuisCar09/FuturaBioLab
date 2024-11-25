@@ -1,10 +1,35 @@
 import '../styles/ProjectCard.css'
 import { Link } from 'react-router-dom'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { useParams} from 'react-router-dom';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 
 const ProjectCard = () => {
-    return (
 
+    const {id} = useParams()
+    
+    const [project, setProject] = useState(null)
+
+
+useEffect(() => {
+    const fecthProject = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/${id}`) 
+            console.log(response)
+            setProject(response.data)
+           
+            
+        } catch (error) {
+            console.log({message: error})
+        }
+    }
+    fecthProject()
+},[id])
+
+
+    return (
+ 
         <main className="project-container">
             <section className="project-container--section">
                 <article className="project-container--article" >

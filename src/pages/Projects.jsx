@@ -12,7 +12,7 @@ function Projects() {
         
         
     }
-    console.log(projects);
+  
     
     useEffect(()=>{
         
@@ -26,7 +26,7 @@ function Projects() {
                     const{owner,_id,nameproject,createdAt,description,image,views} = project
                     
                     return(
-                        <Card key={_id} username={owner} date={createdAt.split('T')[0]} title={nameproject} descriptionProject={description} projectImg={image} projectViews={views} userImg={image}
+                        <Card key={_id} id={_id} username={owner} date={createdAt.split('T')[0]} title={nameproject} descriptionProject={description} projectImg={image} projectViews={views} userImg={image}
                     />
                     )
                 })}

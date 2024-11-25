@@ -26,6 +26,7 @@ import Priorities from '../pages/Priorities'
 import Method from '../pages/Method'
 
 
+
 const RoutesApp = () => {
     return (
         <Router>
@@ -42,7 +43,7 @@ const RoutesApp = () => {
                 <Route path='/mycart' element={<MyCart />} />
                 <Route path='/services' element={<Services />} />
                 <Route path='/search' element={<Search />} />
-                <Route path ='/projectcard' element={<ProjectCard />} />
+               {/* <Route path ='/projectcard' element={<ProjectCard />} />*/} 
                 <Route path ='/members' element={<Members />} />
                 <Route path ='/userdataregister' element={<UserDataRegister />} />
                 <Route path ='/servicedetail' element={<ServiceDetail />} />
@@ -53,6 +54,8 @@ const RoutesApp = () => {
                 <Route path='/upload' element={<Upload />} /> 
                 <Route path='/priorities' element={<Priorities />} /> 
                 <Route path='/method' element={<Method />} /> 
+                
+                <Route path='/projects/:id' element={<ProjectCard />} />
 
             </Routes>
             <Footer />

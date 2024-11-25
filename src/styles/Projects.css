@@ -20,6 +20,10 @@
    
 }
 
+.link-to-project {
+    width: 200px;
+}
+
 .image-projects {
     display: flex;
     flex: 1;

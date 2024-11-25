@@ -1,8 +1,13 @@
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-const Card = ({username,date,title,descriptionProject,projectImg,projectViews,userImg}) => {
+import { Link } from 'react-router-dom';
+
+const Card = ({id,username,date,title,descriptionProject,projectImg,projectViews,userImg}) => {
     return (
+        <>
+       
         <div className='container-projects'>
+        <Link to={`/projects/${id}`} className='link-to-project'></Link>
             <div className='image-projects'>
                 <img src={projectImg[0]} alt={title} />
             </div>
@@ -35,6 +40,7 @@ const Card = ({username,date,title,descriptionProject,projectImg,projectViews,us
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
