@@ -1,6 +1,7 @@
 import '../styles/Members.css';
 import { useEffect, useState } from 'react';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+import SearchIcon from '@mui/icons-material/Search'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -10,61 +11,75 @@ function Members() {
     const [show, setShow] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [sortedMembers, setSortedMembers] = useState([]);
+    const [inputValue, setInputValue] = useState('')
 
+    const fetchMembers = async () => {
+        try {
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users');
+            setAllMembers(response.data);
+            // setShow(response.data); 
+        } catch (error) {
+            console.error( error);
+        }
+    };
+    
+    const fetchByNameMembers = async (userName) => {
+        try {
+            
+            // const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + userName);
+            // const findUserName = allMembers.filter(member => member.name === name)
+            // console.log(findUserName);
+            
+            // findUserName.length < 1 ? null : setAllMembers(findUserName) 
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/username/' + userName);
+            console.log(response.data);
+            
+            
+        } catch (error) {
+          console.error(error.message)   
+        }
+    }
     useEffect(() => {
-        
-        const fetchMembers = async () => {
-            try {
-                const response = await axios.get(`import.meta.env.VITE_URL_API_FUTURA_BIOLAB/${members}`);
-                console.log(import.meta.env.VITE_URL_API_FUTURA_BIOLAB)
-                setAllMembers(response.data);
-                setShow(response.data); 
-            } catch (error) {
-                console.error( error);
-            }
-        };
-
         fetchMembers();
     }, []);
+    useEffect(() => {
+        fetchByNameMembers(inputValue)
+    }, [inputValue]);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
-
+    
+    
     const handleSort = () => {
         const sorted = [...allMembers].sort((a, b) => a.name.localeCompare(b.name));
-        setSortedMembers(sorted);
-        setShow(sorted);
-        setIsOpen(true);
+        // setSortedMembers(sorted);
+        // setShow(sorted);
+        // setIsOpen(true);
     };
 
     return (
         <main className='main-members'>
             <section className='section-members'>
                 <div className='members-title'>
-                    <button onClick={toggleDropdown}>
-                        Order by
-                        <KeyboardArrowDownIcon />
-                    </button>
-                    {isOpen && (
-                        <div className='dropdown-menu'>
-                            <button className='sortButton-member' onClick={handleSort}>
-                                Sort Alphabetically
-                            </button>
-                        </div>
-                    )}
+                    <div className='search-container'>
+                    <input type='text' placeholder='Search user' onChange={(e) => setInputValue(e.target.value)} value={inputValue}  />
+                    
+                    <SearchIcon />
+                    </div>
+                    
                 </div>
 
-                <article className='members-container'>
-                    {show.length === 0 ? (
+                <article  className='members-container'>
+                    {allMembers.length === 0 ? (
                         <p>...Cargando</p>
                     ) : (
-                        show.map((selectedMember) => (
-                            <div key={selectedMember.id} className='selected-member'>
+                        allMembers.map((selectedMember) => (
+                            <div key={selectedMember._id} className='selected-member'>
                                 <div className='icon-container'>
                                     <MoreVertIcon className='moreverticon-member' />
                                 </div>
-                                <img src={selectedMember.imgSrc} alt={selectedMember.name} />
+                                <img src={selectedMember.image} alt={selectedMember.name} />
                                 <div className='member-details'>
                                     <div className='member-username'>
                                         <h3>{selectedMember.name}</h3>
