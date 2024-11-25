@@ -5,6 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import ProfileCard from '../components/utils/ProfileCard';
 
 const Profile = () => {
   const { id } = useParams(); 
@@ -88,6 +89,7 @@ const Profile = () => {
                 </div>
               </div>
       </section>
+      
     </main>
   );
 };
