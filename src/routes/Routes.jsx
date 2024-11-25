@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect,useState } from 'react'
+import axios from 'axios'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 
@@ -27,7 +29,12 @@ import Method from '../pages/Method'
 
 
 
+
 const RoutesApp = () => {
+    
+    
+    
+    
     return (
         <Router>
             <Header />

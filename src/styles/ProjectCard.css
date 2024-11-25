@@ -4,6 +4,7 @@
     min-height: calc(100vh - 331px);
 }
 .project-container--section{
+    position: relative;
     height:unset;
     max-width: 900px;
     width: 100%;
@@ -15,6 +16,7 @@
 }
 .project-container--article, .project-container--aside-container{
     flex: 1;
+    transition: all 1s linear;
 }
 .project-container--article{
     
@@ -138,17 +140,47 @@
 
 }
 
+.moveLeft{
+    transform: translateX(-376px)
+}
+.moveRight{
+    transform: translateX(490px)
+}
+.hidden{
+    overflow: hidden;
+}
+.outOfContainer{
+    position: absolute;
+}
+.bottom{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+}
+.initial-top{
+    position: absolute;
+    top: -400px;
+    
+}
+.top{
+    position: absolute;
+    padding: 0 40px;
+    top: 0;
+    left: 0;
+    width: 50%;
 
-
-
+}
 
 .moreinfo-projectcard {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    padding: 0 40px;
 }
 
 .moreinfo-projectcard svg {
     color: var(--primary-color);
     font-size: 36px;
+    cursor: pointer;
 }
