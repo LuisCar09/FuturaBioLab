@@ -10,7 +10,7 @@ const ProjectCard = () => {
     const [projects, setProjects] = useState(null)
     const [hideElements,setHideElements] = useState(false)
     const {id} = useParams()
-    console.log(hideElements);
+   // console.log(hideElements);
     
     
     
@@ -73,6 +73,30 @@ const ProjectCard = () => {
                         <div className='aside-info-projectcard'>
                             <h2>Properties</h2>
                             {projects.properties.map(prop => <p key={prop} >{prop}</p> )}
+                        </div>
+                        <div className='aside-info-projectcard'>
+                            <h2>Tools</h2>  
+                            <p>{projects.tools}</p> 
+                        </div>
+                        <div className='aside-info-projectcard'>
+                            <h2>Application</h2>  
+                            <p>{projects.application}</p> 
+                        </div>
+                        <div className='aside-info-projectcard'>
+                            <h2>Prep time</h2>  
+                            <p>{projects.preptime}</p> 
+                        </div>
+                        <div className='aside-info-projectcard'>
+                            <h2>Proccesses</h2>  
+                            <p>{projects.proccesses}</p> 
+                        </div>
+                        <div className='aside-info-projectcard'>
+                            <h2>Ambient conditions</h2>  
+                            <p>{projects.ambientconditions}</p> 
+                        </div>
+                        <div className='aside-info-projectcard'>
+                            <h2>Ligths conditions</h2>  
+                            <p>{projects.ligthsconditions}</p> 
                         </div>
                     </div>
                     

@@ -7,7 +7,7 @@ const SectionTop = () => {
     const imageUrl = 'https://img.freepik.com/fotos-premium/imaginese-biotecnologos-marinos-utilizando-ingenieria-genetica-generativa_1198283-89240.jpg';
     const title = 'Explore with us';
     const description = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate laboriosam voluptas quaerat deleniti harum quis, explicabo molestiae fuga quia atque ipsam ea officia beatae recusandae et voluptatum quisquam eligendi aut.';
-    const buttonLink = '/proyects';
+    const buttonLink = '/projects';
 
     return (
         <div className='sectionTop-div'>
