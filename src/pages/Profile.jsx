@@ -2,9 +2,29 @@ import '../styles/Profile.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
-
+import axios from 'axios';
+import { useState,useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Profile = () => {
+  const { id } = useParams(); 
+  const [member, setMember] = useState(null);
+
+
+  useEffect(() => {
+    const  fecthMember = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}members/${id}`) 
+            console.log(response)
+            setMember(response.data)
+           
+            
+        } catch (error) {
+            console.log({message: error})
+        }
+    }
+    fecthMember()
+},[id])
   return (
 
     <main className='main-profile-container'>

@@ -56,6 +56,7 @@ const RoutesApp = () => {
                 <Route path='/method' element={<Method />} /> 
                 
                 <Route path='/projects/:id' element={<ProjectCard />} />
+                <Route path="/members/:id" element={<Profile />} />
 
             </Routes>
             <Footer />
