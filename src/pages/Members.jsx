@@ -26,11 +26,6 @@ function Members() {
     const fetchByNameMembers = async (userName) => {
         try {
             
-            // const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + userName);
-            // const findUserName = allMembers.filter(member => member.name === name)
-            // console.log(findUserName);
-            
-            // findUserName.length < 1 ? null : setAllMembers(findUserName) 
             const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/username/' + userName);
             console.log(response.data);
             
