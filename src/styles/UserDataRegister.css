@@ -1,0 +1,27 @@
+.register-sectioncomplement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: initial;
+    flex-direction: column;
+    background-color: var(--background-color);
+}
+
+
+.name-input-login input {
+    padding: 10px 8px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+input:hover{
+    box-shadow: rgb(232, 237, 235) 0px 0px 0px 3px;
+}
+input:focus{
+    box-shadow: var(--secundary-color) 0px 0px 0px 3px;
+    border-color: rgb(255, 255, 255);
+}
