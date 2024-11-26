@@ -17,7 +17,7 @@ function Members() {
         try {
             const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users');
             setAllMembers(response.data);
-            // setShow(response.data); 
+            setShow(response.data); 
         } catch (error) {
             console.error( error);
         }
@@ -74,10 +74,14 @@ function Members() {
                                 <div className='icon-container'>
                                     <MoreVertIcon className='moreverticon-member' />
                                 </div>
-                                <img src={selectedMember.image} alt={selectedMember.name} />
+                                {selectedMember.image ? (
+            <img src={selectedMember.image} alt={selectedMember.name} />
+        ) : (
+            <p>No image available</p> // Mensaje alternativo si no hay imagen
+        )}
                                 <div className='member-details'>
                                     <div className='member-username'>
-                                        <h3>{selectedMember.name}</h3>
+                                        <h3>{selectedMember.userName}</h3>
                                         <p>{selectedMember.role}</p>
                                     </div>
                                     <div className='followers-follows-member'>
