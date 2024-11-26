@@ -1,6 +1,6 @@
 // import '../styles/Login.css';
 import '../styles/UserDataRegister.css'
-function UserDataRegister() {
+function UserDataRegister({setPhone}) {
     return (
         
             <section className='register-sectioncomplement'>
@@ -19,7 +19,7 @@ function UserDataRegister() {
                     <div className='container-input-userDataRegister'> 
                         <div className='info-input-userDataRegister'>
                             <label htmlFor='phone-input' className='label-userDataRegister'>Phone*</label>
-                            <input id='phone-input' type='text' required />   
+                            <input id='phone-input' type='text' required onChange={(e) => setPhone(e.target.value)} />   
                         </div>
                         <div className='info-input-userDataRegister'>
                             <label htmlFor='birthDate-input' className='label-userDataRegister'>Birthdate*</label>

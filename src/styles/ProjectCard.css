@@ -15,7 +15,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .project-container--article, .project-container--aside-container{
-    flex: 1;
+    width: 50%;
     transition: all 1s linear;
 }
 .project-container--article{
@@ -27,6 +27,7 @@
     height: 100%;
     background: linear-gradient(to right,var(--primary-color) 50%, transparent 50%);
     border-radius: 24px;
+    transform: translateX(0px)
 }
 .project-container--article-top{
     padding-top: 20px;
@@ -90,7 +91,11 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 100%;
+    
+}
+.containerinfo-projectcard{
+    flex: 1;
+    padding-top: 20px;
 }
 
 .author-container-projectcard {
@@ -124,7 +129,10 @@
    
     margin-bottom: 20px;
 }
-
+.aside-info-projectcard p {
+   word-break: break-all;
+   text-align: start;
+}
 .aside-info-projectcard textarea {
     width: 400px;
     height: 150px;
@@ -139,7 +147,25 @@
     margin-bottom: 12px ;
 
 }
-
+.asidecontainer-info-method{
+    position: absolute;
+    left: 0;
+    transform: translateY(-830px);
+    visibility: hidden;
+    transition: all .7s linear;
+    padding: 0 20px;
+}
+.methodcontainer-method textarea{
+    width: 100%;
+}
+.showAsideInforMethod{
+    position: absolute;
+    left: 0;
+    transform: translateY(0px);
+    visibility: visible;
+    transition-delay: .5s;
+    transition: all 1s linear;
+}
 .moveLeft{
     transform: translateX(-376px)
 }
@@ -177,6 +203,7 @@
     justify-content: flex-end;
     width: 100%;
     padding: 0 40px;
+    margin-bottom: 20px;
 }
 
 .moreinfo-projectcard svg {

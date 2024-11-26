@@ -5,22 +5,23 @@
     height: initial;
     flex-direction: column;
     background-color: var(--background-color);
-    max-width:420px;
+    max-width:620px;
     width: 100%;
     border-radius: 8px;
+    padding: 20px 0;
 }
 
 .title-userDataRegister {
     color: var(--primary-color);
     font-size: 30px;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
 }
 
 .form-userDataRegister {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+
 }
 
 .container-input-userDataRegister {

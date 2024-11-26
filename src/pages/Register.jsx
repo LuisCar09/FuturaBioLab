@@ -18,7 +18,8 @@ const Register = () => {
         event.preventDefault()
         setShowRequestData(true)
     }
-
+    console.log(userPhone);
+    
     const handleInputChange = (event,inputName) => {
 
     }
@@ -62,7 +63,7 @@ const Register = () => {
               
             )
             :
-            <UserDataRegister />  
+            <UserDataRegister setPhone = {setUserPhone} />  
             }
         </main>
     )
