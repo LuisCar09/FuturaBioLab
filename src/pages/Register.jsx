@@ -8,11 +8,20 @@ import '../styles/Register.css'
 
 const Register = () => {
     const [showRequestData, setShowRequestData] = useState(false)
+    const [userEmail,setUserEmail] = useState('')
+    const [userPassword,setUserPassword] = useState('')
+    const [userName,setUserName] = useState('')
+    const [userLastName,setUserLastName] = useState('')
+    const [userPhone,setUserPhone] = useState('')
+    const [userBirthdate,setUserBirthdate] = useState('')
     const handleForm = (event) => {
         event.preventDefault()
         setShowRequestData(true)
     }
 
+    const handleInputChange = (event,inputName) => {
+
+    }
     return (
         <main className='main-container'>
             {!showRequestData ? (

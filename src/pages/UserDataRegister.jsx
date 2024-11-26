@@ -1,9 +1,9 @@
-import '../styles/Login.css';
-
+// import '../styles/Login.css';
+import '../styles/UserDataRegister.css'
 function UserDataRegister() {
     return (
-        <main className='main-login'>
-            <section className='section-login'>
+        
+            <section className='register-sectioncomplement'>
                 <h1 className='title-login'>Create an account</h1>
                 <form className='form-login'>
                     <div className='name-lastname-login'> 
@@ -23,17 +23,10 @@ function UserDataRegister() {
                         </div>
                         <div className='name-input-login'>
                             <label htmlFor='birthDate-input' className='label-login'>Birthdate*</label>
-                            <input id='birthDate-input' type='text' required /> 
+                            <input id='birthDate-input' type='text' required placeholder='DD/MM/YYYY'  /> 
                         </div>
                     </div> 
-                    <div className='email-login'> 
-                        <label htmlFor='email-input' className='email-login'>Email*</label>
-                        <input id='email-input' type='email' required />      
-                        <label htmlFor='password-input' className='email-login'>Password*</label>
-                        <input id='password-input' type='text' required /> 
-                        <label htmlFor='image-input' className='email-login'>Profile photo (optional)</label>
-                        <input id='image-input' type='text' /> 
-                    </div> 
+                     
                     <div className='preferneces-offers-login'> 
                         <div className='name-input-login'>
                             <label htmlFor='preferences-input' className='label-login'>Preferences (optional)</label>
@@ -47,7 +40,7 @@ function UserDataRegister() {
                 </form>
                 <h4>The fields marked with (*) are required</h4>
             </section>
-        </main>
+        
     );
 }
 
