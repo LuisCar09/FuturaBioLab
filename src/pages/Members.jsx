@@ -15,9 +15,8 @@ function Members() {
             const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users');
             setAllMembers(response.data);
             allMemberRef.current = response.data
-            console.log(allMembers);
             
-            setShow(response.data);
+            
         } catch (error) {
             console.error(error);
         }

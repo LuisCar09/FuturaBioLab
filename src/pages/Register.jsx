@@ -14,12 +14,12 @@ const Register = () => {
     }
 
     return (
-        <main class='main-container'>
+        <main className='main-container'>
             {!showRequestData ? (
-                <div class="contact-container">
+                <div className="contact-container">
                 <h1>Register</h1>
                 <h3>Have an account? <a href="/login">Log in now</a> </h3>
-                <div class="providerAuth">
+                <div className="providerAuth">
                 <div id="google" className="providers-logo">
                     <GoogleIcon />
                 </div>
@@ -36,10 +36,10 @@ const Register = () => {
 
                 <form onSubmit={handleForm} method="post" id="login-form" className="login-form">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" required placeholder="email" autocomplete='true' />
+                    <input type="email" name="email" id="email" required placeholder="email" autoComplete="true" />
 
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="**********" required autocomplete='true' />
+                    <input type="password" name="password" id="password" placeholder="**********" required autoComplete='true' />
 
                     <button type="submit">Register</button>
 

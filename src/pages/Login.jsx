@@ -25,10 +25,10 @@ const Login = () => {
             </div>
             <form  method="post" id="login-form"  className="login-form">
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" required placeholder="email" autocomplete='true'/>
+                <input type="email" name="email" id="email" required placeholder="email" autoComplete='true'/>
         
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="**********" required autocomplete='true' />
+                <input type="password" name="password" id="password" placeholder="**********" required autoComplete='true' />
         
                 
                 <button id="login" className="login" type="button">Login</button>
