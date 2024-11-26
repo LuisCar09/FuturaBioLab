@@ -5,10 +5,47 @@
     height: initial;
     flex-direction: column;
     background-color: var(--background-color);
+    max-width:420px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.title-userDataRegister {
+    color: var(--primary-color);
+    font-size: 30px;
+    padding: 20px;
+}
+
+.form-userDataRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.container-input-userDataRegister {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+   width: 100%;
+}
+.info-input-userDataRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    color: var(--primary-color);
+    
+}
+
+.label-userDataRegister {
+    font-size: 20px;
+    margin-bottom: 12px;
 }
 
 
-.name-input-login input {
+.info-input-userDataRegister input {
     padding: 10px 8px;
     outline: none;
     font-size: 16px;
@@ -24,4 +61,18 @@ input:hover{
 input:focus{
     box-shadow: var(--secundary-color) 0px 0px 0px 3px;
     border-color: rgb(255, 255, 255);
+}
+
+.button-userDataRegister {
+    background-color: var(--button-color);
+    color: white;
+    width: 380px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.register-sectioncomplement h4 {
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 12px;
 }
