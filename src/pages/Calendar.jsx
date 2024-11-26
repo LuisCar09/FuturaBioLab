@@ -1,4 +1,5 @@
 import '../styles/Calendar.css'
+import { Link } from 'react-router-dom';
 import VideocamIcon from '@mui/icons-material/Videocam';
 
 function CalendarPage(){
@@ -18,8 +19,14 @@ function CalendarPage(){
 
             </article>
             <article className='articlebottom-calendar'>
+                <div className='input-calendar'>
+                    <input 
+                    id='calendar'
+                    type='date'/>
 
-                <div className='calendar-calendar'>
+                </div>
+
+             {/*  <div className='calendar-calendar'>
                     <h2>Select date and time</h2>
                     <div className="calendar">
       <div className="month">
@@ -70,8 +77,8 @@ function CalendarPage(){
         <div className="dayempty"></div>
         <div className="dayempty"></div>
       </div>
-    </div>
                 </div>
+    </div>*/}
                 <div className='hour-calendar'>
                     <h3>Standar hour of central Europe</h3>
                     <p>November 23th, Saturday</p>
@@ -115,7 +122,7 @@ function CalendarPage(){
                     <p>Price</p>
                     </div>
                     <div className='button-calendar'>
-                    <button>Next</button>
+                    <button> <Link to='/reservation' className='link-calendar'>Next</Link></button>
 
                     </div>
                 </div>
