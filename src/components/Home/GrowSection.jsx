@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 
 
@@ -13,7 +14,10 @@ const GrowSection = () => {
         <div className='section-growContainer'>
             <h2 className='section-growTitle'>{title}</h2>
             <p>{description}</p>
-            <button className='section-growButton'>{buttonText}</button>
+            <button className='section-growButton'>
+             <Link to="/search" className='link-growSection'>{buttonText}</Link>
+            </button>
+
         </div>
      </div>   
     );

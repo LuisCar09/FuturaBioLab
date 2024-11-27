@@ -82,6 +82,7 @@
 .section-growTitle {
     margin-bottom: 20px; 
     font-size: 40px;
+    color: white; 
 }
 
 .section-growButton {
@@ -95,8 +96,18 @@
     display: flex; 
     justify-content: center;
     align-items: center; 
-    color: black; 
+   
     font-size: 12px; 
+}
+
+.section-growContainer p {
+    color: white; 
+}
+
+.link-growSection {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
 }
 
 /*SectionProjects*/

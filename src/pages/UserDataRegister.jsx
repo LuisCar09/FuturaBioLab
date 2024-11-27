@@ -47,10 +47,7 @@ function UserDataRegister({ setPhone }) {
                <div className='container-input-userDataRegister'>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='username-input' className='label-userDataRegister'>Username*</label>
-                       <input 
-                           id='username-input' 
-                           type='text' 
-                           required 
+                       <input   id='username-input' type='text' required 
                            value={userName}
                            onChange={(e) => setUserName(e.target.value)} 
                        />
