@@ -36,17 +36,17 @@ function SettingsProfile() {
                     <form className='form-settingsprofile'>
                         <div className='name-container-settingsprofile'>
                             <div className='name-settingsprofile'>
-                                <label htmlFor='input-name' className='label-settingsprofile'>Visible name*</label>
+                                <label htmlFor='input-name' className='label-settingsprofile'>Usename*</label>
                                 <input
                                     id='input-name'
                                     type='text'
                                     required />
                             </div>
                             <div className='name-settingsprofile'>
-                                <label htmlFor='input-nickcname' className='label-settingsprofile'>Title</label>
+                                <label htmlFor='input-nickcname' className='label-settingsprofile'>Email</label>
                                 <input
                                     id='input-nickcname'
-                                    type='text'
+                                    type='email'
                                     required />
                             </div>
                         </div>

@@ -67,6 +67,7 @@
     max-width: 800px;
     width: 100%;
     border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 8px;
 }
 
 .account-container-settingsprofile h2 {
@@ -101,13 +102,13 @@
 .accountbuttons-settingsprofile {
     display: flex;
     gap: 24px;
-   
+    display: none;
 }
 
 .cancelbutton-settingsprofile {
     color: var(--primary-color);
    padding: 8px 20px;
-    border-radius: 2px;
+   border-radius: 2px;
    border: 1px solid var(--primary-color);
    background-color: var( --background-color);
    cursor: pointer;
@@ -119,10 +120,11 @@
     padding: 8px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .info-container-settingsprofile {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     max-width: 800px;
