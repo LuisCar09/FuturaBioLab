@@ -5,25 +5,25 @@ import { useEffect, useState } from 'react';
 
 function UserDataRegister({ setPhone }) {
    const [userName, setUserName] = useState('');
+  
    const [isUserAvailable, setIsUserAvailable] = useState(null); 
- 
+
 
    const checkUserNameAvailability = async (username) => {
-       if (username) {
+       
            try {
                const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/username/' + username);
                if (response.data) {
-                   setIsUserAvailable(false);
+                   setIsUserAvailable(false); 
                } else {
-                   setIsUserAvailable(true); 
+                   setIsUserAvailable(true);
                }
            } catch (error) {
                console.error(error.message);
            }
-       } else {
-           setIsUserAvailable(null); 
+      
        }
-   };
+   
 
    useEffect(() => {
        checkUserNameAvailability(userName); 
@@ -36,7 +36,8 @@ function UserDataRegister({ setPhone }) {
                <div className='container-input-userDataRegister'>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='name-input' className='label-userDataRegister'>Name*</label>
-                       <input id='name-input' type='text' required />
+                       <input id='name-input' type='text' required 
+                    />
                    </div>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='lastname-input' className='label-userDataRegister'>Lastname*</label>
@@ -82,5 +83,7 @@ function UserDataRegister({ setPhone }) {
            <h4>The fields marked with (*) are required</h4>
        </section>
    );
+
 }
 export default UserDataRegister;
+
