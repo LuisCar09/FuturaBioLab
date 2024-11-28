@@ -68,7 +68,7 @@ function Services() {
                            <div className='servicetitle-services'> 
                             <h3>{service.name}</h3>
                             <p>{service.price}</p>
-                            <Link to='/servicedetail'>
+                            <Link to='/calendar'>
                               <button className='button-services'>Reserve now</button>
                             </Link>
                             </div>
