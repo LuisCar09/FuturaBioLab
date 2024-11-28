@@ -23,6 +23,15 @@
     text-align: start;
     padding: 0  20px 20px 0;
 }
+
+.article-description-servicedetail h2{
+    font-size: 24px;
+}
+.article-description-servicedetail p {
+    font-size: 16px;
+    display: flex;
+    text-align: start;
+}
 .title-calendar{
     display: flex;
     flex-direction: column;
