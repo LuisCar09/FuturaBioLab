@@ -1,4 +1,10 @@
 import { useState } from "react"
+import {auth} from '../../config/firebase.js'
+
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
 import UserDataRegister from "./UserDataRegister"
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -14,13 +20,25 @@ const Register = () => {
     const [userLastName,setUserLastName] = useState('')
     const [userPhone,setUserPhone] = useState('')
     const [userBirthdate,setUserBirthdate] = useState('')
-    const handleForm = (event) => {
+    const [error,setError] = useState('')
+    
+    const handleForm = async (event) => {
         event.preventDefault()
-        setShowRequestData(true)
+        
+        try {
+            const userCredential = createUserWithEmailAndPassword(auth,userEmail,userPassword)
+            const user = userCredential.user
+            const token = user.getIdToken()
+            localStorage.setItem('authToken',token)
+            setShowRequestData(true)
+            //Quedamos aqui vamos luego a verificar todo el tema de las peticionas a la DB
+        } catch (error) {
+            setError(error.message)
+        }
     }
     console.log(userPhone);
     
-    const handleInputChange = (event,inputName) => {
+    const handleCreateUser = () => {
 
     }
     return (
