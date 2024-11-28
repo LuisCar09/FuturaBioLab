@@ -3,7 +3,8 @@ import '../styles/UserDataRegister.css'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function UserDataRegister({ setPhone }) {
+function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,functionCreateUser }) {
+   
    const [userName, setUserName] = useState('');
   
    const [isUserAvailable, setIsUserAvailable] = useState(null); 
@@ -38,19 +39,21 @@ function UserDataRegister({ setPhone }) {
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='name-input' className='label-userDataRegister'>Name*</label>
                        <input id='name-input' type='text' required 
+                       onChange={(e) => setUname(e.target.value)} 
                     />
                    </div>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='lastname-input' className='label-userDataRegister'>Lastname*</label>
-                       <input id='lastname-input' type='text' required />
+                       <input id='lastname-input' type='text' required 
+                        onChange={(e) => setLastName(e.target.value)} />
                    </div>
                </div>
                <div className='container-input-userDataRegister'>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='username-input' className='label-userDataRegister'>Username*</label>
                        <input   id='username-input' type='text' required 
-                           value={userName}
-                           onChange={(e) => setUserName(e.target.value)} 
+                          
+                           onChange={(e) => setNameUser(e.target.value)} 
                        />
                        {isUserAvailable === false && <p>The username already exists. Please choose another one</p>}
                        {isUserAvailable === true && <p>The username is available</p>}
@@ -63,20 +66,20 @@ function UserDataRegister({ setPhone }) {
                    </div>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='birthDate-input' className='label-userDataRegister'>Birthdate*</label>
-                       <input id='birthDate-input' type='text' required placeholder='DD/MM/YYYY' />
+                       <input id='birthDate-input' type='text' required placeholder='YYYY/MM/DD' onChange={(e) => setBirthdate(e.target.value)} />
                    </div>
                </div>
                <div className='container-input-userDataRegister'>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='preferences-input' className='label-userDataRegister'>Preferences (optional)</label>
-                       <input id='preferences-input' type='text' />
+                       <input id='preferences-input' type='text' onChange={(e) => setPreferences(e.target.value)} />
                    </div>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='offers-input' className='label-userDataRegister'>Offers (optional)</label>
-                       <input id='offers-input' type='text' />
+                       <input id='offers-input' type='text' onChange={(e) => setOffers(e.target.value)} />
                    </div>
                </div>
-               <button className='button-userDataRegister' type='submit' disabled={isUserAvailable === false}>Register</button>
+               <button className='button-userDataRegister' disabled={isUserAvailable === false} onClick={functionCreateUser}>Register</button>
            </form>
            <h4>The fields marked with (*) are required</h4>
        </section>

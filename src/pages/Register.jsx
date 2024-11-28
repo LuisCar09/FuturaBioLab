@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {auth} from '../../config/firebase.js'
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -16,30 +16,60 @@ const Register = () => {
     const [showRequestData, setShowRequestData] = useState(false)
     const [userEmail,setUserEmail] = useState('')
     const [userPassword,setUserPassword] = useState('')
+    const [name,setName] = useState('')
     const [userName,setUserName] = useState('')
     const [userLastName,setUserLastName] = useState('')
     const [userPhone,setUserPhone] = useState('')
     const [userBirthdate,setUserBirthdate] = useState('')
+    const [userOffers,setUserOffers] = useState('')
+    const [userPreferences,setUserPreferences] = useState('')
+    const [userUid,setUserUid] = useState(null)
     const [error,setError] = useState('')
-    
+    const navigate = useNavigate()
+
     const handleForm = async (event) => {
         event.preventDefault()
-    
+        
+        
        try {
-            const userCredential = createUserWithEmailAndPassword(auth,userEmail,userPassword)
+            
+           const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)
+           
+           
             const user = userCredential.user
-            const token = user.getIdToken()
+            
+            
+            const token = await user.getIdToken()
+           
+            
             localStorage.setItem('authToken',token)
+            setUserUid(user.uid)
             setShowRequestData(true)
-            //Quedamos aqui vamos luego a verificar todo el tema de las peticionas a la DB
+            
         } catch (error) {
+            if(error.message === 'auth/email-already-in-use') 
             setError(error.message)
+            navigate('/login')
+            
         }
     }
-    console.log(userPhone);
     
-    const handleCreateUser = () => {
-
+    
+    const handleCreateUser = async(event) => {
+    event.preventDefault()
+    
+    try {
+        const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate, uid:userUid}
+        console.log(body);
+        
+        const createUser = await axios.post('http://localhost:8080/users/newuser',body)
+        console.log(createUser.data.success);
+        !createUser.data.success ? null : navigate('/login')
+        
+       } catch (error) {
+        console.error({message:'Error creating user'})
+        setError(error.message)
+        }
     }
     return (
         <main className='main-container'>
@@ -64,10 +94,10 @@ const Register = () => {
 
                 <form onSubmit={handleForm} method="post" id="login-form" className="login-form">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" required placeholder="email" autoComplete="true" />
+                    <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  />
 
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="**********" required autoComplete='true' />
+                    <input type="password" name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  />
 
                     <button type="submit">Register</button>
 
@@ -81,7 +111,7 @@ const Register = () => {
               
             )
             :
-            <UserDataRegister setPhone = {setUserPhone} />  
+            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser = {handleCreateUser} />  
             }
         </main>
     )

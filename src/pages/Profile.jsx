@@ -13,6 +13,7 @@ import ProfileCard from '../components/utils/ProfileCard';
 const Profile = () => {
   const { id } = useParams(); 
   const [member, setMember] = useState(null);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -30,7 +31,6 @@ const Profile = () => {
     fecthMember()
 },[id])
 
-const navigate = useNavigate();
 
   const handleButtonClick = () => {
     navigate('/setting');
