@@ -1,9 +1,13 @@
 import RoutesApp from "./routes/Routes"
+import UserProvider from './contexts/UserContext'
+
 import './styles/App.css'
 function App() {
- 
+
   return (
-    <RoutesApp />
+    <UserProvider>
+      <RoutesApp />
+    </UserProvider>
   )
 }
 
