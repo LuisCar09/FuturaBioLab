@@ -7,32 +7,9 @@ function Method(){
           
         
           <aside className='asidecontainer-info-method'>
-          <div className='aside-info-method'>
-                        <h2>Tools</h2>
-                        <input 
-                         id='tools'
-                         type='text'
-                         required
-                        />
-                        </div> 
-                        <div className='aside-info-method'>
-                        <h2>Ambient</h2>
-                        <input 
-                         id='ambient'
-                         type='text'
-                         required
-                        />
-                    </div>
-                    <div className='aside-info-method'>
-                        <h2>Light Conditions</h2>
-                        <input 
-                         id='ligth-conditions'
-                         type='text'
-                         required
-                        />
-                    </div>
-                    
-                   <div className='aside-info-method'>
+             <div className='aside-info-method'>
+             <h2>Method</h2>
+             <textarea></textarea>
                         <h2>References</h2>
                         <input 
                          id='references'
@@ -49,8 +26,7 @@ function Method(){
                         />
                     </div>
                     <div className='methodcontainer-method'>
-                <h2>Method</h2>
-                <textarea></textarea>
+              
             </div>
              </aside>       
         </section>

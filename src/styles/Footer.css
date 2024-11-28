@@ -34,7 +34,7 @@
 }
 .footer--lists li {
     margin: 10px 10px 10px 0 ;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .footer a {
@@ -48,7 +48,7 @@
 .footer-credits{
     text-align: right;
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .footer-hamburger {

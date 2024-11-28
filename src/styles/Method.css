@@ -22,19 +22,8 @@
     width: 100%;
 }
 
-.methodcontainer-method h2 {
-    color: var(--primary-color);
-    font-size: 24px;
-    margin-bottom: 20px;
-}
 
-.methodcontainer-method textarea {
-    border: 1px solid var(--primary-color);
-    resize: none;
-    margin-bottom: 40px;
-    height: 200px;
-    
-}
+
 
 .asidecontainer-info-method {
     display: flex;
@@ -45,19 +34,8 @@
    
 }
 
-.aside-info-method {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    
-}
 
-.aside-info-method  h2 {
-    color: var(--primary-color);
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+
 
 .aside-info-method  input {
     border: 1px solid var(--primary-color);

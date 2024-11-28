@@ -1,5 +1,5 @@
 .main-calendar {
-    height: calc(100vh - 331px);
+    min-height: calc(100vh - 331px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,14 @@
 
 .articletop-calendar{
     width: 100%;
+   
 }
-
+.articletop-calendar h1 {
+    color: var(--primary-color);
+    font-size: 30px;
+    text-align: start;
+    padding: 0  20px 20px 0;
+}
 .title-calendar{
     display: flex;
     flex-direction: column;
@@ -25,14 +31,14 @@
 }
 
 .title-calendar h1 {
-    font-size: 34px;
+    font-size: 30px;
     color: var(--primary-color);
     margin-bottom: 24px;
 }
 
 .title-calendar p {
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 24px;
 }
 
@@ -44,11 +50,16 @@
     width: 100%;
 
 }
-
+.navbar-calendar p{
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
 .articlebottom-calendar {
     display: flex;
     width: 100%;
     gap: 40px;
+    margin-bottom: 60px;
 }
 
 
@@ -68,52 +79,6 @@ input[type="date"]:focus {
         border: 2px solid var(--primary-color);
     }
 
-
-.calendar-calendar {
-    flex: 1;
-}
-
-.calendar-calendar h2 {
-    font-size: 20px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-.calendar {
-    border: 1px solid var(--primary-color);
-    border-radius: 10px;
-    background-color:var(--background-color);
-    overflow: hidden;
-    
-}
-.month{
-    display: flex;
-    justify-content: center;
-    background-color:var(--background-color);
-    font-size: 16px;
-    margin-top: 18px;
-}
-
-.days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    color: var(--primary-color);
-}
-
-.day{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--primary-color);
-    min-height: 40px;
-}
-
-.hour-calendar{
-    display: flex;
-    flex-direction: column;
-
-    flex: 1;
-}
-
 .hour-calendar h3, .servicedetail-calendar h3 {
     font-size: 20px;
     color: var(--primary-color);
@@ -121,7 +86,7 @@ input[type="date"]:focus {
 }
 
 .hour-calendar p{
-    font-size: 20px;
+    font-size: 16px;
     color:var(--primary-color);
     margin-bottom: 30px;
 
@@ -175,7 +140,7 @@ input[type="date"]:focus {
 
 .infoservice-calendar h4{
     color: var(--primary-color);
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 10px;
 
 }
@@ -194,7 +159,7 @@ input[type="date"]:focus {
 }
 
 .button-calendar button {
-    font-size: 18px;
+    font-size: 16px;
     border: none;
     background-color: var(--button-color);
     padding: 8px 100px;

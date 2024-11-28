@@ -31,7 +31,7 @@
 
 .title-search h1 {
     color: var(--primary-color);
-    font-size: 34px;
+    font-size: 30px;
     padding: 36px;
 }
 
@@ -66,7 +66,7 @@
 .navbar-search {
     display: flex;
     gap: 40px;
-    font-size: 20px;
+    font-size: 16px;
     color: var(--primary-color);
     padding:  40px 0 30px 30px;
     border-bottom: 1px solid var(--primary-color);
@@ -124,14 +124,14 @@
 
 .titlenews-search h2 {
     color: var(--primary-color);
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 30px;
 
 }
 
 .titlenews-search p {
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 @media screen and (max-width:600px) {

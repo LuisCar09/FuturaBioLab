@@ -24,8 +24,8 @@ const Register = () => {
     
     const handleForm = async (event) => {
         event.preventDefault()
-        
-        try {
+    
+       try {
             const userCredential = createUserWithEmailAndPassword(auth,userEmail,userPassword)
             const user = userCredential.user
             const token = user.getIdToken()

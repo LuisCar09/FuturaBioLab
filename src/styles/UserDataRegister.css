@@ -1,3 +1,15 @@
+.main-userdataregister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://img.freepik.com/fotos-premium/algas-microalgas-placas-petri-investigacion-la[…]ia-ciencia-colocacion-plana-vista-superior-ma_542566-3075.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    opacity: 0.85;
+}
+
+
 .register-sectioncomplement{
     display: flex;
     justify-content: center;
@@ -9,6 +21,7 @@
     width: 100%;
     border-radius: 8px;
     padding: 20px 0;
+    
 }
 
 .title-userDataRegister {
@@ -41,7 +54,7 @@
 }
 
 .label-userDataRegister {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 12px;
 }
 

@@ -25,7 +25,7 @@
 
   .thankyou-container p{
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
   }
 
@@ -59,7 +59,7 @@
   .service-details-thankyou h2
    {
     color: var(--primary-color);
-    font-size: 22px;
+    font-size: 24px;
     margin-bottom: 10px;
   }
 
@@ -93,14 +93,14 @@
 
  .billing-total-container h3{
   color: var(--primary-color);
-  font-size: 22px;
+  font-size: 20px;
   margin-top: 10px;
  
  
  }
 
  .billing-total-container p {
-  font-size: 22px;
+  font-size: 20px;
   margin-top: 10px;
  }
 
@@ -152,7 +152,7 @@
 
  .continue-shopping {
   color: var(--primary-color);
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   border: 1px solid var(--primary-color);
   padding: 10px;

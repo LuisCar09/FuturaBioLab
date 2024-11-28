@@ -1,3 +1,6 @@
+
+import { Link } from 'react-router-dom';
+import { LinkedCamera } from '@mui/icons-material';
 import '../styles/Services.css';
 
 function Services() {
@@ -65,7 +68,9 @@ function Services() {
                            <div className='servicetitle-services'> 
                             <h3>{service.name}</h3>
                             <p>{service.price}</p>
-                            <button className='button-services'>Reserve now</button>
+                            <Link to='/servicedetail'>
+                              <button className='button-services'>Reserve now</button>
+                            </Link>
                             </div>
                         </div>
                     ))}

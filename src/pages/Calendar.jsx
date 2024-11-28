@@ -7,15 +7,22 @@ function CalendarPage(){
       <main className='main-calendar'>
         <section className='section-calendar'>
             <article className='articletop-calendar'>
-                <div className='title-calendar'>
+                
                     <h1>Service name</h1>
-                    <p>Check our availability and book your preferred date and time</p>
+                    <div className='article-description-servicedetail'>
+                <h2>Service description</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi temporibus exercitationem, vitae quidem nulla cupiditate tempora, ipsum, vero et optio alias amet a ab sequi quo voluptate deleniti quae aspernatur.</p>
+                <img src='https://upliftproject.eu/wp-content/uploads/2021/11/workshop-uplift-october.jpg' />
+                </div>
+       
+
+                    
                     <nav className='navbar-calendar'>
                         <p>Filter by</p>
                         <p>Location</p>
                         <p>Member</p>
                     </nav>
-                </div>
+                
 
             </article>
             <article className='articlebottom-calendar'>

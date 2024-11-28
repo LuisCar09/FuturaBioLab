@@ -1,9 +1,11 @@
-import '../styles/ProjectCard.css'
-import { Link } from 'react-router-dom'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
+
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import '../styles/ProjectCard.css'
 
 const ProjectCard = () => {
     
@@ -50,7 +52,7 @@ const ProjectCard = () => {
                     <div className="project-container--article-button">
                         <div className='author-container-projectcard'>
                             <h2>Author</h2>
-                            <p><Link to='/members'>{projects.owner}</Link></p>
+                            <p><Link to='/members/${id}'>{projects.owner}</Link></p>
                             <p>{projects.license}</p>
                         </div>
 
@@ -109,29 +111,10 @@ const ProjectCard = () => {
                 </aside>
                 
                 <aside className={hideElements ? 'asidecontainer-info-method showAsideInforMethod ' : 'asidecontainer-info-method'} >
-                    <div className='aside-info-method'>
-                        <h2>Tools</h2>
-                        <input
-                            id='tools'
-                            type='text'
-                            required
-                        />
-                    </div>
-                    <div className='aside-info-method'>
-                        <h2>Ambient</h2>
-                        <input
-                            id='ambient'
-                            type='text'
-                            required
-                        />
-                    </div>
-                    <div className='aside-info-method'>
-                        <h2>Light Conditions</h2>
-                        <input
-                            id='ligth-conditions'
-                            type='text'
-                            required
-                        />
+                   
+                <div className='methodcontainer-method'>
+                        <h2>Method</h2>
+                        <textarea></textarea>
                     </div>
 
                     <div className='aside-info-method'>
@@ -150,11 +133,9 @@ const ProjectCard = () => {
                             required
                         />
                     </div>
-                    <div className='methodcontainer-method'>
-                        <h2>Method</h2>
-                        <textarea></textarea>
-                    </div>
-                    <AddCircleOutlineIcon onClick={()=> setHideElements(prev => !prev) } />
+                    <div className='moreinfo-projectcard'>
+                    <RemoveCircleOutlineIcon onClick={()=> setHideElements(prev => !prev) } />
+                        </div>
                 </aside>
 
 

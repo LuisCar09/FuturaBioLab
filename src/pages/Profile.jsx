@@ -5,7 +5,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ProfileCard from '../components/utils/ProfileCard';
+
+
 
 const Profile = () => {
   const { id } = useParams(); 
@@ -26,6 +29,17 @@ const Profile = () => {
     }
     fecthMember()
 },[id])
+
+const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/setting');
+  }
+
+  const handleButtonUpload = () => {
+    navigate('/projects/:id');
+  }
+
   return (
 
     <main className='main-profile-container'>
@@ -61,8 +75,8 @@ const Profile = () => {
         <div className='profile-content'>
               <div className='profile-edit'>
                 <h3>Profile</h3>
-                <button className="edit-profile-button">
-                  <EditIcon className='editicon' />
+                <button className="edit-profile-button" onClick={handleButtonClick}>
+                 <EditIcon className='editicon' />
                   Edit Profile
                 </button>
               </div>
@@ -83,9 +97,11 @@ const Profile = () => {
                  </div>
                 <div className='projects--profile'>
                 <p>Don't have projects</p>
-                <button className='uploadproject-profile'>
+                <button className="uploadproject-profile" onClick={handleButtonUpload}>
+                 
                 Upload your project
                 </button>
+               
                 </div>
               </div>
       </section>

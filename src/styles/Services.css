@@ -28,7 +28,7 @@
 }
 
 .services-title h2 {
-    font-size: 20px;
+    font-size: 24px;
     color: var(--primary-color);
     margin-bottom: 60px;
 }
@@ -58,7 +58,7 @@
 
 .service-item h3 {
     display: flex;
-    font-size: 26px;
+    font-size: 20px;
     margin-bottom: 26px;
     color: var(--primary-color);
     border-bottom: 1px solid var(--primary-color);
@@ -90,7 +90,7 @@
     border: none; 
     padding:10px 36px; 
     cursor: pointer; 
-    
+    width: 100%;
     font-size: 16px;
 }
 @media screen and (max-width:768px) {

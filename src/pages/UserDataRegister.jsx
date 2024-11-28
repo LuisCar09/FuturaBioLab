@@ -30,6 +30,7 @@ function UserDataRegister({ setPhone }) {
    }, [userName]);
 
    return (
+    <main className='main-userdataregister'>
        <section className='register-sectioncomplement'>
            <h1 className='title-userDataRegister'>Create an account</h1>
            <form className='form-userDataRegister'>
@@ -79,6 +80,7 @@ function UserDataRegister({ setPhone }) {
            </form>
            <h4>The fields marked with (*) are required</h4>
        </section>
+       </main>
    );
 
 }

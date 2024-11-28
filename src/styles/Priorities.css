@@ -17,7 +17,7 @@
 
 .title-priorities {
     color: var(--primary-color);
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 60px;
     border-bottom: 1px solid var(--primary-color);
    
@@ -25,7 +25,7 @@
 
 .subtitle-priorities {
     color: var(--primary-color);
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 30px;
 }
 
@@ -34,7 +34,7 @@
     text-align: left;
     color: var(--primary-color);
     margin-bottom: 30px;
-   
+   font-size: 16px;
 
 }
 
@@ -57,10 +57,11 @@
 
 .listcontainer-priorities p {
     margin-bottom: 12px;
+    font-size: 16px;
 }
 
 .title-list-priorities {
-    font-size: 22px;
+    font-size: 24px;
     color: var(--primary-color);
     margin-bottom: 30px;
 }

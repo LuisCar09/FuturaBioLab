@@ -37,6 +37,8 @@
    
 }
 
+
+
 .name-lastname-login, .phone-date-login,
 .preferneces-offers-login{
    display: flex;
@@ -53,9 +55,9 @@
     
     
 }
-.label-login {
+.label-login  {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--primary-color);
 }
 
@@ -78,6 +80,7 @@
 .email-login label {
     color: var(--primary-color);
     margin-bottom: 10px;
+    
 }
 
 .email-login input {

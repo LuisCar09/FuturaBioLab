@@ -50,7 +50,7 @@
     padding: 10px 0 8px 45px;
     
     outline: none;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 5px;
     border: none;
     background-color: #f9f9f9;
@@ -115,13 +115,13 @@
 
 .member-username h3{
     color: var(--primary-color);
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
    
 }
 .member-username p {
     color: var(--primary-color);
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 20px;
 }
 
@@ -132,22 +132,25 @@
     color: var(--primary-color);
     margin-bottom: 20px;
    
+   
     
 }
 
 
 .number-follow-member{
     margin-bottom: 6px;
+    font-size: 16px;
 }
 
 .button-members {
     padding: 8px 40px;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--button-color);
     border: 1px solid var(--button-color);
     cursor: pointer;
     background: transparent;
     transition: all .2s linear;
+    text-decoration: none;
 }
 .button-members:hover {
     transform: scale(1.02);
