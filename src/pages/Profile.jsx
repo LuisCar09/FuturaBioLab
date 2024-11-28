@@ -7,29 +7,31 @@ import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import ProfileCard from '../components/utils/ProfileCard';
-
-
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 
 const Profile = () => {
   const { id } = useParams(); 
   const [member, setMember] = useState(null);
   const navigate = useNavigate();
+  const {user} = useContext(UserContext)
+  console.log(user);
+  
 
-
-  useEffect(() => {
-    const  fecthMember = async () => {
-        try {
-            const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}members/${id}`) 
-            console.log(response)
-            setMember(response.data)
+//   useEffect(() => {
+//     const  fecthMember = async () => {
+//         try {
+//             const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}members/${id}`) 
+//             console.log(response)
+//             setMember(response.data)
            
             
-        } catch (error) {
-            console.log({message: error})
-        }
-    }
-    fecthMember()
-},[id])
+//         } catch (error) {
+//             console.log({message: error})
+//         }
+//     }
+//     fecthMember()
+// },[id])
 
 
   const handleButtonClick = () => {
@@ -53,7 +55,7 @@ const Profile = () => {
             <div className='user-info'>
               <img src="https://i.pinimg.com/474x/f9/ef/f5/f9eff5fd8e045349b31d4641253f628f.jpg" alt="Picture" className="profile-picture" />
                 <div className='info-user-follow'>
-                  <h2 className="user-name">Username</h2>
+                  <h2 className="user-name">{user[0].userName}</h2>
                   <div>
                     <p className="user-follows">0 Followers </p>
                     <p className="user-follows">0 Following</p>
