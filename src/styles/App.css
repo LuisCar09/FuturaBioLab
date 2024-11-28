@@ -65,3 +65,9 @@ main{
     text-align: center; 
 	padding: 0 20px;
 }
+html{
+    font-family: "Montserrat", sans-serif;
+    
+    font-weight: n;
+    font-style: normal;
+}
