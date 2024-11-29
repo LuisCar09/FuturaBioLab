@@ -78,8 +78,8 @@ const Profile = () => {
          </div>    
         </div>  
         <div className="navigation-bar-profile">
-            <a href="#" className="nav-profile">Profile</a>
-            <a href="#" className="nav-files">Projects</a>
+            <a href="#" className="nav-profile">Projects</a>
+            <a href="#" className="nav-files">Services</a>
         </div>
         <div className='profile-content'>
               <div className='profile-edit'>

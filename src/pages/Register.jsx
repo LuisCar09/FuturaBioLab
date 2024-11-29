@@ -34,6 +34,7 @@ const Register = () => {
        try {
             
            const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)
+           console.log(userCredential)
            
            
             const user = userCredential.user
