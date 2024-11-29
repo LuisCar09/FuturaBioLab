@@ -4,7 +4,7 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import ProfileCard from '../components/utils/ProfileCard';
 import { useContext } from 'react';
@@ -13,9 +13,14 @@ import { UserContext } from '../contexts/UserContext';
 const Profile = () => {
   const { id } = useParams(); 
   const [member, setMember] = useState(null);
+  const [followers, setFollowers] = useState(0);
+  const [follows, setFollows] = useState(0);
+  const [projects, setProjects] = useState([])
+  const [description,setDescription] = useState('')
   const navigate = useNavigate();
   const {user} = useContext(UserContext)
-  console.log(user);
+  console.log(user)
+  
   
 
 //   useEffect(() => {
@@ -55,15 +60,17 @@ const Profile = () => {
             <div className='user-info'>
               <img src="https://i.pinimg.com/474x/f9/ef/f5/f9eff5fd8e045349b31d4641253f628f.jpg" alt="Picture" className="profile-picture" />
                 <div className='info-user-follow'>
-                  <h2 className="user-name">{user[0].userName}</h2>
-                  <div>
-                    <p className="user-follows">0 Followers </p>
-                    <p className="user-follows">0 Following</p>
+                <h2 className="user-name">{user ? user.userName : 'Hola'}</h2> 
+                  
+                    <div>
+                    <p className="user-follows">Followers: {followers}</p>
+                    <p className="user-follows">follows: {follows}</p>
+                  
                   </div>
                 </div>
             </div>
             <div className='edit-settings-user'>
-             <button className='edit-data'>
+             <button className='edit-data' onClick={handleButtonClick}>
                   Edit data
                 </button>
               <MoreVertIcon className='morevert-icon' />     
@@ -88,17 +95,24 @@ const Profile = () => {
         </div>
         <div className="about-me-container">
               <h3>About Me</h3>
-              <textarea className="about-me-textarea" ></textarea>
+              <textarea className="about-me-textarea" >{description}</textarea>
         </div>
         
               <div className="projects-container-profile">
                <div className="projects-title-profile">
                  <h3>Projects</h3>
 
-                 <a href='#' className="add-project-button">Add Project</a>
+                 <Link to='/projects/${id}' className="add-project-button">Add Project</Link>
                  </div>
                 <div className='projects--profile'>
-                <p>Don't have projects</p>
+                {projects.length > 0 ? (
+              projects.map(project => (
+                <div key={project.id}>{project.name} {project.image} {project.title}
+                {project.views}</div> 
+              ))
+            ) : (
+              <p>Don't have projects</p>
+            )}
                 <button className="uploadproject-profile" onClick={handleButtonUpload}>
                  
                 Upload your project
