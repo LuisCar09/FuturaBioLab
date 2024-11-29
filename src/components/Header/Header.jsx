@@ -11,15 +11,31 @@ const Header = () => {
     const [isVisible, setIsVisible] = useState(false); 
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 480);
+    const token = localStorage.getItem('authToken') 
+
+
 
     const links = [
         { name: 'Projects', path: '/projects', id: crypto.randomUUID() },
         { name: 'About us', path: '/aboutus', id: crypto.randomUUID() },
         { name: 'Contact us', path: '/contactus', id: crypto.randomUUID() },
-        { name: 'Login', path: '/login', id: crypto.randomUUID() },
-        { name: <ShoppingCartIcon />, path: '/mycart', id: crypto.randomUUID() }
+        
+        
+        
     ];
-
+    token ? 
+    links.push(
+    { name: !token ? '' : 'Members', path: !token ? '' : '/members', id: crypto.randomUUID() },
+    { name: !token ? '' : 'Services', path: !token ? '' : '/services', id: crypto.randomUUID() },
+    { name: !token ? '' : 'My profile', path: !token ? '' : '/profile', id: crypto.randomUUID() },
+    { name: !token ? 'Login' : 'Log out', path: !token ? '/login' : '/logout', id: crypto.randomUUID() },
+    { name: <ShoppingCartIcon />, path: '/mycart', id: crypto.randomUUID() }
+    )
+    :
+    links.push(
+        { name: 'Login', path: '/login' , id: crypto.randomUUID() },
+        { name: <ShoppingCartIcon />, path: '/mycart', id: crypto.randomUUID() }
+    )
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
 

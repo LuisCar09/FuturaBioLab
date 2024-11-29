@@ -8,6 +8,11 @@ import NavLinks from './NavLinks';
 
 const NavBar = ({ linkNames, isMenuOpen }) => {
     const [showMenu, setShowMenu] = useState(false);
+    
+
+    
+   
+
     const clickHandler = () => {
         setShowMenu(!showMenu);
     };

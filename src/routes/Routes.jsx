@@ -27,6 +27,7 @@ import Upload from '../pages/Upload'
 import Priorities from '../pages/Priorities'
 import Method from '../pages/Method'
 import ProtectedRoute from '../components/utils/ProtectedRoute'
+import Logout from '../pages/Logout'
 
 
 
@@ -64,6 +65,7 @@ const RoutesApp = () => {
                 
                 <Route path='/projects/:id' element={<ProjectCard />} />
                 <Route path="/members/:id" element={<Profile /> } /> 
+                <Route path='/logout' element={<Logout />} /> 
                                                     
 
             </Routes>
