@@ -10,33 +10,49 @@ import ProfileCard from '../components/utils/ProfileCard';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
+
 const Profile = () => {
   const { id } = useParams(); 
-  const [member, setMember] = useState(null);
-  const [followers, setFollowers] = useState(0);
-  const [follows, setFollows] = useState(0);
+  const [_id,setId]  = useState('')
+  const [userName,setUserName] = useState('')
   const [projects, setProjects] = useState([])
-  const [description,setDescription] = useState('')
+  const [userFollowers,setUserFollowers] = useState('')
+  const [userFollows,setUserFollows] = useState('')
+  const [userDescription, setUserDescription] = useState('')
+  const [userCreatedDate,setUserCreatedDate] = useState('')
   const navigate = useNavigate();
-  const {user} = useContext(UserContext)
-  console.log(user)
-  
+  const uid = localStorage.getItem('uid')
   
 
-//   useEffect(() => {
-//     const  fecthMember = async () => {
-//         try {
-//             const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}members/${id}`) 
-//             console.log(response)
-//             setMember(response.data)
-           
+  
+
+  useEffect(() =>{
+        
+    const fetchUserData = async () =>{
+       try {
+        
+        
+        const userDataResponse = await axios.get(`http://localhost:8080/users/${uid}`,{
+            headers:{Authorization:`Bearer ${localStorage.getItem('authToken')}`}
             
-//         } catch (error) {
-//             console.log({message: error})
-//         }
-//     }
-//     fecthMember()
-// },[id])
+        })
+        const userData = userDataResponse.data
+        
+       
+        setId(userData[0]._id)
+        setUserName(userData[0].userName)
+        setUserDescription(userData[0].description)
+        setUserFollowers(userData[0].followers)
+        setUserFollows(userData[0].follows)
+        setUserCreatedDate(userData[0].createdAt)
+       } catch (error) {
+        console.log(error.message);
+        
+       }
+        
+    }
+    fetchUserData()
+},[])
 
 
   const handleButtonClick = () => {
@@ -60,11 +76,11 @@ const Profile = () => {
             <div className='user-info'>
               <img src="https://i.pinimg.com/474x/f9/ef/f5/f9eff5fd8e045349b31d4641253f628f.jpg" alt="Picture" className="profile-picture" />
                 <div className='info-user-follow'>
-                <h2 className="user-name">{user ? user.userName : 'Hola'}</h2> 
+                <h2 className="user-name">{userName}</h2> 
                   
                     <div>
-                    <p className="user-follows">Followers: {followers}</p>
-                    <p className="user-follows">follows: {follows}</p>
+                    <p className="user-follows">Followers: {userFollowers}</p>
+                    <p className="user-follows">follows: {userFollows}</p>
                   
                   </div>
                 </div>
@@ -90,12 +106,12 @@ const Profile = () => {
                 </button>
               </div>
               <div className='registration-container'>
-                <p>Registration Date: 25 Oct 2024</p>
+                <p>Registration Date: {userCreatedDate.split('T')[0]}</p>
               </div>
         </div>
         <div className="about-me-container">
               <h3>About Me</h3>
-              <textarea className="about-me-textarea" >{description}</textarea>
+              <textarea className="about-me-textarea" value={userDescription} ></textarea>
         </div>
         
               <div className="projects-container-profile">

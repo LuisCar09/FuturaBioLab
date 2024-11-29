@@ -30,7 +30,7 @@ const Login = () => {
 
         
             localStorage.setItem('authToken',token)
-            
+            localStorage.setItem('uid',user.uid)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 
             

@@ -1,7 +1,75 @@
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import '../styles/Setting.css';
 
 
 function SettingsProfile() {
+    const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext)
+    const [_id,setId]  = useState('')
+    const [name,setName] = useState('')
+    const [lastName,setLastName] = useState('')
+    const [userEmail,setUserEmail] = useState('')
+    const [userName,setUserName] = useState('')
+    const [userPhone,setUserPhone] = useState('')
+    const [userDescription, setUserDescription] = useState('')
+    const uid = localStorage.getItem('uid')
+    const authToken = localStorage.getItem('authToken')
+    
+    
+    
+    const updateUser = async (event) => {
+        event.preventDefault()
+        try {
+            const body = {
+                name,
+                lastName,
+                email:userEmail,
+                userName,
+                phone: !userPhone ? '' : userPhone  ,
+                description: !userDescription ? '' : userDescription
+            }
+            await axios.put(`http://localhost:8080/users/${_id}`,body )
+            
+        } catch (error) {
+            console.log(error.message);
+            
+        }
+        
+    }
+
+    useEffect(() =>{
+        
+        const fetchUserData = async () =>{
+           try {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${authToken}`
+            const userDataResponse = await axios.get(`http://localhost:8080/users/${uid}`,{
+                headers:{Authorization:`Bearer ${authToken}`}
+            })
+            const userData = userDataResponse.data
+            setName(userData[0].name)
+            setLastName(userData[0].lastName)
+            setUserName(userData[0].userName)
+            setUserEmail(userData[0].email)
+            setUserPhone(userData[0].phone)
+            setUserDescription(userData[0].description)
+            setId(userData[0]._id)
+           } catch (error) {
+            console.log(error.message);
+            
+           }
+            
+        }
+        fetchUserData()
+    },[])
+
+  
+    
     return (
         <main className='main-settingsprofile'>
             <section className='section-settingsprofile'>
@@ -40,13 +108,19 @@ function SettingsProfile() {
                                 <input
                                     id='input-name'
                                     type='text'
-                                    required />
+                                    value={userName}
+                                    onChange={(e) => setUserName(e.target.value)}
+                                    required
+                                    />
+                                    
                             </div>
                             <div className='name-settingsprofile'>
                                 <label htmlFor='input-nickcname' className='label-settingsprofile'>Email</label>
                                 <input
                                     id='input-nickcname'
                                     type='email'
+                                    value={userEmail}
+                                    onChange={(e) => setUserEmail(e.target.value)}
                                     required />
                             </div>
                         </div>
@@ -59,23 +133,52 @@ function SettingsProfile() {
                             <div className='input--container-settingsprofile'>
                                 <label className='label-settingsprofile'>Name</label>
                                 <div className='input-name-settingsprofile'>
-                                    <input id='input-name' type='text' />
+                                    <input id='input-name' 
+                                    type='text'
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                     
+                                    required
+                                    />
+
                                 </div>
                             </div>
                             <div className='input--container-settingsprofile'>
                                 <label className='label-settingsprofile'>Lastname</label>
                                 <div className='input-name-settingsprofile'>
-                                    <input id='input-lastname' type='text' />
-                                  
+                                    <input id='input-lastname' 
+                                    type='text' 
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    required
+
+                                    />
+
                                 </div>
                             </div>
                         </div>
                         <div className='input--container-settingsprofile'>
                             <label className='label-settingsprofile'>Phone number</label>
                             <div className='input-name-settingsprofile'>
-                                <input id='input-phone' type='text' />
-                                
+                                <input id='input-phone' 
+                                type='text' 
+                                value={userPhone}
+                                onChange={(e) => setUserPhone(e.target.value)}
+                                required  
+                                />
+
+                            </div>
+                        </div>
+                        <div className='input--container-settingsprofile'>
+                            <label className='label-settingsprofile'>Description</label>
+                            <div className='input-name-settingsprofile'>
+                                <input id='input-description' 
+                                type='text' 
+                                value={userDescription}
+                                onChange={(e) => setUserDescription(e.target.value)}
+                                required
+                                />
+
                             </div>
                         </div>
 
@@ -83,7 +186,7 @@ function SettingsProfile() {
                             <button className='cancelbutton-settingsprofile'>
                                 Cancel
                             </button>
-                            <button className='updatebutton-settingsprofile'>
+                            <button className='updatebutton-settingsprofile' onClick={updateUser} type='submit' >
                                 Update information
                             </button>
                         </div>

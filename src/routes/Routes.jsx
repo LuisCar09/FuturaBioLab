@@ -26,7 +26,7 @@ import Guide from '../pages/Guide'
 import Upload from '../pages/Upload'
 import Priorities from '../pages/Priorities'
 import Method from '../pages/Method'
-
+import ProtectedRoute from '../components/utils/ProtectedRoute'
 
 
 
@@ -41,10 +41,10 @@ const RoutesApp = () => {
             <Routes>
                 <Route path='/' element={<Hero />} />
                 <Route path='/thankyou' element={<ThanKYouPage />} />
-                <Route path='/profile' element={<Profile />} />
+                <Route path='/profile' element={<ProtectedRoute> <Profile /> </ProtectedRoute> } />
                 <Route path='/aboutus' element={<AboutUs />} />
                 <Route path='/contactus' element={<ContactUs />} />
-                <Route path='/setting' element={<Setting />} />
+                <Route path='/setting' element={ <ProtectedRoute> <Setting />  </ProtectedRoute> } />
                 <Route path='/reservation' element={<Reservation />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/mycart' element={<MyCart />} />
@@ -63,7 +63,8 @@ const RoutesApp = () => {
                 <Route path='/method' element={<Method />} /> 
                 
                 <Route path='/projects/:id' element={<ProjectCard />} />
-                <Route path="/members/:id" element={<Profile />} />
+                <Route path="/members/:id" element={<Profile /> } /> 
+                                                    
 
             </Routes>
             <Footer />
