@@ -89,3 +89,9 @@
     margin-bottom: 10px;
     border: 1px solid var(--primary-color);
 }
+
+.message-login div {
+color: var(--primary-color);
+font-size: 14px;
+margin-bottom: 14px;
+}

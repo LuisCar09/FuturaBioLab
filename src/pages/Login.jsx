@@ -12,11 +12,13 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
 
+import '../styles/Login.css'
 
 
 const Login = () => {
     const [userEmail,setUserEmail] = useState('')
     const [userPassword,setUserPassword] = useState('')
+    const [message,setMessage]= useState('')
     const {setUser} = useContext(UserContext)
     const navigate = useNavigate()
     const singInUser = async () =>{
@@ -43,7 +45,7 @@ const Login = () => {
 
         } catch (error) {
             console.error(error.message);
-            alert('THE USER DOES NOT EXISTS, GO TO REGISTER OR SOMETHING LIKE THAT') //Un div or algo lo dejo a tu creatividad.
+            setMessage('The user does not exist, please go to Register') //Un div or algo lo dejo a tu creatividad.
             
         }
     }
@@ -78,12 +80,14 @@ const Login = () => {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" placeholder="**********" required autoComplete='true' onChange={(event) => setUserPassword(event.target.value) }  value={userPassword} />
         
-                
+                <div className="message-login">
+                {message && <div id="message" >{message}</div>}
+                </div>
                 <button id="login" className="login" type="button" onClick={singInUser} >Login</button>
                 <button id="back" type="button"  >Back</button>
         
             </form>
-            <div id="message"></div>
+           
         </div>
         </main>
             
