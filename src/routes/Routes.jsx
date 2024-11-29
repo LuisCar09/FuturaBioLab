@@ -23,7 +23,7 @@ import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Calendar from '../pages/Calendar'
 import Guide from '../pages/Guide'
-import Upload from '../pages/Upload'
+import UploadProject from '../pages/UploadProject'
 import Priorities from '../pages/Priorities'
 import Method from '../pages/Method'
 import ProtectedRoute from '../components/utils/ProtectedRoute'
@@ -59,7 +59,7 @@ const RoutesApp = () => {
                 <Route path='/login' element={<Login />} /> 
                 <Route path='/calendar' element={<Calendar />} /> 
                 <Route path='/guide' element={<Guide />} /> 
-                <Route path='/upload' element={<Upload />} /> 
+                <Route path='/projects/new' element={<UploadProject />} /> 
                 <Route path='/priorities' element={<Priorities />} /> 
                 <Route path='/method' element={<Method />} /> 
                 

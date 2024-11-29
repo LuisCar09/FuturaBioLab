@@ -60,7 +60,7 @@ const Profile = () => {
   }
 
   const handleButtonUpload = () => {
-    navigate('/projects/:id');
+    navigate('/projects/new');
   }
 
   return (
@@ -118,7 +118,7 @@ const Profile = () => {
                <div className="projects-title-profile">
                  <h3>Projects</h3>
 
-                 <Link to='/projects/${id}' className="add-project-button">Add Project</Link>
+                 <Link to='/projects/new' className="add-project-button">Add Project</Link>
                  </div>
                 <div className='projects--profile'>
                 {projects.length > 0 ? (
