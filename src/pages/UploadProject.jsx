@@ -1,51 +1,74 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Select } from '@mui/material';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import '../styles/ProjectCard.css';
+import '../styles/UploadProject.css';
 
 const UploadProject = () => {
     const [hideElements, setHideElements] = useState(false);
+    const [properties,setProperties] = useState([])
+    const [tools,setTools] = useState([])
+    const [application, setApplication] = useState([])
+    const [processes, setProcesses] = useState([])
     const { id } = useParams();
-   /* const [propertiesOptions, setPropertiesOptions] = useState([]);
-    const [toolsOptions, setToolsOptions] = useState([]);
-    const [applicationOptions, setApplicationOptions] = useState([])
-    const [licenseOptions, setLicenseOptions] =useState([])
-    const [lightsconditionsOptions,setLightsconditionsOptions] = useState([])
-    const [processesOptions, setProcessesOptions] = useState([])
 
-    useEffect(() => {
-        const fetchOptions = async () => {
-            try {
+    const addInputsFunctions = {
+        addProperties :  (event) => {
+            setProperties(prev => {
+                if (!prev.includes(event.target.value)) {
+                    return [...prev,event.target.value]    
+                }
+                return(prev)
                 
-                const propertiesResponse = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}properties`);
-                console.log(import.meta.env.VITE_URL_API_FUTURA_BIOLAB)
-                console.log(propertiesResponse)
-                const toolsResponse = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}tools`);
-                const apllicationResponse = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}application`);
-                const licenseResponse = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}license`);
-                const lightsconditionsResponse = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}lightsconditions`);
-                const processesResponse = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}processes`);
-
-                setPropertiesOptions(propertiesResponse.data)
-                setToolsOptions(toolsResponse.data)
-                setApplicationOptions(apllicationResponse.data)
-                setLicenseOptions(licenseResponse.data)
-                setLightsconditionsOptions(lightsconditionsResponse.data)
-                setProcessesOptions(processesResponse.data)
-               
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-      
-
-        fetchOptions();
-    }, []);
+            })
+        },addTools :  (event) => {
+            setTools(prev => {
+                if (!prev.includes(event.target.value)) {
+                    return [...prev,event.target.value]    
+                }
+                return(prev)
+                
+            })
+        },
+        addApplication :  (event) => {
+            setApplication(prev => {
+                if (!prev.includes(event.target.value)) {
+                    return [...prev,event.target.value]    
+                }
+                return(prev)
+                
+            })
+        },
+        addProcesses :  (event) => {
+            setProcesses(prev => {
+                if (!prev.includes(event.target.value)) {
+                    return [...prev,event.target.value]    
+                }
+                return(prev)
+                
+            })
+        }
+    }
+    const addValues = (propert,event) => {
+        return  addInputsFunctions[propert] ?  addInputsFunctions[propert](event) : null
+    }
+  
     
-*/
+    const removeItemProperties = (event) => {
+        const itemToDelete = event.target.textContent
+        console.log(itemToDelete);
+        setProperties(prev => {
+            if (prev.includes(itemToDelete)) {
+                return prev.filter(item => item !== itemToDelete)
+            }
+        })
+        
+    } 
+
 
 const licenseOptions = [
     'CreativeCommons:Attribution-NoDerivates4.0Internacional(CCBY-ND4.0)',
@@ -103,13 +126,13 @@ const processesOptions = [
                             <input type="text" placeholder="Enter Recipe Title" required />
                         </div>
                     </div>
-                    <div className="project-container--article--squarePicture">
+                    <div className="project-container--article--squarePicture project-container-article-upload">
                         <div className='image-container-projectcard'>
                             <img src='#' alt='Recipe photo' />
                         </div>
                     </div>
                     <div className="project-container--article-button">
-                        <div className='author-container-projectcard'>
+                        <div className='author-container-projectcard author-container-projectuploadcard'>
                             <h2>Author</h2>
                             
                             <select required>
@@ -134,27 +157,37 @@ const processesOptions = [
                         </div>
                         <div className='aside-info-projectcard'>
                             <h2>Properties</h2>
-                            <select required>
+                            <select required onChange={(event) => addValues('addProperties',event) }  >
                                 {propertiesOptions.map(property => (
-                                    <option key={property} value={property}>{property}</option>
+                                    <option  key={property} value={property}>{property}</option>
                                 ))}
                             </select>
+
+                            <div className='properties-values' >
+                                {properties.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
+                            </div>
                         </div>
                         <div className='aside-info-projectcard'>
                             <h2>Tools</h2>
-                            <select required>
+                            <select onChange={(event) => addValues('addTools',event) } required >
                                 {toolsOptions.map(tool => (
                                     <option key={tool} value={tool}>{tool}</option>
                                 ))}
                             </select>
+                            <div className='properties-values' >
+                                {tools.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
+                            </div>
                         </div>
                         <div className='aside-info-projectcard'>
                             <h2>Application</h2>
-                            <select required>
+                            <select onChange={(event) => addValues('addApplication',event) } required>
                                 {applicationOptions.map(application => (
                                     <option key={application} value={application}>{application}</option>
                                 ))}
                             </select>
+                            <div className='properties-values' >
+                                {application.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
+                            </div>
                         </div>
                         <div className='aside-info-projectcard'>
                             <h2>Prep Time</h2>
@@ -162,11 +195,14 @@ const processesOptions = [
                         </div>
                         <div className='aside-info-projectcard'>
                             <h2>Processes</h2>
-                            <select required>
+                            <select onChange={(event) => addValues('addProcesses',event) }  required>
                                 {processesOptions.map(process => (
                                     <option key={process} value={process}>{process}</option>
                                 ))}
                             </select>
+                            <div className='properties-values' >
+                                {processes.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
+                            </div>
                         </div>
                         <div className='aside-info-projectcard'>
                             <h2>Ambient Conditions</h2>
@@ -184,6 +220,7 @@ const processesOptions = [
                     <div className='moreinfo-projectcard'>
                         <AddCircleOutlineIcon onClick={() => setHideElements(true)} />
                     </div>
+                    
                 </aside>
 
                 {hideElements && (

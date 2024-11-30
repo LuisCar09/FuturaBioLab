@@ -197,7 +197,7 @@
     transition: all 1s linear;
 }
 .moveLeft{
-    transform: translateX(-376px)
+    transform: translateX(-480px)
 }
 .moveRight{
     transform: translateX(490px)
@@ -243,3 +243,19 @@
    
 }
 
+/* UploadProject */
+
+.properties-values{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+
+}
+
+.properties-value-span{
+    padding: 4px;
+    border: 1px solid green;
+    border-radius: 4px;
+    cursor: pointer;
+}
