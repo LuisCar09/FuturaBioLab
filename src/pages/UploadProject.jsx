@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import '../styles/ProjectCard.css';
+//import '../styles/ProjectCard.css';
 import '../styles/UploadProject.css';
 
 const UploadProject = () => {
@@ -14,6 +14,7 @@ const UploadProject = () => {
     const [tools,setTools] = useState([])
     const [application, setApplication] = useState([])
     const [processes, setProcesses] = useState([])
+    const [lightConditions, setLightConditions] = useState([])
     const { id } = useParams();
 
     const addInputsFunctions = {
@@ -68,7 +69,38 @@ const UploadProject = () => {
         })
         
     } 
+    const removeItemTools = (event) => {
+        const itemToDelete = event.target.textContent
+        console.log(itemToDelete);
+        setTools(prev => {
+            if (prev.includes(itemToDelete)) {
+                return prev.filter(item => item !== itemToDelete)
+            }
+        })
+        
+    } 
+    const removeApplication = (event) => {
+        const itemToDelete = event.target.textContent
+        console.log(itemToDelete);
+        setApplication(prev => {
+            if (prev.includes(itemToDelete)) {
+                return prev.filter(item => item !== itemToDelete)
+            }
+        })
+        
+    } 
+    const removeProccesses = (event) => {
+        const itemToDelete = event.target.textContent
+        console.log(itemToDelete);
+        setProcesses(prev => {
+            if (prev.includes(itemToDelete)) {
+                return prev.filter(item => item !== itemToDelete)
+            }
+        })
+        
+    }
 
+  
 
 const licenseOptions = [
     'CreativeCommons:Attribution-NoDerivates4.0Internacional(CCBY-ND4.0)',
@@ -117,22 +149,22 @@ const processesOptions = [
 ];
 
     return (
-        <main className="project-container">
-            <section className={!hideElements ? "project-container--section" : "project-container--section hidden"}>
-                <article className={!hideElements ? "project-container--article" : "project-container--aside-container moveLeft"}>
-                    <div className="project-container--article-top">
+        <main className="uploadproject-main">
+            <section className={!hideElements ? "uploadproject-container--section" : "uploadproject-container--section hidden"}>
+                <article className={!hideElements ? "uploadproject-container--article" : "uploadproject-container--aside-container moveLeft"}>
+                    <div className="uploadproject-container--article-top">
                         <div>
                             
                             <input type="text" placeholder="Enter Recipe Title" required />
                         </div>
                     </div>
-                    <div className="project-container--article--squarePicture project-container-article-upload">
+                    <div className="uploadproject-container--article--squarePicture project-container-article-upload">
                         <div className='image-container-projectcard'>
                             <img src='#' alt='Recipe photo' />
                         </div>
                     </div>
-                    <div className="project-container--article-button">
-                        <div className='author-container-projectcard author-container-projectuploadcard'>
+                    <div className="uploadproject-container--article-button">
+                        <div className='author-container-projectupload'>
                             <h2>Author</h2>
                             
                             <select required>
@@ -145,17 +177,17 @@ const processesOptions = [
                     
                         </div>
                 </article>
-                <aside className={!hideElements ? "project-container--aside-container" : "project-container--aside-container moveRight"}>
-                    <div className='containerinfo-projectcard'>
-                        <div className='aside-info-projectcard'>
+                <aside className={!hideElements ? "uploadproject-container--aside-container" : "uploadproject-container--aside-container moveRight"}>
+                    <div className='containerinfo-uploadproject'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Description</h2>
                             <textarea  required></textarea>
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Ingredients</h2>
                             <textarea  required></textarea>
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Properties</h2>
                             <select required onChange={(event) => addValues('addProperties',event) }  >
                                 {propertiesOptions.map(property => (
@@ -167,7 +199,7 @@ const processesOptions = [
                                 {properties.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
                             </div>
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Tools</h2>
                             <select onChange={(event) => addValues('addTools',event) } required >
                                 {toolsOptions.map(tool => (
@@ -175,10 +207,10 @@ const processesOptions = [
                                 ))}
                             </select>
                             <div className='properties-values' >
-                                {tools.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
+                                {tools.map(tool => <span key={crypto.randomUUID()} onClick={removeItemTools} className='properties-value-span' >{tool}</span>)}
                             </div>
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Application</h2>
                             <select onChange={(event) => addValues('addApplication',event) } required>
                                 {applicationOptions.map(application => (
@@ -186,14 +218,14 @@ const processesOptions = [
                                 ))}
                             </select>
                             <div className='properties-values' >
-                                {application.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
+                                {application.map(prop => <span key={crypto.randomUUID()} onClick={removeApplication} className='properties-value-span' >{prop}</span>)}
                             </div>
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Prep Time</h2>
                             <input type="text" placeholder="Enter Prep Time" required />
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Processes</h2>
                             <select onChange={(event) => addValues('addProcesses',event) }  required>
                                 {processesOptions.map(process => (
@@ -201,14 +233,14 @@ const processesOptions = [
                                 ))}
                             </select>
                             <div className='properties-values' >
-                                {processes.map(prop => <span key={crypto.randomUUID()} onClick={removeItemProperties} className='properties-value-span' >{prop}</span>)}
+                                {processes.map(prop => <span key={crypto.randomUUID()} onClick={removeProccesses} className='properties-value-span' >{prop}</span>)}
                             </div>
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Ambient Conditions</h2>
                             <textarea  required></textarea>
                         </div>
-                        <div className='aside-info-projectcard'>
+                        <div className='aside-info-uploadproject'>
                             <h2>Light Conditions</h2>
                             <select required>
                                 {lightsconditionsOptions.map(lightCondition => (
@@ -225,15 +257,15 @@ const processesOptions = [
 
                 {hideElements && (
                     <aside className='asidecontainer-info-method showAsideInforMethod'>
-                        <div className='methodcontainer-method'>
+                        <div className='methodcontainer-uploadproject'>
                             <h2>Method</h2>
                             <textarea placeholder="Describe Method" required></textarea>
                         </div>
-                        <div className='aside-info-method'>
+                        <div className='info-method-upload'>
                             <h2>References</h2>
                             <input type='text' placeholder="Enter References" required />
                         </div>
-                        <div className='aside-info-method'>
+                        <div className='info-method-upload'>
                             <h2>Bibliography</h2>
                             <input type='text' placeholder="Enter Bibliography" required />
                         </div>
