@@ -165,6 +165,40 @@
     overflow: hidden ;
 }
 
+/*.animationTop {
+   
+    overflow: hidden; 
+    position: relative; 
+}
+
+.animation-sectionTop {
+    display: flex;
+    white-space: nowrap; 
+    animation: scroll_left 20s linear infinite; 
+}
+
+.animation-sectionTop span {
+    color: black;
+    padding: 6px 22px;
+    background: #0e0e11;
+    border: 1px solid #323232;
+    border-radius: 50px;
+    display: grid;
+    place-items: center;
+    transition: all 0.3s;
+}
+
+@keyframes scroll_left {
+    0% {
+        transform: translateX(100%); 
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+*/
+
+
 
 
 /*responsive sectionTop*/

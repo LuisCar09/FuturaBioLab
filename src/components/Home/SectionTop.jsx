@@ -1,5 +1,5 @@
 // src/SectionTop.js
-import React, { useState } from 'react';
+import React, { useState , useEffect, useRef} from 'react';
 
 
 const SectionTop = () => {
@@ -8,9 +8,36 @@ const SectionTop = () => {
     const title = 'Explore with us';
     const description = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate laboriosam voluptas quaerat deleniti harum quis, explicabo molestiae fuga quia atque ipsam ea officia beatae recusandae et voluptatum quisquam eligendi aut.';
     const buttonLink = '/projects';
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            const clone = sectionRef.current.cloneNode(true);
+            clone.id = 'duplicate';
+            document.body.appendChild(clone);
+        }
+    }, []);
+
 
     return (
+        
         <div className='sectionTop-div'>
+           {/* <div className='animationTop'>
+            <div className='animation-sectionTop'>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               <span>FUTURABIOLAB</span>
+               </div>   
+             </div> */}
             <img 
                 className={`sectionTop-backgroundImage ${isHovered ? 'blur' : ''}`} 
                 src={imageUrl} 
