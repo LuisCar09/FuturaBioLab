@@ -8,6 +8,8 @@ const News = () => {
         'https://i.pinimg.com/564x/fe/97/52/fe97522ba1b3b782c33320349ef4a2ab.jpg',
     ];
 
+    
+
     return (
         <div className="section-newsSection">
             <h2>News</h2>

@@ -25,37 +25,48 @@
 }
 
 
-
-
-.menu-display{
+.menu-display {
     position: absolute;
     width: 200px;
     height: 100vh;
     background-color: wheat;
     top: 0;
     right: 0;
-    z-index: 100;
+   
     padding: 10px 0;
-    display: flex;
-    
+    transition: opacity 1s ease, transform 1s ease;
+    opacity: 0; 
+    transform: translateX(100%);
+}
+
+.menu-display.visible {
+    opacity: 1; 
+    transform: translateX(0);
+}
+
+.menu-display.hidden {
+    opacity: 0; 
+    transform: translateX(100%);
 }
 
 .menu-display ul {
     display: flex;
     flex-direction: column;
+    
 }
 
 .menu-display ul  li {
   margin: 10px 0;
- 
+
   
 }
 
 .menu-display ul li a {
     text-decoration: none;
-    color: #333; 
+    color:var(--primary-color);
     padding: 8px 16px; 
     display: block; 
+   
 }
 
 .close-container{
