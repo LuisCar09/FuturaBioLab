@@ -4,6 +4,7 @@ import '../../styles/Hero.css';
 import SectionTop from './SectionTop';
 import GrowSection from './GrowSection';
 import ProjectsSection from './ProjectsSection.jsx';
+import NewsSection from './NewsSection.jsx'
 
 
 const Hero = () => {
@@ -18,6 +19,9 @@ const Hero = () => {
             </section>
             <section className='projectsSection'>
                 <ProjectsSection />
+            </section>
+            <section className='newsSection'>
+                <NewsSection />
             </section>
         </main>
     );

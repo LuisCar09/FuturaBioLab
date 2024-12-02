@@ -22,20 +22,11 @@ const SectionTop = () => {
     return (
         
         <div className='sectionTop-div'>
-           {/* <div className='animationTop'>
+         {/*  <div className='animationTop'>
             <div className='animation-sectionTop'>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
-               <span>FUTURABIOLAB</span>
+          {Array.from(Array(10)).map((_, i) => (
+                       <span key={i}>FUTURABIOLAB</span>
+                   ))}
                </div>   
              </div> */}
             <img 
