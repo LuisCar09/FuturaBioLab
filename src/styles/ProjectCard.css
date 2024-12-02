@@ -4,6 +4,8 @@
     min-height: calc(100vh - 331px);
 }
 .project-container--section{
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
     height:unset;
     max-width: 900px;
@@ -106,16 +108,23 @@
     
 }
 
-.author-container-projectcard h2 {
+.author-link-projectcard {
     font-size: 16px;
     color: var(--secundary-color);
     margin-bottom: 10px;
+    text-decoration: none;
+    word-break: break-all;
 }
 .author-container-projectcard p {
+    
     font-size: 16px;
     color: var(--secundary-color);
     margin-bottom: 12px;
-    width: 50%;
+    max-width: 180px;
+    word-break: break-all;
+   
+    
+   
 }
 
 .author-container-projectcard p a {
@@ -135,6 +144,7 @@
 .aside-info-projectcard p {
    word-break: break-all;
    text-align: start;
+   margin-bottom: 12px;
 }
 .aside-info-projectcard textarea {
     width: 400px;
@@ -176,20 +186,15 @@
     color: var(--primary-color);
     margin-bottom: 20px;
 }
-.methodcontainer-method textarea{
-   width: 100%;
-   border: 1px solid var(--primary-color);
-   resize: none;
-   margin-bottom: 40px;
-   height: 200px;
-    
 
-}
 
 .methodcontainer-method h2 {
     font-size: 20px;
 }
-
+.methodcontainer-method p, .aside-info-method p {
+    color: var(--primary-color);
+    font-size: 16px;
+}
 
 .showAsideInforMethod{
     position: absolute;
@@ -245,6 +250,8 @@
     cursor: pointer;
    
 }
+
+
 
 /* UploadProject */
 
