@@ -30,12 +30,12 @@ const Card = ({id,username,date,title,descriptionProject,projectImg,projectViews
                                 
                             </div>
                         </div>
-                        <MoreVertIcon className='moreverticon-projects' />
+                        
                     </div>
                 </div>
                 <div className='nameproject-projects'>
                     <h2>{title}</h2>
-                    <p>{descriptionProject}.</p>
+                   {/* <p>{descriptionProject}.</p> */}
                 </div>
                 <div className='visualizations-projects'>
                     <p>Views: {projectViews.length < 1 ? '0' : projectViews }</p>

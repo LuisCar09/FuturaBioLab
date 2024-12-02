@@ -57,7 +57,10 @@
 .author-container-projectupload{
     display: flex;
     flex-direction: column;
+   
 }
+
+
 
 .author-container-projectupload h2{
     font-size: 16px;
@@ -98,6 +101,8 @@
     width: 100%;
     height: 180px;
     border-radius: 4px;
+    color: var(--primary-color);
+    font-size: 16px;
 }
 
 .aside-info-uploadproject select {
@@ -107,6 +112,8 @@
     font-size: 16px;
     border-radius: 4px;
 }
+
+
 
 .properties-values{
     display: flex;
@@ -158,6 +165,8 @@
     resize: none;
     margin-bottom: 40px;
     height: 200px;
+    color:var(--primary-color);
+    font-size: 16px;
 }
 
 .info-method-upload {
@@ -173,9 +182,45 @@
     margin-bottom: 20px;
 }
 
-.info-method-upload input, .aside-info-uploadproject input,
-.uploadproject-container--article-top input {
+.info-method-upload input, .author-container-projectupload input,
+.author-container-projectupload select{
     border: 1px solid var(--primary-color);
+    font-size: 16px;
+    color:var(--secundary-color);
     width: 100%;
-    height: 24px;
+    height: 32px;
+    padding: 8px 2px;
+    border-radius: 6px;
+}
+.author-container-projectupload input{
+    margin-bottom: 12px;
+}
+
+.author-container-projectupload select{
+    height: 34px;
+    width: 50%;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.info-method-upload input, .aside-info-uploadproject input {
+    border: 1px solid var(--primary-color);
+    font-size: 16px;
+    color:var(--primary-color);
+    width: 100%;
+    height: 32px;
+    padding: 8px 2px;
+    border-radius: 6px;
+}
+
+.button-container-upload {
+    width: 100%;
+    text-align: end;
+}
+
+.button-container-upload .button-uploadproject {
+    background-color: var(--button-color);
+    color: white;
+    font-size: 16px;
+   text-align: end;
+   cursor: pointer;
 }

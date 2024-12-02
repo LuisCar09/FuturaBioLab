@@ -51,7 +51,7 @@ const ProjectCard = () => {
                     </div>
                     <div className="project-container--article-button">
                         <div className='author-container-projectcard'>
-                            <h2>Author</h2>
+                           
                             <p><Link to='/members/${id}'>{projects.owner}</Link></p>
                             <p>{projects.license}</p>
                         </div>

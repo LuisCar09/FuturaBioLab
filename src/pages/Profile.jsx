@@ -59,9 +59,6 @@ const Profile = () => {
     navigate('/setting');
   }
 
-  const handleButtonUpload = () => {
-    navigate('/projects/new');
-  }
 
   return (
 
@@ -111,7 +108,7 @@ const Profile = () => {
         </div>
         <div className="about-me-container">
               <h3>About Me</h3>
-              <textarea className="about-me-textarea" value={userDescription} ></textarea>
+              <div className="about-me-profile" value={userDescription} ></div>
         </div>
         
               <div className="projects-container-profile">
@@ -129,11 +126,6 @@ const Profile = () => {
             ) : (
               <p>Don't have projects</p>
             )}
-                <button className="uploadproject-profile" onClick={handleButtonUpload}>
-                 
-                Upload your project
-                </button>
-               
                 </div>
               </div>
       </section>

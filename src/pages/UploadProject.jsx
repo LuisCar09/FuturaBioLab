@@ -202,7 +202,7 @@ const processesOptions = [
             <section className={!hideElements ? "uploadproject-container--section" : "uploadproject-container--section hidden"}>
                 <article className={!hideElements ? "uploadproject-container--article" : "uploadproject-container--aside-container moveLeft"}>
                     <div className="uploadproject-container--article-top">
-                        <div>
+                        <div className='author-container-projectupload'>
                             
                             <input type="text" placeholder="Enter Recipe Title" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} required />
                         </div>
@@ -214,7 +214,6 @@ const processesOptions = [
                     </div>
                     <div className="uploadproject-container--article-button">
                         <div className='author-container-projectupload'>
-                            <h2>Author</h2>
                             <input placeholder='Type author name' value={author}  onChange={(e) => setAuthor(e.target.value) } required />
                             <select  onChange={(e) => setLicense(e.target.value)} required>
                                 {licenseOptions.map(license => (
@@ -325,7 +324,10 @@ const processesOptions = [
                         <div className='moreinfo-projectcard'>
                             <RemoveCircleOutlineIcon onClick={() => setHideElements(prev => !prev)} />
                         </div>
-                        <button onClick={createProject} type='button' >Create</button>
+                        <div className='button-container-upload'>
+
+                           <button onClick={createProject} type='button' className='button-uploadproject'>Create</button>
+                        </div>
                     </aside>
                 )}
             </section>

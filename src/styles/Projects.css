@@ -2,14 +2,17 @@
     min-height: calc(100vh - 331px);
     display: flex;
     justify-content: center;
+   
 }
 
 .section-projects {
-    width: 900px;
-    
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+    max-width: 900px;
+    width: 100%;
+    height: 100%;
+  
 }
 .container-projects {
     max-height: 340px;
@@ -17,6 +20,7 @@
     display: flex; 
    align-items: stretch;
    border:1px solid var(--secundary-color);
+  
    
 }
 
@@ -84,6 +88,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
 }
 
 .username-container {
@@ -98,6 +103,8 @@
 }
 .username-container p{
     margin-top: 4px;
+    font-size: 14px;
+    text-align: start;
 }
 .moreverticon-projects {
     color: var(--primary-color);
@@ -116,14 +123,15 @@
 .nameproject-projects{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-end;
+   text-align: start;
     height: 100%;
     width: 100%;
     border-bottom: 1px solid var(--primary-color);
 }
 .nameproject-projects h2 {
     margin: 20px 0;
-    font-size: 24px;
+    font-size: 18px;
     text-align: left;
     color: var(--primary-color);
 }
@@ -138,19 +146,20 @@
 .visualizations-projects {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     margin-top: 6px;
 
 }
 
 .visualizations-projects p {
     color: var(--primary-color);
-    font-size: 16px;
+    font-size: 14px;
     
 }
 .visualizations-projects svg{
     cursor: pointer;
     transition: all .1s linear;
+    
 }
 .visualizations-projects svg:hover{
     cursor: pointer;
