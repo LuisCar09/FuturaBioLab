@@ -31,7 +31,8 @@ const ProjectCard = () => {
         }
         fecthProject()
     }, [])
-
+    console.log(projects);
+    
     return (
 
         <main className="project-container">

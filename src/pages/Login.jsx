@@ -16,6 +16,7 @@ import '../styles/Login.css'
 
 
 const Login = () => {
+    localStorage.clear()
     const [userEmail,setUserEmail] = useState('')
     const [userPassword,setUserPassword] = useState('')
     const [message,setMessage]= useState('')
@@ -37,6 +38,7 @@ const Login = () => {
             const response = await axios.get('http://localhost:8080/users/' + user.uid, {
                 headers:{Authorization: `Bearer ${token}`},
             } )
+            
             
             setUser(response.data)
             
