@@ -165,13 +165,13 @@
     color: var(--primary-color);
 }
 .asidecontainer-info-method{
-    
+    height: 100%;
     position: absolute;
     left: 0;
     transform: translateY(-830px);
     visibility: hidden;
     transition: all .7s linear;
-    padding: 0 20px;
+    padding: 20px 20px;
 }
 
 .aside-info-method {
@@ -239,9 +239,11 @@
 .moreinfo-projectcard {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
     width: 100%;
     padding: 0 40px;
     margin-bottom: 20px;
+    flex: 1;
 }
 
 .moreinfo-projectcard svg{

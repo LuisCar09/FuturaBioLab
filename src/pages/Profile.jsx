@@ -20,6 +20,7 @@ const Profile = () => {
   const [userFollows,setUserFollows] = useState('')
   const [userDescription, setUserDescription] = useState('')
   const [userCreatedDate,setUserCreatedDate] = useState('')
+  const [isServiceCliked, setIsServiceCliked] = useState(false)
   const navigate = useNavigate();
   const uid = localStorage.getItem('uid')
   
@@ -89,12 +90,16 @@ const Profile = () => {
               <MoreVertIcon className='morevert-icon' />     
             </div>
          </div>    
-        </div>  
+        </div> 
         <div className="navigation-bar-profile">
-            <a href="#" className="nav-profile">Projects</a>
-            <a href="#" className="nav-files">Services</a>
-        </div>
-        <div className='profile-content'>
+            
+            <a  className="nav-files" onClick={()=> setIsServiceCliked(prev => !prev)} > {!isServiceCliked ? 'Services' : 'Projects'} </a>
+        </div> 
+        <article className='article-profile-container'>
+        
+        {!isServiceCliked ? (
+         <>
+         <div className='profile-content'>
               <div className='profile-edit'>
                 <h3>Profile</h3>
                 <button className="edit-profile-button" onClick={handleButtonClick}>
@@ -110,8 +115,7 @@ const Profile = () => {
               <h3>About Me</h3>
               <div className="about-me-profile" value={userDescription} ></div>
         </div>
-        
-              <div className="projects-container-profile">
+        <div className="projects-container-profile">
                <div className="projects-title-profile">
                  <h3>Projects</h3>
 
@@ -127,7 +131,15 @@ const Profile = () => {
               <p>Don't have projects</p>
             )}
                 </div>
-              </div>
+        </div>
+         </> 
+        ): <div className='service-article-container'>
+          <h2>AQUI VAS HACER TU MAGIA BARBARA DEL VALLE</h2>
+        </div>
+        }
+        </article>
+        
+              
       </section>
       
     </main>

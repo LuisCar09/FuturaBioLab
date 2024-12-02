@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Select } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
@@ -57,7 +56,7 @@ const UploadProject = () => {
                 headers:{Authorization : `Bearer ${token}`}
             })
             console.log(projectResponse);
-            
+            useNavigate('/profile')
             
         } catch (error) {
             console.error(error.message);
