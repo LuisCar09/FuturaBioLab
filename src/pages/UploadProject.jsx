@@ -15,8 +15,57 @@ const UploadProject = () => {
     const [application, setApplication] = useState([])
     const [processes, setProcesses] = useState([])
     const [lightConditions, setLightConditions] = useState([])
-    const { id } = useParams();
+    const [ambientConditionts,setAmbientConditionts] = useState('')
+    const [projectTitle,setProjectTitle] = useState('')
+    const [author,setAuthor] = useState('')
+    const [description,setDescription] = useState('')
+    const [ingredients,setIngredients] = useState('')
+    const [method,setMethod] = useState('')
+    const [references, setReferences] = useState('')
+    const [bibliography, setBibliography] = useState('')
+    const [images,setImages] = useState('')
+    const [license,setLicense] = useState('')
+    const [prepTime, setPrepTime] = useState('')
+    const token = localStorage.getItem('authToken')
+    
+    console.log();
 
+    const createProject = async () => {
+        try {
+            const body = {
+                nameproject: projectTitle,
+                owner :author,
+                description,
+                license,
+                references,
+                bibliography,
+                application,
+                ingredients,
+                properties,
+                ambientconditions: ambientConditionts,
+                lightsconditions: lightConditions,
+                tools,
+                processes,
+                preptime: prepTime,
+                image: images,
+                uid :localStorage.getItem('uid'),
+                method,
+            }
+            console.log(body);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+            const projectResponse = await axios.post('http://localhost:8080/projects/new',body,{
+                headers:{Authorization : `Bearer ${token}`}
+            })
+            console.log(projectResponse);
+            
+            
+        } catch (error) {
+            console.error(error.message);
+            
+        }
+    }
+    
+    
     const addInputsFunctions = {
         addProperties :  (event) => {
             setProperties(prev => {
@@ -155,7 +204,7 @@ const processesOptions = [
                     <div className="uploadproject-container--article-top">
                         <div>
                             
-                            <input type="text" placeholder="Enter Recipe Title" required />
+                            <input type="text" placeholder="Enter Recipe Title" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} required />
                         </div>
                     </div>
                     <div className="uploadproject-container--article--squarePicture project-container-article-upload">
@@ -166,8 +215,8 @@ const processesOptions = [
                     <div className="uploadproject-container--article-button">
                         <div className='author-container-projectupload'>
                             <h2>Author</h2>
-                            
-                            <select required>
+                            <input placeholder='Type author name' value={author}  onChange={(e) => setAuthor(e.target.value) } required />
+                            <select  onChange={(e) => setLicense(e.target.value)} required>
                                 {licenseOptions.map(license => (
                                     <option key={license} value={license}>{license}</option>
                                 ))}
@@ -181,11 +230,11 @@ const processesOptions = [
                     <div className='containerinfo-uploadproject'>
                         <div className='aside-info-uploadproject'>
                             <h2>Description</h2>
-                            <textarea  required></textarea>
+                            <textarea  value={description} onChange={(e) => setDescription(e.target.value) } required></textarea>
                         </div>
                         <div className='aside-info-uploadproject'>
                             <h2>Ingredients</h2>
-                            <textarea  required></textarea>
+                            <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)}  required></textarea>
                         </div>
                         <div className='aside-info-uploadproject'>
                             <h2>Properties</h2>
@@ -223,7 +272,7 @@ const processesOptions = [
                         </div>
                         <div className='aside-info-uploadproject'>
                             <h2>Prep Time</h2>
-                            <input type="text" placeholder="Enter Prep Time" required />
+                            <input onChange={(e) => setPrepTime(e.target.value)} type="text" placeholder="Enter Prep Time" required />
                         </div>
                         <div className='aside-info-uploadproject'>
                             <h2>Processes</h2>
@@ -238,11 +287,11 @@ const processesOptions = [
                         </div>
                         <div className='aside-info-uploadproject'>
                             <h2>Ambient Conditions</h2>
-                            <textarea  required></textarea>
+                            <textarea value={ambientConditionts} onChange={(e) => setAmbientConditionts(e.target.value)}  required></textarea>
                         </div>
                         <div className='aside-info-uploadproject'>
                             <h2>Light Conditions</h2>
-                            <select required>
+                            <select value={lightConditions} onChange={(e) => setLightConditions(e.target.value)} required>
                                 {lightsconditionsOptions.map(lightCondition => (
                                     <option key={lightCondition} value={lightCondition}>{lightCondition}</option>
                                 ))}
@@ -250,7 +299,7 @@ const processesOptions = [
                         </div>
                     </div>
                     <div className='moreinfo-projectcard'>
-                        <AddCircleOutlineIcon onClick={() => setHideElements(true)} />
+                        <AddCircleOutlineIcon onClick={() => setHideElements(prev => !prev)} />
                     </div>
                     
                 </aside>
@@ -259,20 +308,24 @@ const processesOptions = [
                     <aside className='asidecontainer-info-method showAsideInforMethod'>
                         <div className='methodcontainer-uploadproject'>
                             <h2>Method</h2>
-                            <textarea placeholder="Describe Method" required></textarea>
+                            <textarea value={method} onChange={(e) => setMethod(e.target.value)} placeholder="Describe Method" required></textarea>
                         </div>
                         <div className='info-method-upload'>
                             <h2>References</h2>
-                            <input type='text' placeholder="Enter References" required />
+                            <input type='text' placeholder="Enter References" value={references} onChange={(e) => setReferences(e.target.value)} required />
                         </div>
                         <div className='info-method-upload'>
                             <h2>Bibliography</h2>
-                            <input type='text' placeholder="Enter Bibliography" required />
+                            <input type='text' placeholder="Enter Bibliography" value={bibliography} onChange={(e) => setBibliography(e.target.value)} required />
                         </div>
-                       
+                        <div className='info-method-upload'>
+                            <h2>Images</h2>
+                            <input type='text' placeholder="Example: image1.jpg,image2.png,image3.webp, separated by comma." value={images} onChange={(e) => setImages(e.target.value.split(','))} required />
+                        </div>
                         <div className='moreinfo-projectcard'>
-                            <RemoveCircleOutlineIcon onClick={() => setHideElements(false)} />
+                            <RemoveCircleOutlineIcon onClick={() => setHideElements(prev => !prev)} />
                         </div>
+                        <button onClick={createProject} type='button' >Create</button>
                     </aside>
                 )}
             </section>
