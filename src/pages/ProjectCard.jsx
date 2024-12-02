@@ -10,7 +10,7 @@ import '../styles/ProjectCard.css'
 const ProjectCard = () => {
     
     const [projects, setProjects] = useState('')
-    const [application, setApplication] = useState({});
+  
     const [hideElements,setHideElements] = useState(false)
     const {id} = useParams()
    // console.log(hideElements);
@@ -84,11 +84,19 @@ const ProjectCard = () => {
                         <div className='aside-info-projectcard'>
                             <h2>Application</h2>  
                             {console.log(projects.application)}
-                            {projects && projects.application ? (
-    projects.application.map(proc => <p key={proc}>{proc}</p>)
-) : (
-    <p>No application available</p>
-)}
+                         {/*   {projects && projects.application ? (
+                                  projects.application.map(proc => <p key={proc}>{proc}</p>)
+                                  ) : (
+                                 <p>No application available</p>
+                               )}
+                               */}
+                               {projects.application ? (
+                                projects.application.map(proc => <p key={proc}>{proc}</p>)
+                                 ) : (
+                                  <p>No application available</p>
+                                     )}
+
+                                     
                         </div>
                         <div className='aside-info-projectcard'>
                             <h2>Prep time</h2>  
