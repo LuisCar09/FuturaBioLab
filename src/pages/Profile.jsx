@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import ProfileCard from '../components/utils/ProfileCard';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
+import { duration } from '@mui/material';
 
 
 const Profile = () => {
@@ -21,9 +22,16 @@ const Profile = () => {
   const [userDescription, setUserDescription] = useState('')
   const [userCreatedDate,setUserCreatedDate] = useState('')
   const [isServiceCliked, setIsServiceCliked] = useState(false)
+  const [nameService,setNameService] = useState('')
+  const [emailService,setEmailService] =useState('')
+  const [usernameService,setUsernameService] = useState('')
+  const [descriptionService,setDescriptionService]= useState('')
+  const [durationService, setDurationService]= useState('')
+  const [priceService,setPriceService] = useState ('')
+  const [locationService, setLocationService] = useState('')
   const navigate = useNavigate();
   const uid = localStorage.getItem('uid')
-  
+  const token = localStorage.getItem('authToken')
 
   
 
@@ -53,14 +61,42 @@ const Profile = () => {
         
     }
     fetchUserData()
-},[])
+},[]) 
+ 
+const createService = async () => {
+  try {
+    const body = {
+      nameService: name,
+      emailService: email,
+      usernameService: username,
+      descriptionService: description,
+      durationService: duration,
+      priceService: priceService,
+      locationService: location
+
+    }
+    console.log(body)
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    const servicesResponse = await axios.post('http://localhost:8080/service/new',body,{
+      headers:{Authorization : `Bearer ${token}`}
+  })
+  console.log(servicesResponse);
+  navigate('/profile')
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
 
 
   const handleButtonClick = () => {
     navigate('/setting');
   }
 
-
+  const hours = [];
+  for (let i = 0; i < 8; i++) {
+      hours.push(`${10 + i}:00`);
+  }
   return (
 
     <main className='main-profile-container'>
@@ -133,8 +169,55 @@ const Profile = () => {
                 </div>
         </div>
          </> 
-        ): <div className='service-article-container'>
-          <h2>AQUI VAS HACER TU MAGIA BARBARA DEL VALLE</h2>
+        ): <div className='service-article-container-servicesnew'>
+          <form className='form-servicesnew'>
+            <div className='title-container-servicesnew'>
+              <div className='infouser-container-servicenew'>
+              <h2>Service Name</h2>
+               <input
+               id='title-service'
+               placeholder="Enter the service name" required  />
+              </div>
+              <div className='infouser-container-servicenew'>
+               <h2>Email</h2>
+               <input
+                id='email-service'
+                placeholder="Enter the email contact" required  />
+
+              </div>
+            </div>
+          <div className='description-container-servicesnew'>
+            <h2>Description</h2>
+            <textarea>Enter the description of the service</textarea>
+          </div>
+          <div className='duration-price-location-servicesnew'>
+            <div className='duration-servicenew'>
+              <h2>Duration</h2>
+              <input 
+              id='duration-service'
+              />
+            </div>
+            <div className='price-servicenew'>
+              <h2>Price</h2>
+              <input 
+              id='price-service'
+              />
+            </div>
+            <div className='location-servicenew'>
+              <h2>Location</h2>
+              <input 
+              id='location-service'
+              />
+            </div>
+
+          </div>
+
+          <div className='container-button-servicenew'>
+
+           <button type="button" className='button-servicesnew'>Save</button>
+          </div>
+
+          </form>
         </div>
         }
         </article>

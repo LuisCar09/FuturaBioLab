@@ -206,10 +206,17 @@ const processesOptions = [
                             <input type="text" placeholder="Enter Recipe Title" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} required />
                         </div>
                     </div>
-                    <div className="uploadproject-container--article--squarePicture project-container-article-upload">
-                        <div className='image-container-projectcard'>
-                            <img src='#' alt='Recipe photo' />
-                        </div>
+                    <div className='info-container-uploadproject'> 
+
+                    <div className='aside-info-textarea-uploadproject'>
+                            <h2 className='title-aside--uploadproject'>Description</h2>
+                            <textarea  value={description} onChange={(e) => setDescription(e.target.value) } required></textarea>
+                    </div>
+                   <div className='aside-info-textarea-uploadproject'>
+                            <h2 className='title-aside--uploadproject'>Ingredients</h2>
+                            <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)}  required></textarea>
+                    </div>
+
                     </div>
                     <div className="uploadproject-container--article-button">
                         <div className='author-container-projectupload'>
@@ -226,14 +233,7 @@ const processesOptions = [
                 </article>
                 <aside className={!hideElements ? "uploadproject-container--aside-container" : "uploadproject-container--aside-container moveRight"}>
                     <div className='containerinfo-uploadproject'>
-                        <div className='aside-info-uploadproject'>
-                            <h2>Description</h2>
-                            <textarea  value={description} onChange={(e) => setDescription(e.target.value) } required></textarea>
-                        </div>
-                        <div className='aside-info-uploadproject'>
-                            <h2>Ingredients</h2>
-                            <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)}  required></textarea>
-                        </div>
+                       
                         <div className='aside-info-uploadproject'>
                             <h2>Properties</h2>
                             <select required onChange={(event) => addValues('addProperties',event) }  >

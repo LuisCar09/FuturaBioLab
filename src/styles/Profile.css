@@ -124,10 +124,102 @@
     font-size: 16px;
     text-decoration: none;
     color: var(--primary-color);
+    cursor: pointer;
    
    
 }
 
+
+.service-article-container-servicesnew{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   padding: 20px;
+  
+}
+
+.form-servicesnew {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+    
+}
+.title-container-servicesnew {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    margin-bottom: 20px;
+    
+}
+.infouser-container-servicenew {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 100%;
+    
+    
+}
+.infouser-container-servicenew h2, .description-container-servicesnew h2,
+.duration-servicenew  h2, .price-servicenew h2, .location-servicenew h2{
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+.infouser-container-servicenew input, .duration-servicenew input,
+.price-servicenew input,.location-servicenew input
+{
+    border: 1px solid var(--primary-color);
+    width: 100%;
+    height: 28px;
+    border-radius: 4px;
+    font-size: 14px;
+    
+}
+
+.description-container-servicesnew{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+.description-container-servicesnew textarea {
+    resize: none;
+    width: 100%;
+    height: 180px;
+    border: 1px solid var(--primary-color);
+    outline: none;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.duration-price-location-servicesnew {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    
+}
+
+.duration-servicenew, .price-servicenew, .location-servicenew {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.container-button-servicenew {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.container-button-servicenew .button-servicesnew {
+    display: flex;
+    padding: 8px 20px;
+   color: white;
+    background-color: var(--button-color);
+    cursor: pointer;
+    font-size: 16px;
+
+}
 /*Profile-content*/
 
 .profile-content {
