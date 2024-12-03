@@ -1,6 +1,14 @@
+import { useState } from 'react';
+
 import '../styles/Reservation.css';
 
-function FormReservation() {
+const FormReservation = () => {
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('')
+
+    const handlePaymentMethodClick = (method) => {
+        setSelectedPaymentMethod(method);
+    };
+
     return (
         <main className='main-formreservation'>
             <section className='section-formreservation'>
@@ -50,36 +58,18 @@ function FormReservation() {
                     <div className='payment-formreservation'>
                         <h3>Payment</h3>
                        {/*} <p>Service name</p>*/}
-                        <div className='methodpayment-formreservation'>
-                            <div className='input-payment-formreservation'>
-                           
-                            <input 
-                                type="text" 
-                                id="credit-card"
-                                name="payment" 
-                                value="credit-card" 
-                                
-                            />
+                       <div className='methodpayment-formreservation'>
+                                {['credit-card', 'paypal', 'bank-transfer'].map((method) => (
+                                    <div className='payment-formreservation' key={method}>
+                                        <p
+                                            onClick={() => handlePaymentMethodClick(method)}
+                                            className={selectedPaymentMethod === method ? 'selected' : ''}
+                                        >
+                                            {method}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
-                            <div className='input-payment-formreservation'>
-                            <input 
-                                type="text" 
-                                id="paypal"
-                                name="payment" 
-                                value="paypal" 
-                                
-                            />
-                            </div>
-                            <div className='input-payment-formreservation'>
-                            
-                            <input 
-                                type="text" 
-                                id="bank-transfer"
-                                name="payment" 
-                                value="bank-transfer" 
-                            />
-                            </div>
-                        </div>
                     </div>
                     
                 </form>       

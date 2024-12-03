@@ -93,10 +93,7 @@ const createService = async () => {
     navigate('/setting');
   }
 
-  const hours = [];
-  for (let i = 0; i < 8; i++) {
-      hours.push(`${10 + i}:00`);
-  }
+ 
   return (
 
     <main className='main-profile-container'>

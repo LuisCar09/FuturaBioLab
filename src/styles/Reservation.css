@@ -116,46 +116,42 @@
 .payment-formreservation {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     width: 100%;
 }
 .payment-formreservation h3 {
     color: var(--primary-color);
     margin-bottom: 20px;
+    text-align: start;
 }
 
 .methodpayment-formreservation {
    display: flex;
    gap: 20px;
+   width: 100%;
    
 }
-
-.input-payment-formreservation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-    
-}
-.input-payment-formreservation input {
+.payment-formreservation p{ 
     display: flex;
     text-align: center;
-    outline: none;
+    justify-content: center;
     color: var(--primary-color);
-    padding: 10px;
+    padding: 10px 30px;
     border:1px solid var(--primary-color);
     transition: background-color 0.3s, border-color 0.3s;
     cursor: pointer;
     font-size: 16px;
 }
 
-.input-payment-formreservation input:focus {
+.payment-formreservation p.selected {
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+}
+.payment-formreservation p:hover{
     background-color: var(--secundary-color); 
-    border-color: var(--button-color);
+    border: none;
 }
-.input-payment-formreservation input:hover {
-    border-color: var(--secundary-color); 
-}
+
+
 .data-formreservation{
     
     display: flex;
