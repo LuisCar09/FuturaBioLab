@@ -5,7 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import ProfileCard from '../components/utils/ProfileCard';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
@@ -24,22 +24,21 @@ const Profile = () => {
   const [isServiceCliked, setIsServiceCliked] = useState(false)
   const [nameService,setNameService] = useState('')
   const [emailService,setEmailService] =useState('')
-  const [usernameService,setUsernameService] = useState('')
   const [descriptionService,setDescriptionService]= useState('')
   const [durationService, setDurationService]= useState('')
   const [priceService,setPriceService] = useState ('')
   const [locationService, setLocationService] = useState('')
-  const navigate = useNavigate();
+  const [imageService,setImageService]= useState('')
+  const [stockService,setStockService] = useState('')
+  const navigate = useNavigate()
   const uid = localStorage.getItem('uid')
   const token = localStorage.getItem('authToken')
-
-  
 
   useEffect(() =>{
         
     const fetchUserData = async () =>{
        try {
-        
+         
         
         const userDataResponse = await axios.get(`http://localhost:8080/users/${uid}`,{
             headers:{Authorization:`Bearer ${localStorage.getItem('authToken')}`}
@@ -63,29 +62,32 @@ const Profile = () => {
     fetchUserData()
 },[]) 
  
-const createService = async () => {
-  try {
-    const body = {
-      nameService: name,
-      emailService: email,
-      usernameService: username,
-      descriptionService: description,
-      durationService: duration,
-      priceService: priceService,
-      locationService: location
-
+  const createService = async () => {
+    
+    try {
+      const body = {
+        name: nameService,
+        email: emailService,
+        username: userName,
+        description: descriptionService,
+        duration: durationService,
+        price: priceService,
+        location: locationService,
+        uid,
+        image: imageService,
+        stock:stockService
+      }
+      
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+      const servicesResponse = await axios.post('http://localhost:8080/services/new', body, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      
+      navigate('/services')
+    } catch (error) {
+      console.error(error.message);
     }
-    console.log(body)
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    const servicesResponse = await axios.post('http://localhost:8080/service/new',body,{
-      headers:{Authorization : `Bearer ${token}`}
-  })
-  console.log(servicesResponse);
-  navigate('/profile')
-  } catch (error) {
-    console.error(error.message);
   }
-}
 
 
 
@@ -173,45 +175,75 @@ const createService = async () => {
               <h2>Service Name</h2>
                <input
                id='title-service'
-               placeholder="Enter the service name" required  />
+               placeholder="Enter the service name"
+               value={nameService}
+               onChange={(e) => setNameService(e.target.value)}
+               required  />
               </div>
               <div className='infouser-container-servicenew'>
                <h2>Email</h2>
                <input
                 id='email-service'
-                placeholder="Enter the email contact" required  />
+                placeholder="Enter the email contact" 
+                value={emailService}
+                onChange={(e) => setEmailService(e.target.value)}
+                required  />
 
               </div>
             </div>
           <div className='description-container-servicesnew'>
             <h2>Description</h2>
-            <textarea>Enter the description of the service</textarea>
+            <textarea placeholder='Enter the description of the service' 
+            value={descriptionService} 
+            onChange={(e) => setDescriptionService(e.target.value)} > </textarea>
           </div>
           <div className='duration-price-location-servicesnew'>
             <div className='duration-servicenew'>
               <h2>Duration</h2>
               <input 
               id='duration-service'
+              value={durationService}
+              onChange={(e) => setDurationService(e.target.value)}
               />
             </div>
             <div className='price-servicenew'>
               <h2>Price</h2>
               <input 
               id='price-service'
+              value={priceService}
+              onChange={(e) => setPriceService(e.target.value)}
+
               />
             </div>
             <div className='location-servicenew'>
               <h2>Location</h2>
               <input 
               id='location-service'
+              value={locationService}
+               onChange={(e) => setLocationService(e.target.value)}
+              />
+            </div>
+            <div className='location-servicenew'>
+              <h2>Image</h2>
+              <input 
+              id='image-service'
+              value={imageService}
+               onChange={(e) => setImageService(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className='location-servicenew'>
+              <h2>Stock</h2>
+              <input 
+              id='stock-service'
+              value={stockService}
+               onChange={(e) => setStockService(e.target.value)}
               />
             </div>
 
-          </div>
-
           <div className='container-button-servicenew'>
 
-           <button type="button" className='button-servicesnew'>Save</button>
+           <button type="button" className='button-servicesnew' onClick={createService} >Create</button>
           </div>
 
           </form>

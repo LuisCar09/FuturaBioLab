@@ -21,7 +21,7 @@ import UserDataRegister from '../pages/UserDataRegister'
 import ServiceDetail from '../pages/ServiceDetail'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
-import Calendar from '../pages/Calendar'
+import ServiceCard from '../pages/ServiceCard'
 import Guide from '../pages/Guide'
 import UploadProject from '../pages/UploadProject'
 import Priorities from '../pages/Priorities'
@@ -57,7 +57,7 @@ const RoutesApp = () => {
                 <Route path ='/servicedetail' element={<ServiceDetail />} />
                 <Route path='/register' element={<Register />} /> 
                 <Route path='/login' element={<Login />} /> 
-                <Route path='/calendar' element={<Calendar />} /> 
+                <Route path='/services/:id' element={<ServiceCard />} /> 
                 <Route path='/guide' element={<Guide />} /> 
                 <Route path='/projects/new' element={<UploadProject />} /> 
                 <Route path='/priorities' element={<Priorities />} /> 

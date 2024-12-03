@@ -220,12 +220,17 @@
     width: 100%;
     height: 32px;
     border-radius: 6px;
+    outline: none;
+    padding-left: 8px;
+    transform: none;
 }
 
-.author-container-projectupload input:hover,
-.author-container-projectupload select:hover {
-    padding: 0;
-}
+.author-container-projectupload:hover input,
+.author-container-projectupload:hover select{
+    border: none;
+    cursor: pointer;
+    
+} 
 
 .author-container-projectupload input{
     margin-bottom: 12px;
@@ -244,6 +249,8 @@
     width: 100%;
     height: 32px;
     border-radius: 6px;
+    outline: none;
+    padding-left: 8px;
 }
 
 .button-container-upload {
@@ -257,4 +264,15 @@
     font-size: 16px;
    text-align: end;
    cursor: pointer;
+}
+#putoinput{
+    transform: scale(1);
+    outline: none;
+    box-sizing: border-box;
+    
+}
+#putoinput:hover{
+    transform: scale(1);
+    outline: none;
+    
 }

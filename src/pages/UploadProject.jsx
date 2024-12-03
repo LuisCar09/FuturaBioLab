@@ -203,7 +203,7 @@ const processesOptions = [
                     <div className="uploadproject-container--article-top">
                         <div className='author-container-projectupload'>
                             
-                            <input type="text" placeholder="Enter Recipe Title" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} required />
+                            <input id='putoinput' type="text" placeholder="Enter Recipe Title" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} required />
                         </div>
                     </div>
                     <div className='info-container-uploadproject'> 
