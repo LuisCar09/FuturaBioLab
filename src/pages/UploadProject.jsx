@@ -220,7 +220,7 @@ const processesOptions = [
                     </div>
                     <div className="uploadproject-container--article-button">
                         <div className='author-container-projectupload'>
-                            <input placeholder='Type author name' value={author}  onChange={(e) => setAuthor(e.target.value) } required />
+                            <input  className='author-name'  placeholder='Type author name' value={author}  onChange={(e) => setAuthor(e.target.value) } required />
                             <select  onChange={(e) => setLicense(e.target.value)} required>
                                 {licenseOptions.map(license => (
                                     <option key={license} value={license}>{license}</option>

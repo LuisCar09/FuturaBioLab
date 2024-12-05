@@ -31,8 +31,7 @@ useEffect(() => {
     
     
     return (
-        <main className='main-calendar'>
-            <section className='section-calendar'>
+       <>
                 {showService ? (
                     <>
                         <article className='articletop-calendar'>
@@ -74,8 +73,7 @@ useEffect(() => {
                 <Reservation serviceName={service.name} serviceDuration= {service.duration} servicePrice={service.price} backToServiceCard={setShowService}  />
                 </>
                 }
-            </section>
-        </main>
+          </>
     );
 }
 
