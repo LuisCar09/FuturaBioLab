@@ -60,7 +60,7 @@ const Profile = () => {
         
     }
     fetchUserData()
-},[]) 
+},[]) //aqui no se pasa el id?
  
   const createService = async () => {
     
@@ -89,8 +89,6 @@ const Profile = () => {
     }
   }
 
-
-
   const handleButtonClick = () => {
     navigate('/setting');
   }
@@ -118,12 +116,7 @@ const Profile = () => {
                   </div>
                 </div>
             </div>
-            <div className='edit-settings-user'>
-             <button className='edit-data' onClick={handleButtonClick}>
-                  Edit data
-                </button>
-              <MoreVertIcon className='morevert-icon' />     
-            </div>
+           
          </div>    
         </div> 
         <div className="navigation-bar-profile">
@@ -137,10 +130,11 @@ const Profile = () => {
          <div className='profile-content'>
               <div className='profile-edit'>
                 <h3>Profile</h3>
-                <button className="edit-profile-button" onClick={handleButtonClick}>
-                 <EditIcon className='editicon' />
-                  Edit Profile
-                </button>
+                {uid === _id && ( 
+                    <button className="edit-profile-button" onClick={handleButtonClick}>
+                      <EditIcon className='editicon' />
+                      Edit Profile
+                    </button> )}
               </div>
               <div className='registration-container'>
                 <p>Registration Date: {userCreatedDate.split('T')[0]}</p>

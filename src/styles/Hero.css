@@ -4,27 +4,66 @@
 .sectionTop {
     display: flex;
     justify-content: center;
+    overflow: hidden; 
 }
+
 .sectionTop-div {
-    position: relative; 
-    
+    position: relative;
+    text-align: center;
 }
+
+.sectionTop-backgroundImage {
+    width: 100%;
+    height: auto;
+}
+
+.sectionTop-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    width: 100%;
+    padding: 0 10px;
+   
+}
+
+.text-left, .text-right {
+    position: relative;
+    font-size: 2em;
+    color: #02CA81;
+}
+
+@keyframes moveRight {
+    0% { transform: translateX(-700px); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(700px); }
+}
+
+@keyframes moveLeft {
+    0% { transform: translateX(700px); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(-700px); }
+}
+
+.text-left {
+    animation: moveRight 10s ease infinite;
+}
+
+.text-right {
+    animation: moveLeft 10s ease infinite;
+}
+
 
 .sectionTop-backgroundImage {
     display: block; 
     opacity: 70%;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.sectionTop-container {
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    color: white; 
-    width: 100%; 
-    padding: 0 10px; 
-   
-}
+
 
 .sectionTop-backgroundImage.blur {
     filter: blur(5px); 
@@ -265,6 +304,7 @@
     text-decoration: none; 
     font-size: 20px;
 }
+
 
 /*.animationTop {
    
