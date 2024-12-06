@@ -13,7 +13,7 @@
 
 .navbar ul li a {
     text-decoration: none;
-    color: green;
+    color: var(--primary-color);
     transition: background-color 0.3s; 
     font-size: 16px;
 }
