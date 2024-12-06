@@ -1,20 +1,23 @@
 import '../styles/Profile.css'
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import ProfileCard from '../components/utils/ProfileCard';
-import { useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
-import { duration } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+
 
 
 const Profile = () => {
-  const { id } = useParams(); 
+  const location = useLocation()
+  const comingFromMember = location.pathname.includes('member')
+  
+  
+  const {id}  = useParams(); 
   const [_id,setId]  = useState('')
+  const [checkUid,setCheckUid] = useState('')
   const [userName,setUserName] = useState('')
   const [projects, setProjects] = useState([])
   const [userFollowers,setUserFollowers] = useState('')
@@ -34,18 +37,23 @@ const Profile = () => {
   const uid = localStorage.getItem('uid')
   const token = localStorage.getItem('authToken')
 
+  
   useEffect(() =>{
+        
         
     const fetchUserData = async () =>{
        try {
-         
+         const userId = !comingFromMember ? `http://localhost:8080/users/${uid}` : `http://localhost:8080/users/members/profile/${id}`
         
-        const userDataResponse = await axios.get(`http://localhost:8080/users/${uid}`,{
+        
+        const userDataResponse = await axios.get(`${userId}`,{
             headers:{Authorization:`Bearer ${localStorage.getItem('authToken')}`}
             
         })
         const userData = userDataResponse.data
         
+        
+       console.log(userData);
        
         setId(userData[0]._id)
         setUserName(userData[0].userName)
@@ -53,6 +61,8 @@ const Profile = () => {
         setUserFollowers(userData[0].followers)
         setUserFollows(userData[0].follows)
         setUserCreatedDate(userData[0].createdAt)
+        setCheckUid(userData[0].uid)
+        
        } catch (error) {
         console.log(error.message);
         
@@ -61,7 +71,7 @@ const Profile = () => {
     }
     fetchUserData()
 },[]) //aqui no se pasa el id?
- 
+  
   const createService = async () => {
     
     try {
@@ -92,7 +102,7 @@ const Profile = () => {
   const handleButtonClick = () => {
     navigate('/setting');
   }
-
+   
  
   return (
 
@@ -130,11 +140,12 @@ const Profile = () => {
          <div className='profile-content'>
               <div className='profile-edit'>
                 <h3>Profile</h3>
-                {uid === _id && ( 
+                
+                {checkUid === localStorage.getItem('uid') ? ( 
                     <button className="edit-profile-button" onClick={handleButtonClick}>
                       <EditIcon className='editicon' />
                       Edit Profile
-                    </button> )}
+                    </button> ) : ''}
               </div>
               <div className='registration-container'>
                 <p>Registration Date: {userCreatedDate.split('T')[0]}</p>
@@ -142,25 +153,25 @@ const Profile = () => {
         </div>
         <div className="about-me-container">
               <h3>About Me</h3>
-              <div className="about-me-profile" value={userDescription} ></div>
+              <div className="about-me-profile" >{userDescription} </div>
         </div>
-        <div className="projects-container-profile">
-               <div className="projects-title-profile">
-                 <h3>Projects</h3>
+              <div className="projects-container-profile">
+                <div className="projects-title-profile">
+                  <h3>Projects</h3>
 
-                 <Link to='/projects/new' className="add-project-button">Add Project</Link>
-                 </div>
-                <div className='projects--profile'>
-                {projects.length > 0 ? (
-              projects.map(project => (
-                <div key={project.id}>{project.name} {project.image} {project.title}
-                {project.views}</div> 
-              ))
-            ) : (
-              <p>Don't have projects</p>
-            )}
+                  {checkUid === localStorage.getItem('uid') && <Link to='/projects/new' className="add-project-button">Add Project</Link>}
                 </div>
-        </div>
+                <div className='projects--profile'>
+                  {projects.length > 0 ? (
+                    projects.map(project => (
+                      <div key={project.id}>{project.name} {project.image} {project.title}
+                        {project.views}</div>
+                    ))
+                  ) : (
+                    <p>Don't have projects</p>
+                  )}
+                </div>
+              </div>
          </> 
         ): <div className='service-article-container-servicesnew'>
           <form className='form-servicesnew'>

@@ -21,6 +21,7 @@ function Members() {
             console.error(error);
         }
     };
+   console.log(allMembers);
    
     
     
@@ -86,7 +87,7 @@ function Members() {
                                             <p>Follows</p>
                                         </div>
                                     </div>
-                                    <Link to={`/members/${selectedMember.id}`} className='button-members'>
+                                    <Link to={`/members/profile/${selectedMember._id}`} className='button-members'>
                                         My profile
                                     </Link>
                                 </div>

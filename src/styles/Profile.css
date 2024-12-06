@@ -285,6 +285,8 @@
 
 .about-me-profile {
     
+    text-align: start;
+    padding: 10px;
     width: 100%;
     height: 200px;
     border:1px solid var(--primary-color);

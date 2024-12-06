@@ -65,7 +65,7 @@ const RoutesApp = () => {
                 
                 
                 <Route path='/projects/:id' element={<ProjectCard />} />
-                <Route path="/members/:id" element={<Profile /> } /> 
+                <Route path="/members/profile/:id" element={<Profile /> } /> 
                 <Route path='/logout' element={<Logout />} /> 
                                                     
 
