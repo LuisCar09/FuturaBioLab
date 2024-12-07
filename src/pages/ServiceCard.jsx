@@ -33,7 +33,8 @@ useEffect(() => {
     return (
        <>
                 {showService ? (
-                    <>
+                    <section className='service-payment--container'>
+                        <div className='service-payment--wrapcontainer'>
                         <article className='articletop-calendar'>
                             <h1>{service.name}</h1>
                             <div className='article-description-servicedetail'>
@@ -63,11 +64,12 @@ useEffect(() => {
                                 </div>
                                 <div className='button-calendar'>
 
-                                    <button onClick={() => setShowService(false)} >Next</button>
+                                    <Link to={`/reservation/${service._id}`}><button  >Next</button></Link>
                                 </div>
                             </div>
                         </article>
-                    </>
+                        </div>
+                    </section>
                 ) : 
                 <>
                 <Reservation serviceName={service.name} serviceDuration= {service.duration} servicePrice={service.price} backToServiceCard={setShowService}  />

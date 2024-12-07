@@ -47,7 +47,7 @@ const RoutesApp = () => {
                 <Route path='/aboutus' element={<AboutUs />} />
                 <Route path='/contactus' element={<ContactUs />} />
                 <Route path='/setting' element={ <ProtectedRoute> <Setting />  </ProtectedRoute> } />
-                <Route path='/reservation' element={<ProtectedRoute> <Reservation /> </ProtectedRoute>} />
+                <Route path='/reservation/:id' element={<ProtectedRoute> <Reservation /> </ProtectedRoute>} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/mycart' element={<ProtectedRoute><MyCart /></ProtectedRoute>} />
                 <Route path='/services' element={<ProtectedRoute><Services /></ProtectedRoute>} />
@@ -59,6 +59,7 @@ const RoutesApp = () => {
                 <Route path='/register' element={<Register />} /> 
                 <Route path='/login' element={<Login />} /> 
                 <Route path='/services/:id' element={<ProtectedRoute><ServiceCard /></ProtectedRoute> } /> 
+                
                 <Route path='/guide' element={<Guide />} /> 
                 <Route path='/projects/new' element={<ProtectedRoute><UploadProject /></ProtectedRoute>} /> 
                 <Route path='/priorities' element={<Priorities />} /> 

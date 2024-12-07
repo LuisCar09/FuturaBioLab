@@ -55,6 +55,9 @@ const UploadProject = () => {
             const projectResponse = await axios.post('http://localhost:8080/projects/new',body,{
                 headers:{Authorization : `Bearer ${token}`}
             })
+            const saveUserProjectº = await axios.post('http://localhost:8080/projects/new',body,{
+                headers:{Authorization : `Bearer ${token}`}
+            })
             console.log(projectResponse);
             useNavigate('/profile')
             

@@ -1,11 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import '../styles/Reservation.css';
+import axios from 'axios';
 
 const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceDuration = '', servicePayment, servicePrice, backToServiceCard }) => {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
     const [cardNumber, setCardNumber] = useState('');
-
+    const {id} = useParams()
+    const token = localStorage.getItem('authToken')
+    const [service,setService] = useState('')
+    const [name,setName] = useState('')
+    const [userEmail,setUserEmail] = useState('')
+    const [userPhone,setUserPhone] = useState('')
+    const [userDescription, setUserDescription] = useState('')
+    // FALTA QUE AL HACER CLICK ME GUARDE EN EL LOCALHOST LO QUE SE HA COMPRADO Y LUEHO EL PAGO
+    
     const handlePaymentMethodClick = (method) => {
         setSelectedPaymentMethod(method);
         // Reset card number when changing payment methods
@@ -13,7 +22,21 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
             setCardNumber('');
         }
     };
-
+    useEffect(() => {
+        const fetchService = async () => {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+            const service = await axios.get(`http://localhost:8080/services/${id}`,{
+                headers:{Authorization: `Bearer ${token}`}
+            })
+            setService(service.data);
+            
+        }
+        fetchService()
+    },[])
+    
+    
+    
+    
     return (
         <main className='main-formreservation'>
             <section className='section-formreservation'>
@@ -31,6 +54,8 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                                 <input 
                                     id='name-input'
                                     type='text'
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                     required
                                 />                     
                             </div>
@@ -41,6 +66,8 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                                 <input 
                                     id='email-input'
                                     type='email'
+                                    value={userEmail}
+                                    onChange={(e) => setUserEmail(e.target.value)}
                                     required
                                 />
                             </div>
@@ -53,9 +80,15 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                             <input 
                                 id='phone-input'
                                 type='text'
+                                value={userPhone}
+                                onChange={(e) => setUserPhone(e.target.value)}
                             />
                             <p>Add a message</p>
-                            <textarea className='textarea-formreservation'></textarea>
+                            <textarea 
+                            className='textarea-formreservation'
+                            value={userDescription}
+                            onChange={(e) => setUserDescription(e.target.value)}
+                            ></textarea>
                         </div>
 
                         <div className='payment-formreservation'>
@@ -114,19 +147,19 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                     <div className='data-formreservation'>
                         <div className='data-formreservation-details'>
                             <h3>Reservation details</h3>
-                            <p>Service name: {serviceName} </p>
-                            <p>Date: {serviceDate} </p>
-                            <p>Time: {serviceTime} </p>
-                            <p>Duration: {serviceDuration} min </p>
+                            <p>Service name: {service.name} </p>
+                            <p>Date: Aqui debe ir la fecha del evento </p> 
+                            <p>Time: {service.hour} min </p>
+                            <p>Duration: {service.duration} min </p>
                         </div>
                         <h3>Payment details</h3>
                         <div className='price-formreservation'>
                             <p className='price'>Total</p>
-                            <p className='amount'>{servicePrice} €</p>
+                            <p className='amount'>{service.price} €</p>
                         </div>
                         <div className='buttons-formreservation'>
                             <button className='addbutton-formreservation'>Add to cart</button>
-                            <button className='addbutton-formreservation'>Checkout</button>
+                            <Link to={'/mycart'}><button className='addbutton-formreservation'>Checkout</button></Link>
                             <Link to={'/services'}>
                                 <button className='addbutton-formreservation'>Continue shopping</button>
                             </Link>

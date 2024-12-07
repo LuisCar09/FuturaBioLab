@@ -33,6 +33,8 @@ const Profile = () => {
   const [locationService, setLocationService] = useState('')
   const [imageService,setImageService]= useState('')
   const [stockService,setStockService] = useState('')
+  const [dateService, setDateService ]= useState('')
+  const [timeService, setTimeService ]= useState('')
   const navigate = useNavigate()
   const uid = localStorage.getItem('uid')
   const token = localStorage.getItem('authToken')
@@ -62,6 +64,7 @@ const Profile = () => {
         setUserFollows(userData[0].follows)
         setUserCreatedDate(userData[0].createdAt)
         setCheckUid(userData[0].uid)
+        // setProjects(userData[0].)
         
        } catch (error) {
         console.log(error.message);
@@ -85,7 +88,9 @@ const Profile = () => {
         location: locationService,
         uid,
         image: imageService,
-        stock:stockService
+        stock:stockService,
+        date: dateService,
+        hour: timeService
       }
       
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -102,7 +107,7 @@ const Profile = () => {
   const handleButtonClick = () => {
     navigate('/setting');
   }
-   
+  
  
   return (
 
@@ -229,13 +234,23 @@ const Profile = () => {
               />
             </div>
             <div className='location-servicenew'>
-              <h2>Image</h2>
+              <h2>Date</h2>
               <input 
-              id='image-service'
-              value={imageService}
-               onChange={(e) => setImageService(e.target.value)}
+              id='location-service'
+              value={dateService}
+               onChange={(e) => setDateService(e.target.value)}
               />
             </div>
+            <div className='location-servicenew'>
+              <h2>Time</h2>
+              <input 
+              id='location-service'
+              value={timeService}
+               onChange={(e) => setTimeService(e.target.value)}
+              />
+            </div>
+
+           
           </div>
           <div className='location-servicenew'>
               <h2>Stock</h2>
@@ -245,7 +260,14 @@ const Profile = () => {
                onChange={(e) => setStockService(e.target.value)}
               />
             </div>
-
+            <div className='location-servicenew'>
+              <h2>Image</h2>
+              <input 
+              id='image-service'
+              value={imageService}
+               onChange={(e) => setImageService(e.target.value)}
+              />
+            </div>
           <div className='container-button-servicenew'>
 
            <button type="button" className='button-servicesnew' onClick={createService} >Create</button>
