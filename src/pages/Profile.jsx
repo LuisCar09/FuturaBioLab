@@ -207,6 +207,7 @@ const Profile = () => {
             value={descriptionService} 
             onChange={(e) => setDescriptionService(e.target.value)} > </textarea>
           </div>
+        
           <div className='duration-price-location-servicesnew'>
             <div className='duration-servicenew'>
               <h2>Duration</h2>
@@ -233,6 +234,8 @@ const Profile = () => {
                onChange={(e) => setLocationService(e.target.value)}
               />
             </div>
+            </div>
+            <div className='date-time-stock-servicesnew'>
             <div className='location-servicenew'>
               <h2>Date</h2>
               <input 
@@ -249,9 +252,6 @@ const Profile = () => {
                onChange={(e) => setTimeService(e.target.value)}
               />
             </div>
-
-           
-          </div>
           <div className='location-servicenew'>
               <h2>Stock</h2>
               <input 
@@ -259,6 +259,7 @@ const Profile = () => {
               value={stockService}
                onChange={(e) => setStockService(e.target.value)}
               />
+            </div>
             </div>
             <div className='location-servicenew'>
               <h2>Image</h2>

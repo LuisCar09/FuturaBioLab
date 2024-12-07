@@ -9,7 +9,7 @@ import NewsSection from './NewsSection.jsx'
 
 const Hero = () => {
     return (
-        <main>
+        <main> 
             <section className='sectionTop'>
                 
                 <SectionTop />
