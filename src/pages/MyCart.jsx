@@ -1,4 +1,5 @@
 import '../styles/MyCart.css'
+import { Link } from 'react-router-dom'
 
 function MyCart() {
     return (
@@ -36,7 +37,9 @@ function MyCart() {
                  <h3>Total</h3>
                  <p>37.29€</p>
                 </div>
+                <Link to='/mycart/checkout'>
                 <button>Checkout</button>
+                </Link>
                </article> 
                
                

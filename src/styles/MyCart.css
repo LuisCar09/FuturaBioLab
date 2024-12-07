@@ -84,11 +84,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
     
 }
 
-.mycart-container button {
+.mycart-container a {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+
+.mycart-container a button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,5 +104,5 @@
     border: 1px solid var(--primary-color);
     font-size: 16px;
     color: var(--primary-color);
-
+    cursor: pointer;
 }

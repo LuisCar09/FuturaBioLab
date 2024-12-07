@@ -28,6 +28,7 @@ import Priorities from '../pages/Priorities'
 import Method from '../pages/Method'
 import ProtectedRoute from '../components/utils/ProtectedRoute'
 import Logout from '../pages/Logout'
+import Checkout from '../pages/Checkout'
 
 
 
@@ -53,21 +54,21 @@ const RoutesApp = () => {
                 <Route path='/search' element={<Search />} />
                {/* <Route path ='/projectcard' element={<ProjectCard />} />*/} 
                 <Route path ='/members' element={<ProtectedRoute><Members /></ProtectedRoute>} />
-                <Route path ='/userdataregister' element={<UserDataRegister />} />
+                <Route path ='/userdataregister' element={<ProtectedRoute><UserDataRegister /></ProtectedRoute>} />
                 <Route path ='/servicedetail' element={<ServiceDetail />} />
                 <Route path='/register' element={<Register />} /> 
                 <Route path='/login' element={<Login />} /> 
                 <Route path='/services/:id' element={<ProtectedRoute><ServiceCard /></ProtectedRoute> } /> 
                 <Route path='/guide' element={<Guide />} /> 
-                <Route path='/projects/new' element={<UploadProject />} /> 
+                <Route path='/projects/new' element={<ProtectedRoute><UploadProject /></ProtectedRoute>} /> 
                 <Route path='/priorities' element={<Priorities />} /> 
                 <Route path='/method' element={<Method />} /> 
                 
                 
-                <Route path='/projects/:id' element={<ProjectCard />} />
-                <Route path="/members/profile/:id" element={<Profile /> } /> 
-                <Route path='/logout' element={<Logout />} /> 
-                                                    
+                <Route path='/projects/:id' element={<ProtectedRoute><ProjectCard /></ProtectedRoute>} />
+                <Route path="/members/:id" element={<ProtectedRoute><Profile /> </ProtectedRoute>} /> 
+                <Route path='/logout' element={<ProtectedRoute><Logout /></ProtectedRoute>} /> 
+                <Route path='/mycart/checkout' element={<Checkout /> }  />                         
 
             </Routes>
             <Footer />

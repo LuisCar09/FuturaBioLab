@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Projects = () => {
     const images = [
@@ -11,55 +11,25 @@ const Projects = () => {
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isHovering, setIsHovering] = useState(false);
-    const [intervalId, setIntervalId] = useState(null);
-    const [visibleImagesCount, setVisibleImagesCount] = useState(1);
+    const [visibleImagesCount, setVisibleImagesCount] = useState(4);
+    const [scrollDirection, setScrollDirection] = useState(null); 
 
-  
-    const updateVisibleImagesCount = () => {
-        const width = window.innerWidth;
-        if (width < 600) {
-            setVisibleImagesCount(1);
-        } else if (width < 900) {
-            setVisibleImagesCount(2);
-        } else if (width < 1200) {
-            setVisibleImagesCount(3);
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > currentIndex) {
+            setScrollDirection('down');
         } else {
-            setVisibleImagesCount(4);
+            setScrollDirection('up');
         }
+
+        setCurrentIndex(currentScrollY);
     };
 
     useEffect(() => {
-        updateVisibleImagesCount(); 
-        window.addEventListener('resize', updateVisibleImagesCount);  
-        return () => {
-            window.removeEventListener('resize', updateVisibleImagesCount); 
-        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    const startCarousel = () => {
-        const id = setInterval(() => {
-            setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
-        }, 1000);
-        setIntervalId(id);
-    };
-
-    const stopCarousel = () => {
-        if (intervalId) {
-            clearInterval(intervalId);
-            setIntervalId(null);
-        }
-    };
-
-    useEffect(() => {
-        if (isHovering) {
-            startCarousel();
-        } else {
-            stopCarousel();
-        }
-
-        return () => stopCarousel(); 
-    }, [isHovering]);
 
     const getVisibleImages = () => {
         const visibleImages = [];
@@ -72,14 +42,10 @@ const Projects = () => {
     return (
         <div className='sectionProjects-div'>
             <h2 className='sectionProjects-Title'>Projects</h2>
-            <div 
-                className='sectionProject-carousel'
-                onMouseEnter={() => setIsHovering(true)} 
-                onMouseLeave={() => setIsHovering(false)} 
-            >
-                <div className='sectionProject-carousel-images'>
-                    {getVisibleImages().map((image, index) => (
-                        <img key={index} src={image} alt={`Slide ${index}`} className='sectionProject-carousel-image' />
+            <div className='sectionProject-carousel'>
+                <div className={`sectionProject-carousel-images ${scrollDirection === 'down' ? 'slide-in' : ''} ${scrollDirection === 'up' ? 'slide-out' : ''}`}>
+                    {getVisibleImages().map((image) => (
+                        <img key={image} src={image} alt={`Slide`} className='sectionProject-carousel-image' />
                     ))}
                 </div>
             </div>
