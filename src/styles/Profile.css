@@ -161,13 +161,14 @@
     
 }
 .infouser-container-servicenew h2, .description-container-servicesnew h2,
-.duration-servicenew  h2, .price-servicenew h2, .location-servicenew h2{
+.duration-servicenew  h2, .price-servicenew h2, .location-servicenew h2,
+.image-servicenew h2{
     color: var(--primary-color);
     font-size: 20px;
     margin-bottom: 12px;
 }
 .infouser-container-servicenew input, .duration-servicenew input,
-.price-servicenew input,.location-servicenew input
+.price-servicenew input,.location-servicenew input, .image-servicenew input
 {
     border: 1px solid var(--primary-color);
     width: 100%;
@@ -175,6 +176,7 @@
     border-radius: 2px;
     font-size: 14px;
     outline: none;
+    color: var(--primary-color);
     
 }
 .description-container-servicesnew{
@@ -206,7 +208,20 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+}
+
+.image-servicenew {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.image-servicenew input {
+    width: 100%;
+    margin-bottom: 20px;
     color: var(--primary-color);
+   
 }
 
 .container-button-servicenew {
@@ -223,6 +238,12 @@
     font-size: 16px;
 
 }
+.button-servicesnew:hover {
+    background-color: var(--background-color);
+    border:1px solid var(--button-color);
+    color: var(--button-color)
+}
+
 /*Profile-content*/
 
 .profile-content {

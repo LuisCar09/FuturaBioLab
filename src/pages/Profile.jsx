@@ -261,7 +261,7 @@ const Profile = () => {
               />
             </div>
             </div>
-            <div className='location-servicenew'>
+            <div className='image-servicenew'>
               <h2>Image</h2>
               <input 
               id='image-service'
