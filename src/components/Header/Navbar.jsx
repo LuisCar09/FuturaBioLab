@@ -8,28 +8,27 @@ import NavLinks from './NavLinks';
 
 const NavBar = ({ linkNames, isMenuOpen }) => {
     const [showMenu, setShowMenu] = useState(false);
-    
+
     const clickHandler = () => {
         setShowMenu(!showMenu);
     };
 
-   
+
 
     return (
         <nav className={`navbar`}>
             <Logo />
-            {!isMenuOpen ? (
-                <NavLinks linkNames={linkNames} />
-            ) : (
-                <>
-                    <MenuIcon onClick={clickHandler} />
-                    <HamburgerMenu 
-                        linkNames={linkNames} 
-                        showMenu={showMenu} 
-                        clickHandler={clickHandler} 
-                    />
-                </>
-            )}
+
+            <NavLinks linkNames={linkNames} classForUl={'navbar-ul'} />
+            <div className='menu-icon'>
+            <MenuIcon  onClick={clickHandler} />
+            </div>
+            <HamburgerMenu
+                linkNames={linkNames}
+                showMenu={showMenu}
+                clickHandler={clickHandler}
+            />
+
         </nav>
     );
 };

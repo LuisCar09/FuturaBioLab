@@ -71,7 +71,7 @@
    
 }
 
-.close-container{
+/* .close-container{
     display: flex;
     justify-content: flex-start;
     padding: 2px 0 0 2px;
@@ -85,7 +85,7 @@
 
 .close-container svg{
     font-size: 30px;
-}
+} */
 
 /*.navbar-container {
     position: fixed; 

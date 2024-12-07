@@ -10,6 +10,7 @@ const HamburgerMenu = ({ linkNames, showMenu, clickHandler }) => {
                 </div>
             </div>
              <NavLinks linkNames={linkNames} />
+             
         </div>
     );
 };

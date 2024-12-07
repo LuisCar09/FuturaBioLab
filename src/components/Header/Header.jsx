@@ -55,23 +55,23 @@ const Header = () => {
         setLastScrollY(currentScrollY);
     };
 
-    const handleResize = () => {
-        const isSmall = window.innerWidth < 480;
-        setIsSmallScreen(isSmall);
-    };
+    // const handleResize = () => {
+    //     const isSmall = window.innerWidth < 480;
+    //     setIsSmallScreen(isSmall);
+    // };
 
-    useEffect(() => {
+    // useEffect(() => {
 
     
-        !isVisible ? setIsVisible(false) : setIsVisible(true)
+    //     !isVisible ? setIsVisible(false) : setIsVisible(true)
 
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [lastScrollY]);
+    //     window.addEventListener('scroll', handleScroll);
+    //     // window.addEventListener('resize', handleResize);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //         // window.removeEventListener('resize', handleResize);
+    //     };
+    // }, [lastScrollY]);
 
     return (
 
@@ -81,7 +81,7 @@ const Header = () => {
         </header>) 
         : 
         (
-        <header   className={`headertop ${isVisible ? 'visible' : 'invisible'}`} >
+        <header   className={`headertop visible }`} >
         <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
         </header>
         )

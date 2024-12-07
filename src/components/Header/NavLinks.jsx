@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-const NavLinks = ({ linkNames }) => {
+const NavLinks = ({ linkNames,classForUl }) => {
     return (
-        <ul>
+        <ul className={classForUl} >
             {linkNames && linkNames.length > 0 && linkNames.map(({ name, path, id }) => (
                 <li key={id}><Link to={path}>{name}</Link></li>
             ))}
