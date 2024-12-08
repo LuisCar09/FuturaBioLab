@@ -50,7 +50,7 @@
 .menu-display.hidden {
     opacity: 0; 
     transform: translateX(100%);
-    display: none;
+    display:none
 }
 
 .menu-display ul {
