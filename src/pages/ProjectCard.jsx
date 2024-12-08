@@ -12,136 +12,7 @@ const ProjectCard = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [hideElements, setHideElements] = useState(false);
     const { id } = useParams();
-
-    const addInputsFunctions = {
-        addProperties :  (event) => {
-            setProperties(prev => {
-                if (!prev.includes(event.target.value)) {
-                    return [...prev,event.target.value]    
-                }
-                return(prev)
-                
-            })
-        },addTools :  (event) => {
-            setTools(prev => {
-                if (!prev.includes(event.target.value)) {
-                    return [...prev,event.target.value]    
-                }
-                return(prev)
-                
-            })
-        },
-        addApplication :  (event) => {
-            setApplication(prev => {
-                if (!prev.includes(event.target.value)) {
-                    return [...prev,event.target.value]    
-                }
-                return(prev)
-                
-            })
-        },
-        addProcesses :  (event) => {
-            setProcesses(prev => {
-                if (!prev.includes(event.target.value)) {
-                    return [...prev,event.target.value]    
-                }
-                return(prev)
-                
-            })
-        }
-    }
-    const addValues = (propert,event) => {
-        return  addInputsFunctions[propert] ?  addInputsFunctions[propert](event) : null
-    }
-  
-    
-    const removeItemProperties = (event) => {
-        const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
-        setProperties(prev => {
-            if (prev.includes(itemToDelete)) {
-                return prev.filter(item => item !== itemToDelete)
-            }
-        })
-        
-    } 
-    const removeItemTools = (event) => {
-        const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
-        setTools(prev => {
-            if (prev.includes(itemToDelete)) {
-                return prev.filter(item => item !== itemToDelete)
-            }
-        })
-        
-    } 
-    const removeApplication = (event) => {
-        const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
-        setApplication(prev => {
-            if (prev.includes(itemToDelete)) {
-                return prev.filter(item => item !== itemToDelete)
-            }
-        })
-        
-    } 
-    const removeProccesses = (event) => {
-        const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
-        setProcesses(prev => {
-            if (prev.includes(itemToDelete)) {
-                return prev.filter(item => item !== itemToDelete)
-            }
-        })
-        
-    }
-    
-const licenseOptions = [
-    'CreativeCommons:Attribution-NoDerivates4.0Internacional(CCBY-ND4.0)',
-    'CreativeCommons:Attribution-ShareAlike4.0Internacional(CCBY-SA4.0)',
-    'CreativeCommons:Attribution-NonCommercial4.0Internacional(CCBY-NC4.0)',
-    'CreativeCommons:Attribution-NonCommercial-NoDerivates4.0 Internacional(CCBY-NC-ND4.0)', 
-    'CreativeCommons:Attribution-NonCommercial-ShareAlike4.0Internacional(CCBY-NC-SA4.0)',
-    'CreativeCommons:Attribution4.0Internacional(CCBY4.0)'
-];
-
-const applicationOptions = [
-    'ConsumerGoods', 'Fabrics', 'Packaging', 'Construction&BuiltEnviroment', 'ProductDesign'
-];
-
-const propertiesOptions = [
-    'ThermalProperties', 'PhysicalProperties', 'MechanicalProperties-Tension', 'MechanicalProperties-Strength',
-    'Chemical-Properties', 'Optical-Properties', 'Barrier-Properties', 'Biocompatibility', 
-    'Biodegradability', 'Surface-Properties', 'Porosity', 'Electrical-properties', 
-    'Thermal-Stability', 'Antimicrobial-Properties', 'Viscoelastic-Properties'
-];
-
-const lightsconditionsOptions = [
-    'DirectSunLigth', 'PartlyShadedSunLigth', 'AmbientOverheadLigthing'
-];
-
-const toolsOptions = [
-    'Cooker/stove/hotplates', 'Teaspoon', 'MeasuringCup', 'CookingPot', 'Scale',
-    'Thermometer', 'Oven', 'MicronSieve', 'PressureCooker', 'Gloves', 
-    'PlasticFillm','SprayBottle', 'CanningJar', 'Mold', 'Blender', 
-    'Brush', 'Ruler', 'LasserCutter', 'MeasuringCylinder', 'Syringe', 
-    'Pippete', 'Filter', 'Sponge', 'PaperMould', 'SiliconeMat', 
-    '3DPrinter', 'MetalScreenMesh', 'Drainer','Mixer','CentrifugalMixer', 
-    'DustMask', 'PetriDish', 'strainer','ContainerWithLid', 
-    'Scissors', 'MortarAndPestle', 'FabricCloth', 'PuttyKnife', 
-    'Degasser', 'Homogenizer', 'KitchenTools', 'Scooby'
-];
-
-const processesOptions = [
-    '3Dprinted', 'LaserCut' ,'Ground', 'Molded', 'Cast', 'Cooked',
-    'Cut','Baked','Mixed', 'AirDried', 'Freeze-dried', 'Frozen', 
-    'Growm', 'Fermented', 'Boiled', 'Fired', 'Kneaded', 'Decant', 
-    'OvenDry', 'Crushed', 'Sieved', 'Rinsed', 'Soaked', 
-    'Sprayed', 'Dry', 'Mix', 'Warm', 'Grated', 'Heated', 
-    'Dyed', 'Painted', 'Extruded', 'Strained', 'Blended', 
-    'Peeled', 'Pressed'
-];
-
+    const userUid = localStorage.getItem('uid')
     useEffect(() => {
         const fetchProject = async () => {
             try {
@@ -186,7 +57,8 @@ const processesOptions = [
             console.log(error.message);
         }
     };
-
+    console.log(project);
+    
     return (
         <main className="project-container">
             {project && (
@@ -205,9 +77,9 @@ const processesOptions = [
                                 ) : (
                                     <h1>{project.nameproject}</h1>
                                 )}
-                                {currentUser && currentUser.id === project.ownerId && !isEditing && (
+                                {userUid === project.uid && !isEditing ?  (
                                     <button onClick={handleEditToggle}>Editar</button>
-                                )}
+                                ): null}
                                 {isEditing && (
                                     <button onClick={handleUpdateProject}>Guardar</button>
                                 )}
@@ -221,20 +93,7 @@ const processesOptions = [
                         <div className="project-container--article-button">
                             <div className='author-container-projectcard'>
                                 <Link to={`/members/${id}`} className='author-link-projectcard'>{project.owner}</Link>
-                                <h2>License</h2>
-                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
-                                <select
-                                    name="license"
-                                    value={project.license}
-                                    onChange={handleInputChange}
-                                >
-                                    {licenseOptions.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                    ))}
-                                </select>
-                            ) : (
                                 <p>{project.license}</p>
-                            )}
                             </div>
                         </div>
                     </article>
@@ -265,53 +124,56 @@ const processesOptions = [
                                 )}
                             </div>
                             <div className='aside-info-projectcard'>
-                            <h2>Properties</h2>
-                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
-                                <select
-                                    name="properties"
-                                    value={project.properties}
-                                    onChange={handleInputChange}
-                                >
-                                    {propertiesOptions.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <p>{project.properties}</p>
-                            )}
+                                <h2>Properties</h2>
+                                {project.properties.map((prop, index) => (
+                                    currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                        <input
+                                            key={index}
+                                            type="text"
+                                            name={`properties-${index}`}
+                                            value={prop}
+                                            onChange={handleInputChange}
+                                             className="editing-input"
+                                        />
+                                    ) : (
+                                        <p key={index}>{prop}</p>
+                                    )
+                                ))}
                             </div>
                             <div className='aside-info-projectcard'>
-                            <h2>Tools</h2>
-                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
-                                <select
-                                    name="tools"
-                                    value={project.tools}
-                                    onChange={handleInputChange}
-                                >
-                                    {toolsOptions.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <p>{project.tools}</p>
-                            )}
+                                <h2>Tools</h2>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <input
+                                        type="text"
+                                        name="tools"
+                                        value={project.tools}
+                                        onChange={handleInputChange}
+                                         className="editing-input"
+                                    />
+                                ) : (
+                                    <p>{project.tools}</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
-                            <h2>Application</h2>
-                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
-                                <select
-                                    name="application"
-                                    value={project.application}
-                                    onChange={handleInputChange}
-                                >
-                                    {applicationOptions.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <p>{project.application}</p>
-                            )}
-                                   
+                                <h2>Application</h2>
+                                {project.application ? (
+                                    project.application.map((proc, index) => (
+                                        currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                            <input
+                                                key={index}
+                                                type="text"
+                                                name={`application-${index}`}
+                                                value={proc}
+                                                onChange={handleInputChange}
+                                                 className="editing-input"
+                                            />
+                                        ) : (
+                                            <p key={index}>{proc}</p>
+                                        )
+                                    ))
+                                ) : (
+                                    <p>No application available</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
                                 <h2>Prep time</h2>
@@ -321,26 +183,32 @@ const processesOptions = [
                                         name="preptime"
                                         value={project.preptime}
                                         onChange={handleInputChange}
+                                         className="editing-input"
                                     />
                                 ) : (
                                     <p>{project.preptime}</p>
                                 )}
                             </div>
                             <div className='aside-info-projectcard'>
-                            <h2>Processes</h2>
-                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
-                                <select
-                                    name="processes"
-                                    value={project.processes}
-                                    onChange={handleInputChange}
-                                >
-                                    {processesOptions.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <p>{project.processes}</p>
-                            )}
+                                <h2>Processes</h2>
+                                {project.processes ? (
+                                    project.processes.map((proc, index) => (
+                                        currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                            <input
+                                                key={index}
+                                                type="text"
+                                                name={`processes-${index}`}
+                                                value={proc}
+                                                onChange={handleInputChange}
+                                                 className="editing-input"
+                                            />
+                                        ) : (
+                                            <p key={index}>{proc}</p>
+                                        )
+                                    ))
+                                ) : (
+                                    <p>No processes available</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
                                 <h2>Ambient conditions</h2>
@@ -350,26 +218,25 @@ const processesOptions = [
                                         name="ambientconditions"
                                         value={project.ambientconditions}
                                         onChange={handleInputChange}
+                                         className="editing-input"
                                     />
                                 ) : (
                                     <p>{project.ambientconditions}</p>
                                 )}
                             </div>
                             <div className='aside-info-projectcard'>
-                            <h2>Lights conditions</h2>
-                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
-                                <select
-                                    name="lightsconditions"
-                                    value={project.lightsconditions}
-                                    onChange={handleInputChange}
-                                >
-                                    {lightsconditionsOptions.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <p>{project.lightsconditions}</p>
-                            )}
+                                <h2>Lights conditions</h2>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <input
+                                        type="text"
+                                        name="lightsconditions"
+                                        value={project.lightsconditions}
+                                        onChange={handleInputChange}
+                                         className="editing-input"
+                                    />
+                                ) : (
+                                    <p>{project.lightsconditions}</p>
+                                )}
                             </div>
                         </div>
                         <div className='moreinfo-projectcard'>
@@ -384,6 +251,7 @@ const processesOptions = [
                                     name="method"
                                     value={project.method}
                                     onChange={handleInputChange}
+                                     className="editing-input"
                                 />
                             ) : (
                                 <p>{project.method}</p>
@@ -398,6 +266,7 @@ const processesOptions = [
                                     name="references"
                                     value={project.references}
                                     onChange={handleInputChange}
+                                     className="editing-input"
                                 />
                             ) : (
                                 <p>{project.references}</p>
@@ -411,6 +280,7 @@ const processesOptions = [
                                     name="bibliography"
                                     value={project.bibliography}
                                     onChange={handleInputChange}
+                                     className="editing-input"
                                 />
                             ) : (
                                 <p>{project.bibliography}</p>

@@ -4,7 +4,7 @@ const importantLinks = [
     {name: 'Home', path:'/'},
     {name: 'About us', path: '/aboutus'},
     {name: 'Contact us', path: '/contactus'},
-    {name:'Terms and Conditions', path: '/terms'}
+    {name:'Terms and Conditions', path: '/guide'}
 
 ]
 

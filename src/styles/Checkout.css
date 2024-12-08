@@ -8,24 +8,34 @@
 
 .section-checkout {
     display: flex;
+    flex-wrap: wrap;
     max-width: 700px;
     width: 100%;
     height: inherit;
     align-items: flex-start;
-    
+    gap: 20px;
 }
 
 .aside-payment-checkout, .aside-total-checkout {
     display: flex;
     justify-content: center;
-    width: 100%;
+    align-items: center;
+    width: 340px;
+    
     height: 320px;
+}
+#payment-method{
+    max-width: 340px;
+    width: 100%;
 }
 
 .method-payment-checkout {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 100%;
+    max-width: 340px;
+    width: 100%;
 }
 
 .method-payment-checkout h3 {
@@ -105,6 +115,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 10px;
 }
 
 .product-details-checkout p {
@@ -113,7 +124,7 @@
 }
 
 .nameproduct-checkout {
-    display: flex;
+    display: none;
     justify-content: space-between;
 }
 

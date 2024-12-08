@@ -1,5 +1,5 @@
 .main-mycart {
-    position: relative;
+    
     height: calc(100vh - 331px);
     display: flex;
     justify-content: center;
@@ -10,15 +10,21 @@
 .section-mycart {
     display: flex;
     flex-direction: column;
-   max-width: 250px;
+   max-width: 350px;
    width: 100%;
+   height: inherit;
     
 }
-
+.items-container{
+    height: 200px;
+    width: 100%;
+    overflow-y: auto;
+    padding-right: 20px;
+}
 .products-mycart {
     display: flex;
-    align-items: flex-start;
-    height: 200px;
+    align-items: center;
+    height: 60px;
     width: 100%;
 }
 
@@ -64,6 +70,7 @@
     font-size: 10px;
     cursor: pointer;
     font-size: 16px;
+    margin: 0;
 }
 
 .buttonproduct-mycart:hover{

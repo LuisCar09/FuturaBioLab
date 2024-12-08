@@ -1,5 +1,5 @@
 import '../styles/Profile.css'
-
+import Card from '../components/utils/Card';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
@@ -75,7 +75,9 @@ const Profile = () => {
         
     }
     fetchUserData()
-},[])
+
+    if (checkUid) fetchProjects()
+},[checkUid])
   
   const createService = async () => {
     
@@ -110,6 +112,16 @@ const Profile = () => {
   const handleButtonClick = () => {
     navigate('/setting');
   }
+  
+  
+    const fetchProjects = async () =>{
+     
+      
+      const userProjects = await axios.get(`http://localhost:8080/projects/user/${checkUid}`)
+      setProjects(userProjects.data)
+    }
+    
+    
   
  
   return (
@@ -168,7 +180,9 @@ const Profile = () => {
                 <div className='projects--profile'>
                   {projects.length > 0 ? (
                     projects.map(project => (
-                      <div key={project.id}>{project.name} {project.image} {project.title} {project.views}</div>
+                      
+                      <Card key={crypto.randomUUID()} id={_id} username={project.owner} date={project.createdAt.split('T')[0]} title={project.nameproject} descriptionProject={project.description} projectImg={project.image} projectViews={project.views} userImg={project.image}
+                      />
                     ))
                   ) : (
                     <p>Don't have projects</p>

@@ -38,7 +38,7 @@
     background-color: wheat;
     top: 0;
     right: 0;
-   
+    z-index: 1000;
     padding: 10px 0;
     transition: opacity 1s ease, transform 1s ease;
     opacity: 0; 

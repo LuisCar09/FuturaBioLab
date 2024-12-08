@@ -9,7 +9,7 @@ const HamburgerMenu = ({ linkNames, showMenu, clickHandler }) => {
                     <CloseIcon onClick={clickHandler} />
                 </div>
             </div>
-             <NavLinks linkNames={linkNames} />
+             <NavLinks linkNames={linkNames} handlerClick = {clickHandler} />
              
         </div>
     );

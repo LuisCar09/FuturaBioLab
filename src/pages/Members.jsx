@@ -87,7 +87,7 @@ function Members() {
                                             <p>Follows</p>
                                         </div>
                                     </div>
-                                    <Link to={`/members/profile/${selectedMember._id}`} className='button-members'>
+                                    <Link to={`/members/${selectedMember._id}`} className='button-members'>
                                         My profile
                                     </Link>
                                 </div>

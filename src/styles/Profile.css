@@ -387,7 +387,9 @@
 }
 
 .projects--profile {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -415,6 +417,12 @@
     transition: background-color  0.3s;
 }
 /*Responsive*/
+@media screen and (max-width:880px) {
+    .projects--profile{
+        grid-template-columns: repeat(1, 1fr)
+    }
+    
+}
 
 
 @media screen and (max-width:600px) {
@@ -436,7 +444,7 @@
         width: 120px;
     }.edit-profile-button {
         
-        padding: 8px 20px;
+        padding: 6px 12px;
     
     }
     .projects-title-profile .add-project-button {

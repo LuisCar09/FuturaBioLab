@@ -34,7 +34,7 @@ function Projects() {
                     
                     return(
                         <Card key={_id} id={_id} username={owner} date={createdAt.split('T')[0]} title={nameproject} descriptionProject={description} projectImg={image} projectViews={views} userImg={image}
-                    />
+                        />
                     )
                 })}
                 

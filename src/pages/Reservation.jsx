@@ -27,7 +27,8 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
             uidOwner : service.uid,            
             uidBuyer: localStorage.getItem('authToken'),
             price: service.price,
-            serviceid : id
+            serviceid : id,
+            name:service.name
         }
         const isReapeated = existAddProduct.findIndex(item => item.serviceid  === body.serviceid)
        

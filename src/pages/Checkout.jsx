@@ -5,6 +5,10 @@ import '../styles/Checkout.css'
 
 const Checkout = () => {
     const [paymentMethod, setPaymentMethod] = useState('creditCard'); 
+    
+    const [subTotal,setSubTotal] = useState(parseInt(localStorage.getItem('price')))
+    const [tax,setTax] = useState(subTotal * 0.21)
+    const [shippingCharges,setShippingCharges] = useState(subTotal * 0.01)
 
     const handlePaymentMethodChange = (event) => {
         setPaymentMethod(event.target.value);
@@ -87,21 +91,21 @@ const Checkout = () => {
                     </div>
                     <div className='content-checkout'>
                  <h3>Sub Total</h3>
-                 <p>10€</p>
+                 <p>{(subTotal).toFixed(2)}€</p>
                 </div>
                 <div className='content-checkout'>
                  <h3>Tax</h3>
-                 <p>3.5€</p>
+                 <p>{(tax).toFixed(2)}€</p>
                 </div>
                 <div className='content-checkout'>
                  <h3>Shoping Charges</h3>
-                 <p>2.17€</p>
+                 <p>{(shippingCharges).toFixed(2)}€</p>
                 </div>
                 <div className='content-checkout'>
                  <h3>Total</h3>
-                 <p>37.29€</p>
+                 <p>{(subTotal + tax + shippingCharges).toFixed(2) }€</p>
                 </div>
-                <Link to='/mycart/checkout'>
+                <Link to='/thankyou'>
                 <button>Checkout</button>
                 </Link>
 
