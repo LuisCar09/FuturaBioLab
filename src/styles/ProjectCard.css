@@ -147,7 +147,7 @@
    margin-bottom: 12px;
 }
 .aside-info-projectcard textarea {
-    width: 400px;
+    width: 100%;
     height: 150px;
     resize: none;
     border: 1px solid var(--primary-color);
@@ -266,6 +266,16 @@
    
 }
 
+.editing-aside-input { border: 1px solid var(--primary-color);
+    font-size: 16px;
+    color:var(--primary-color);
+    width: 100%;
+    height: 32px;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 12px;
+
+}
 /* UploadProject */
 
 .properties-values{
