@@ -47,7 +47,7 @@ const Login = () => {
 
         } catch (error) {
             console.error(error.message);
-            setMessage('The user does not exist, please go to Register') //Un div or algo lo dejo a tu creatividad.
+            setMessage('The user does not exist, please go to Register') 
             
         }
     }
