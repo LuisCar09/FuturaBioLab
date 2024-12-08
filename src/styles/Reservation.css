@@ -265,3 +265,8 @@
     width: 100%;
    
 }
+.message-container{
+    margin-bottom: 10px;
+    font-family: inherit;
+    color: var(--primary-color);
+}

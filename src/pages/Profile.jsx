@@ -99,6 +99,7 @@ const Profile = () => {
       const servicesResponse = await axios.post('http://localhost:8080/services/new', body, {
         headers: { Authorization: `Bearer ${token}` }
       })
+      console.log(servicesResponse);
       
       navigate('/services')
     } catch (error) {

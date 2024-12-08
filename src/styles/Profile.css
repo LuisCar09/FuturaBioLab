@@ -253,11 +253,12 @@
 .container-button-servicenew .button-servicesnew {
     display: flex;
     padding: 8px 20px;
-   color: white;
+    color: white;
     background-color: var(--button-color);
     cursor: pointer;
     font-size: 16px;
-
+    margin-bottom: 0;
+    margin-top: 20px;
 }
 .button-servicesnew:hover {
     background-color: var(--background-color);

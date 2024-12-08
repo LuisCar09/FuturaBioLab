@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { json, Link, useParams } from 'react-router-dom';
 import '../styles/Reservation.css';
 import axios from 'axios';
 
@@ -13,15 +13,39 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
     const [userEmail,setUserEmail] = useState('')
     const [userPhone,setUserPhone] = useState('')
     const [userDescription, setUserDescription] = useState('')
+    const [message,setMessage] = useState('')
     // FALTA QUE AL HACER CLICK ME GUARDE EN EL LOCALHOST LO QUE SE HA COMPRADO Y LUEHO EL PAGO
+
     
-    const handlePaymentMethodClick = (method) => {
-        setSelectedPaymentMethod(method);
-        // Reset card number when changing payment methods
-        if (method !== 'credit-card') {
-            setCardNumber('');
-        }
+    const getUidOwner = (method) => {
+        get
     };
+    const handlerAddToCar = () => {
+        
+        const existAddProduct = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
+        const body = {
+            uidOwner : service.uid,            
+            uidBuyer: localStorage.getItem('authToken'),
+            price: service.price,
+            serviceid : id
+        }
+        const isReapeated = existAddProduct.findIndex(item => item.serviceid  === body.serviceid)
+       
+        
+        isReapeated === -1 ? existAddProduct.push(body) : setMessage('Service already in the cart')
+        
+        
+        
+        localStorage.setItem('items',JSON.stringify(existAddProduct))
+        
+        setTimeout(() => {
+            setMessage('')
+        },2000)
+        
+        console.log(JSON.parse(localStorage.getItem('items')));
+        
+        
+    }
     useEffect(() => {
         const fetchService = async () => {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -82,6 +106,7 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                                 type='text'
                                 value={userPhone}
                                 onChange={(e) => setUserPhone(e.target.value)}
+                                required
                             />
                             <p>Add a message</p>
                             <textarea 
@@ -91,64 +116,14 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                             ></textarea>
                         </div>
 
-                        <div className='payment-formreservation'>
-                            <h3>Payment</h3>
-                            <div className='methodpayment-formreservation'>
-                                {['credit-card', 'paypal', 'bank-transfer'].map((method) => (
-                                    <div className='payment-formreservation' key={method}>
-                                        <p
-                                            onClick={() => handlePaymentMethodClick(method)}
-                                            className={selectedPaymentMethod === method ? 'selected' : ''}
-                                        >
-                                            {method}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-
-                           
-                            {selectedPaymentMethod === 'credit-card' && (
-                                <div className='credit-card-input'>
-                                    <label htmlFor='card-number' className='label-formreservation'>
-                                        Card Number
-                                    </label>
-                                    <input 
-                                        id='card-number'
-                                        type='text'
-                                        value={cardNumber}
-                                        onChange={(e) => setCardNumber(e.target.value)}
-                                        placeholder='Enter your card number'
-                                        required
-                                    />
-                                </div>
-                            )}
-
-                            {selectedPaymentMethod === 'paypal' && (
-                                <div className='paypal-message'>
-                                    <p>This payment method is currently unavailable.</p>
-                                </div>
-                            )}
-
-                            {selectedPaymentMethod === 'bank-transfer' && (
-                                <div className='bank-transfer-info'>
-                                    <h4>Future Biolab S.L.</h4>
-                                    <input 
-                                        type='text'
-                                        value='1234567890'
-                                        readOnly
-                                        placeholder='Account number (for testing purposes)'
-                                    />
-                                    <p>* This account number does not exist, it is only for testing.</p>
-                                </div>
-                            )}
-                        </div>
+                        
                     </form>
 
                     <div className='data-formreservation'>
                         <div className='data-formreservation-details'>
                             <h3>Reservation details</h3>
                             <p>Service name: {service.name} </p>
-                            <p>Date: Aqui debe ir la fecha del evento </p> 
+                            <p>Date: {service.date} </p> 
                             <p>Time: {service.hour} min </p>
                             <p>Duration: {service.duration} min </p>
                         </div>
@@ -158,12 +133,13 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                             <p className='amount'>{service.price} €</p>
                         </div>
                         <div className='buttons-formreservation'>
-                            <button className='addbutton-formreservation'>Add to cart</button>
+                            <div className='message-container'>{!message ? '' : message }</div>
+                            <button className='addbutton-formreservation' onClick={handlerAddToCar}>Add to cart</button>
                             <Link to={'/mycart'}><button className='addbutton-formreservation'>Checkout</button></Link>
                             <Link to={'/services'}>
                                 <button className='addbutton-formreservation'>Continue shopping</button>
                             </Link>
-                            <button className='addbutton-formreservation' onClick={() => backToServiceCard(true)}>Back</button>
+                            
                         </div>
                     </div>
                 </div>

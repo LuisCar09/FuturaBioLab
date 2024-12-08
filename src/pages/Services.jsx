@@ -12,7 +12,7 @@ function Services() {
         const fetchServices = async () => {
             try {
                 const servicesResponse = await axios.get('http://localhost:8080/services')
-                console.log(servicesResponse.data);
+                
                 setServices(servicesResponse.data)
             } catch (error) {
                 console.log(error.message);
