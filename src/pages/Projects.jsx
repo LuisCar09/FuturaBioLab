@@ -7,23 +7,20 @@ import '../styles/Projects.css'
 
 function Projects() {
     const [projects,setProjects] = useState(null)
-    const [currentUser, setCurrentUser] = useState(null);
+   
 
     const fetchData = async () => {
         const dataResponse = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'projects')
         setProjects(dataResponse.data)        
     }
+    console.log(projects);
     
    
 
-    const fetchCurrentUser = async() => {
-        const userResponse = await axios.get('http://localhost:8080/users' + 'owner')
-        console.log(userResponse)
-        setCurrentUser(userResponse.data)
-    }
+    
 
     useEffect(()=>{
-        fetchCurrentUser()
+        
         fetchData()
     },[])
     return (
