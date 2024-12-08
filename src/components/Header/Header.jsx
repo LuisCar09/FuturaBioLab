@@ -29,7 +29,7 @@ const Header = () => {
     { name: !token ? '' : 'Services', path: !token ? '' : '/services', id: crypto.randomUUID() },
     { name: !token ? '' : 'My profile', path: !token ? '' : '/profile', id: crypto.randomUUID() },
     { name: !token ? 'Login' : 'Log out', path: !token ? '/login' : '/logout', id: crypto.randomUUID() },
-    { name: <ShoppingCartIcon />, path: '/mycart', id: crypto.randomUUID() }
+   
     )
     :
     links.push(
@@ -81,9 +81,10 @@ const Header = () => {
         </header>) 
         : 
         (
-        <header   className={`headertop visible }`} >
+        <header   className={`headertop visible `} >
         <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
-        <Link to='/mycart'><ShoppingCartIcon /></Link>
+        
+        
         </header>
         )
 

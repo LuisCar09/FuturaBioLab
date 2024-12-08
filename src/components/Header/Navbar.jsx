@@ -4,6 +4,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import HamburgerMenu from './HamburgerMenu';
 import NavLinks from './NavLinks';
+import {Link} from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
 
 
 const NavBar = ({ linkNames, isMenuOpen }) => {
@@ -17,19 +21,24 @@ const NavBar = ({ linkNames, isMenuOpen }) => {
 
     return (
         <nav className={`navbar`}>
-            <Logo />
-
+        <Logo />
+        <div className='nav-container'>
             <NavLinks linkNames={linkNames} classForUl={'navbar-ul'} />
-            <div className='menu-icon'>
-            <MenuIcon  onClick={clickHandler} />
+            <div className='cart-icon'>
+                <Link to="/mycart">
+                    <ShoppingCartIcon />
+                </Link>
             </div>
-            <HamburgerMenu
-                linkNames={linkNames}
-                showMenu={showMenu}
-                clickHandler={clickHandler}
-            />
-
-        </nav>
+        </div>
+        <div className='menu-icon' onClick={clickHandler}>
+            <MenuIcon />
+        </div>
+        <HamburgerMenu
+            linkNames={linkNames}
+            showMenu={showMenu}
+            clickHandler={clickHandler}
+        />
+    </nav>
     );
 };
 
