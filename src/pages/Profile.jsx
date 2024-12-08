@@ -133,7 +133,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="navigation-bar-profile">
-          <a className="nav-files" onClick={() => setIsServiceCliked(prev => !prev)}>{!isServiceCliked ? 'Projects' : 'Services'}</a>
+          <a className="nav-files" onClick={() => setIsServiceCliked(prev => !prev)}>{!isServiceCliked ?   'Services' : 'Projects'}</a>
           {isServiceCliked && (
             <button className="add-service-button" onClick={() => setShowServiceForm(prev => !prev)}>
               {showServiceForm ? 'Cancel' : 'Add Service'}

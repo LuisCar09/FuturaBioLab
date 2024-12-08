@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../styles/Header.css';
 import NavBar from './Navbar'; 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -34,7 +34,7 @@ const Header = () => {
     :
     links.push(
         { name: 'Login', path: '/login' , id: crypto.randomUUID() },
-        { name: <ShoppingCartIcon />, path: '/mycart', id: crypto.randomUUID() }
+    
     )
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
@@ -83,6 +83,7 @@ const Header = () => {
         (
         <header   className={`headertop visible }`} >
         <NavBar linkNames={links} isMenuOpen={isSmallScreen} />
+        <Link to='/mycart'><ShoppingCartIcon /></Link>
         </header>
         )
 

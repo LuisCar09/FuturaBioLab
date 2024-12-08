@@ -1,167 +1,299 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import '../styles/ProjectCard.css'
+import '../styles/ProjectCard.css';
 
 const ProjectCard = () => {
-    
-    const [projects, setProjects] = useState('')
-  
-    const [hideElements,setHideElements] = useState(false)
-    const {id} = useParams()
-   // console.log(hideElements);
-    
-    
-    
+    const [project, setProject] = useState(null);
+    const [currentUser, setCurrentUser] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
+    const [hideElements, setHideElements] = useState(false);
+    const { id } = useParams();
+
     useEffect(() => {
-        const fecthProject = async () => {
+        const fetchProject = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/projects/' + id )
-            
-                setProjects(response.data)
-
-                
+                const response = await axios.get(`http://localhost:8080/projects/${id}`);
+                setProject(response.data);
             } catch (error) {
-                console.log(error.message)
+                console.log(error.message);
             }
+        };
+        fetchProject();
+    }, [id]);
+
+    useEffect(() => {
+        const fetchCurrentUser = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/users/');
+                setCurrentUser(response.data);
+            } catch (error) {
+                console.log(error.message);
+            }
+        };
+        fetchCurrentUser();
+    }, []);
+
+    const handleEditToggle = () => {
+        setIsEditing(!isEditing);
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setProject((prevProject) => ({
+            ...prevProject,
+            [name]: value,
+        }));
+    };
+
+    const handleUpdateProject = async () => {
+        try {
+            await axios.put(`http://localhost:8080/projects/${id}`, project);
+            setIsEditing(false);
+        } catch (error) {
+            console.log(error.message);
         }
-        fecthProject()
-    }, [])
-    console.log(projects);
-    
+    };
+
     return (
-
         <main className="project-container">
-            {projects &&
-                <section className={!hideElements ? "project-container--section" : "project-container--section hidden "}  >
-                    <article className={!hideElements ? "project-container--article" : "project-container--aside-container moveLeft "} >
-
-                        <div className="project-container--article-top" >
-                            <div>
-                                <p>{projects.nameproject}</p>
-                                <p>{projects.composition}</p>
-
-                            </div>              
+            {project && (
+                <section className={!hideElements ? "project-container--section" : "project-container--section hidden"}>
+                    <article className={!hideElements ? "project-container--article" : "project-container--aside-container moveLeft"}>
+                        <div className="project-container--article-top">
+                            <div className='currentuser-input-conatiner-projectcard'>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <input
+                                        type="text"
+                                        name="nameproject"
+                                        value={project.nameproject}
+                                        onChange={handleInputChange}
+                                         className="editing-input"
+                                    />
+                                ) : (
+                                    <h1>{project.nameproject}</h1>
+                                )}
+                                {currentUser && currentUser.id === project.ownerId && !isEditing && (
+                                    <button onClick={handleEditToggle}>Editar</button>
+                                )}
+                                {isEditing && (
+                                    <button onClick={handleUpdateProject}>Guardar</button>
+                                )}
+                            </div>
                         </div>
                         <div className="project-container--article--squarePicture">
                             <div className='image-container-projectcard'>
-                                <img src={projects.image[0]} />
+                                <img src={project.image[0]} alt="Project" />
                             </div>
                         </div>
                         <div className="project-container--article-button">
                             <div className='author-container-projectcard'>
-
-                                <Link to={`/members/${id}`} className='author-link-projectcard'>{projects.owner}</Link>
-                                <p>{projects.license}</p>
+                                <Link to={`/members/${id}`} className='author-link-projectcard'>{project.owner}</Link>
+                                <p>{project.license}</p>
                             </div>
-
                         </div>
-
-
                     </article>
-                    <aside className={!hideElements ? "project-container--aside-container " : "project-container--aside-container moveRight "} >
+                    <aside className={!hideElements ? "project-container--aside-container" : "project-container--aside-container moveRight"}>
                         <div className='containerinfo-projectcard'>
                             <div className='aside-info-projectcard'>
                                 <h2>Description</h2>
-                                <p>{projects.description}</p>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <textarea
+                                        name="description"
+                                        value={project.description}
+                                        onChange={handleInputChange}
+                                    />
+                                ) : (
+                                    <p>{project.description}</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
                                 <h2>Ingredients</h2>
-
-                                <p>{projects.ingredients}</p>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <textarea
+                                        name="ingredients"
+                                        value={project.ingredients}
+                                        onChange={handleInputChange}
+                                    />
+                                ) : (
+                                    <p>{project.ingredients}</p>
+                                )}
                             </div>
-
                             <div className='aside-info-projectcard'>
                                 <h2>Properties</h2>
-                                {projects.properties.map(prop => <p key={prop} >{prop}</p>)}
+                                {project.properties.map((prop, index) => (
+                                    currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                        <input
+                                            key={index}
+                                            type="text"
+                                            name={`properties-${index}`}
+                                            value={prop}
+                                            onChange={handleInputChange}
+                                             className="editing-input"
+                                        />
+                                    ) : (
+                                        <p key={index}>{prop}</p>
+                                    )
+                                ))}
                             </div>
                             <div className='aside-info-projectcard'>
                                 <h2>Tools</h2>
-                                <p>{projects.tools}</p>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <input
+                                        type="text"
+                                        name="tools"
+                                        value={project.tools}
+                                        onChange={handleInputChange}
+                                         className="editing-input"
+                                    />
+                                ) : (
+                                    <p>{project.tools}</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
                                 <h2>Application</h2>
-
-                                  {projects && projects.application ? (
-                                  projects.application.map(proc => <p key={proc}>{proc}</p>)
-                                  ) : (
-                                 <p>No application available</p>
-                               )}
-                               
-                                {/* {projects.application ? (
-                                projects.application.map(proc => <p key={proc}>{proc}</p>)
-                                 ) : (
-                                  <p>No application available</p>
-                                     )} */}
-
-
+                                {project.application ? (
+                                    project.application.map((proc, index) => (
+                                        currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                            <input
+                                                key={index}
+                                                type="text"
+                                                name={`application-${index}`}
+                                                value={proc}
+                                                onChange={handleInputChange}
+                                                 className="editing-input"
+                                            />
+                                        ) : (
+                                            <p key={index}>{proc}</p>
+                                        )
+                                    ))
+                                ) : (
+                                    <p>No application available</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
                                 <h2>Prep time</h2>
-                                <p>{projects.preptime}</p>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <input
+                                        type="text"
+                                        name="preptime"
+                                        value={project.preptime}
+                                        onChange={handleInputChange}
+                                         className="editing-input"
+                                    />
+                                ) : (
+                                    <p>{project.preptime}</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
-                                <h2>Proccesses</h2>
-                                {/* <p>{projects.proccesses}</p> */}
-                                {projects.processes ? (
-                                    projects.processes.map(proc => <p key={proc}>{proc}</p>)
+                                <h2>Processes</h2>
+                                {project.processes ? (
+                                    project.processes.map((proc, index) => (
+                                        currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                            <input
+                                                key={index}
+                                                type="text"
+                                                name={`processes-${index}`}
+                                                value={proc}
+                                                onChange={handleInputChange}
+                                                 className="editing-input"
+                                            />
+                                        ) : (
+                                            <p key={index}>{proc}</p>
+                                        )
+                                    ))
                                 ) : (
                                     <p>No processes available</p>
                                 )}
-                                {/*{projects.properties.map(prop => <p key={prop} >{prop}</p> )} */}
                             </div>
                             <div className='aside-info-projectcard'>
                                 <h2>Ambient conditions</h2>
-                                <p>{projects.ambientconditions}</p>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <input
+                                        type="text"
+                                        name="ambientconditions"
+                                        value={project.ambientconditions}
+                                        onChange={handleInputChange}
+                                         className="editing-input"
+                                    />
+                                ) : (
+                                    <p>{project.ambientconditions}</p>
+                                )}
                             </div>
                             <div className='aside-info-projectcard'>
-                                <h2>Ligths conditions</h2>
-                                {projects.lightsconditions ? (
-                                    <p>{projects.lightsconditions}</p>
+                                <h2>Lights conditions</h2>
+                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                    <input
+                                        type="text"
+                                        name="lightsconditions"
+                                        value={project.lightsconditions}
+                                        onChange={handleInputChange}
+                                         className="editing-input"
+                                    />
                                 ) : (
-                                    <p>No ligths conditions available</p>
+                                    <p>{project.lightsconditions}</p>
                                 )}
-
                             </div>
                         </div>
-
                         <div className='moreinfo-projectcard'>
                             <AddCircleOutlineIcon onClick={() => setHideElements(prev => !prev)} />
-
                         </div>
-
-
                     </aside>
-
-                    <aside className={hideElements ? 'asidecontainer-info-method showAsideInforMethod ' : 'asidecontainer-info-method'} >
-
+                    <aside className={hideElements ? 'asidecontainer-info-method showAsideInforMethod' : 'asidecontainer-info-method'}>
                         <div className='methodcontainer-method'>
                             <h2>Method</h2>
-                            <p>{projects.method}</p>
+                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                <textarea
+                                    name="method"
+                                    value={project.method}
+                                    onChange={handleInputChange}
+                                     className="editing-input"
+                                />
+                            ) : (
+                                <p>{project.method}</p>
+                            )}
                         </div>
 
                         <div className='aside-info-method'>
                             <h2>References</h2>
-                            <p>{projects.references}</p>
+                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                <input
+                                    type="text"
+                                    name="references"
+                                    value={project.references}
+                                    onChange={handleInputChange}
+                                     className="editing-input"
+                                />
+                            ) : (
+                                <p>{project.references}</p>
+                            )}
                         </div>
                         <div className='aside-info-method'>
                             <h2>Bibliography</h2>
-                            <p>{projects.bibliography}</p>
+                            {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                <input
+                                    type="text"
+                                    name="bibliography"
+                                    value={project.bibliography}
+                                    onChange={handleInputChange}
+                                     className="editing-input"
+                                />
+                            ) : (
+                                <p>{project.bibliography}</p>
+                            )}
                         </div>
                         <div className='moreinfo-projectcard'>
                             <RemoveCircleOutlineIcon onClick={() => setHideElements(prev => !prev)} />
                         </div>
                     </aside>
-
                 </section>
-            }
+            )}
         </main>
+    );
+};
 
-    )
-}
+export default ProjectCard;
 
-export default ProjectCard
