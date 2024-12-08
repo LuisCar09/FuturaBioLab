@@ -13,6 +13,10 @@ function Projects() {
         const dataResponse = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'projects')
         setProjects(dataResponse.data)        
     }
+    console.log(projects);
+    
+   
+
     
 
     useEffect(()=>{
