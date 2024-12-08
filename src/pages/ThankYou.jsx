@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../styles/ThankYou.css';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
@@ -69,8 +70,8 @@ function ThanKYouPage() {
                     </div>
                 </div>
                 <div className='button-thanyou'>
-
-                  <a className="continue-shopping">Continue shopping</a>
+                <Link className="continue-shopping" to={'/services'}> Continue shopping</Link>
+                 
                 </div>
 
             </section>

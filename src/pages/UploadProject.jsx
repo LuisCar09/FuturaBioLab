@@ -27,9 +27,10 @@ const UploadProject = () => {
     const [prepTime, setPrepTime] = useState('')
     const token = localStorage.getItem('authToken')
     
-    console.log();
+    
 
     const createProject = async () => {
+        const navigate = useNavigate()
         try {
             const body = {
                 nameproject: projectTitle,
@@ -50,17 +51,15 @@ const UploadProject = () => {
                 uid :localStorage.getItem('uid'),
                 method,
             }
-            console.log(body);
+           
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
             const projectResponse = await axios.post('http://localhost:8080/projects/new',body,{
                 headers:{Authorization : `Bearer ${token}`}
             })
-            const saveUserProjectº = await axios.post('http://localhost:8080/projects/new',body,{
-                headers:{Authorization : `Bearer ${token}`}
-            })
-            console.log(projectResponse);
-            useNavigate('/profile')
             
+            
+            
+            navigate('/profile')
         } catch (error) {
             console.error(error.message);
             
@@ -112,7 +111,7 @@ const UploadProject = () => {
     
     const removeItemProperties = (event) => {
         const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
+       
         setProperties(prev => {
             if (prev.includes(itemToDelete)) {
                 return prev.filter(item => item !== itemToDelete)
@@ -122,7 +121,7 @@ const UploadProject = () => {
     } 
     const removeItemTools = (event) => {
         const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
+        
         setTools(prev => {
             if (prev.includes(itemToDelete)) {
                 return prev.filter(item => item !== itemToDelete)
@@ -132,7 +131,7 @@ const UploadProject = () => {
     } 
     const removeApplication = (event) => {
         const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
+        
         setApplication(prev => {
             if (prev.includes(itemToDelete)) {
                 return prev.filter(item => item !== itemToDelete)
@@ -142,7 +141,7 @@ const UploadProject = () => {
     } 
     const removeProccesses = (event) => {
         const itemToDelete = event.target.textContent
-        console.log(itemToDelete);
+        
         setProcesses(prev => {
             if (prev.includes(itemToDelete)) {
                 return prev.filter(item => item !== itemToDelete)

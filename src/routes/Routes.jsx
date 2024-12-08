@@ -29,7 +29,7 @@ import Method from '../pages/Method'
 import ProtectedRoute from '../components/utils/ProtectedRoute'
 import Logout from '../pages/Logout'
 import Checkout from '../pages/Checkout'
-
+import ServiceEditCard from '../components/utils/ServiceEditCard'
 
 
 const RoutesApp = () => {
@@ -58,8 +58,8 @@ const RoutesApp = () => {
                 <Route path ='/servicedetail' element={<ServiceDetail />} />
                 <Route path='/register' element={<Register />} /> 
                 <Route path='/login' element={<Login />} /> 
+                <Route path='/services/edit/:id' element={<ProtectedRoute><ServiceEditCard /></ProtectedRoute> } /> 
                 <Route path='/services/:id' element={<ProtectedRoute><ServiceCard /></ProtectedRoute> } /> 
-                
                 <Route path='/guide' element={<Guide />} /> 
                 <Route path='/projects/new' element={<ProtectedRoute><UploadProject /></ProtectedRoute>} /> 
                 <Route path='/priorities' element={<Priorities />} /> 

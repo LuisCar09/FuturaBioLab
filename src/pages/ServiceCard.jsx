@@ -12,7 +12,7 @@ function ServiceCard() {
     const navigate = useNavigate(); 
     const {id} = useParams()
     const token = localStorage.getItem('authToken')
-    
+    const userUid = localStorage.getItem('uid')
     
   
    
@@ -63,8 +63,15 @@ useEffect(() => {
                                     <p><span>Stock: </span> {service.stock}</p>
                                 </div>
                                 <div className='button-calendar'>
-
-                                    <Link to={`/reservation/${service._id}`}><button  >Next</button></Link>
+                                    {userUid !== service.uid ?  
+                                    <Link to={`/reservation/${service._id}`}><button  >Next</button></Link> 
+                                    : 
+                                    <>
+                                    <Link to={`/services/edit/${service._id}`}><button  >Edit</button></Link> 
+                                    <Link to={`/services/edit/${service._id}`}><button  >Delete</button></Link>
+                                    </>
+                                     }
+                                    
                                 </div>
                             </div>
                         </article>

@@ -14,12 +14,11 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
     const [userPhone,setUserPhone] = useState('')
     const [userDescription, setUserDescription] = useState('')
     const [message,setMessage] = useState('')
+    const [addedToCard,setAddedToCar] = useState(false)
     // FALTA QUE AL HACER CLICK ME GUARDE EN EL LOCALHOST LO QUE SE HA COMPRADO Y LUEHO EL PAGO
 
     
-    const getUidOwner = (method) => {
-        get
-    };
+  
     const handlerAddToCar = () => {
         
         const existAddProduct = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
@@ -38,7 +37,7 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
         
         
         localStorage.setItem('items',JSON.stringify(existAddProduct))
-        
+        setAddedToCar(!addedToCard)
         setTimeout(() => {
             setMessage('')
         },2000)
@@ -135,10 +134,10 @@ const Reservation = ({ serviceName, serviceDate = '', serviceTime = '', serviceD
                         </div>
                         <div className='buttons-formreservation'>
                             <div className='message-container'>{!message ? '' : message }</div>
-                            <button className='addbutton-formreservation' onClick={handlerAddToCar}>Add to cart</button>
-                            <Link to={'/mycart'}><button className='addbutton-formreservation'>Checkout</button></Link>
+                            <button className= {addedToCard ? 'addbutton-formreservation showaddbutton-formreservation':'addbutton-formreservation'} onClick={handlerAddToCar}>Add to cart</button>
+                            <Link to={'/mycart'}><button className= {!addedToCard ? 'addbutton-formreservation showaddbutton-formreservation':'addbutton-formreservation'}>Checkout</button></Link>
                             <Link to={'/services'}>
-                                <button className='addbutton-formreservation'>Continue shopping</button>
+                                <button   className='addbutton-formreservation' >Continue shopping</button>
                             </Link>
                             
                         </div>

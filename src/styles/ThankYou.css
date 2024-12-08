@@ -31,7 +31,7 @@
 
   .order-details {
     width: 100%;
-    display: flex;
+    display: none;
     gap: 30px;
     padding: 30px;
     border: 1px solid var(--secundary-color);
@@ -105,7 +105,7 @@
  }
 
  .address-details {
-  display: flex;
+  display: none;
   justify-content: space-between;
   
   width: 100%;
@@ -145,7 +145,7 @@
 
  .button-thanyou {
   display: flex;
-  justify-content:flex-end;
+  justify-content:center;
   width: 100%;
   
  }
@@ -156,6 +156,7 @@
   cursor: pointer;
   border: 1px solid var(--primary-color);
   padding: 10px;
+  text-decoration: none;
  }
 
 

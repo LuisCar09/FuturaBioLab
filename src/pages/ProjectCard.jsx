@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -11,6 +12,7 @@ const ProjectCard = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [hideElements, setHideElements] = useState(false);
+    const navigation = useNavigate()
     const { id } = useParams();
     const userUid = localStorage.getItem('uid')
     useEffect(() => {
@@ -40,7 +42,19 @@ const ProjectCard = () => {
     const handleEditToggle = () => {
         setIsEditing(!isEditing);
     };
-
+    const handleDeleteToggle = async  () => {
+        
+        
+        try {
+            await axios.delete(`http://localhost:8080/projects/${project._id}`)
+            navigation('/profile')
+        
+        } catch (error) {
+            console.error(error.message);
+            
+        }
+        
+    }
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setProject((prevProject) => ({
@@ -57,7 +71,7 @@ const ProjectCard = () => {
             console.log(error.message);
         }
     };
-    console.log(project);
+   
     
     return (
         <main className="project-container">
@@ -75,13 +89,16 @@ const ProjectCard = () => {
                                          className="editing-input"
                                     />
                                 ) : (
-                                    <h1>{project.nameproject}</h1>
+                                    <h2>{project.nameproject}</h2>
                                 )}
                                 {userUid === project.uid && !isEditing ?  (
-                                    <button onClick={handleEditToggle}>Editar</button>
+                                    <>
+                                    <button onClick={handleEditToggle}>Edit</button>
+                                    <button onClick={handleDeleteToggle}>Delete</button>
+                                    </>
                                 ): null}
                                 {isEditing && (
-                                    <button onClick={handleUpdateProject}>Guardar</button>
+                                    <button onClick={handleUpdateProject}>Save</button>
                                 )}
                             </div>
                         </div>

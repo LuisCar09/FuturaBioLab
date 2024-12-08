@@ -3,62 +3,61 @@ import Card from '../components/utils/Card';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
+import ServiceCard from '../components/utils/ServiceCard';
 
 
 
 const Profile = () => {
   const location = useLocation()
   const comingFromMember = location.pathname.includes('member')
-  
-  
-  const {id}  = useParams(); 
-  const [_id,setId]  = useState('')
-  const [checkUid,setCheckUid] = useState('')
-  const [userName,setUserName] = useState('')
+
+
+  const { id } = useParams();
+  const [_id, setId] = useState('')
+  const [checkUid, setCheckUid] = useState('')
+  const [userName, setUserName] = useState('')
   const [projects, setProjects] = useState([])
-  const [userFollowers,setUserFollowers] = useState('')
-  const [userFollows,setUserFollows] = useState('')
+  const [userFollowers, setUserFollowers] = useState('')
+  const [userFollows, setUserFollows] = useState('')
   const [userDescription, setUserDescription] = useState('')
-  const [userCreatedDate,setUserCreatedDate] = useState('')
+  const [userCreatedDate, setUserCreatedDate] = useState('')
+  const [userImage,setUserImage] = useState('')
   const [isServiceCliked, setIsServiceCliked] = useState(false)
-  const [nameService,setNameService] = useState('')
-  const [emailService,setEmailService] =useState('')
-  const [descriptionService,setDescriptionService]= useState('')
-  const [durationService, setDurationService]= useState('')
-  const [priceService,setPriceService] = useState ('')
+  const [nameService, setNameService] = useState('')
+  const [emailService, setEmailService] = useState('')
+  const [descriptionService, setDescriptionService] = useState('')
+  const [durationService, setDurationService] = useState('')
+  const [priceService, setPriceService] = useState('')
   const [locationService, setLocationService] = useState('')
-  const [imageService,setImageService]= useState('')
-  const [stockService,setStockService] = useState('')
-  const [dateService, setDateService ]= useState('')
-  const [timeService, setTimeService ]= useState('')
+  const [imageService, setImageService] = useState('')
+  const [stockService, setStockService] = useState('')
+  const [dateService, setDateService] = useState('')
+  const [timeService, setTimeService] = useState('')
   const [services, setServices] = useState([]);
   const [showServiceForm, setShowServiceForm] = useState(false)
   const navigate = useNavigate()
   const uid = localStorage.getItem('uid')
   const token = localStorage.getItem('authToken')
 
-  
-  useEffect(() =>{
-        
-        
-    const fetchUserData = async () =>{
-       try {
-         const userId = !comingFromMember ? `http://localhost:8080/users/${uid}` : `http://localhost:8080/users/members/profile/${id}`
-        
-        
-        const userDataResponse = await axios.get(`${userId}`,{
-            headers:{Authorization:`Bearer ${localStorage.getItem('authToken')}`}
-            
+
+  useEffect(() => {
+
+
+    const fetchUserData = async () => {
+      try {
+        const userId = !comingFromMember ? `http://localhost:8080/users/${uid}` : `http://localhost:8080/users/members/profile/${id}`
+
+
+        const userDataResponse = await axios.get(`${userId}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+
         })
         const userData = userDataResponse.data
-        
-        
-       console.log(userData);
-       
+
         setId(userData[0]._id)
         setUserName(userData[0].userName)
         setUserDescription(userData[0].description)
@@ -66,21 +65,24 @@ const Profile = () => {
         setUserFollows(userData[0].follows)
         setUserCreatedDate(userData[0].createdAt)
         setCheckUid(userData[0].uid)
-        // setProjects(userData[0].)
-        
-       } catch (error) {
+        setUserImage(userData[0].image)
+
+      } catch (error) {
         console.log(error.message);
-        
-       }
-        
+
+      }
+
     }
     fetchUserData()
 
     if (checkUid) fetchProjects()
-},[checkUid])
+    if (checkUid) fetchServices()
+    
+    
+  }, [checkUid])
   
   const createService = async () => {
-    
+
     try {
       const body = {
         name: nameService,
@@ -92,17 +94,17 @@ const Profile = () => {
         location: locationService,
         uid,
         image: imageService,
-        stock:stockService,
+        stock: stockService,
         date: dateService,
         hour: timeService
       }
-      
+
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
       const servicesResponse = await axios.post('http://localhost:8080/services/new', body, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      console.log(servicesResponse);
       
+
       navigate('/services')
     } catch (error) {
       console.error(error.message);
@@ -112,16 +114,21 @@ const Profile = () => {
   const handleButtonClick = () => {
     navigate('/setting');
   }
-  
-  
-    const fetchProjects = async () =>{
-     
-      
-      const userProjects = await axios.get(`http://localhost:8080/projects/user/${checkUid}`)
-      setProjects(userProjects.data)
-    }
+
+  const fetchProjects = async () => {
+    const userProjects = await axios.get(`http://localhost:8080/projects/user/${checkUid}`)
+    setProjects(userProjects.data)
+  }
+  const fetchServices = async () => {
+   
     
+    const userServices = await axios.get(`http://localhost:8080/services/user/${checkUid}`)
+   
     
+    setServices(userServices.data)
+  }
+
+  
   
  
   return (
@@ -133,7 +140,7 @@ const Profile = () => {
           </div>
           <div className='profile-info'>
             <div className='user-info'>
-              <img src="https://i.pinimg.com/474x/f9/ef/f5/f9eff5fd8e045349b31d4641253f628f.jpg" alt="Picture" className="profile-picture" />
+              <img src={userImage} alt="Picture" className="profile-picture" />
               <div className='info-user-follow'>
                 <h2 className="user-name">{userName}</h2>
                 <div>
@@ -181,7 +188,7 @@ const Profile = () => {
                   {projects.length > 0 ? (
                     projects.map(project => (
                       
-                      <Card key={crypto.randomUUID()} id={_id} username={project.owner} date={project.createdAt.split('T')[0]} title={project.nameproject} descriptionProject={project.description} projectImg={project.image} projectViews={project.views} userImg={project.image}
+                      <Card key={crypto.randomUUID()} id={project._id} username={project.owner} date={project.createdAt.split('T')[0]} title={project.nameproject} descriptionProject={project.description} projectImg={project.image} projectViews={project.views} userImg={project.image}
                       />
                     ))
                   ) : (
@@ -228,6 +235,7 @@ const Profile = () => {
                         id='duration-service'
                         value={durationService}
                         onChange={(e) => setDurationService(e.target.value)}
+                        placeholder='Ex: 30'
                       />
                     </div>
                     <div className='price-servicenew'>
@@ -236,6 +244,7 @@ const Profile = () => {
                         id='price-service'
                         value={priceService}
                         onChange={(e) => setPriceService(e.target.value)}
+                        placeholder='Ex: 50'
                       />
                     </div>
                     <div className='location-servicenew'>
@@ -244,6 +253,7 @@ const Profile = () => {
                         id='location-service'
                         value={locationService}
                         onChange={(e) => setLocationService(e.target.value)}
+                        placeholder='Ex: City'
                       />
                     </div>
                   </div>
@@ -254,6 +264,7 @@ const Profile = () => {
                         id='date-service'
                         value={dateService}
                         onChange={(e) => setDateService(e.target.value)}
+                        placeholder='DD/MM/YYYY'
                       />
                     </div>
                     <div className='location-servicenew'>
@@ -262,6 +273,7 @@ const Profile = () => {
                         id='time-service'
                         value={timeService}
                         onChange={(e) => setTimeService(e.target.value)}
+                        placeholder='Ex: 18:00'
                       />
                     </div>
                     <div className='location-servicenew'>
@@ -270,6 +282,7 @@ const Profile = () => {
                         id='stock-service'
                         value={stockService}
                         onChange={(e) => setStockService(e.target.value)}
+                        placeholder='Ex: 20'
                       />
                     </div>
                   </div>
@@ -279,6 +292,7 @@ const Profile = () => {
                       id='image-service'
                       value={imageService}
                       onChange={(e) => setImageService(e.target.value)}
+                      placeholder='Ex: https://www.envaselia.com/images_blog/que-son-los-bioplasticos.jpg,'
                     />
                   </div>
                   <div className='container-button-servicenew'>
@@ -287,14 +301,18 @@ const Profile = () => {
                 </form>
               ) : (
                 <div className='noserviceavailable-servicenews'>
+                  <div className='services-container'>
                   {services.length > 0 ? (
                     services.map(service => (
-                      <div 
-                      key={service.id}>{service.name} - {service.description}</div>
+                      
+                
+                      <ServiceCard key={service._id} id={service._id} title={service.name} image={service.image[0]} price={service.price} uid={service.uid} />
+                      
                     ))
                   ) : (
                     <p>No services available</p> 
                   )}
+                  </div>
                 </div>
               )}
             </div>
@@ -306,3 +324,42 @@ const Profile = () => {
 };
 
 export default Profile;
+// {showService && (
+//   <section className='service-payment--container'>
+//       <div className='service-payment--wrapcontainer'>
+//       <article className='articletop-calendar'>
+//           <h1>{service.name}</h1>
+//           <div className='article-description-servicedetail'>
+//               <h2>{service.description}</h2>
+//               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi temporibus exercitationem, vitae quidem nulla cupiditate tempora, ipsum, vero et optio alias amet a ab sequi quo voluptate deleniti quae aspernatur.</p>
+//               <img src={service.image} alt='Service'
+//               />
+//           </div>
+
+//       </article>
+//       <article className='articlebottom-calendar'>
+
+//           <div className='servicedetail-calendar'>
+
+//               <div className='detailicon-calendar'>
+//                   <VideocamIcon />
+//                   <p>Available online</p>
+//               </div>
+//               <div className='infoservice-calendar'>
+//                   <h4><span>Service name:</span> {service.name}</h4>
+//                   <p> <span>Location: </span> {service.location} </p>
+//                   <p><span>Member:</span> {service.username}</p>
+//                   <p><span>Duration:</span> {service.duration}</p>
+//                   <p><span>Price: </span> {service.price}</p>
+//                   <p><span>Time: </span> {service.hour}</p>
+//                   <p><span>Stock: </span> {service.stock}</p>
+//               </div>
+//               <div className='button-calendar'>
+
+//                   <Link to={`/reservation/${service._id}`}><button  >Next</button></Link>
+//               </div>
+//           </div>
+//       </article>
+//       </div>
+//   </section>
+// )}
