@@ -35,7 +35,7 @@ const Login = () => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 
             
-            const response = await axios.get('http://localhost:8080/users/' + user.uid, {
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/' + user.uid, {
                 headers:{Authorization: `Bearer ${token}`},
             } )
             
