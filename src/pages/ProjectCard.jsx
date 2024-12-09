@@ -19,7 +19,7 @@ const ProjectCard = () => {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/projects/${id}`);
+                const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/${id}`);
                 setProject(response.data);
             } catch (error) {
                 console.log(error.message);
@@ -32,7 +32,7 @@ const ProjectCard = () => {
     useEffect(() => {
         const fetchCurrentUser = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/users/');
+                const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}users/`);
                 setCurrentUser(response.data);
             } catch (error) {
                 console.log(error.message);
