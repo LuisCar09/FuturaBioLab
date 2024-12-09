@@ -20,7 +20,7 @@ function ServiceCard() {
 useEffect(() => {
     const fetchService = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        const service = await axios.get(`http://localhost:8080/services/${id}`,{
+        const service = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}services/${id}`,{
             headers:{Authorization: `Bearer ${token}`}
         })
         setService(service.data);

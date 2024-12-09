@@ -3,16 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 
-{/*con useEffect poner el foco cuando se monte, falta importarlo y useRef tambien , meterlo dentro de la funcion*/}
 
- {/* 
-    const inputRef = useRef(null);
-    
-        useEffect(() => {
-            inputRef.current.focus();
-        }, []);
-
-    */} 
 
 
 function Search(){

@@ -21,7 +21,7 @@ function Members() {
             console.error(error);
         }
     };
-   console.log(allMembers);
+ 
    
     
     

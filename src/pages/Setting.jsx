@@ -34,7 +34,7 @@ function SettingsProfile() {
                 phone: !userPhone ? '' : userPhone  ,
                 description: !userDescription ? '' : userDescription
             }
-            await axios.put(`http://localhost:8080/users/${_id}`,body )
+            await axios.put(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}users/${_id}`,body )
             
         } catch (error) {
             console.log(error.message);
@@ -48,7 +48,7 @@ function SettingsProfile() {
         const fetchUserData = async () =>{
            try {
             axios.defaults.headers.common["Authorization"] = `Bearer ${authToken}`
-            const userDataResponse = await axios.get(`http://localhost:8080/users/${uid}`,{
+            const userDataResponse = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}users/${uid}`,{
                 headers:{Authorization:`Bearer ${authToken}`}
             })
             const userData = userDataResponse.data

@@ -66,7 +66,6 @@ const UploadProject = () => {
         }
     }
     
-    
     const addInputsFunctions = {
         addProperties :  (event) => {
             setProperties(prev => {

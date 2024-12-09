@@ -11,7 +11,7 @@ function Services() {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const servicesResponse = await axios.get('http://localhost:8080/services')
+                const servicesResponse = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'services')
                 
                 setServices(servicesResponse.data)
             } catch (error) {
