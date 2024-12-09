@@ -1,5 +1,6 @@
 .main-profile-container {
     display: flex;
+    min-height: calc(100vh -331px);
     justify-content: center;
     padding: 40px 20px 20px 20px; 
 }
