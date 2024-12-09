@@ -15,7 +15,10 @@ function ServiceCard() {
     const userUid = localStorage.getItem('uid')
     
   
-   
+   const deleteService = async () => {
+        console.log(id);
+        
+   }
 
 useEffect(() => {
     const fetchService = async () => {
@@ -68,7 +71,7 @@ useEffect(() => {
                                     : 
                                     <>
                                     <Link to={`/services/edit/${service._id}`}><button  >Edit</button></Link> 
-                                    <Link to={`/services/edit/${service._id}`}><button  >Delete</button></Link>
+                                    <Link to={`/profile`} onClick={deleteService} ><button  >Delete</button></Link>
                                     </>
                                      }
                                     
