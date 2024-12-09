@@ -26,11 +26,13 @@ const UploadProject = () => {
     const [license,setLicense] = useState('')
     const [prepTime, setPrepTime] = useState('')
     const token = localStorage.getItem('authToken')
+    const navigate = useNavigate()
     
     
 
     const createProject = async () => {
-        const navigate = useNavigate()
+        
+        
         try {
             const body = {
                 nameproject: projectTitle,
@@ -53,9 +55,10 @@ const UploadProject = () => {
             }
            
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-            const projectResponse = await axios.post(`${process.env.VITE_URL_API_FUTURA_BIOLAB}/projects/new`,body,{
+            const projectResponse = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'projects/new',body,{
                 headers:{Authorization : `Bearer ${token}`}
             })
+            
             
             
             
