@@ -1,15 +1,16 @@
 .main-profile-container {
     display: flex;
+    min-height: calc(100vh -331px);
     justify-content: center;
     padding: 40px 20px 20px 20px; 
 }
 
 .section-profile--container{
-    height: initial;
-    max-width: 1200px;
-    width: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    max-width: 1200px;
+    width: 100%;
    
     
 }
