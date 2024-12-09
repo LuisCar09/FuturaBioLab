@@ -15,10 +15,11 @@ const ProjectCard = () => {
     const navigation = useNavigate()
     const { id } = useParams();
     const userUid = localStorage.getItem('uid')
+    
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/${id}`);
+                const response = await axios.get(`http://localhost:8080/projects/${id}`);
                 setProject(response.data);
             } catch (error) {
                 console.log(error.message);
@@ -27,9 +28,18 @@ const ProjectCard = () => {
         fetchProject();
     }, [id]);
 
-    
-    
-    
+    useEffect(() => {
+        const fetchCurrentUser = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/users/');
+                setCurrentUser(response.data);
+            } catch (error) {
+                console.log(error.message);
+            }
+        };
+        fetchCurrentUser();
+    }, []);
+
     const handleEditToggle = () => {
         setIsEditing(!isEditing);
     };
@@ -139,7 +149,7 @@ const ProjectCard = () => {
                                             key={index}
                                             type="text"
                                             name={`properties-${index}`}
-                                            value={prop}
+                                            value={prop.properties}
                                             onChange={handleInputChange}
                                              className="editing-input"
                                         />

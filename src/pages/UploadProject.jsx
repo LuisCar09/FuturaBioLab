@@ -58,10 +58,7 @@ const UploadProject = () => {
             const projectResponse = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'projects/new',body,{
                 headers:{Authorization : `Bearer ${token}`}
             })
-            
-            
-            
-            
+ 
             navigate('/profile')
         } catch (error) {
             console.error(error.message);
