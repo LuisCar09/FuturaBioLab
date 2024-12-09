@@ -42,7 +42,7 @@ const Login = () => {
             
             setUser(response.data)
             
-            !response.data ? null : navigate('/profile') 
+            !response.data ? null : navigate('/') 
               
 
         } catch (error) {
