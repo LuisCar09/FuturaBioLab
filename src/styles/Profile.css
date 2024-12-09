@@ -359,16 +359,7 @@
     color: var(--primary-color);
 }
 
-/* .projects-title-profile .add-project-button {
-    width: 158px;
-    text-decoration: none;
-    color: var(--button-color);
-    cursor: pointer;
-    font-size: 20px;
-    border: 2px solid var(--button-color);
-    padding: 8px 20px;
-    transition: all .2s linear;
-} */
+
  .add-project-button{
     display: flex;
     align-items: center;
