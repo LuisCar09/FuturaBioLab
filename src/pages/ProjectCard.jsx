@@ -26,6 +26,7 @@ const ProjectCard = () => {
         };
         fetchProject();
     }, [id]);
+    console.log(fetchProject)
 
     
     
@@ -71,7 +72,7 @@ const ProjectCard = () => {
                     <article className={!hideElements ? "project-container--article" : "project-container--aside-container moveLeft"}>
                         <div className="project-container--article-top">
                             <div className='currentuser-input-conatiner-projectcard'>
-                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                {userUid && currentUser.id === project.ownerId && isEditing ? (
                                     <input
                                         type="text"
                                         name="nameproject"
