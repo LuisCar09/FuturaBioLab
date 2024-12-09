@@ -1,4 +1,3 @@
-import '../styles/Profile.css'
 import Card from '../components/utils/Card';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
@@ -9,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import ServiceCard from '../components/utils/ServiceCard';
 
+import '../styles/Profile.css'
 
 
 const Profile = () => {
