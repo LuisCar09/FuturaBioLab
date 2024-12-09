@@ -5,11 +5,11 @@
 }
 
 .section-profile--container{
-    height: initial;
-    max-width: 1200px;
-    width: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    max-width: 1200px;
+    width: 100%;
    
     
 }
