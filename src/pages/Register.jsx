@@ -63,7 +63,7 @@ const Register = () => {
         const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate, uid:userUid}
         console.log(body);
         
-        const createUser = await axios.post('http://localhost:8080/users/newuser',body)
+        const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/newuser',body)
         console.log(createUser.data.success);
         !createUser.data.success ? null : navigate('/login')
         

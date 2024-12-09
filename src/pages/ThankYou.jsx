@@ -9,7 +9,7 @@ function ThanKYouPage() {
                 <div className="thankyou-container">
                     <h1>Thank You, {/* Customer's Name */}</h1>
                     <p>You will receive a confirmation email shortly.</p>
-                    <p>Order Number: {/* Order Number */}</p>
+                    <p>Order Number: {crypto.randomUUID()}</p>
                 </div>
 
                 <div className="order-details">

@@ -18,7 +18,7 @@ const ProjectCard = () => {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/projects/${id}`);
+                const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/${id}`);
                 setProject(response.data);
             } catch (error) {
                 console.log(error.message);
@@ -27,18 +27,9 @@ const ProjectCard = () => {
         fetchProject();
     }, [id]);
 
-    useEffect(() => {
-        const fetchCurrentUser = async () => {
-            try {
-                const response = await axios.get('http://localhost:8080/users/');
-                setCurrentUser(response.data);
-            } catch (error) {
-                console.log(error.message);
-            }
-        };
-        fetchCurrentUser();
-    }, []);
-
+    
+    
+    
     const handleEditToggle = () => {
         setIsEditing(!isEditing);
     };
@@ -46,7 +37,7 @@ const ProjectCard = () => {
         
         
         try {
-            await axios.delete(`http://localhost:8080/projects/${project._id}`)
+            await axios.delete(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/${project._id}`)
             navigation('/profile')
         
         } catch (error) {
@@ -65,7 +56,7 @@ const ProjectCard = () => {
 
     const handleUpdateProject = async () => {
         try {
-            await axios.put(`http://localhost:8080/projects/${id}`, project);
+            await axios.put(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/${id}`, project);
             setIsEditing(false);
         } catch (error) {
             console.log(error.message);

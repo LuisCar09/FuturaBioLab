@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 const ServiceCard = ({ id, image, title, price,uid }) => {
     const [showOverlay, setShowOverlay] = useState(false)
-    console.log(uid);
+    
     
     return (
         <div className='service-item' key={id}>

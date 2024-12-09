@@ -9,14 +9,14 @@ function MyCart() {
   const [subTotal, SetSubTotal] = useState(items.reduce((acc,current) => {
     return parseFloat(acc) + parseFloat(current.price)
   },0))
-  console.log(items);
+  
   
   useEffect(() => {
     localStorage.setItem('price',subTotal)
     setTax(subTotal * 0.21)
     setShippingCharges(subTotal * 0.01)
   },[subTotal])
-  console.log(localStorage.price);
+  
   
   return (
     <main className="main-mycart">

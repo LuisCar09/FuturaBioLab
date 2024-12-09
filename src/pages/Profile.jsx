@@ -48,8 +48,8 @@ const Profile = () => {
 
 
     const fetchUserData = async () => {
-      try {
-        const userId = !comingFromMember ? `http://localhost:8080/users/${uid}` : `http://localhost:8080/users/members/profile/${id}`
+      try { 
+        const userId = !comingFromMember ? `${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}users/${uid}` : `${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}users/members/profile/${id}`
 
 
         const userDataResponse = await axios.get(`${userId}`, {
@@ -100,7 +100,7 @@ const Profile = () => {
       }
 
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      const servicesResponse = await axios.post('http://localhost:8080/services/new', body, {
+      const servicesResponse = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'services/new', body, {
         headers: { Authorization: `Bearer ${token}` }
       })
       
@@ -116,13 +116,13 @@ const Profile = () => {
   }
 
   const fetchProjects = async () => {
-    const userProjects = await axios.get(`http://localhost:8080/projects/user/${checkUid}`)
+    const userProjects = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/user/${checkUid}`)
     setProjects(userProjects.data)
   }
   const fetchServices = async () => {
    
     
-    const userServices = await axios.get(`http://localhost:8080/services/user/${checkUid}`)
+    const userServices = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}services/user/${checkUid}`)
    
     
     setServices(userServices.data)
