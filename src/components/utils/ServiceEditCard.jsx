@@ -92,8 +92,11 @@ const ServiceEditCard = () =>{
        } catch (error) {
         console.error(error.message)
        }
-        
+      
     } 
+
+
+
     return(
       <main className="main-serviceupdate">
         <section className="section-serviceupdate">
