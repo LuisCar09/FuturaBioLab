@@ -51,9 +51,10 @@
 }
 
 .service-item img {
-    max-width: 100%; 
+    width: 100%; 
     height: auto;
     margin-bottom: 10px;
+    height: 160px;
 }
 
 .service-item h3 {

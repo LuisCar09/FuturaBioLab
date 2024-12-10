@@ -16,7 +16,17 @@ function ServiceCard() {
     
   
    const deleteService = async () => {
-        console.log(id);
+           
+    try {
+        await axios.delete(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}services/${id}`)
+        
+    
+    } catch (error) {
+        console.error(error.message);
+        
+    }
+    
+
         
    }
 
