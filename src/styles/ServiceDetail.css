@@ -3,7 +3,7 @@
     display: flex;
     
     justify-content: center;
-    
+    align-items: center;
 }
 
 .section-servicedetail {
@@ -195,3 +195,18 @@
 }
 
 
+.main-serviceupdate {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-serviceupdate {
+ height: inherit;
+ gap: 20px;
+
+    
+}
+.duration-price-location-servicesnew , .date-time-stock-servicesnew{
+    gap: 20px;
+}

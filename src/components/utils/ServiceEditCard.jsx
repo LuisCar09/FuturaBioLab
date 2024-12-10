@@ -2,10 +2,12 @@
 import { Login } from "@mui/icons-material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams,useNavigate } from "react-router-dom"
+
 
 const ServiceEditCard = () =>{
     const {id} = useParams()
+    const {uid} = localStorage.getItem('uid')
     const token = localStorage.getItem('authToken')
     const [service,setService] = useState('')
     const [nameService, setNameService] = useState('')
@@ -18,7 +20,11 @@ const ServiceEditCard = () =>{
     const [stockService, setStockService] = useState('')
     const [dateService, setDateService] = useState('')
     const [timeService, setTimeService] = useState('')
-    const [serviceId, setServiceId] = useState('')
+    const [userName,setUserName] = useState('')
+    const [serviceId,setServiceId] = useState('')
+    const navigate = useNavigate()
+    
+    
     
     useEffect(()=> {
         const fetchService = async () =>{
@@ -26,11 +32,11 @@ const ServiceEditCard = () =>{
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 
             
-            console.log('http://localhost:8080/projects/' + id);
-            const projectResponse = await axios.get('http://localhost:8080/services/' + id,{
+            
+            const projectResponse = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'services/' + id,{
                 headers:{Authorization: `Bearer ${token}`},
             } )
-            console.log(projectResponse.data);
+            console.log(projectResponse);
             setNameService(projectResponse.data.name)
             setServiceId(projectResponse.data._id)
             setDurationService(projectResponse.data.duration)
@@ -39,9 +45,10 @@ const ServiceEditCard = () =>{
             setLocationService(projectResponse.data.location)
             setPriceService(projectResponse.data.price)
             setDateService(projectResponse.data.date)
-            setTimeService(projectResponse.data.time)
+            setTimeService(projectResponse.data.hour)
             setStockService(projectResponse.data.stock)
             setImageService(projectResponse.data.image)
+            setUserName(projectResponse.data.username)
            } catch (error) {
             console.log(error.message);
             
@@ -52,11 +59,44 @@ const ServiceEditCard = () =>{
         fetchService()
     },[])
    
-    const updateService = () => {
-        console.log('ENTRO');
+   
+    const updateService = async () => { 
+       try {
+       
+        const updateService = {
+          name: nameService,
+          email: emailService,
+          username: userName,
+          description: descriptionService,
+          duration: durationService,
+          price: priceService,
+          location: locationService,
+          uid,
+          image: imageService,
+          stock: stockService,
+          date: dateService,
+          hour: timeService,
+          id
+        }
+
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+          const serviceResponse = await axios.put(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'services/' + id,updateService,{
+            headers:{Authorization: `Bearer ${token}`},
+
+
+        } )
+
+        navigate('/services')
+
+          
+       } catch (error) {
+        console.error(error.message)
+       }
         
     } 
     return(
+      <main className="main-serviceupdate">
+        <section className="section-serviceupdate">
            <form className='form-servicesnew'>
                      <div className='title-container-servicesnew'>
                        <div className='infouser-container-servicenew'>
@@ -77,6 +117,7 @@ const ServiceEditCard = () =>{
                            onChange={(e) => setEmailService(e.target.value)}
                            required />
                        </div>
+                       
                      </div>
                      <div className='description-container-servicesnew'>
                        <h2>Description</h2>
@@ -153,11 +194,11 @@ const ServiceEditCard = () =>{
                        />
                      </div>
                      <div className='container-button-servicenew'>
-                       <button type="button" className='button-servicesnew' onClick={updateService}>Create</button>
+                       <button type="button" className='button-servicesnew' onClick={updateService}>Save</button>
                      </div>
                    </form>
-        
-       
+              </section>
+          </main>
     )
 }
 
