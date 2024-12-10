@@ -34,7 +34,7 @@ const Register = () => {
        try {
             
            const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)
-           console.log(userCredential)
+           
            
            
             const user = userCredential.user
@@ -61,10 +61,9 @@ const Register = () => {
     
     try {
         const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate, uid:userUid}
-        console.log(body);
         
         const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/newuser',body)
-        console.log(createUser.data.success);
+        
         !createUser.data.success ? null : navigate('/login')
         
        } catch (error) {
