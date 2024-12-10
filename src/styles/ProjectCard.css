@@ -298,3 +298,37 @@
     border-radius: 4px;
     cursor: pointer;
 }
+@media (max-width: 480px) {
+    .project-container--article{
+        display: flex;
+        background-color: var(--primary-color) ;
+        width: 40%;
+    }
+    .currentuser-input-conatiner-projectcard h2 {
+        font-size: 16px;
+        margin-bottom: 20px;
+        text-align: start;
+}
+.project-container--article--squarePicture{
+    width: 100px;
+    height: 100px;
+}
+
+.aside-info-projectcard{
+    margin-left: 20px;
+}
+.aside-info-projectcard h2 {
+    font-size: 16px;
+    
+}
+.aside-info-projectcard  p{
+    font-size: 14px;
+}
+
+.methodcontainer-method h2, .aside-info-method h2{
+    font-size: 16px;
+}
+.methodcontainer-method p, .aside-info-method p {
+    font-size: 14px;
+}
+}
