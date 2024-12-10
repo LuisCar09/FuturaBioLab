@@ -71,6 +71,9 @@
 @media screen and (max-width:480px) {
     .aboutus-container {
         padding: 50px;
+        position: static;
+        transform: unset;
+        
     }
     .section-aboutus{
         height: inherit;
@@ -78,6 +81,7 @@
     .image-container img{
         height: 100%;
     }
+    
 } 
 @media screen and (max-width:350px) {
     .aboutus-container {
