@@ -42,7 +42,7 @@ const Reservation = () => {
             setMessage('')
         },2000)
         
-        console.log(JSON.parse(localStorage.getItem('items')));
+        
         
         
     }

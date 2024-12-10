@@ -36,7 +36,7 @@ const ServiceEditCard = () =>{
             const projectResponse = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'services/' + id,{
                 headers:{Authorization: `Bearer ${token}`},
             } )
-            console.log(projectResponse);
+            
             setNameService(projectResponse.data.name)
             setServiceId(projectResponse.data._id)
             setDurationService(projectResponse.data.duration)
