@@ -348,7 +348,27 @@
     font-size: 20px;
 }
 
+@media (max-width: 480px){
+    .sectionTop-container h2{
+        font-size: 28px;
+    }
+    .sectionTop-container p{
+        font-size: 14px;
+    }
+    .growSection{
+        margin-top: 20px;
 
+    }
+    .section-growTitle{
+        font-size: 28px;
+    }
+    .section-growContainer p {
+        font-size: 14px;
+    }
+    .newsSection{
+        height: inherit;
+    }
+}
 /*.animationTop {
    
     overflow: hidden; 
