@@ -22,14 +22,26 @@ const UploadProject = () => {
     const [method,setMethod] = useState('')
     const [references, setReferences] = useState('')
     const [bibliography, setBibliography] = useState('')
-    const [images,setImages] = useState('')
+    const [images,setImages] = useState(null)
     const [license,setLicense] = useState('')
     const [prepTime, setPrepTime] = useState('')
     const token = localStorage.getItem('authToken')
     const navigate = useNavigate()
     
     
+    const handlerImage = (event) => {
+        setImages(event.target.files[0])
+        if (!images) alert('Please upload at least an image with the propertly format.')
 
+        const formData = new FormData();
+        formData.append('image',images)
+        try {
+            
+        } catch (error) {
+            console.error(console.error(error.message));
+            
+        }
+    }
     const createProject = async () => {
         
         
@@ -319,7 +331,7 @@ const processesOptions = [
                         </div>
                         <div className='info-method-upload'>
                             <h2>Images</h2>
-                            <input type='text' placeholder="Example: image1.jpg,image2.png,image3.webp, separated by comma." value={images} onChange={(e) => setImages(e.target.value.split(','))} required />
+                            <input type='file' placeholder="Example: image1.jpg,image2.png,image3.webp, separated by comma."  onChange={handlerImage} required />
                         </div>
                         <div className='moreinfo-projectcard'>
                             <RemoveCircleOutlineIcon onClick={() => setHideElements(prev => !prev)} />
