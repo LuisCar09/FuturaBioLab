@@ -55,23 +55,6 @@ const Header = () => {
         setLastScrollY(currentScrollY);
     };
 
-    // const handleResize = () => {
-    //     const isSmall = window.innerWidth < 480;
-    //     setIsSmallScreen(isSmall);
-    // };
-
-    // useEffect(() => {
-
-    
-    //     !isVisible ? setIsVisible(false) : setIsVisible(true)
-
-    //     window.addEventListener('scroll', handleScroll);
-    //     // window.addEventListener('resize', handleResize);
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //         // window.removeEventListener('resize', handleResize);
-    //     };
-    // }, [lastScrollY]);
 
     return (
 

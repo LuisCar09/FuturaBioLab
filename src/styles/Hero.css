@@ -9,9 +9,9 @@
 }
 
 .animation-container-sectiontop {
-    position: relative;
-    top: 0;
-    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 100%;
     z-index: 1; 
@@ -54,29 +54,29 @@
 
 .text-left, .text-right {
     position: relative;
-    font-size: 2em;
+    font-size: 220px;
     color: #02CA81;
 }
 
 @keyframes moveRight {
     0% { transform: translateX(-700px); }
     50% { transform: translateX(0); }
-    100% { transform: translateX(700px); }
+    100% { transform: translateX(-700px); }
 }
 
 @keyframes moveLeft {
-    0% { transform: translateX(700px); }
+    0% { transform: translateX(-700px); }
     50% { transform: translateX(0); }
     100% { transform: translateX(-700px); }
 }
 
-.text-left {
-    animation: moveRight 10s ease infinite;
+ .text-left {
+    animation: moveRight 60s ease infinite;
 }
 
 .text-right {
-    animation: moveLeft 10s ease infinite;
-}
+    animation: moveLeft 60s ease infinite;
+} 
 
 .sectionTop-backgroundImage.blur {
     filter: blur(5px); 
@@ -367,184 +367,5 @@
     }
     .newsSection{
         height: inherit;
-    }
-}
-/*.animationTop {
-   
-    overflow: hidden; 
-    position: relative; 
-}
-
-.animation-sectionTop {
-    display: flex;
-    white-space: nowrap; 
-    animation: scroll_left 20s linear infinite; 
-}
-
-.animation-sectionTop span {
-    color: black;
-    padding: 6px 22px;
-    background: #0e0e11;
-    border: 1px solid #323232;
-    border-radius: 50px;
-    display: grid;
-    place-items: center;
-    transition: all 0.3s;
-}
-
-@keyframes scroll_left {
-    0% {
-        transform: translateX(100%); 
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-*/
-
-
-
-
-/*responsive sectionTop*/
-/*
- @media (max-width: 480px) {
-    .sectionTop {
-        text-align: center; 
-    }
-
-    .sectionTop-container {
-        position: absolute; 
-        top: 50%; 
-        left: 50%; 
-        transform: translate(-50%, -50%); 
-        color: white; 
-        z-index: 1; 
-        width: 100%; 
-        padding: 0 10px; 
-    }
-
-    .sectionTop-container h2 {
-        font-size: 24px; 
-        margin-bottom: 10px; 
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-    }
-
-    .sectionTop-container p {
-        font-size: 12px;
-        margin-bottom: 20px;
-    }
-
-    .sectionTop-button {
-        width: 12px; 
-        height: 6px; 
-        color: white;
-        border: none; 
-        border-radius: 25px; 
-        font-size: 6px; 
-        cursor: pointer; 
-        transition: background-color 0.3s; 
-    }
-
-
-  .sectionTop-backgroundImage {
-        height: 200px; 
-    }
-} 
-
-
-
-/*responsive sectionGrow*/
-/*
-@media (max-width: 480px){
-
-.section-growContainer {
-    text-align: center; 
-}
-
-.section-growTitle  {
-    font-size: 24px; 
-    margin-bottom: 14px; 
-}
-
-.section-growContainer p {
-    font-size: 12px;
-    margin-bottom: 0.5px;
-}
-
-.section-growButton {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    width: 40px; 
-    height: 8px; 
-    font-size: 8px;
-    justify-content: center;
-}
-
-}
-
-/*Responsive sectionProjects */
-/*
-@media (max-width: 1200px) {
-    .sectionProject-carousel-image {
-        width: calc(33.33% - 20px); 
-    }
-}
-
-@media (max-width: 900px) {
-    .sectionProject-carousel-image {
-        width: calc(50% - 20px);
-    }
-}
-
-@media (max-width: 600px) {
-    .sectionProject-carousel-image {
-        width: 100%; 
-    }
-}
-
-@media (max-width: 480px) {
-
-    .sectionProjects{
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        height: 50vh;
-    }
-    .sectionProject-carousel-image {
-        width: 100%; 
-    }
-
-    .sectionProjects-Title {
-        font-size: 24px;
-    }
-
-    .sectionProject-carousel-images {
-        width: 280px;
-    }
-}
-
-@media (min-width: 769px) {
-    .sectionProject-carousel-image {
-        width: calc(25% - 20px); 
-    }
-
-    .sectionProjects {
-        display: flex; 
-        flex-wrap: wrap; 
-        justify-content: space-between; 
-       
-    }
-
-    .sectionProjects-Title {
-        font-size: 72px; 
-    }
-
-    .sectionProject-carousel-images {
-        display: flex;
-        justify-content: center;
-        width: auto; 
     }
 }
