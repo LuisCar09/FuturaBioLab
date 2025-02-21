@@ -168,6 +168,37 @@
     color: red;
 }
 
+.spiner-projects {
+    border: 4px solid rgba(0, 0, 0, .1);
+    border-left-color: transparent;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    
+    animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg)
+    }
+
+    75% {
+        transform: rotate(270deg)
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
 @media screen and (max-width:850px) {
     .section-projects{
