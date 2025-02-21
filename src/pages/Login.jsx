@@ -57,7 +57,7 @@ const Login = () => {
     },[])
     
     return (
-        <main className='main-container'>
+        <main className='main-login'>
              <div className="contact-container">
             <h1>Log in to your account</h1>
             <h3>Don't have an account? <Link to="/register">Sign Up </Link> </h3>

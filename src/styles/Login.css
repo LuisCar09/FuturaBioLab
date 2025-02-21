@@ -3,8 +3,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
 }
 
+
+.main-login::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--background-color) ;
+    background-image: url('https://img.freepik.com/fotos-premium/algas-microalgas-placas-petri-investigacion-la[…]ia-ciencia-colocacion-plana-vista-superior-ma_542566-3075.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    z-index: -1;
+    opacity: 0.85;
+}
 .section-login {
     display: flex;
     flex-direction: column;
