@@ -62,7 +62,7 @@ function Members() {
 
                 <article className='members-container'>
                     {!allMembers || allMembers.length < 1 ? (
-                        <p>...Cargando</p>
+                        <div className='spiner-members'></div>
                     ) : (
                         allMembers.map((selectedMember) => (
                             <div key={selectedMember._id} className='selected-member'>

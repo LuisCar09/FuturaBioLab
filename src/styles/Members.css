@@ -156,6 +156,38 @@
     transform: scale(1.02);
 }
 
+.spiner-members {
+    border: 4px solid var(--primary-color);
+    border-left-color: transparent;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    
+    animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg)
+    }
+
+    75% {
+        transform: rotate(270deg)
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 @media screen and (max-width:768px) {
     .members-container{
         grid-template-columns: repeat(2,1fr);  
