@@ -9,20 +9,29 @@ function Projects() {
     const [projects,setProjects] = useState(null)
    
 
-    const fetchData = async () => {
-        const dataResponse = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'projects')
-        setProjects(dataResponse.data)        
-    }
+    
     
 
     useEffect(()=>{
-        
-        fetchData()
+        try {
+            const fetchData = async () => {
+                const dataResponse = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'projectss')
+                setProjects(dataResponse.data)        
+            }
+            fetchData()
+        } catch (error) {
+            console.error(error.message)
+        }
     },[])
     return (
         <main className='main-projects'>
-            <section className='section-projects'>
-                {!projects ? <div className='spiner-projects'></div> : projects.map(project => {
+            
+            {!projects ? 
+                <section className='section-spinner' >
+                    <div className='spiner-projects'></div> 
+                </section>
+            :
+            projects.map(project => {
                     const{owner,_id,nameproject,createdAt,description,image,views} = project
                     
                     return(
@@ -30,8 +39,9 @@ function Projects() {
                         />
                     )
                 })}
-                
-            </section>
+            
+    
+            
         </main>
     )
 }
