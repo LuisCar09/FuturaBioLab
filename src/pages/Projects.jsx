@@ -22,7 +22,7 @@ function Projects() {
     return (
         <main className='main-projects'>
             <section className='section-projects'>
-                {!projects ? <div>...Loading</div> : projects.map(project => {
+                {!projects ? <div className='spiner-projects'></div> : projects.map(project => {
                     const{owner,_id,nameproject,createdAt,description,image,views} = project
                     
                     return(

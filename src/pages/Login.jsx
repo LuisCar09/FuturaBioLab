@@ -41,7 +41,7 @@ const Login = () => {
             
             
             setUser(response.data)
-            
+           
             !response.data ? null : navigate('/') 
               
 
