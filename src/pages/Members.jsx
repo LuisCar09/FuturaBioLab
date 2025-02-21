@@ -60,7 +60,7 @@ function Members() {
 
                 </div>
 
-                <article className='members-container'>
+                <article className= {!allMembers || allMembers.length < 1 ? 'members-container-loading' :'members-container' } >
                     {!allMembers || allMembers.length < 1 ? (
                         <div className='spiner-members'></div>
                     ) : (
