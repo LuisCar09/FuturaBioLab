@@ -25,6 +25,9 @@ const Register = () => {
     const [userPreferences,setUserPreferences] = useState('')
     const [userUid,setUserUid] = useState(null)
     const [error,setError] = useState('')
+    
+    const [showMessage,setShowMessage]= useState(false)
+
     const navigate = useNavigate()
 
     const handleForm = async (event) => {
@@ -33,16 +36,11 @@ const Register = () => {
         
        try {
             
-           const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)
-           
-           
-           
-            const user = userCredential.user
-            
-            
+           const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)  
+            const user = userCredential.user 
             const token = await user.getIdToken()
            
-            
+ 
             localStorage.setItem('authToken',token)
             setUserUid(user.uid)
             setShowRequestData(true)
@@ -55,6 +53,10 @@ const Register = () => {
         }
     }
     
+    const handleExistUser = () => {
+
+        console.log('The user is already exist')
+    }
     
     const handleCreateUser = async(event) => {
     event.preventDefault()
@@ -92,14 +94,15 @@ const Register = () => {
                 </div>
                 </div>
 
-                <form onSubmit={handleForm} method="post" id="login-form" className="login-form">
+                 <form  method="post" id="login-form" className="login-form"> 
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  />
+                    <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  /> 
+                  {showMessage &&  <p>The user is already exist</p> } 
 
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  />
+                 {/*  <label htmlFor="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  /> */}
 
-                    <button type="submit">Register</button>
+                    <button type="button" onClick={handleExistUser}>Sign up</button>
 
                     <button type="button">Back</button>
                 </form>
