@@ -27,6 +27,7 @@ const Register = () => {
     const [error,setError] = useState('')
     
     const [showMessage,setShowMessage]= useState(false)
+    const [showPasswordSection,setShowPasswordSection] = useState(false)
 
     const navigate = useNavigate()
 
@@ -54,8 +55,15 @@ const Register = () => {
     }
     
     const handleExistUser = () => {
-
+        
         console.log('The user is already exist')
+        
+        if(showPasswordSection) {
+            setShowRequestData(true)
+            
+            }
+        setShowPasswordSection(true)
+        
     }
     
     const handleCreateUser = async(event) => {
@@ -94,17 +102,32 @@ const Register = () => {
                 </div>
                 </div>
 
+
                  <form  method="post" id="login-form" className="login-form"> 
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  /> 
-                  {showMessage &&  <p>The user is already exist</p> } 
+                  
+                  {!showPasswordSection && 
+                    <>
+                     <label htmlFor="email">Email</label>
+                     <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  /> 
+                    {showMessage &&  <p>The user is already exist</p> } 
+                    </>
+                  }
+                  {showPasswordSection && 
+                    <>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  />
+                    </>
+                  }
 
-                 {/*  <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  /> */}
+                    <button type="button" onClick={handleExistUser}>
+                        {!showPasswordSection ? 'Sign up' : 'Continue'}
+                    </button> 
 
-                    <button type="button" onClick={handleExistUser}>Sign up</button>
+                    
+                    {!showPasswordSection &&
 
                     <button type="button">Back</button>
+                    }
                 </form>
 
                 <div id="message">
