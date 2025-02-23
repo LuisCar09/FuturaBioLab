@@ -28,7 +28,7 @@ const Register = () => {
     
     const [showMessage,setShowMessage]= useState(false)
     const [showPasswordSection,setShowPasswordSection] = useState(false)
-
+    const [showEmail,setShowEmail] = useState(true)
     const navigate = useNavigate()
 
     const handleForm = async (event) => {
@@ -57,13 +57,15 @@ const Register = () => {
     const handleExistUser = () => {
         
         console.log('The user is already exist')
-        
-        if(showPasswordSection) {
-            setShowRequestData(true)
-            
-            }
+        setShowEmail(false)
         setShowPasswordSection(true)
         
+    }
+
+    const handleBackToEmail = () => {
+        setShowRequestData(false)
+        
+        setShowEmail(true)
     }
     
     const handleCreateUser = async(event) => {
@@ -105,7 +107,7 @@ const Register = () => {
 
                  <form  method="post" id="login-form" className="login-form"> 
                   
-                  {!showPasswordSection && 
+                  {showEmail && 
                     <>
                      <label htmlFor="email">Email</label>
                      <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  /> 
@@ -119,15 +121,23 @@ const Register = () => {
                     </>
                   }
 
-                    <button type="button" onClick={handleExistUser}>
-                        {!showPasswordSection ? 'Sign up' : 'Continue'}
-                    </button> 
+                    {!showPasswordSection ?
+                        <button type="button" onClick={handleExistUser}>
+                            Sign up
+                        </button> 
+                      : 
+                        <button type="button" onClick={() => {
+                            setShowPasswordSection(false)
+                            setShowRequestData(true)
+
+                        }}>
+                            Continue
+                        </button> 
+                    } 
 
                     
-                    {!showPasswordSection &&
-
-                    <button type="button">Back</button>
-                    }
+                    
+                    
                 </form>
 
                 <div id="message">
@@ -137,7 +147,7 @@ const Register = () => {
               
             )
             :
-            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser = {handleCreateUser} />  
+            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser = {handleCreateUser} functionReturnEmail = {handleBackToEmail} />  
             }
         </main>
     )

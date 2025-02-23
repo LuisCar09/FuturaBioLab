@@ -3,7 +3,7 @@ import '../styles/UserDataRegister.css'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,functionCreateUser }) {
+function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,functionCreateUser ,functionReturnEmail}) {
    
    const [userName, setUserName] = useState('');
   
@@ -80,6 +80,7 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
                    </div>
                </div>
                <button className='button-userDataRegister' disabled={isUserAvailable === false} onClick={functionCreateUser}>Register</button>
+               <button type="button" onClick={() => functionReturnEmail()} >Back</button>
            </form>
            <h4>The fields marked with (*) are required</h4>
        </section>
