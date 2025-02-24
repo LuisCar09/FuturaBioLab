@@ -31,6 +31,7 @@ const Register = () => {
     const [showEmail,setShowEmail] = useState(true)
     const navigate = useNavigate()
 
+    
     const handleForm = async (event) => {
         event.preventDefault()
         
@@ -54,11 +55,29 @@ const Register = () => {
         }
     }
     
-    const handleExistUser = () => {
+    const handleExistUser = async () => {
+        console.log(userEmail);
+        try {
+            const response = await axios.get('http://localhost:8080/' + 'users/useremail/' + userEmail)
+            const data = response.data
+            
+            if (!data) {
+                setShowPasswordSection(true)
+                setShowEmail(false)
+            }else{
+                setShowMessage(true)
+               
+                
+            }
+            
+            
+            
+            
+        } catch (error) {
+            console.log(error.message);
+            
+        }
         
-        console.log('The user is already exist')
-        setShowEmail(false)
-        setShowPasswordSection(true)
         
     }
 
@@ -82,6 +101,13 @@ const Register = () => {
         console.error({message:'Error creating user'})
         setError(error.message)
         }
+    }
+    
+    const  verifyAvailableEmail = async () => {
+        const body = {email: userEmail}
+        console.log(body);
+        
+        // const existEmail = await axios.get(import.env.VITE_URL_API_FUTURA_BIOLAB + 'users/useremail',)
     }
     return (
         <main className='main-container'>
