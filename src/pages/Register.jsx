@@ -30,6 +30,12 @@ const Register = () => {
     const [showMessage,setShowMessage]= useState(false)
     const [showPasswordSection,setShowPasswordSection] = useState(false)
     const [showEmail,setShowEmail] = useState(true)
+
+    const [hasNumber,setHasNumber] = useState(false)
+    const [hasUpperCase,setHasUpperCase] = useState(false)
+    const [hasSymbol,setHasSymbol] = useState(false)
+    const [lengthGreaterThanTen,setLengthGreaterThanTen] =useState(false)
+
     const navigate = useNavigate()
 
     
@@ -107,19 +113,12 @@ const Register = () => {
     const  checkPasswordRules = () => {
         const numbers = [0,1,2,3,4,5,6,7,8,9]
         const upperCase = ['A','B']
-        const lowerCase = ['a','b']
         const symbols = ['!','/', '@']
                 
-        const hasUppercase = userPassword.split('').some(character => upperCase.includes(character))
-        const hasNumber = userPassword.split('').some(character => numbers.includes(Number(character)))
-        const hasSymbol = userPassword.split('').some(character => symbols.includes(character))
-        const lengthGreaterThanTen = userPassword.length > 10
-        
-        console.log(`Upper : ${hasUppercase}`);
-        console.log(`Number : ${hasNumber}`);
-        console.log(`Symbol : ${hasSymbol}`);
-        console.log(`length : ${lengthGreaterThanTen}`);
-
+        setHasUpperCase(userPassword.split('').some(character => upperCase.includes(character)))
+        setHasNumber(userPassword.split('').some(character => numbers.includes(Number(character))))
+        setHasSymbol(userPassword.split('').some(character => symbols.includes(character))) 
+        setLengthGreaterThanTen(userPassword.length > 10)
         
     }
     useEffect(()=>{
@@ -163,10 +162,10 @@ const Register = () => {
 
                     <div className="password-contain">
                         <h4>Your password may contain:</h4>
-                        <p className="password-rules">At least 10 characters </p>
-                        <p className="password-rules">At least one uppercase character </p>
-                        <p className="password-rules">At least one special character </p>
-                        <p className="password-rules check" >At least one number </p>
+                        <p className={!lengthGreaterThanTen ? "password-rules": "password-rules check" }>At least 10 characters </p>
+                        <p className={!hasUpperCase ? "password-rules" : "password-rules check" }>At least one uppercase character </p>
+                        <p className={!hasSymbol ? "password-rules" : "password-rules check" }>At least one special character </p>
+                        <p className={!hasNumber ? "password-rules" : "password-rules check" } >At least one number </p>
                         
                     </div>
                     </>
