@@ -138,10 +138,22 @@ button[type="button"]:hover {
 .password-rules{
     font-size: 16px;
     margin-bottom: 10px;
+    color: rgb(77, 74, 74);
   }
-  
+ 
+ .password-rules::before {
+    content: '\2022';
+    margin-right: 12px;
+    
+ }
+
 .check {
     color: var(--primary-color);
+}
+
+.check::before{
+    content: '\2705';
+    margin-right: 12px;
 }
 #login{
     background-color: var(--button-color);
