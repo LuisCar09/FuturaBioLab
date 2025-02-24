@@ -45,7 +45,7 @@ const Register = () => {
         
        try {
             
-           const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)  
+            const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)  
             const user = userCredential.user 
             const token = await user.getIdToken()
            
@@ -98,23 +98,37 @@ const Register = () => {
     event.preventDefault()
     
     try {
-        const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate, uid:userUid}
+        const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)  
+        const user = userCredential.user 
+        const token = await user.getIdToken()
+        const userUid = user.uid
         
-        const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/newuser',body)
-        
-        !createUser.data.success ? null : navigate('/login')
+        localStorage.setItem('authToken',token)
+        setUserUid(user.uid)
+
         
        } catch (error) {
         console.error({message:'Error creating user'})
         setError(error.message)
         }
     }
-    
+    const addUserToDb = async () => {
+        
+        const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate,uid: userUid}
+        console.log(body);
+        
+        const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/newuser',body)
+        
+        !createUser.data.success ? null : navigate('/login')
+        
+    }
     const  checkPasswordRules = () => {
         const numbers = [0,1,2,3,4,5,6,7,8,9]
-        const upperCase = ['A','B']
-        const symbols = ['!','/', '@']
-                
+        const upperCase = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+        const symbols = Array.from({ length: 15 }, (_, i) => String.fromCharCode(33 + i));
+        
+        
+        
         setHasUpperCase(userPassword.split('').some(character => upperCase.includes(character)))
         setHasNumber(userPassword.split('').some(character => numbers.includes(Number(character))))
         setHasSymbol(userPassword.split('').some(character => symbols.includes(character))) 
@@ -124,6 +138,9 @@ const Register = () => {
     useEffect(()=>{
         checkPasswordRules()
     },[userPassword])
+    useEffect(()=>{
+        addUserToDb()
+    },[userUid])
     return (
         <main className='main-container'>
             {!showRequestData ? (
@@ -190,9 +207,11 @@ const Register = () => {
                             Sign up
                         </button> 
                       : 
-                        <button type="button" className="button-signup-register"  onClick={() => {
-                            setShowPasswordSection(false)
-                            setShowRequestData(true)
+                        <button className="button-signup-register" type="button"  id={(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen) ? 'valid-password' : ''} onClick={() => {
+                            if(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen){
+                                setShowPasswordSection(false)
+                                setShowRequestData(true)
+                            }
 
                         }}>
                             Continue
