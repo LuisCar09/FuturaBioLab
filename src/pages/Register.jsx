@@ -8,7 +8,7 @@ import { useContext } from "react";
 import UserDataRegister from "./UserDataRegister"
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 
 import '../styles/Register.css'
@@ -129,23 +129,9 @@ const Register = () => {
             {!showRequestData ? (
                 <div className="contact-container">
                 <h1>Register</h1>
-                <h3>Have an account? <a href="/login">Log in now</a> </h3>
-                <div className="providerAuth">
-                <div id="google" className="providers-logo">
-                    <GoogleIcon />
-                </div>
-                <div id="github" className="providers-logo">
-                    <GitHubIcon />
-                </div>
-                <div id="facebook" className="providers-logo">
-                    <FacebookIcon />
-                </div>
-                <div id="facebook" className="providers-logo">
-                    <XIcon />
-                </div>
-                </div>
-
-
+                
+                <h4>Have an account? <a href="/login">Log in now</a> </h4>
+               
                  <form  method="post" id="login-form" className="login-form"> 
                   
                   {showEmail && 
@@ -153,6 +139,34 @@ const Register = () => {
                      <label htmlFor="email">Email</label>
                      <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  /> 
                     {showMessage &&  <p>The user is already exist</p> } 
+
+                    <div className="separate-div">
+                        <div className="separate-div-line"></div>
+                        <div className="separate-div-text"><p>or</p></div>
+                        <div className="separate-div-line"></div>
+                    </div>
+
+                    <div className="providerAuth">
+                <div id="google" className="providers-logo">
+                    <GoogleIcon />
+                    <p>Sign up with Google</p>
+                </div>
+                <div id="github" className="providers-logo">
+                    <GitHubIcon />
+                    <p>Sign up with GitHub</p>
+                </div>
+                <div id="LinkedIn" className="providers-logo">
+                    <LinkedInIcon />
+                    <p>Sign up with LinkedIn</p>
+                </div>
+                <div id="x" className="providers-logo">
+                    <XIcon />
+                    <p>Sign up with X</p>
+                </div>
+                </div>
+
+               
+                
                     </>
                   }
                   {showPasswordSection && 
@@ -172,11 +186,11 @@ const Register = () => {
                   }
 
                     {!showPasswordSection ?
-                        <button type="button" onClick={handleExistUser}>
+                        <button type="button" className="button-signup-register" onClick={handleExistUser}>
                             Sign up
                         </button> 
                       : 
-                        <button type="button" onClick={() => {
+                        <button type="button" className="button-signup-register"  onClick={() => {
                             setShowPasswordSection(false)
                             setShowRequestData(true)
 
