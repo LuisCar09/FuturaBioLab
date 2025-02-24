@@ -117,17 +117,32 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #014b3fde;
+    
 }
 
 button[type="button"] {
     background-color: #f4f4f4;
     color: var(--button-color);
+    margin-top: 20px;
 }
 
 button[type="button"]:hover {
     background-color: #ddd;
 }
 
+.password-contain h4 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.password-rules{
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+.check {
+    color: var(--primary-color);
+}
 #login{
     background-color: var(--button-color);
     color: white;

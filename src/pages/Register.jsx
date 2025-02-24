@@ -10,6 +10,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
+
 import '../styles/Register.css'
 
 const Register = () => {
@@ -144,6 +145,15 @@ const Register = () => {
                     <>
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  />
+
+                    <div className="password-contain">
+                        <h4>Your password may contain:</h4>
+                        <p className="password-rules">At least 10 characters </p>
+                        <p className="password-rules">At least one uppercase character </p>
+                        <p className="password-rules">At least one special character </p>
+                        <p className="password-rules check" >At least one number </p>
+                        
+                    </div>
                     </>
                   }
 
