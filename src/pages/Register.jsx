@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {auth} from '../../config/firebase.js'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import axios from "axios";
@@ -104,12 +104,27 @@ const Register = () => {
         }
     }
     
-    const  verifyAvailableEmail = async () => {
-        const body = {email: userEmail}
-        console.log(body);
+    const  checkPasswordRules = () => {
+        const numbers = [0,1,2,3,4,5,6,7,8,9]
+        const upperCase = ['A','B']
+        const lowerCase = ['a','b']
+        const symbols = ['!','/', '@']
+                
+        const hasUppercase = userPassword.split('').some(character => upperCase.includes(character))
+        const hasNumber = userPassword.split('').some(character => numbers.includes(Number(character)))
+        const hasSymbol = userPassword.split('').some(character => symbols.includes(character))
+        const lengthGreaterThanTen = userPassword.length > 10
         
-        // const existEmail = await axios.get(import.env.VITE_URL_API_FUTURA_BIOLAB + 'users/useremail',)
+        console.log(`Upper : ${hasUppercase}`);
+        console.log(`Number : ${hasNumber}`);
+        console.log(`Symbol : ${hasSymbol}`);
+        console.log(`length : ${lengthGreaterThanTen}`);
+
+        
     }
+    useEffect(()=>{
+        checkPasswordRules()
+    },[userPassword])
     return (
         <main className='main-container'>
             {!showRequestData ? (
