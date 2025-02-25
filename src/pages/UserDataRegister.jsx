@@ -80,7 +80,7 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
                    </div>
                </div>
                <button className='button-userDataRegister' disabled={isUserAvailable === false} onClick={functionCreateUser}>Register</button>
-               <button type="button" onClick={() => functionReturnEmail()} >Back</button>
+               <button className='button-userDataRegister-back'type="button" onClick={() => functionReturnEmail()} >Back</button>
            </form>
            <h4>The fields marked with (*) are required</h4>
        </section>
