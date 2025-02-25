@@ -130,7 +130,10 @@ margin-bottom: 14px;
     margin-bottom: 10px;
 }
 
-
+.login-button-active{
+    color: white;
+    background-color: var(--primary-color);
+}
 @media (max-width: 480px){
     .main-container{
         height: inherit;

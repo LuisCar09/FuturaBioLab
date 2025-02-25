@@ -20,6 +20,7 @@ const Login = () => {
     const [userEmail,setUserEmail] = useState('')
     const [userPassword,setUserPassword] = useState('')
     const [message,setMessage]= useState('')
+    const [isLoginFieldsCompleted,setIsLoginFieldsCompleted] = useState(false)
     const {setUser} = useContext(UserContext)
     const navigate = useNavigate()
     const singInUser = async () =>{
@@ -49,12 +50,25 @@ const Login = () => {
             console.error(error.message);
             setMessage('The user does not exist, please go to Register') 
             
+            
         }
     }
 
     useEffect(()=> {
+        
+        const checkEmail = () => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    },[])
+            if(userPassword.length >= 10 &&  emailRegex.test(userEmail)){
+
+                setIsLoginFieldsCompleted(true) 
+            }else {
+                setIsLoginFieldsCompleted(false)
+            }
+            setMessage(null)
+        }
+        checkEmail()
+    },[userEmail, userPassword])
     
     return (
         <main className='main-login'>
@@ -92,7 +106,7 @@ const Login = () => {
                 </div>
                 </div>
             
-                <button  className="login-button" type="button" onClick={singInUser} >Login</button>
+                <button   className= {!isLoginFieldsCompleted ? "login-button" : "login-button login-button-active" }  type="button" onClick={singInUser} disabled={!isLoginFieldsCompleted} >Login</button>
             
            
         </div>
