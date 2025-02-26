@@ -177,6 +177,11 @@ input:focus{
     padding: 8px;
     cursor: pointer;
 }
+
+.button-signup-active {
+    color: white;
+    background-color: var(--primary-color);
+}
 .check::before{
     content: '\2705';
     margin-right: 12px;

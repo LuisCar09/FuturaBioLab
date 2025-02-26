@@ -36,6 +36,9 @@ const Register = () => {
     const [hasSymbol,setHasSymbol] = useState(false)
     const [lengthGreaterThanTen,setLengthGreaterThanTen] =useState(false)
 
+    const [emailCompleted, setEmailCompleted] = useState(false)
+    const [passwordCompleted, setPasswordCompleted] = useState(false)
+
     const navigate = useNavigate()
 
     
@@ -63,7 +66,7 @@ const Register = () => {
     }
     
     const handleExistUser = async () => {
-        console.log(userEmail);
+       
         try {
             const response = await axios.get('http://localhost:8080/' + 'users/useremail/' + userEmail)
             const data = response.data
@@ -75,17 +78,11 @@ const Register = () => {
                 setShowMessage(true)
                
                 
-            }
-            
-            
-            
-            
+            }    
         } catch (error) {
             console.log(error.message);
             
-        }
-        
-        
+        }   
     }
 
     const handleBackToEmail = () => {
@@ -115,7 +112,7 @@ const Register = () => {
     const addUserToDb = async () => {
         
         const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate,uid: userUid}
-        console.log(body);
+       
         
         const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/newuser',body)
         
@@ -141,6 +138,26 @@ const Register = () => {
     useEffect(()=>{
         addUserToDb()
     },[userUid])
+
+    
+    
+    useEffect(() => {
+        const checedkEmail = () => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            emailRegex.test(userEmail) ? setEmailCompleted(true) : setEmailCompleted(false)
+        }
+        checedkEmail()
+        
+    },[userEmail])
+
+    useEffect(() => {
+        const chekedLengthPassword = userPassword.length >= 10
+
+        !chekedLengthPassword ? setPasswordCompleted(false) : setPasswordCompleted(true)
+        
+    })
+    
+
     return (
         <main className='main-container'>
             {!showRequestData ? (
@@ -203,11 +220,11 @@ const Register = () => {
                   }
 
                     {!showPasswordSection ?
-                        <button type="button" className="button-signup-register" onClick={handleExistUser}>
+                        <button type="button" className={!emailCompleted ? "button-signup-register" : "button-signup-register button-signup-active"}onClick={handleExistUser}>
                             Sign up
                         </button> 
                       : 
-                        <button className="button-signup-register" type="button"  id={(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen) ? 'valid-password' : ''} onClick={() => {
+                        <button className={!passwordCompleted ? "button-signup-register" : "button-signup-register button-signup-active"} type="button"  id={(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen) ? 'valid-password' : ''} onClick={() => {
                             if(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen){
                                 setShowPasswordSection(false)
                                 setShowRequestData(true)
@@ -216,11 +233,7 @@ const Register = () => {
                         }}>
                             Continue
                         </button> 
-                    } 
-
-                    
-                    
-                    
+                    }                     
                 </form>
 
                 <div id="message">
