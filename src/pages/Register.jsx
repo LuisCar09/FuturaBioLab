@@ -39,6 +39,8 @@ const Register = () => {
     const [emailCompleted, setEmailCompleted] = useState(false)
     const [passwordCompleted, setPasswordCompleted] = useState(false)
 
+    const [allFieldsMarked,setAllFieldsMarked] = useState(false)
+
     const navigate = useNavigate()
 
     
@@ -80,7 +82,7 @@ const Register = () => {
                 
             }    
         } catch (error) {
-            console.log(error.message);
+            console.error(error.message);
             
         }   
     }
@@ -156,6 +158,12 @@ const Register = () => {
         !chekedLengthPassword ? setPasswordCompleted(false) : setPasswordCompleted(true)
         
     })
+
+    useEffect(() => {
+        const allFields = name && userLastName && userBirthdate && userPhone && userName
+    
+        !allFields ? setAllFieldsMarked(false) : setAllFieldsMarked(true)
+       },[name,userLastName,userBirthdate,userPhone,userName])
     
 
     return (
@@ -243,7 +251,7 @@ const Register = () => {
               
             )
             :
-            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser = {handleCreateUser} functionReturnEmail = {handleBackToEmail} />  
+            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser = {handleCreateUser} functionReturnEmail = {handleBackToEmail} fieldsMarked={allFieldsMarked} />  
             }
         </main>
     )
