@@ -135,6 +135,7 @@
     background-color: #f9f9f9;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin-bottom: 20px;
+    position: relative;
 }
 input:hover{
     box-shadow: rgb(232, 237, 235) 0px 0px 0px 3px;
@@ -185,6 +186,24 @@ input:focus{
 .check::before{
     content: '\2705';
     margin-right: 12px;
+}
+
+.togglePaswordActive, .togglePaswordNoActive{
+    position: absolute;
+    
+    right: 188px;
+    top: 154px;
+}
+
+.toggleButtonPassword{
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.toggleButtonPassword svg {
+    font-size: 16px;
 }
 
 

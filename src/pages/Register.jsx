@@ -11,6 +11,9 @@ import GoogleIcon from '@mui/icons-material/Google';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 import '../styles/Register.css'
 
 const Register = () => {
@@ -40,6 +43,8 @@ const Register = () => {
     const [passwordCompleted, setPasswordCompleted] = useState(false)
 
     const [allFieldsMarked,setAllFieldsMarked] = useState(false)
+
+    const [togglePassword,setTogglePassword] = useState(false)
 
     const navigate = useNavigate()
 
@@ -157,7 +162,7 @@ const Register = () => {
 
         !chekedLengthPassword ? setPasswordCompleted(false) : setPasswordCompleted(true)
         
-    })
+    },[userPassword])
 
     useEffect(() => {
         const allFields = name && userLastName && userBirthdate && userPhone && userName
@@ -165,6 +170,7 @@ const Register = () => {
         !allFields ? setAllFieldsMarked(false) : setAllFieldsMarked(true)
        },[name,userLastName,userBirthdate,userPhone,userName])
     
+
 
     return (
         <main className='main-container'>
@@ -214,7 +220,17 @@ const Register = () => {
                   {showPasswordSection && 
                     <>
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  />
+                        <input type={!togglePassword ? "password" : "text"} name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  />
+                        <div className={!togglePassword ? "togglePaswordNoActive" : "togglePaswordActive"}>
+
+                        <button type="button" className="toggleButtonPassword" onClick={() => setTogglePassword(!togglePassword)} >
+                        {!togglePassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon /> }</button>
+
+                        </div>
+
+
+         
+                
 
                     <div className="password-contain">
                         <h4>Your password may contain:</h4>
