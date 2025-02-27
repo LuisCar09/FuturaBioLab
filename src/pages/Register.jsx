@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-
+import { getAuth, GoogleAuthProvider,signInWithRedirect,signInWithPopup } from "firebase/auth";
 import UserDataRegister from "./UserDataRegister"
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -16,12 +16,14 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import '../styles/Register.css'
 
+const provider = new GoogleAuthProvider();
+
 const Register = () => {
     const [showRequestData, setShowRequestData] = useState(false)
     const [userEmail,setUserEmail] = useState('')
     const [userPassword,setUserPassword] = useState('')
     const [name,setName] = useState('')
-    const [userName,setUserName] = useState('')
+    const [userName,setUserName] = useState(undefined)
     const [userLastName,setUserLastName] = useState('')
     const [userPhone,setUserPhone] = useState('')
     const [userBirthdate,setUserBirthdate] = useState('')
@@ -29,7 +31,7 @@ const Register = () => {
     const [userPreferences,setUserPreferences] = useState('')
     const [userUid,setUserUid] = useState(null)
     const [error,setError] = useState('')
-    
+    const [logInWithThirdPartyProvider, setLogInWithThirdPartyProvider] = useState(false)
     const [showMessage,setShowMessage]= useState(false)
     const [showPasswordSection,setShowPasswordSection] = useState(false)
     const [showEmail,setShowEmail] = useState(true)
@@ -73,12 +75,12 @@ const Register = () => {
     }
     
     const handleExistUser = async () => {
-       
+        
         try {
             const response = await axios.get('http://localhost:8080/' + 'users/useremail/' + userEmail)
             const data = response.data
             
-            if (!data) {
+            if (!data || Object.keys(data).length === 0) {
                 setShowPasswordSection(true)
                 setShowEmail(false)
             }else{
@@ -119,11 +121,21 @@ const Register = () => {
     const addUserToDb = async () => {
         
         const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate,uid: userUid}
-       
         
-        const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/newuser',body)
         
-        !createUser.data.success ? null : navigate('/login')
+        try {
+            if (name && userName && userLastName && userEmail && userPassword && userBirthdate && userUid) {
+                const createUser = await axios.post('http://localhost:8080/' + 'users/newuser',body)
+                console.log('LUis')
+                !createUser.data.success ? null : navigate('/login')
+            }else{
+                setShowRequestData(true)
+            }
+        } catch (error) {
+            console.log(error.message)
+           
+        }
+        
         
     }
     const  checkPasswordRules = () => {
@@ -139,11 +151,42 @@ const Register = () => {
         setLengthGreaterThanTen(userPassword.length > 10)
         
     }
+    const singInWithGoogle = async () => {
+        
+        
+        
+        try {
+            const logIn = await signInWithPopup(auth,provider)
+            const user = logIn.user;
+            
+            localStorage.setItem('uid',user.uid)
+            
+            const checkUserEmail = await axios.get('http://localhost:8080/' + 'users/useremail/' + user.email)
+            const data = checkUserEmail.data
+            console.log(data);
+            if(!data || Object.keys(data).length === 0){
+                setName(user.displayName.split(' ')[0])
+                setUserPassword(user.uid)
+                setUserLastName(user.displayName.split(' ')[1])
+                setUserEmail(user.email)
+                setLogInWithThirdPartyProvider(true)
+                setUserUid(user.uid)
+                setShowRequestData(true)
+            }else{
+                setShowMessage(true)
+            }
+            
+        } catch (error) {
+            console.error(error.message);
+            
+        }
+    }
+
     useEffect(()=>{
         checkPasswordRules()
     },[userPassword])
     useEffect(()=>{
-        addUserToDb()
+        if(userUid) addUserToDb()
     },[userUid])
 
     
@@ -151,7 +194,7 @@ const Register = () => {
     useEffect(() => {
         const checedkEmail = () => {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            emailRegex.test(userEmail) ? setEmailCompleted(true) : setEmailCompleted(false)
+            setEmailCompleted(emailRegex.test(userEmail))
         }
         checedkEmail()
         
@@ -166,7 +209,7 @@ const Register = () => {
 
     useEffect(() => {
         const allFields = name && userLastName && userBirthdate && userPhone && userName
-    
+        
         !allFields ? setAllFieldsMarked(false) : setAllFieldsMarked(true)
        },[name,userLastName,userBirthdate,userPhone,userName])
     
@@ -195,7 +238,7 @@ const Register = () => {
                     </div>
 
                     <div className="providerAuth">
-                <div id="google" className="providers-logo">
+                <div id="google" className="providers-logo" onClick={singInWithGoogle}>
                     <GoogleIcon />
                     <p>Sign up with Google</p>
                 </div>
@@ -267,8 +310,9 @@ const Register = () => {
               
             )
             :
-            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser = {handleCreateUser} functionReturnEmail = {handleBackToEmail} fieldsMarked={allFieldsMarked} />  
+            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser ={handleCreateUser} functionReturnEmail={handleBackToEmail} fieldsMarked={allFieldsMarked} nameUser={name} uLastName = {userLastName} goToDb = {addUserToDb} thirdPartyProvider={logInWithThirdPartyProvider} />  
             }
+            
         </main>
     )
 }

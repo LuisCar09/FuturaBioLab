@@ -3,7 +3,7 @@ import '../styles/UserDataRegister.css'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,functionCreateUser ,functionReturnEmail, fieldsMarked}) {
+function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,functionCreateUser ,functionReturnEmail, fieldsMarked,nameUser,uLastName='', goToDb, thirdPartyProvider }) {
    
    const [userName, setUserName] = useState('');
 
@@ -40,13 +40,13 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
                <div className='container-input-userDataRegister'>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='name-input' className='label-userDataRegister'>Name*</label>
-                       <input id='name-input' type='text' required 
-                       onChange={(e) => setUname(e.target.value)} 
+                       <input id='name-input' type='text' required value={nameUser}  
+                        onChange={(e) => setNameUser(e.target.value)} 
                     />
                    </div>
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='lastname-input' className='label-userDataRegister'>Lastname*</label>
-                       <input id='lastname-input' type='text' required 
+                       <input id='lastname-input' type='text' required value={uLastName}
                         onChange={(e) => setLastName(e.target.value)} />
                    </div>
                </div>
@@ -55,7 +55,7 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
                        <label htmlFor='username-input' className='label-userDataRegister'>Username*</label>
                        <input   id='username-input' type='text' required 
                           
-                           onChange={(e) => setNameUser(e.target.value)} 
+                       onChange={(e) => setUname(e.target.value)} 
                        />
                        {isUserAvailable === false && <p>The username already exists. Please choose another one</p>}
                        {isUserAvailable === true && <p>The username is available</p>}
@@ -81,7 +81,7 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
                        <input id='offers-input' type='text' onChange={(e) => setOffers(e.target.value)} />
                    </div>
                </div>
-               <button className={!fieldsMarked ? 'button-userDataRegister' : 'button-userDataRegister active'} disabled={isUserAvailable === false} onClick={functionCreateUser}>Register</button>
+               <button className={!fieldsMarked ? 'button-userDataRegister' : 'button-userDataRegister active'} disabled={isUserAvailable === false} onClick={() => !thirdPartyProvider ? functionCreateUser() : goToDb()} type='button'>Register</button>
                <button className={!fieldsMarked ? 'button-userDataRegister active' : 'button-userDataRegister'}type="button" onClick={() => functionReturnEmail()} >Back</button>
            </form>
            <h4>The fields marked with (*) are required</h4>

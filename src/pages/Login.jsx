@@ -2,6 +2,8 @@ import { useState,useEffect } from "react";
 import { auth } from "../../config/firebase";
 import { Link } from "react-router-dom"
 import {signInWithEmailAndPassword} from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, signInWithPopup,signInWithRedirect } from "firebase/auth";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -14,6 +16,7 @@ import XIcon from '@mui/icons-material/X';
 
 import '../styles/Login.css'
 
+const provider = new GoogleAuthProvider();
 
 const Login = () => {
     localStorage.clear()
@@ -53,7 +56,22 @@ const Login = () => {
             
         }
     }
+    const singInWithGoogle = async () => {
+        try {
+            const logIn = await signInWithRedirect(auth,provider)
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = logIn.user;
+            console.log(credential);
+            console.log(token);
+            console.log(user);
+            
 
+            
+        } catch (error) {
+            
+        }
+    }
     useEffect(()=> {
         
         const checkEmail = () => {
@@ -88,19 +106,19 @@ const Login = () => {
                 </div>        
             </form>
             <div className="providerAuth">
-                <div id="google" className="providers-logo">
+                <div id="google" className="providers-logo" onClick={singInWithGoogle}>
                     <GoogleIcon />
                     <p>Sign up with Google</p>
                 </div>
-                <div id="github" className="providers-logo">
+                <div id="github" className="providers-logo" onClick={() => alert('This feature is not available yet')}>
                     <GitHubIcon />
                     <p>Sign up with GitHub</p>
                 </div>
-                <div id="LinkedIn" className="providers-logo">
+                <div id="LinkedIn" className="providers-logo" onClick={() => alert('This feature is not available yet')}>
                     <LinkedInIcon />
                     <p>Sign up with LinkedIn</p>
                 </div>
-                <div id="x" className="providers-logo">
+                <div id="x" className="providers-logo" onClick={() => alert('This feature is not available yet')} >
                     <XIcon />
                     <p>Sign up with X</p>
                 </div>
