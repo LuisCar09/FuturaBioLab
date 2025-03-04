@@ -58,16 +58,23 @@ const Login = () => {
     }
     const singInWithGoogle = async () => {
         try {
-            const logIn = await signInWithRedirect(auth,provider)
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            const user = logIn.user;
-            console.log(credential);
-            console.log(token);
-            console.log(user);
-            
+            const logIn = await signInWithPopup(auth,provider)
+            const credential = logIn.user
+            const token = credential.stsTokenManager.accessToken
+        
+            localStorage.setItem('authToken',token)
+            localStorage.setItem('uid',credential.uid)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/' + credential.uid, {
+                headers:{Authorization: `Bearer ${token}`},
+            }
+
+            )
+           
             
+            setUser(response.data)
+            !response.data ? null : navigate('/')
         } catch (error) {
             
         }
