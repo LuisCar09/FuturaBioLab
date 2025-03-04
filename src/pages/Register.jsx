@@ -69,7 +69,7 @@ const Register = () => {
         } catch (error) {
             if(error.message === 'auth/email-already-in-use') 
             setError(error.message)
-            navigate('/login')
+           setShowMessage(true)
             
         }
     }
@@ -77,8 +77,9 @@ const Register = () => {
     const handleExistUser = async () => {
         
         try {
-            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'users/useremail/' + userEmail)
+            const response = await axios.get('http://localhost:8080/'  + 'users/useremail/' + userEmail)
             const data = response.data
+        
             
             if (!data || Object.keys(data).length === 0) {
                 setShowPasswordSection(true)
@@ -262,14 +263,17 @@ const Register = () => {
                   }
                   {showPasswordSection && 
                     <>
+                     <div className="password-container">
                         <label htmlFor="password">Password</label>
                         <input type={!togglePassword ? "password" : "text"} name="password" id="password" placeholder="**********" onChange={(e) => setUserPassword(e.target.value)} value={userPassword} autoComplete='true' required  />
-                        <div className={!togglePassword ? "togglePaswordNoActive" : "togglePaswordActive"}>
-
-                        <button type="button" className="toggleButtonPassword" onClick={() => setTogglePassword(!togglePassword)} >
-                        {!togglePassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon /> }</button>
-
+                        <div className="icon-password" onClick={() => setTogglePassword(!togglePassword)} >
+                        {!togglePassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon /> }
                         </div>
+                        
+                        
+                    </div>   
+
+                        
 
 
          
@@ -304,7 +308,7 @@ const Register = () => {
                 </form>
 
                 <div id="message">
-
+                   
                 </div>
             </div>
               

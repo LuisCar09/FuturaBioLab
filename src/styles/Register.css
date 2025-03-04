@@ -123,7 +123,7 @@
 }
 .login-form label {
     color: var(--primary-color);
-    margin-bottom: 10px;
+    
     font-size: 12px;
 }
 .login-form input {
@@ -134,7 +134,7 @@
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin-bottom: 20px;
+    width: 100%;
     position: relative;
 }
 input:hover{
@@ -188,24 +188,24 @@ input:focus{
     margin-right: 12px;
 }
 
-.togglePaswordActive, .togglePaswordNoActive{
+
+.password-container{
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+}
+
+.icon-password {
     position: absolute;
-    
-    right: 188px;
-    top: 154px;
-}
-
-.toggleButtonPassword{
-
-    background-color: transparent;
-    border: none;
     cursor: pointer;
+    left: 288px;
+    top: 8px;
 }
 
-.toggleButtonPassword svg {
-    font-size: 16px;
+.icon-password svg {
+    font-size: 20px;
 }
-
 
 @media (320px >= width) {
     .main-container{

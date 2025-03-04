@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import { auth } from "../../config/firebase";
 import { Link } from "react-router-dom"
-import {signInWithEmailAndPassword} from 'firebase/auth'
+import {getRedirectResult, signInWithEmailAndPassword} from 'firebase/auth'
 import { getAuth, GoogleAuthProvider, signInWithPopup,signInWithRedirect } from "firebase/auth";
 
 import axios from "axios";
@@ -17,6 +17,7 @@ import XIcon from '@mui/icons-material/X';
 import '../styles/Login.css'
 
 const provider = new GoogleAuthProvider();
+
 
 const Login = () => {
     localStorage.clear()
@@ -58,8 +59,22 @@ const Login = () => {
     }
     const singInWithGoogle = async () => {
         try {
-            const logIn = await signInWithPopup(auth,provider)
-            const credential = logIn.user
+            const logIn = await signInWithRedirect(auth,provider)
+            console.log(logIn)
+
+            const response = await getRedirectResult(auth)
+            if(response) {
+                const credential = GoogleAuthProvider.credentialFromResult(response)
+
+                console.log(credential)
+            }else {
+                console.log('error en signup')
+            }
+            localStorage.setItem('googleResponse', JSON.stringify(response))
+            const googleResponse = JSON.parse(localStorage.getItem('googleResponse'))
+            console.log(googleResponse)
+
+            /*const credential = logIn.user
             const token = credential.stsTokenManager.accessToken
         
             localStorage.setItem('authToken',token)
@@ -74,7 +89,7 @@ const Login = () => {
            
             
             setUser(response.data)
-            !response.data ? null : navigate('/')
+            !response.data ? null : navigate('/')*/
         } catch (error) {
             
         }
