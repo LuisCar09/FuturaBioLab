@@ -59,22 +59,11 @@ const Login = () => {
     }
     const singInWithGoogle = async () => {
         try {
-            const logIn = await signInWithRedirect(auth,provider)
-            console.log(logIn)
+            
+            const logIn = await signInWithPopup(auth,provider)
+            
+            const credential = logIn.user
 
-            const response = await getRedirectResult(auth)
-            if(response) {
-                const credential = GoogleAuthProvider.credentialFromResult(response)
-
-                console.log(credential)
-            }else {
-                console.log('error en signup')
-            }
-            localStorage.setItem('googleResponse', JSON.stringify(response))
-            const googleResponse = JSON.parse(localStorage.getItem('googleResponse'))
-            console.log(googleResponse)
-
-            /*const credential = logIn.user
             const token = credential.stsTokenManager.accessToken
         
             localStorage.setItem('authToken',token)
@@ -89,7 +78,8 @@ const Login = () => {
            
             
             setUser(response.data)
-            !response.data ? null : navigate('/')*/
+            !response.data ? null : navigate('/')
+
         } catch (error) {
             
         }

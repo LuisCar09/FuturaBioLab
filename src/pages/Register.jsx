@@ -206,11 +206,7 @@ const Register = () => {
         
 
       setPasswordCompleted(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen)
-      console.log('este es pass:',passwordCompleted)
-      console.log('este es:hasnumber',hasNumber)
-      console.log('este es:symbol',hasSymbol)
-      console.log('este es:upperc',hasUpperCase)
-      console.log('este es:length',lengthGreaterThanTen)
+  
         
     },[lengthGreaterThanTen,hasUpperCase,hasNumber,hasSymbol,passwordCompleted])
 
