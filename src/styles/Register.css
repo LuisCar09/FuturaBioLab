@@ -199,8 +199,9 @@ input:focus{
 .icon-password {
     position: absolute;
     cursor: pointer;
-    left: 288px;
-    top: 8px;
+    right: 0;
+    margin: 10px;
+    
 }
 
 .icon-password svg {
