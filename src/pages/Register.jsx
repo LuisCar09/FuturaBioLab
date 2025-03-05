@@ -149,7 +149,7 @@ const Register = () => {
         setHasUpperCase(userPassword.split('').some(character => upperCase.includes(character)))
         setHasNumber(userPassword.split('').some(character => numbers.includes(Number(character))))
         setHasSymbol(userPassword.split('').some(character => symbols.includes(character))) 
-        setLengthGreaterThanTen(userPassword.length > 10)
+        setLengthGreaterThanTen(userPassword.length >= 10)
         
     }
     const singInWithGoogle = async () => {
@@ -186,6 +186,7 @@ const Register = () => {
     useEffect(()=>{
         checkPasswordRules()
     },[userPassword])
+
     useEffect(()=>{
         if(userUid) addUserToDb()
     },[userUid])
@@ -202,11 +203,16 @@ const Register = () => {
     },[userEmail])
 
     useEffect(() => {
-        const chekedLengthPassword = userPassword.length >= 10
-
-        !chekedLengthPassword ? setPasswordCompleted(false) : setPasswordCompleted(true)
         
-    },[userPassword])
+
+      setPasswordCompleted(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen)
+      console.log('este es pass:',passwordCompleted)
+      console.log('este es:hasnumber',hasNumber)
+      console.log('este es:symbol',hasSymbol)
+      console.log('este es:upperc',hasUpperCase)
+      console.log('este es:length',lengthGreaterThanTen)
+        
+    },[lengthGreaterThanTen,hasUpperCase,hasNumber,hasSymbol,passwordCompleted])
 
     useEffect(() => {
         const allFields = name && userLastName && userBirthdate && userPhone && userName
@@ -295,7 +301,7 @@ const Register = () => {
                             Sign up
                         </button> 
                       : 
-                        <button className={!passwordCompleted ? "button-signup-register" : "button-signup-register button-signup-active"} type="button"  id={(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen) ? 'valid-password' : ''} onClick={() => {
+                        <button className={!passwordCompleted ? "button-signup-register" : "button-signup-register button-signup-active"} type="button"   onClick={() => {
                             if(hasNumber && hasSymbol && hasUpperCase && lengthGreaterThanTen){
                                 setShowPasswordSection(false)
                                 setShowRequestData(true)
