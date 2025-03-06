@@ -15,6 +15,8 @@ const Reservation = () => {
     const [userDescription, setUserDescription] = useState('')
     const [message,setMessage] = useState('')
     const [addedToCard,setAddedToCar] = useState(false)
+
+    const [FieldsCompletes,setFieldsCompletes] = useState(false)
     // FALTA QUE AL HACER CLICK ME GUARDE EN EL LOCALHOST LO QUE SE HA COMPRADO Y LUEHO EL PAGO
 
     
@@ -22,6 +24,8 @@ const Reservation = () => {
     const handlerAddToCar = () => {
         
         const existAddProduct = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
+
+
         const body = {
             uidOwner : service.uid,            
             uidBuyer: localStorage.getItem('authToken'),
@@ -60,12 +64,17 @@ const Reservation = () => {
     
     
     
+    const isFieldsCompletes = name !== '' && userEmail !== ''
+
+    useEffect(() => {
+        setFieldsCompletes(name && userEmail)
+    },[name,userEmail])
     
     return (
         <main className='main-formreservation'>
             <section className='section-formreservation'>
                 <aside className='details-formreservation'>
-                    <h2>Detalles de servicio</h2>
+                    <h2>Service details</h2>
                 </aside>
 
                 <div className='form-formreservation-children'>
@@ -94,6 +103,7 @@ const Reservation = () => {
                                     onChange={(e) => setUserEmail(e.target.value)}
                                     required
                                 />
+
                             </div>
                         </div>
 
@@ -117,6 +127,8 @@ const Reservation = () => {
                         </div>
 
                         
+                    
+                    {!isFieldsCompletes && <h4>Please fill in both fields before adding to cart</h4>}
                     </form>
 
                     <div className='data-formreservation'>
@@ -134,7 +146,8 @@ const Reservation = () => {
                         </div>
                         <div className='buttons-formreservation'>
                             <div className='message-container'>{!message ? '' : message }</div>
-                            <button className= {addedToCard ? 'addbutton-formreservation showaddbutton-formreservation':'addbutton-formreservation'} onClick={handlerAddToCar}>Add to cart</button>
+                            <button className= {addedToCard ? 'addbutton-formreservation showaddbutton-formreservation':'addbutton-formreservation'} onClick={handlerAddToCar}
+                            disabled={!isFieldsCompletes}>Add to cart</button>
                             <Link to={'/mycart'}><button className= {!addedToCard ? 'addbutton-formreservation showaddbutton-formreservation':'addbutton-formreservation'}>Checkout</button></Link>
                             <Link to={'/services'}>
                                 <button   className='addbutton-formreservation' >Continue shopping</button>
@@ -143,7 +156,7 @@ const Reservation = () => {
                         </div>
                     </div>
                 </div>
-                <h4>The fields marked with (*) are required</h4>
+                
             </section>
         </main>
     );

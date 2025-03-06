@@ -77,7 +77,7 @@ const Register = () => {
     const handleExistUser = async () => {
         
         try {
-            const response = await axios.get('http://localhost:8080/'  + 'users/useremail/' + userEmail)
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'users/useremail/' + userEmail)
             const data = response.data
         
             
@@ -104,6 +104,7 @@ const Register = () => {
     const handleCreateUser = async(event) => {
     event.preventDefault()
     
+    
     try {
         const userCredential = await createUserWithEmailAndPassword(auth,userEmail,userPassword)  
         const user = userCredential.user 
@@ -127,7 +128,7 @@ const Register = () => {
         try {
             if (name && userName && userLastName && userEmail && userPassword && userBirthdate && userUid) {
                 const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'users/newuser',body)
-                console.log('LUis')
+              
                 !createUser.data.success ? null : navigate('/login')
             }else{
                 setShowRequestData(true)

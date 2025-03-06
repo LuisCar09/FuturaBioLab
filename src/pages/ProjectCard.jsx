@@ -20,6 +20,7 @@ const ProjectCard = () => {
         const fetchProject = async () => {
             try {
                 const response = await axios.get(`http://localhost:8080/projects/${id}`);
+                console.log(response)
                 setProject(response.data);
             } catch (error) {
                 console.log(error.message);
@@ -27,7 +28,7 @@ const ProjectCard = () => {
         };
         fetchProject();
     }, [id]);
-    console.log(fetchProject)
+ 
 
     useEffect(() => {
         const fetchCurrentUser = async () => {
