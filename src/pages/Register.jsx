@@ -82,6 +82,8 @@ const Register = () => {
         
             
             if (!data || Object.keys(data).length === 0) {
+                console.log(auth.currentUser);
+                
                 setShowPasswordSection(true)
                 setShowEmail(false)
             }else{
@@ -128,7 +130,7 @@ const Register = () => {
         try {
             if (name && userName && userLastName && userEmail && userPassword && userBirthdate && userUid) {
                 const createUser = await axios.post(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'users/newuser',body)
-              
+                
                 !createUser.data.success ? null : navigate('/login')
             }else{
                 setShowRequestData(true)
@@ -166,6 +168,8 @@ const Register = () => {
             const checkUserEmail = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/useremail/' + user.email)
             const data = checkUserEmail.data
             console.log(data);
+            console.log('LUIS');
+            
             if(!data || Object.keys(data).length === 0){
                 setName(user.displayName.split(' ')[0])
                 setUserPassword(user.uid)
@@ -233,7 +237,7 @@ const Register = () => {
                     <>
                      <label htmlFor="email">Email</label>
                      <input type="email" name="email" id="email" placeholder="email" autoComplete="true" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} required  /> 
-                    {showMessage &&  <p>The user is already exist</p> } 
+                    {showMessage &&  <p className="login-message" >The user is already exist go to Login</p> } 
 
                     <div className="separate-div">
                         <div className="separate-div-line"></div>

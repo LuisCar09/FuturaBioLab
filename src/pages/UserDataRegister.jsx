@@ -1,16 +1,19 @@
 // import '../styles/Login.css';
 import '../styles/UserDataRegister.css'
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { auth } from '../../config/firebase';
+import { deleteUser } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
 function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,functionCreateUser ,functionReturnEmail, fieldsMarked,nameUser,uLastName='', goToDb, thirdPartyProvider }) {
-   
+    const navigate = useNavigate()
    const [userName, setUserName] = useState('');
+   const [isClickedRegister,setIsClilkedRegister] = useState(false) 
 
-  
    const [isUserAvailable, setIsUserAvailable] = useState(null); 
-
-
+   console.log(auth.currentUser?.email);
+   const setTimoeOutRef = useRef(null) 
    const checkUserNameAvailability = async (username) => {
        
            try {
@@ -25,12 +28,40 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
            }
       
        }
-   
+   const handlerRegister = () =>{
+        // !thirdPartyProvider ? functionCreateUser() : goToDb()
+        console.log(auth.currentUser);
+        setIsClilkedRegister(true)
+   }
 
    useEffect(() => {
        checkUserNameAvailability(userName); 
    }, [userName]);
 
+
+   useEffect(()=>{
+        let counter = 1
+        
+        setTimoeOutRef.current = setTimeout(async ()=>{
+            await deleteUser(auth.currentUser)
+            
+            console.log('Usuario eliminado de firebase');
+           
+            navigate('/')
+            
+        },0.3 * 60 * 1000)
+
+        
+
+        return () => clearTimeout(setTimoeOutRef)
+   },[isClickedRegister])
+
+   useEffect(()=>{
+        if (isClickedRegister && setTimoeOutRef.current) {
+            clearTimeout(setTimoeOutRef.current)
+        }
+
+   },[isClickedRegister])
 
    return (
     <main className='main-userdataregister'>
@@ -81,7 +112,7 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
                        <input id='offers-input' type='text' onChange={(e) => setOffers(e.target.value)} />
                    </div>
                </div>
-               <button className={!fieldsMarked ? 'button-userDataRegister' : 'button-userDataRegister active'} disabled={isUserAvailable === false} onClick={() => !thirdPartyProvider ? functionCreateUser() : goToDb()} type='button'>Register</button>
+               <button className={!fieldsMarked ? 'button-userDataRegister' : 'button-userDataRegister active'} disabled={isUserAvailable === false} onClick={handlerRegister} type='button'>Register</button>
                <button className={!fieldsMarked ? 'button-userDataRegister active' : 'button-userDataRegister'}type="button" onClick={() => functionReturnEmail()} >Back</button>
            </form>
            <h4>The fields marked with (*) are required</h4>

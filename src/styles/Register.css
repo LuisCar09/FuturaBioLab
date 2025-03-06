@@ -144,7 +144,12 @@ input:focus{
     box-shadow: var(--secundary-color) 0px 0px 0px 3px;
     border-color: rgb(255, 255, 255);
 }
-
+.login-message{
+    margin: 12px 0;
+    color: red;
+    font-size: 16px;
+    text-align: center;
+}
 
 
 .password-contain h4 {
