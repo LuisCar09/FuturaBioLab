@@ -82,7 +82,7 @@ const Register = () => {
         
             
             if (!data || Object.keys(data).length === 0) {
-                console.log(auth.currentUser);
+                
                 
                 setShowPasswordSection(true)
                 setShowEmail(false)
@@ -124,7 +124,7 @@ const Register = () => {
     }
     const addUserToDb = async () => {
         
-        const body = {name:name,userName:userName, lastName:userLastName,email:userEmail,password: userPassword, dateBirth: userBirthdate,uid: userUid}
+        const body = {name:name?.trim(),userName:userName?.trim().toLowerCase(), lastName:userLastName?.trim(),email:userEmail?.trim(),password: userPassword?.trim(), dateBirth: userBirthdate,uid: userUid}
         
         
         try {
@@ -136,7 +136,7 @@ const Register = () => {
                 setShowRequestData(true)
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
            
         }
         
@@ -320,7 +320,7 @@ const Register = () => {
               
             )
             :
-            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser ={handleCreateUser} functionReturnEmail={handleBackToEmail} fieldsMarked={allFieldsMarked} nameUser={name} uLastName = {userLastName} goToDb = {addUserToDb} thirdPartyProvider={logInWithThirdPartyProvider} />  
+            <UserDataRegister setPhone = {setUserPhone} setUname={setUserName} setLastName={setUserLastName} setBirthdate={setUserBirthdate} setNameUser={setName} setOffers = {setUserOffers} setPreferences={setUserPreferences} functionCreateUser ={handleCreateUser} functionReturnEmail={handleBackToEmail} fieldsMarked={allFieldsMarked} nameUser={name} uLastName = {userLastName} userNameUser={userName} goToDb = {addUserToDb} thirdPartyProvider={logInWithThirdPartyProvider} />  
             }
             
         </main>

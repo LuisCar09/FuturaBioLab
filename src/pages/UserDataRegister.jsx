@@ -6,53 +6,63 @@ import { auth } from '../../config/firebase';
 import { deleteUser } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
-function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,functionCreateUser ,functionReturnEmail, fieldsMarked,nameUser,uLastName='', goToDb, thirdPartyProvider }) {
+function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUser,setOffers,setPreferences,userNameUser ,functionReturnEmail, fieldsMarked,nameUser,uLastName='', goToDb, thirdPartyProvider }) {
     const navigate = useNavigate()
-   const [userName, setUserName] = useState('');
+   const [isAvailableUsarName,setIsAvailableUsarName] = useState('')
    const [isClickedRegister,setIsClilkedRegister] = useState(false) 
-
    const [isUserAvailable, setIsUserAvailable] = useState(null); 
-   console.log(auth.currentUser?.email);
+    
+    
    const setTimoeOutRef = useRef(null) 
-   const checkUserNameAvailability = async (username) => {
+   const checkUserNameAvailability = async () => {
        
-           try {
-               const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/username/' + username);
-               if (response.data) {
-                   setIsUserAvailable(false); 
-               } else {
-                   setIsUserAvailable(true);
-               }
-           } catch (error) {
-               console.error(error.message);
-           }
+        try {
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/username/' + isAvailableUsarName)
+            
+          
+            
+            if (!response.data[0]) {
+                setIsUserAvailable(true)
+                setUname(isAvailableUsarName)
+               
+                
+            }else{
+                
+                setIsUserAvailable(false)
+            }
+            
+        } catch (error) {
+            console.error('error fetching data from server',error);
+            
+        }
+        
       
        }
    const handlerRegister = () =>{
-        // !thirdPartyProvider ? functionCreateUser() : goToDb()
-        console.log(auth.currentUser);
+        !thirdPartyProvider ? functionCreateUser() : goToDb()
+        
         setIsClilkedRegister(true)
    }
 
    useEffect(() => {
-       checkUserNameAvailability(userName); 
-   }, [userName]);
+       checkUserNameAvailability(); 
+   }, [isAvailableUsarName]);
 
 
    useEffect(()=>{
-        
+        const timeout = 5 * 60 * 1000
         setTimoeOutRef.current = setTimeout(async ()=>{
             await deleteUser(auth.currentUser)
             localStorage.clear()
-            console.log('Usuario eliminado de firebase');
            
+            
             navigate('/')
             
-        },0.3 * 60 * 1000)
+        }, timeout)
 
         
 
-        return () => clearTimeout(setTimoeOutRef)
+        return () => clearTimeout(setTimoeOutRef.current)
    },[isClickedRegister])
 
    useEffect(()=>{
@@ -84,8 +94,8 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
                    <div className='info-input-userDataRegister'>
                        <label htmlFor='username-input' className='label-userDataRegister'>Username*</label>
                        <input   id='username-input' type='text' required 
-                          
-                       onChange={(e) => setUname(e.target.value)} 
+                       
+                       onChange={(e) => setIsAvailableUsarName(e.target.value)} 
                        />
                        {isUserAvailable === false && <p>The username already exists. Please choose another one</p>}
                        {isUserAvailable === true && <p>The username is available</p>}
