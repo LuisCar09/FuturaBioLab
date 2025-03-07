@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-import { json, Link, useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import {  Link, useParams } from 'react-router-dom';
+import { UserContext } from '../contexts/UserContext';
 import '../styles/Reservation.css';
 import axios from 'axios';
 
@@ -9,10 +10,16 @@ const Reservation = () => {
     const {id} = useParams()
     const token = localStorage.getItem('authToken')
     const [service,setService] = useState('')
-    const [name,setName] = useState('')
+    const [userName,setUserName] = useState('')
     const [userEmail,setUserEmail] = useState('')
     const [userPhone,setUserPhone] = useState('')
     const [userDescription, setUserDescription] = useState('')
+    const [_id,set_id] =useState('')
+    const {user} = useContext(UserContext)
+    const {name,email} = user[0]
+
+    
+
     const [message,setMessage] = useState('')
     const [addedToCard,setAddedToCar] = useState(false)
 
@@ -53,23 +60,35 @@ const Reservation = () => {
     useEffect(() => {
         const fetchService = async () => {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-            const service = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}services/${id}`,{
+            const service = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}services/${id}` ,{
                 headers:{Authorization: `Bearer ${token}`}
+                
             })
+            
             setService(service.data);
+            
+
+            if(service.data.uid){
+                set_id(service.data.uid)
+            }else {
+                console.error("Uid not found");
+            }
             
         }
         fetchService()
-    },[])
+    },[id,token])
     
-    
-    
-    const isFieldsCompletes = name !== '' && userEmail !== ''
-
+   
+    const isFieldsCompletes = userName !== '' && userEmail !== ''
+   
     useEffect(() => {
-        setFieldsCompletes(name && userEmail)
-    },[name,userEmail])
+
+        setFieldsCompletes(userName && userEmail)
+    },[userName,userEmail])
     
+   
+    
+
     return (
         <main className='main-formreservation'>
             <section className='section-formreservation'>
@@ -87,8 +106,8 @@ const Reservation = () => {
                                 <input 
                                     id='name-input'
                                     type='text'
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
+                                    value={user[0].name}
+                                    onChange={(e) => setUserName(e.target.value)}
                                     required
                                 />                     
                             </div>
@@ -99,7 +118,7 @@ const Reservation = () => {
                                 <input 
                                     id='email-input'
                                     type='email'
-                                    value={userEmail}
+                                    value={user[0].email}
                                     onChange={(e) => setUserEmail(e.target.value)}
                                     required
                                 />
@@ -114,14 +133,14 @@ const Reservation = () => {
                             <input 
                                 id='phone-input'
                                 type='text'
-                                value={userPhone}
+                                value={userPhone || ''}
                                 onChange={(e) => setUserPhone(e.target.value)}
                                 required
                             />
                             <p>Add a message</p>
                             <textarea 
                             className='textarea-formreservation'
-                            value={userDescription}
+                            value={userDescription || ''}
                             onChange={(e) => setUserDescription(e.target.value)}
                             ></textarea>
                         </div>
