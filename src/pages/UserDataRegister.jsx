@@ -40,11 +40,10 @@ function UserDataRegister({ setPhone,setUname,setLastName,setBirthdate,setNameUs
 
 
    useEffect(()=>{
-        let counter = 1
         
         setTimoeOutRef.current = setTimeout(async ()=>{
             await deleteUser(auth.currentUser)
-            
+            localStorage.clear()
             console.log('Usuario eliminado de firebase');
            
             navigate('/')

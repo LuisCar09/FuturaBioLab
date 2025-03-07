@@ -167,8 +167,7 @@ const Register = () => {
             
             const checkUserEmail = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/useremail/' + user.email)
             const data = checkUserEmail.data
-            console.log(data);
-            console.log('LUIS');
+           
             
             if(!data || Object.keys(data).length === 0){
                 setName(user.displayName.split(' ')[0])
