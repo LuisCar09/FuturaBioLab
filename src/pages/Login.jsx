@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { auth } from "../../config/firebase";
 import { Link } from "react-router-dom"
-import { GithubAuthProvider, signInWithEmailAndPassword,fetchSignInMethodsForEmail, linkWithCredential, signOut, signInWithCredential} from 'firebase/auth'
-import { GoogleAuthProvider, signInWithPopup , setPersistence, browserSessionPersistence,onAuthStateChanged } from "firebase/auth";
-import { getRedirectResult } from 'firebase/auth';
-import { getAuth, signInWithRedirect, TwitterAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, signInWithEmailAndPassword, linkWithCredential,deleteUser,TwitterAuthProvider,GoogleAuthProvider, signInWithPopup ,} from "firebase/auth"
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -59,12 +56,10 @@ const Login = () => {
     const singInWithGoogle = async () => {
         
         try {
-            //seguir aqui con el register
+            
             const logIn = await signInWithPopup(auth,provider)
             
             const credential = logIn.user
-            
-            
             const token = credential.stsTokenManager.accessToken
             const existUser = await checkerFunctions.handleExistUser(credential.email)
             console.log(existUser);
@@ -76,6 +71,7 @@ const Login = () => {
   
                 
                 setUserDoesNotExistMessage(true)
+                deleteUser(auth.currentUser)
             }else{
                 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
                  

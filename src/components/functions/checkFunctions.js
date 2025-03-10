@@ -4,7 +4,7 @@ const checkerFunctions = {
     handleExistUser : async (userEmail) => {
         
         try {
-            const response = await axios.get('http://localhost:8080/'  + 'users/useremail/' + userEmail)
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB  + 'users/useremail/' + userEmail)
             const {user} = response.data
             
             
