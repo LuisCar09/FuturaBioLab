@@ -1,17 +1,18 @@
-
+import axios from "axios"
 
 const checkerFunctions = {
     handleExistUser : async (userEmail) => {
         
         try {
             const response = await axios.get('http://localhost:8080/'  + 'users/useremail/' + userEmail)
-            const data = response.data
-        
+            const {user} = response.data
             
-            if (!data || Object.keys(data).length === 0) {
-                return true
+            
+            
+            if (!user) {
+                return false
             }else{
-               return false
+               return true
                
                 
             }    

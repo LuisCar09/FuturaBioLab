@@ -18,6 +18,7 @@ import XIcon from '@mui/icons-material/X';
 
 import checkerFunctions from '../components/functions/checkFunctions.js'
 import '../styles/Login.css'
+import { use } from "react";
 
 const provider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider()
@@ -27,8 +28,10 @@ const Login = () => {
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [userDoesNotExistMessage,setUserDoesNotExistMessage] = useState(false)
     const [isLoginFieldsCompleted, setIsLoginFieldsCompleted] = useState(false);
-    const { setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
     const singInUser = async () => {
@@ -49,7 +52,7 @@ const Login = () => {
             !response.data ? null : navigate('/');
         } catch (error) {
             console.error(error.message);
-            setMessage('The user does not exist, please go to Register');
+            setUserDoesNotExistMessage(true);
         }
     };
 
@@ -60,30 +63,39 @@ const Login = () => {
             const logIn = await signInWithPopup(auth,provider)
             
             const credential = logIn.user
-            console.log(credential.email);
+            
             
             const token = credential.stsTokenManager.accessToken
-            // const isTrueOrFalse = await checkerFunctions.handleExistUser(credential.email)
-            // console.log('isTrueOrFalse: ', isTrueOrFalse);
-        
+            const existUser = await checkerFunctions.handleExistUser(credential.email)
+            console.log(existUser);
+            
             localStorage.setItem('authToken',token)
             localStorage.setItem('uid',credential.uid)
-            
-            
-        //     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        //     console.log(axios.defaults.headers);
-        //     console.log(credential.uid);
-            
-        //     const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/' + credential.uid, {
-        //         headers:{Authorization: `Bearer ${token}`},
-        //     }
 
-        //     )
-        //    console.log(response);
-           
+            if (!existUser){
+  
+                
+                setUserDoesNotExistMessage(true)
+            }else{
+                axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+                 
+                 
+                  const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/' + credential.uid, {
+                      headers:{Authorization: `Bearer ${token}`},
+                  }
+    
+                  )
+                  console.log(response.data);
+                 
+                  setUser(response.data);
+                   setLoading(false)
+                 
+                  !response.data ? null : navigate('/')
+            }
+        
             
-        //     setUser(response.data)
-        //     !response.data ? null : navigate('/')
+            
+            
 
         } catch (error) {
             console.log(error);
@@ -135,33 +147,17 @@ const Login = () => {
             } else {
                 setIsLoginFieldsCompleted(false);
             }
-            setMessage(null)
+            setUserDoesNotExistMessage(null)
         }
         checkEmail()
     },[userEmail, userPassword])
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //       console.log("Usuario autenticado:", user);
-    //     } else {
-    //       console.log("No hay usuario autenticado");
-    //     }
-    //   });
-    
-    // useEffect(()=>{
-    //     const closeSession = async() => {
-    //         try {
-    //             await setPersistence(auth,browserSessionPersistence)
-                
-    //             console.log('Session cerrada');
-                
-    //         } catch (error) {
-    //             console.error('Error cerrando session', error);
-                
-    //         }
-    //     }
+    useEffect(() => {
+        //Aqui haremos el loading de login
+        
+        !user || user?.length < 1 ? console.log(false,'no existe data') : console.log(true,' existe data')
+        
 
-    //     closeSession()   
-    // },[])
+    },[user])
     
     
     return (
@@ -179,6 +175,10 @@ const Login = () => {
         
                 <div className="message-login">
                 {message && <div id="message" >{message}</div>}
+                {userDoesNotExistMessage && 
+                    <div id='message' > Email does not exist, go to {<Link to='/register' >Register</Link>}</div>
+                
+                }
                 </div>        
             </form>
             <div className="providerAuth">
