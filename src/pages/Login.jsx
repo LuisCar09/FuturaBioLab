@@ -22,7 +22,7 @@ const provider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider()
 
 const Login = () => {
-    localStorage.clear();
+  
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -55,10 +55,9 @@ const Login = () => {
            
 
             setUser(response.data);
-            console.log(response.data)
-            console.log(Boolean(response.data))
+           
             
-            !response.data ? console.log(false) : navigate('/');
+            !response.data ? console.log(false) : navigate('/profile');
         } catch (error) {
             console.error(error.message);
             setUserDoesNotExistMessage(true);
@@ -169,6 +168,9 @@ const Login = () => {
 
     },[user])
     
+    useEffect (()=> {
+        localStorage.clear()
+    },[])
     
     return (
         <main className='main-login'>
