@@ -12,10 +12,11 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
+import Spinner from './Spinner.jsx'
 
 import checkerFunctions from '../components/functions/checkFunctions.js'
 import '../styles/Login.css'
-import { use } from "react";
+
 
 const provider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider()
@@ -32,24 +33,36 @@ const Login = () => {
     const navigate = useNavigate();
 
     const singInUser = async () => {
+        
         try {
             const userCredential = await signInWithEmailAndPassword(auth, userEmail, userPassword);
+           
+            setLoading(true)
+
             const user = userCredential.user;
             const token = await user.getIdToken();
+            
 
             localStorage.setItem('authToken', token);
             localStorage.setItem('uid', user.uid);
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
+           
+
             const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/' + user.uid, {
                 headers: { Authorization: `Bearer ${token}` },
             });
+           
 
             setUser(response.data);
-            !response.data ? null : navigate('/');
+            console.log(response.data)
+            console.log(Boolean(response.data))
+            
+            !response.data ? console.log(false) : navigate('/');
         } catch (error) {
             console.error(error.message);
             setUserDoesNotExistMessage(true);
+            setLoading(false)
         }
     };
 
@@ -58,6 +71,7 @@ const Login = () => {
         try {
             
             const logIn = await signInWithPopup(auth,provider)
+            setLoading(true)
             
             const credential = logIn.user
             const token = credential.stsTokenManager.accessToken
@@ -158,48 +172,82 @@ const Login = () => {
     
     return (
         <main className='main-login'>
-             <div className="contact-container">
-            <h1>Log in to your account</h1>
-            <h4>Don't have an account? <Link to="/register">Sign Up </Link> </h4>
-            
-            <form  method="post" id="login-form"  className="login-form">
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" required placeholder="email" autoComplete='true'  onChange={(event) => setUserEmail(event.target.value) } value={userEmail} />
-        
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="**********" required autoComplete='true' onChange={(event) => setUserPassword(event.target.value) }  value={userPassword} />
-        
-                <div className="message-login">
-                {message && <div id="message" >{message}</div>}
-                {userDoesNotExistMessage && 
-                    <div id='message' > Email does not exist, go to {<Link to='/register' >Register</Link>}</div>
-                
-                }
-                </div>        
-            </form>
-            <div className="providerAuth">
-                <div id="google" className="providers-logo" onClick={singInWithGoogle}>
-                    <GoogleIcon />
-                    <p>Sign up with Google</p>
+            {loading ? (
+                <div className="spinner-container">
+                    <Spinner />
                 </div>
-                <div id="github" className="providers-logo" onClick={signInWithGitHub}>
-                    <GitHubIcon />
-                    <p>Sign up with GitHub</p>
+            ) : (
+                <div className="contact-container">
+                    <h1>Log in to your account</h1>
+                    <h4>Don't have an account? <Link to="/register">Sign Up </Link> </h4>
+    
+                    <form method="post" id="login-form" className="login-form">
+                        <label htmlFor="email">Email</label>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            required 
+                            placeholder="email" 
+                            autoComplete='true'  
+                            onChange={(event) => setUserEmail(event.target.value)} 
+                            value={userEmail} 
+                        />
+    
+                        <label htmlFor="password">Password</label>
+                        <input 
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            placeholder="**********" 
+                            required 
+                            autoComplete='true' 
+                            onChange={(event) => setUserPassword(event.target.value)}  
+                            value={userPassword} 
+                        />
+    
+                        <div className="message-login">
+                            {message && <div id="message">{message}</div>}
+                            {userDoesNotExistMessage && (
+                                <div id='message'>
+                                    Email does not exist, go to <Link to='/register'>Register</Link>
+                                </div>
+                            )}
+                        </div>
+                    </form>
+    
+                    <div className="providerAuth">
+                        <div id="google" className="providers-logo" onClick={singInWithGoogle}>
+                            <GoogleIcon />
+                            <p>Sign up with Google</p>
+                        </div>
+                        <div id="github" className="providers-logo" onClick={signInWithGitHub}>
+                            <GitHubIcon />
+                            <p>Sign up with GitHub</p>
+                        </div>
+                        <div id="LinkedIn" className="providers-logo" onClick={() => alert('This feature is not available yet')}>
+                            <LinkedInIcon />
+                            <p>Sign up with LinkedIn</p>
+                        </div>
+                        <div id="x" className="providers-logo" onClick={() => alert('This feature is not available yet')}>
+                            <XIcon />
+                            <p>Sign up with X</p>
+                        </div>
+                    </div>
+    
+                    <button 
+                        className={!isLoginFieldsCompleted ? "login-button" : "login-button login-button-active"} 
+                        type="button" 
+                        onClick={singInUser} 
+                        disabled={!isLoginFieldsCompleted}
+                    >
+                        Login
+                    </button>
                 </div>
-                <div id="LinkedIn" className="providers-logo" onClick={() => alert('This feature is not available yet')}>
-                    <LinkedInIcon />
-                    <p>Sign up with LinkedIn</p>
-                </div>
-                <div id="x" className="providers-logo" onClick={() => alert('This feature is not available yet')} >
-                    <XIcon />
-                    <p>Sign up with X</p>
-                </div>
-                </div>
-
-                <button className={!isLoginFieldsCompleted ? "login-button" : "login-button login-button-active"} type="button" onClick={singInUser} disabled={!isLoginFieldsCompleted}>Login</button>
-            </div>
+            )}
         </main>
     );
+    
 };
 
 export default Login;

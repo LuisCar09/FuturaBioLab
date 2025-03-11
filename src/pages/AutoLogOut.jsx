@@ -8,7 +8,7 @@ const AutoLogout = ({timeout = 15 * 60 * 1000}) => {
 
     const autoSignOut = () => {
         const isUserAuth = auth.currentUser?.uid
-        
+        console.log('entra')
         
         if (isUserAuth) {
             signOut(auth)
