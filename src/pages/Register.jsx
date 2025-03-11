@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { getAuth, GoogleAuthProvider,signInWithRedirect,signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider,signInWithRedirect,signInWithPopup ,signOut} from "firebase/auth";
 import UserDataRegister from "./UserDataRegister"
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -161,23 +161,27 @@ const Register = () => {
         
         try {
             const logIn = await signInWithPopup(auth,provider)
-            const user = logIn.user;
+            const userData = logIn.user;
+            console.log(userData);
             
-            localStorage.setItem('uid',user.uid)
+            localStorage.setItem('uid',userData.uid)
             
-            const checkUserEmail = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/useremail/' + user.email)
-            const data = checkUserEmail.data
-           
+            const checkUserEmail = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/useremail/' + userData.email)
+            const {user} = checkUserEmail.data
             
-            if(!data || Object.keys(data).length === 0){
-                setName(user.displayName.split(' ')[0])
-                setUserPassword(user.uid)
-                setUserLastName(user.displayName.split(' ')[1])
-                setUserEmail(user.email)
+            
+            
+            
+            if (!user) {
+                
+                setName(userData.displayName.split(' ')[0])
+                setUserPassword(userData.uid)
+                setUserLastName(userData.displayName.split(' ')[2])
+                setUserEmail(userData.email)
                 setLogInWithThirdPartyProvider(true)
-                setUserUid(user.uid)
+                setUserUid(userData.uid)
                 setShowRequestData(true)
-            }else{
+            } else{
                 setShowMessage(true)
             }
             
@@ -220,7 +224,10 @@ const Register = () => {
         !allFields ? setAllFieldsMarked(false) : setAllFieldsMarked(true)
        },[name,userLastName,userBirthdate,userPhone,userName])
     
-
+     useEffect (()=> {
+            localStorage.clear()
+            if (auth?.currentUser) signOut(auth)
+        },[])
 
     return (
         <main className='main-container'>

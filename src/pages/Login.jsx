@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { auth } from "../../config/firebase";
 import { Link } from "react-router-dom"
-import { GithubAuthProvider, signInWithEmailAndPassword, linkWithCredential,deleteUser,TwitterAuthProvider,GoogleAuthProvider, signInWithPopup ,} from "firebase/auth"
+import { GithubAuthProvider, signInWithEmailAndPassword, linkWithCredential,deleteUser,TwitterAuthProvider,GoogleAuthProvider, signInWithPopup ,signOut} from "firebase/auth"
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +27,7 @@ const Login = () => {
     const [userPassword, setUserPassword] = useState('');
     const [message, setMessage] = useState('');
     const [userDoesNotExistMessage,setUserDoesNotExistMessage] = useState(false)
+    const [userRegistereWithOtherProvider,setUserRegistereWithOtherProvider] = useState(null)
     const [isLoginFieldsCompleted, setIsLoginFieldsCompleted] = useState(false);
     const { user, setUser } = useContext(UserContext);
     const [loading, setLoading] = useState(false)
@@ -113,37 +114,18 @@ const Login = () => {
     }
     const signInWithGitHub  = async () => {
         try {
-          // Intentamos iniciar sesión con GitHub
-          const result = await signInWithPopup(auth, gitHubProvider);
-          console.log("Autenticado con GitHub:", result.user);
-        } catch (error) {
-          console.error("Error al iniciar sesión con GitHub:", error);
-          // Si el error es por cuenta existente con diferente credencial:
-          if (error.code === 'auth/account-exists-with-different-credential') {
-            // Extraemos el email del error
-            const email = error.customData?.email;
-            console.log("Cuenta ya existente para el email:", email);
+            //Barb hacer esta parte. Login con github
+            const result = await signInWithPopup(auth, gitHubProvider);
             
-            // Extraemos la credencial de GitHub del error
-            const credential = GithubAuthProvider.credentialFromError(error);
-            console.log("Credencial de GitHub obtenida:", credential);
-      
-            // Si el email ya está vinculado a Google, procedemos a vincular
-            // Nota: auth.currentUser debe estar definido (usuario autenticado con Google)
-            if (auth.currentUser) {
-              try {
-                const linkResult = await linkWithCredential(auth.currentUser, credential);
-                console.log("Cuenta vinculada correctamente:", linkResult.user);
-                // Puedes obtener el ID token si lo necesitas:
-                const idToken = await linkResult.user.getIdToken();
-                console.log("ID Token de la cuenta vinculada:", idToken);
-              } catch (linkError) {
-                console.error("Error al vincular la cuenta:", linkError);
-              }
-            } else {
-              console.error("No hay usuario autenticado para vincular la credencial.");
-            }
-          }
+            console.log("Autenticado con GitHub:", result.user);
+        } catch (error) {
+           console.log(error);
+           if (error.code === 'auth/account-exists-with-different-credential') {
+                const userCredentials = error.customData
+                console.log(userCredentials);
+                
+                setUserRegistereWithOtherProvider(userCredentials._tokenResponse.providerId)
+           }
         }
       };
       
@@ -170,6 +152,7 @@ const Login = () => {
     
     useEffect (()=> {
         localStorage.clear()
+        if (auth?.currentUser) signOut(auth)
     },[])
     
     return (
@@ -213,6 +196,12 @@ const Login = () => {
                             {userDoesNotExistMessage && (
                                 <div id='message'>
                                     Email does not exist, go to <Link to='/register'>Register</Link>
+                                </div>
+                            )}
+                            
+                            {userRegistereWithOtherProvider && (
+                                <div id='message'>
+                                    {`Email already registered using ${userRegistereWithOtherProvider.split('.')[0]}`}
                                 </div>
                             )}
                         </div>
