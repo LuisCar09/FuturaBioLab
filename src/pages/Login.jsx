@@ -76,7 +76,7 @@ const Login = () => {
             const credential = logIn.user
             const token = credential.stsTokenManager.accessToken
             const existUser = await checkerFunctions.handleExistUser(credential.email)
-            console.log(existUser);
+           
             
             localStorage.setItem('authToken',token)
             localStorage.setItem('uid',credential.uid)
@@ -114,10 +114,44 @@ const Login = () => {
     }
     const signInWithGitHub  = async () => {
         try {
-            //Barb hacer esta parte. Login con github
-            const result = await signInWithPopup(auth, gitHubProvider);
             
-            console.log("Autenticado con GitHub:", result.user);
+            const result = await signInWithPopup(auth, gitHubProvider);
+            const credential = result.user
+             console.log(credential)
+            const token = credential.stsTokenManager.accessToken
+            const existUser = await checkerFunctions.handleExistUser(credential.email)
+           
+
+            localStorage.setItem('authToken',token)
+            localStorage.setItem('uid',credential.uid)
+
+
+          if(!existUser){
+            deleteUser(auth.currentUser)
+            setUserDoesNotExistMessage(true)
+          }else {
+            console.log('entra')
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+
+            console.log('response',response)
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users/' + credential.uid,
+                
+                {
+                headers:{Authorization: `Bearer ${token}`},
+            }
+
+            )
+        console.log('response',response)
+               
+       setUser(response.data);
+       setLoading(false)
+               
+       !response.data ? null : navigate('/')
+          
+          }
+
+            
+            
         } catch (error) {
            console.log(error);
            if (error.code === 'auth/account-exists-with-different-credential') {
@@ -143,7 +177,6 @@ const Login = () => {
         checkEmail()
     },[userEmail, userPassword])
     useEffect(() => {
-        //Aqui haremos el loading de login
         
         !user || user?.length < 1 ? console.log(false,'no existe data') : console.log(true,' existe data')
         
