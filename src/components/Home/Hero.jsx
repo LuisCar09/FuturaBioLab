@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/Hero.css';
-//import SectionTop from './SectionTop';
-import AnimatedText from './AnimatedText.jsx';
+import SectionTop from './SectionTop';
+
 import GrowSection from './GrowSection';
 import ProjectsSection from './ProjectsSection.jsx';
 import NewsSection from './NewsSection.jsx'
@@ -13,9 +13,9 @@ const Hero = () => {
     return (
         <main> 
             
-            <section className='first'>
+            <section className='sectionTop'>
                 
-                <AnimatedText />
+                <SectionTop />
             </section>
             <section className='growSection'>
                 <GrowSection />

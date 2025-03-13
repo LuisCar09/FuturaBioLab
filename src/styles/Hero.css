@@ -1,6 +1,6 @@
 
 /* sectionTop */
-/*
+
 .sectionTop {
     position: relative;
     width: 100%;
@@ -8,25 +8,17 @@
     overflow: hidden;
 }
 
-.animation-container-sectiontop {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    z-index: 1; 
-}
 .sectionTop-div {
     position: absolute;
-    z-index: 2; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; 
     text-align: center;
-    color: white;
-    background-color: white;
+    width: 100%;
+    
 }
+
 
 .sectionTop-backgroundImage {
     width: 100%;
@@ -35,107 +27,35 @@
     transition: filter 0.3s ease;
  }
 
-
-
-.sectionTop-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    width: 100%;
-    padding: 0 10px;
-    overflow: hidden; 
-}
-
-.text-left, .text-right {
-    position: relative;
-    font-size: 220px;
-    color: #02CA81;
-}
-
-@keyframes moveRight {
-    0% { transform: translateX(-700px); }
-    50% { transform: translateX(0); }
-    100% { transform: translateX(-700px); }
-}
-
-@keyframes moveLeft {
-    0% { transform: translateX(-700px); }
-    50% { transform: translateX(0); }
-    100% { transform: translateX(-700px); }
-}
-
- .text-left {
-    animation: moveRight 60s ease infinite;
-}
-
-.text-right {
-    animation: moveLeft 60s ease infinite;
-} 
-
 .sectionTop-backgroundImage.blur {
     filter: blur(5px); 
     transition: filter 0.3s ease; 
 }
-
-.sectionTop-container h2 {
-    font-size: 48px; 
-    margin-bottom: 10px; 
-}
-
-.sectionTop-container p {
-    font-size: 16px;
-    margin-bottom: 30px;
-}
-
-.sectionTop-button {
-    padding: 8px 60px;
-   
-    color: white; 
-    background-color:  #02CA81; 
-    border: none; 
-    border-radius: 14px; 
-    font-size: 16px; 
-    text-decoration: none; 
-    cursor: pointer; 
-    transition: background-color 0.3s; 
-}
-
-.sectionTop-button:hover {
-    background-color: #2E962F; 
-}
-
-*/
-
-
-.animation-hero-sectiontop{
+.sectionTop-content {
+    position: relative; /* Asegura que el texto esté sobre la imagen */
+    z-index: 2; /* Lo pone por encima de la imagen */
     display: flex;
-    font-size: 150px;
-    font-weight: bold;
-}
-
-.animated-text-container {
-    display: flex;
-    font-size: 140px;
-    font-weight: bold;
-    color: var(--primary-color);
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    text-align: center;
+}
+
+/*animation letter*/
+
+
+.animated-text-container {
     
+    font-size: 140px;
+    font-weight: bold;
+    color: white; 
   }
   
   .animated-letter {
     display: inline-block;
     margin: 0 2px;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.6s ease-out;
   }
-  
   
   .animated-letter:hover {
     animation: circular-motion 0.5s ease-in-out forwards;
