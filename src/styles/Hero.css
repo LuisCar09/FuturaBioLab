@@ -32,12 +32,12 @@
     transition: filter 0.3s ease; 
 }
 .sectionTop-content {
-    position: relative; /* Asegura que el texto esté sobre la imagen */
-    z-index: 2; /* Lo pone por encima de la imagen */
+    position: relative; 
+    z-index: 2; 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    
     text-align: center;
 }
 
