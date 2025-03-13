@@ -110,23 +110,58 @@
     background-color: #2E962F; 
 }
 
+*/
 
 
-/*Section Grow*/
-.first {
-    position: relative;
-    width: 100%;
+.animation-hero-sectiontop{
+    display: flex;
+    font-size: 150px;
+    font-weight: bold;
+}
+
+.animated-text-container {
+    display: flex;
+    font-size: 140px;
+    font-weight: bold;
+    color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    overflow: hidden;
-}
-
-.animation-hero-sectiontop p {
-    color: aquamarine;
-    font-size: 160px;
+    
+  }
   
-}
-
+  .animated-letter {
+    display: inline-block;
+    margin: 0 2px;
+    transition: transform 0.3s ease-out;
+  }
+  
+  
+  .animated-letter:hover {
+    animation: circular-motion 0.5s ease-in-out forwards;
+  }
+ 
+  @keyframes circular-motion {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(5px, -5px) rotate(90deg);
+    }
+    50% {
+      transform: translate(10px, 0) rotate(180deg);
+    }
+    75% {
+      transform: translate(5px, 5px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
 /**/
+
+
+
 
 .sectionGrow-div {
     display: flex;
