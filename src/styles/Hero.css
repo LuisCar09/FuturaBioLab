@@ -1,6 +1,6 @@
 
 /* sectionTop */
-
+/*
 .sectionTop {
     position: relative;
     width: 100%;
@@ -113,6 +113,20 @@
 
 
 /*Section Grow*/
+.first {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.animation-hero-sectiontop p {
+    color: aquamarine;
+    font-size: 160px;
+  
+}
+
+/**/
 
 .sectionGrow-div {
     display: flex;
