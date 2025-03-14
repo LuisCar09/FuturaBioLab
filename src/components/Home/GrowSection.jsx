@@ -1,25 +1,59 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-
-
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const GrowSection = () => {
-    const title = 'Grow your vision';
-    const description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit unde consectetur nemo accusamus deserunt nam numquam? Laudantium ipsum veritatis modi officia praesentium, sed maxime libero nulla. Repellendus, facilis harum.';
-    const buttonText = 'Start Now';
+  const ref = useRef(null);
 
-    return (
-     <div className='sectionGrow-div'>
-        <div className='section-growContainer'>
-            <h2 className='section-growTitle'>{title}</h2>
-            <p>{description}</p>
-            <button className='section-growButton'>
-             <Link to="/search" className='link-growSection'>{buttonText}</Link>
-            </button>
+  // useScroll observa el progreso del scroll en la sección
+  const { scrollYProgress } = useScroll({
+    target: ref,  // El scroll se realiza dentro de esta sección
+    offset: ["start end", "center center"], // La animación se activa cuando el 50% de la sección está en la vista
+  });
 
-        </div>
-     </div>   
-    );
+  // Interpolamos el tamaño y la altura en función del progreso del scroll
+  const size = useTransform(
+    scrollYProgress, 
+    [0, 0.5, 1],  // Rango de progreso del scroll
+    ["50vw", "100vw", "50vw"] // El círculo comienza pequeño, se expande en el centro, y luego vuelve a su tamaño original
+  );
+
+  const height = useTransform(
+    scrollYProgress, 
+    [0, 0.5, 1],  // Rango de progreso del scroll
+    ["50vh", "100vh", "50vh"] // Similar al tamaño
+  );
+
+  const borderRadius = useTransform(
+    scrollYProgress, 
+    [0, 0.5, 1],  // Rango de progreso del scroll
+    ["50%", "0%", "50%"] // Empieza como un círculo, se convierte en rectángulo en el centro y luego vuelve a ser círculo
+  );
+
+  return (
+    <>
+    <div className="growSection" ref={ref}>
+      <motion.div
+        className="section-growContainer"
+        style={{
+          width: size,
+          height: height,
+          borderRadius: borderRadius,
+        }}
+      >
+        <h2 className="section-growTitle">Grow your vision</h2>
+        <button className="section-growButton">
+          <Link to="/search" className="link-growSection">
+            Start Now
+          </Link>
+        </button>
+      </motion.div>
+    </div>
+    </> 
+  );
 };
 
 export default GrowSection;
+
+
+
