@@ -8,7 +8,7 @@ const GrowSection = () => {
   // useScroll observa el progreso del scroll en la sección
   const { scrollYProgress } = useScroll({
     target: ref,  // El scroll se realiza dentro de esta sección
-    offset: ["start end", "center center"], // La animación se activa cuando el 50% de la sección está en la vista
+    offset: ["start end", "center center", "start end"], // La animación se activa cuando el 50% de la sección está en la vista
   });
 
   // Interpolamos el tamaño y la altura en función del progreso del scroll
