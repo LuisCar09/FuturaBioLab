@@ -15,13 +15,13 @@ const GrowSection = () => {
   const size = useTransform(
     scrollYProgress, 
     [0, 0.5, 1],  // Rango de progreso del scroll
-    ["50vw", "100vw", "50vw"] // El círculo comienza pequeño, se expande en el centro, y luego vuelve a su tamaño original
+    ["50vw", "100vw",  "50vw"] // El círculo comienza pequeño, se expande en el centro, y luego vuelve a su tamaño original
   );
 
   const height = useTransform(
     scrollYProgress, 
     [0, 0.5, 1],  // Rango de progreso del scroll
-    ["50vh", "100vh", "50vh"] // Similar al tamaño
+    ["50vw", "100vw",  "50vw"] // Similar al tamaño
   );
 
   const borderRadius = useTransform(
