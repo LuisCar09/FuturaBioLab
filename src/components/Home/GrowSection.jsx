@@ -35,13 +35,7 @@ const GrowSection = () => {
           width: size,
           height: height,
           borderRadius: borderRadius,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          overflow: "hidden", 
-          backgroundColor: "black",
-          color: "white",
+         
         }}
       >
        
@@ -59,17 +53,22 @@ const GrowSection = () => {
             height: "100%",
             objectFit: "cover", 
             borderRadius: borderRadius,
+            position: "absolute",
+            
           }}
         />
 
-        
+      
+       
+
         <h2 className="section-growTitle" style={{ position: "absolute", zIndex: 2 }}>Grow your vision</h2>
         <button className="section-growButton" style={{ position: "absolute", zIndex: 2 }}>
           <Link to="/search" className="link-growSection">
             Start Now
           </Link>
         </button>
-      </motion.div>
+        
+       </motion.div> 
     </div>
   );
 };
