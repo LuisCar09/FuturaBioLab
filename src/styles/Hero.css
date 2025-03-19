@@ -364,12 +364,25 @@
     font-size: 20px;
 }
 
+@media (max-width:1025px) {
+    .animated-text-container{
+        font-size: 108px;
+    }
+}
+@media (max-width:769px) {
+    .animated-text-container{
+        font-size: 148px;
+    }
+}
 @media (max-width: 480px){
     .sectionTop-container h2{
         font-size: 28px;
     }
     .sectionTop-container p{
         font-size: 14px;
+    }
+    .animated-text-container{
+        font-size: 90px;
     }
     .growSection{
         margin-top: 20px;
