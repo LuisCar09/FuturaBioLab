@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/Hero.css';
 import SectionTop from './SectionTop';
+
 import GrowSection from './GrowSection';
 import ProjectsSection from './ProjectsSection.jsx';
 import NewsSection from './NewsSection.jsx'

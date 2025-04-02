@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
-//creamos en contexto
+
 
 export const UserContext = createContext();
 

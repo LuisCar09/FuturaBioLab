@@ -1,10 +1,10 @@
 
-import { Link } from 'react-router-dom';
-import { LinkedCamera } from '@mui/icons-material';
-import '../styles/Services.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
+import Spinner from './Spinner'
+import { LinkedCamera } from '@mui/icons-material';
+import '../styles/Services.css';
 function Services() {
     const [services,setServices ] = useState('') ;
     const token = localStorage.getItem('authToken')
@@ -43,7 +43,7 @@ function Services() {
                             </Link>
                             </div>
                         </div>
-                    )): <p>...Loading</p>}
+                    )): <Spinner />}
                 </div>
             </section>
         </main>

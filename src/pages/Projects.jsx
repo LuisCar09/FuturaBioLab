@@ -1,9 +1,11 @@
 import { useEffect,useState } from 'react';
 import Card from '../components/utils/Card';
+import Spinner from './Spinner';
 import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 
 import '../styles/Projects.css'
+import '../styles/Spinner.css'
 
 function Projects() {
     const [projects,setProjects] = useState(null)
@@ -21,18 +23,26 @@ function Projects() {
     },[])
     return (
         <main className='main-projects'>
+        {!projects ?
+            <section className='section-spinner' >
+               <Spinner />
+            </section>
+        :
+            
             <section className='section-projects'>
-                {!projects ? <div className='spiner-projects'></div> : projects.map(project => {
+                {projects.map(project => {
                     const{owner,_id,nameproject,createdAt,description,image,views} = project
-                    
                     return(
                         <Card key={_id} id={_id} username={owner} date={createdAt.split('T')[0]} title={nameproject} descriptionProject={description} projectImg={image} projectViews={views} userImg={image}
                         />
                     )
                 })}
-                
             </section>
-        </main>
+        }
+       
+
+       
+    </main>
     )
 }
 

@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Spinner from './Spinner';
 import SearchIcon from '@mui/icons-material/Search'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import '../styles/Members.css';
+import '../styles/Spinner.css'
 
 function Members() {
     const [allMembers, setAllMembers] = useState([]);
@@ -12,7 +14,7 @@ function Members() {
 
     const fetchMembers = async () => {
         try {
-            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'users');
+            const response = await axios.get(import.meta.env.VITE_URL_API_FUTURA_BIOLAB + 'userss');
             setAllMembers(response.data);
             allMemberRef.current = response.data
             
@@ -60,9 +62,9 @@ function Members() {
 
                 </div>
 
-                <article className='members-container'>
+                <article className= {!allMembers || allMembers.length < 1 ? 'members-container-loading' :'members-container' } >
                     {!allMembers || allMembers.length < 1 ? (
-                        <div className='spiner-members'></div>
+                        <Spinner />
                     ) : (
                         allMembers.map((selectedMember) => (
                             <div key={selectedMember._id} className='selected-member'>

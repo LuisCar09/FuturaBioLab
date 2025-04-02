@@ -19,7 +19,8 @@ const ProjectCard = () => {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_URL_API_FUTURA_BIOLAB}projects/${id}`);
+                const response = await axios.get(`http://localhost:8080/projects/${id}`);
+                console.log(response)
                 setProject(response.data);
             } catch (error) {
                 console.log(error.message);
@@ -27,6 +28,7 @@ const ProjectCard = () => {
         };
         fetchProject();
     }, [id]);
+ 
 
     useEffect(() => {
         const fetchCurrentUser = async () => {
@@ -81,7 +83,7 @@ const ProjectCard = () => {
                     <article className={!hideElements ? "project-container--article" : "project-container--aside-container moveLeft"}>
                         <div className="project-container--article-top">
                             <div className='currentuser-input-conatiner-projectcard'>
-                                {currentUser && currentUser.id === project.ownerId && isEditing ? (
+                                {userUid && currentUser.id === project.ownerId && isEditing ? (
                                     <input
                                         type="text"
                                         name="nameproject"

@@ -1,5 +1,5 @@
 .main-container{
-    height: calc(100vh - 331px);
+    min-height: calc(100vh - 331px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,13 +39,13 @@
 }
 
 .contact-container h1{
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 20px;
     color: var(--primary-color);
 }
-.contact-container h3{
-    font-size: 20px;
-    margin-bottom: 20px;
+.contact-container h4{
+    font-size: 12px;
+    margin: 8px 0px 0 0px;
     color: var(--primary-color);
 }
 .contact-container a{
@@ -53,21 +53,66 @@
     color: #016bf8;
     text-decoration: none;
 }
+
+.separate-div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.separate-div-line{
+    display: flex;
+    width: 100%;
+}
+
+.separate-div-line::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color:  var(--primary-color);
+}
+
+.separate-div-text p{
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+
 /* providers containers */
 .providerAuth{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    height: 40px;
+    gap: 8px;
+    margin-top: 20px;
     width: 100%;
 }
-.providers-logo svg{
-    font-size: 40px;
+
+.providers-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+    padding: 4px;
+    width: 100%;
+    cursor: pointer;
+    }
+    
+ .providers-logo svg{
+    font-size: 20px;
     cursor: pointer;
     color : var(--primary-color)
-}
+    }
 
+    .providers-logo p {
+        font-size: 12px;
+    }
  .login-form{
     display: flex;
     flex-direction: column;
@@ -78,18 +123,19 @@
 }
 .login-form label {
     color: var(--primary-color);
-    margin-bottom: 10px;
-    font-size: 16px;
+    
+    font-size: 12px;
 }
 .login-form input {
     padding: 10px 8px;
     outline: none;
-    font-size: 16px;
+    font-size: 12px;
     border-radius: 5px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
 }
 input:hover{
     box-shadow: rgb(232, 237, 235) 0px 0px 0px 3px;
@@ -98,42 +144,73 @@ input:focus{
     box-shadow: var(--secundary-color) 0px 0px 0px 3px;
     border-color: rgb(255, 255, 255);
 }
-button {
-    padding: 16px 30px;
-    border: none;
-    border-radius: 5px;
+.login-message{
+    margin: 12px 0;
+    color: red;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.password-contain h4 {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.password-rules{
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: rgb(77, 74, 74);
+  }
+ 
+ .password-rules::before {
+    content: '\2022';
+    margin-right: 12px;
+    
+ }
+
+.check {
+    color: var(--primary-color);
+}
+
+.button-signup-register{
+    background-color: transparent;
+    color: var(--primary-color);
+    font-size: 12px;
+    margin-top: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    font-size: 16px;
-    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin-bottom: 20px;
 }
 
-button[type="submit"] {
-    background-color: var(--button-color);
+.button-signup-active {
     color: white;
-    font-size: 16px;
+    background-color: var(--primary-color);
+}
+.check::before{
+    content: '\2705';
+    margin-right: 12px;
 }
 
-button[type="submit"]:hover {
-    background-color: #014b3fde;
+
+.password-container{
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
 }
 
-button[type="button"] {
-    background-color: #f4f4f4;
-    color: var(--button-color);
+.icon-password {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    margin: 10px;
+    
 }
 
-button[type="button"]:hover {
-    background-color: #ddd;
-}
-
-#login{
-    background-color: var(--button-color);
-    color: white;
-}
-#login:hover{
-    background-color: #014b3fde;
+.icon-password svg {
+    font-size: 20px;
 }
 
 @media (320px >= width) {
