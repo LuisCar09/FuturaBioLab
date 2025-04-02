@@ -6,7 +6,7 @@ const GrowSection = () => {
   const ref = useRef(null);
   const videoRef = useRef(null);
 
-  const videoUrl = "https://www.dropbox.com/scl/fi/9qzss3gstbijw2elksuym/Gen-3-Alpha-Turbo-575848552-i-want-a-video-where-Cropped-yeyo-salas-M-5.mp4?rlkey=122a89hqngexmb08pyfntbwha&st=r4ajr2az&dl=0&raw=1"; 
+  const videoUrl = "https://www.dropbox.com/scl/fi/9qzss3gstbijw2elksuym/Gen-3-Alpha-Turbo-575848552-i-want-a-video-where-Cropped-yeyo-salas-M-5.mp4?rlkey=122a89hqngexmb08pyfntbwha&st=r4ajr2az&dl=0&raw=1";
 
   useEffect(() => {
     if (videoRef.current) {
@@ -18,27 +18,36 @@ const GrowSection = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end end"],
+    offset: ["start 90%","end end"],
   });
 
-  const size = useTransform(scrollYProgress, [0, 1], ["50vw", "100vw"]);
-  const height = useTransform(scrollYProgress, [0, 1], ["50vh", "100vh"]);
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["50%", "0%"]);
+  const size = useTransform(scrollYProgress,  
+    [0, 0.25, 0.5, 0.75,1], 
+    ["15vh", "25vw", "50vw", "75vw", "100vw"]
+  );
+  const height = useTransform(scrollYProgress,
+    [0, 0.25, 0.5, 0.75,1], 
+    ["5vh", "45vh", "65vh", "85vh", "100vh"]);
+  const borderRadius = useTransform(scrollYProgress,
+    [0, 0.25, 0.5, 0.75,1], 
+    ["50%", "50%", "60%", "75%", "0%"]
+  );
+
 
   return (
-    <div className="growSection" ref={ref} style={{ position: "relative", overflow: "hidden", height: "150vh" }}>
-      
-      
+    <div className="growSection" ref={ref} style={{ position: "relative", overflow: "hidden" }}>
+
+
       <motion.div
         className="section-growContainer"
         style={{
           width: size,
           height: height,
           borderRadius: borderRadius,
-         
+          transition:'ease-in'
         }}
       >
-       
+
         <motion.video
           ref={videoRef}
           src={videoUrl}
@@ -51,24 +60,26 @@ const GrowSection = () => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover", 
+            objectFit: "cover",
             borderRadius: borderRadius,
             position: "absolute",
-            
+
           }}
         />
 
-      
-       
 
-        <h2 className="section-growTitle" style={{ position: "absolute", zIndex: 2 }}>Grow your vision</h2>
-        <button className="section-growButton" style={{ position: "absolute", zIndex: 2 }}>
+
+
+        <div className="section-grow-container" >
+        <h2 className="section-growTitle" >Grow your vision</h2>
+        <button className="section-growButton" >
           <Link to="/search" className="link-growSection">
             Start Now
           </Link>
         </button>
-        
-       </motion.div> 
+        </div>
+
+      </motion.div>
     </div>
   );
 };
