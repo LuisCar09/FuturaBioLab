@@ -165,23 +165,42 @@
     z-index: 2;
   }
   .section-growTitle {
-    /* position: absolute;
-    z-index: 2; */
-    font-size: 50px; 
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
   .section-growButton {
-    /* position: absolute;
-    z-index: 2; */
-    padding: 10px 20px;
-    
-    color: white;
-    border: none;
+    margin-top: 40px;
+    background-color: var(--primary-color);
+    padding: 15px 30px;
     border-radius: 5px;
-    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  .section-growButton:hover{
+    transition: background-color 0.3s ease;
   }
   
-  
+  .section-growButton:hover {
+    background-color: #247526;
+  }
+  .link-growSection{
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  .link-growSection:hover {
+    color: black;
+  }
+  .section-growButton:hover {
+    transform: scale(1.05);
+  }
+    cursor: pointer;
+  }
 
 
 /*SectionProjects*/
