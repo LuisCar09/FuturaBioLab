@@ -191,6 +191,7 @@
     color: white;
     font-weight: bold;
     transition: color 0.3s ease;
+    text-decoration: none;
   }
   .link-growSection:hover {
     color: black;
